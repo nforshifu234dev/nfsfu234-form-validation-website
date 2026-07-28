@@ -1,0 +1,26 @@
+---
+title: "redirect"
+description: "Redirects the user to a specified URL after an optional delay."
+---
+#### redirect
+
+The `redirect` function navigates the browser to a specified URL. Optionally, you can provide a delay (in milliseconds) before the redirection occurs. If no delay is specified, the redirection happens immediately. If the URL is `null` or `false`, no redirection occurs.
+
+**Works in:** React, HTML5
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `url` | `string \| null \| false` | `null` | The URL to which the browser should navigate. |
+| `delay` | `number` | `0` | Optional delay before redirection in milliseconds. |
+
+##### Usage
+
+###### Example: Redirect to a URL
+
+```
+const url = "https://www.example.com";
+nfsfu234FormValidation.redirect(url); // Redirects immediately to the specified URL
+
+const delayedUrl = "https://www.example.com";
+nfsfu234FormValidation.redirect(delayedUrl, 3000); // Redirects to the specified URL after 3 seconds
+```

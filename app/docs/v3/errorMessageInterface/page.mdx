@@ -1,0 +1,37 @@
+---
+title: "ErrorMessageInterface"
+description: "Defines the structure of the error messages returned by the validation functions in NFSFU234FormValidation Library."
+---
+#### ErrorMessageInterface
+
+The `ErrorMessageInterface` defines the structure of the error messages returned by the `validation`, `ajax`, etc. functions in the NFSFU234FormValidation Library.
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `message` | `string \| boolean \| number` | `undefined` | The error message which can be a string, boolean, or number. |
+| `type` | `string` | `undefined` | The type of error. |
+| `code` | `number` | `undefined` | The error code. |
+| `data` | `string \| number \| object \| Array<any> \| JSON \| HTMLElement \| null \| undefined \| boolean` | `undefined` | Additional data related to the error which can be of various types. |
+
+##### Usage
+
+###### Example: Handling an Error Message using the [`Validate API`](/docs/v3/validate) function 
+
+```
+const myForm = document.getElementById("myForm");
+nfsfu234FormValidation.validate(myForm, (response) => {
+    /**
+     *  Example of using the ErrorMessageInterface
+     * 
+     * Here the response is in the ErrorMessageInterface formart so we destructure the ErrorMessageInterface 
+     * This enables us to to access its attributes and use them easily
+    */
+    
+    const { message, type, data, code } = response;
+    
+    console.log("Code: ", code);
+    console.log("Message: ", message);
+    console.log("Type: ", type);
+    console.log("Data: ", data);
+});
+```

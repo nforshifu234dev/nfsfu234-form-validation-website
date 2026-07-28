@@ -1,0 +1,32 @@
+---
+title: "validateAllFile"
+description: "Validates every input[type=\"file\"] field in the form. Async - see validateFile()."
+---
+
+#### validateAllFile
+
+The `validateAllFile` function validates every `<input type="file">` in the form. Async, since [`validateFile`](/docs/v3/validateFile) may need to decode image dimensions.
+
+**Works in:** HTML5, React
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `form` | HTMLFormElement \| HTMLDivElement | — | The form containing the file inputs to validate. |
+| `options` | object | `{}` | Same options accepted by `validateFile`. |
+
+New in v3. Returns `true` if every file field passes, or an array of `ErrorMessageInterface` entries — one per field that failed.
+
+##### Usage
+
+###### Example: Validate every file field in a form
+
+```js
+const result = await nfsfu234FormValidation.validateAllFile(myForm);
+
+if (result === true) {
+  // every file field passed
+} else {
+  // result is an array of ErrorMessageInterface
+  console.log(result);
+}
+```

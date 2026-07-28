@@ -1,0 +1,26 @@
+---
+title: "validateAllSelect"
+description: "Validates all select inputs within a form and returns ErrorMessageInterface."
+---
+#### validateAllSelect
+
+The `validateAllSelect` function validates all select inputs within a specified form. It returns an array of error messages (a nested [ErrorMessageInterface](/docs/v3/errorMessageInterface)) if any select input is invalid, or a single instance of [ErrorMessageInterface](/docs/v3/errorMessageInterface) if all fields are valid.
+
+**Works in:** HTML5, React
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `form` | `HTMLFormElement \| HTMLDivElement \| string` | `undefined` | The form element or its ID containing select inputs. |
+| `options` | `object` | `{}` | Optional settings for validation such as custom error messages. |
+
+##### Usage
+
+###### Example: Validate All Select Inputs in a Form
+
+```
+const formElement = document.getElementById('myForm');
+const result = validateAllSelect(formElement, {
+  message: 'Please select an option from all dropdowns.'
+});
+console.log(result);
+```

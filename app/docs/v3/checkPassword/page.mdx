@@ -1,0 +1,40 @@
+---
+title: "checkPassword"
+description: "Check if a given password meets specific criteria using the NFSFU234FormValidation Library"
+---
+#### checkPassword
+
+The `checkPassword` function validates a password based on specified criteria, including length, uppercase and lowercase letters, numeric characters, and optional symbol checks.
+
+**Works in:** HTML5, React, nodejs
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `password` | `string` | `undefined` | The password to be checked. |
+| `includeSymbolsCheck` | `boolean` | `false` | Flag to determine if symbols check is required (default: false). |
+| `minLength` | `number` | `8` | The minimum length required for the password (default: 8). |
+| `maxLength` | `number` | `20` | The maximum length allowed for the password (default: 20). |
+| `userSymbolRegex` | `RegExp \| string` | `''` | Custom regular expression or string representing symbols to check (default: ""). |
+
+##### Usage
+
+###### Example: Validate Password
+
+```
+const isStrongPassword = nfsfu234FormValidation.checkPassword('StrongP@ssword123');
+console.log("isStrongPassword: ", isStrongPassword); // true or error message
+```
+
+###### Example: Validate Password with Symbol Check
+
+```
+const isStrongPassword = nfsfu234FormValidation.checkPassword('StrongP@ssword123', true);
+console.log("isStrongPassword: ", isStrongPassword); // true or error message
+```
+
+###### Example: Validate Password with Symbol Check With Custom Regex
+
+```
+const isStrongPasswordWithSymbols = nfsfu234FormValidation.checkPassword('StrongP@ssword123', true, 8, 20, '[!@#$%^&*()]');
+console.log("isStrongPasswordWithSymbols: ", isStrongPasswordWithSymbols); // true or error message
+```

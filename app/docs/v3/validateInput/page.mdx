@@ -1,0 +1,48 @@
+---
+title: "validateInput"
+description: "Validates an input field and returns an ErrorMessageInterface."
+---
+#### validateInput
+
+The `validateInput` function validates a specified input field and returns a promise that resolves to the [ErrorMessageInterface](/docs/v3/errorMessageInterface).
+
+**Works in:** HTML5, React
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `inputField` | `HTMLInputElement \| string` | `undefined` | The input field to validate or its ID. |
+| `options` | `object` | `{}` | Additional options for validation. |
+| `callback` | `Function` | `undefined` | Callback function to execute after validation. |
+
+##### Usage
+
+###### Example: Validate an Email Input Field
+
+```
+// Using with an input element
+const inputElement = document.querySelector('input[type="email"]');
+nfsfu234FormValidation.validateInput(inputElement, {
+  errorType: 'inline',
+  customErrorMessages: {
+    email: {
+        empty : 'Please enter an email address.',
+        formart : 'Please enter a valid email address.'
+    }
+  }
+}).then(response => {
+  console.log(response);
+});
+
+// Using with an input element ID
+nfsfu234FormValidation.validateInput('emailInputId', {
+  errorType: 'modal',
+  customErrorMessages: {
+    email: {
+        empty : 'Please enter an email address.',
+        formart : 'Please enter a valid email address.'
+    }
+  }
+}).then(response => {
+  console.log(response);
+});
+```

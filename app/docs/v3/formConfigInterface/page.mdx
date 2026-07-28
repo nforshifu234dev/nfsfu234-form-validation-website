@@ -1,0 +1,46 @@
+---
+title: "FormConfigInterface"
+description: "One entry in the site-wide form registry, passed to configureForms()."
+---
+
+#### FormConfigInterface
+
+One entry in the site-wide form registry, passed to [`configureForms()`](/docs/v3/available-functions). `form` is a CSS selector (an id like `'#loginForm'`, or a class like `'.newsletter-form'` for forms that repeat across pages). Only forms actually present in the current page's DOM get initialized when `autoInit()` runs, so it's safe to register every form on the whole site in one shared config file.
+
+New in v3.
+
+```ts
+interface FormConfigInterface {
+  form: string;
+  fields?: { [fieldName: string]: FieldRuleInterface };
+  ajaxOptions?: object;
+  errorType?: 'inline' | 'modal';
+  customErrorMessages?: { [key: string]: string };
+}
+```
+
+##### Example
+
+```js
+NFSFU234FormValidation.configureForms([
+  {
+    form: '#loginForm',
+    fields: {
+      email: { required: true, type: 'email' },
+      password: { required: true, minLength: 8 }
+    },
+    ajaxOptions: { RequestMethod: 'POST', RequestType: 'json' }
+  },
+  {
+    form: '#profileForm',
+    fields: {
+      avatar: { accept: ['image'], maxSizeMB: 2, maxWidth: 1000, maxHeight: 1000 }
+    }
+  }
+]);
+
+// once per page - only wires up whichever registered form actually exists on this page
+NFSFU234FormValidation.autoInit();
+```
+
+See also: [`FieldRuleInterface`](/docs/v3/fieldRuleInterface).

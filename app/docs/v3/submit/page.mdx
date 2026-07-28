@@ -1,0 +1,37 @@
+---
+title: "Submit"
+description: "Learn how to submit forms using the NFSFU234FormValidation Library."
+---
+#### Submit
+
+The `submit` function is used to submit a form. When you call this function, you are going to be automatically validating the form and then it will process for submitting. 
+
+**Works in:** HTML5, React
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `userOptions` | `HTMLFormElement \| HTMLDivElement \| string \| { form: string \| HTMLFormElement \| HTMLDivElement, customErrorMessages?: { [key: string]: string } }` | `undefined` | Options for the form submission. Can be a string (ID of the form), an HTMLFormElement, an HTMLDivElement, or an object containing form and custom error messages. |
+| `callback` | `function` | `undefined` | Optional callback function to execute after form submission. Receives an error message object as its parameter. |
+
+##### Usage
+
+###### Option 1.
+
+```
+const myForm = document.getElementById("myForm");
+nfsfu234FormValidation.submit(myForm)
+.then((response) => {
+    const { message, type, data } = response
+    console.log(response);
+});
+```
+
+###### Option 2.
+
+```
+const myForm = document.getElementById("myForm");
+nfsfu234FormValidation.submit(myForm,(response) => {
+    const { message, type, data } = response
+    console.log(response);
+});
+```

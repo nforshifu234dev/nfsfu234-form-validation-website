@@ -1,0 +1,27 @@
+---
+title: "validateCheckbox"
+description: "Validates a checkbox input field and returns an ErrorMessageInterface."
+---
+#### validateCheckbox
+
+The `validateCheckbox` function validates a specified checkbox input field. It checks if the checkbox is checked and returns an [ErrorMessageInterface](/docs/v3/errorMessageInterface).
+
+**Works in:** HTML5, React
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `checkboxInputField` | `HTMLInputElement` | `undefined` | The checkbox input field to validate. |
+| `options` | `object` | `{}` | Optional settings for validation such as custom error messages. |
+
+##### Usage
+
+###### Example: Validate a Checkbox Input
+
+```
+// Using with a checkbox input element
+const checkboxElement = document.querySelector('input[type="checkbox"]');
+const result = nfsfu234FormValidation.validateCheckbox(checkboxElement, {
+  message: 'You must agree to the terms and conditions.'
+});
+console.log(result);
+```

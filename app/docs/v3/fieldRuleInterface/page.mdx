@@ -1,0 +1,47 @@
+---
+title: "FieldRuleInterface"
+description: "Declarative validation rule for a single field, used inside configureForms()."
+---
+
+#### FieldRuleInterface
+
+A declarative validation rule for a single field, keyed by its `name` or `id` inside a [`FormConfigInterface`](/docs/v3/formConfigInterface). Any property left unset here falls back to whatever the field's own HTML attributes say (`required`, `type`, `pattern`, `minlength`/`maxlength`, `accept`). Anything set here overrides the attribute-derived value for that field.
+
+New in v3.
+
+```ts
+interface FieldRuleInterface {
+  required?: boolean;
+  type?: 'email' | 'url' | 'zip' | 'date' | 'integer' | string;
+  minLength?: number;
+  maxLength?: number;
+  pattern?: string;
+  message?: string;
+
+  // File/image-specific - input[type="file"] fields only:
+  accept?: string[];   // MIME types ('image/png'), wildcards ('image/*'), extensions ('.pdf'), or category shorthand ('image', 'video', 'audio', 'document')
+  maxSizeMB?: number;
+  minFiles?: number;
+  maxFiles?: number;
+  maxWidth?: number;   // image-only, in pixels
+  maxHeight?: number;  // image-only
+  minWidth?: number;   // image-only
+  minHeight?: number;  // image-only
+}
+```
+
+##### Example
+
+```js
+NFSFU234FormValidation.configureForms([
+  {
+    form: '#profileForm',
+    fields: {
+      bio: { required: true, minLength: 10 },
+      avatar: { accept: ['image'], maxSizeMB: 2, maxWidth: 1000, maxHeight: 1000 }
+    }
+  }
+]);
+```
+
+See also: [`validateFile`](/docs/v3/validateFile), [`FormConfigInterface`](/docs/v3/formConfigInterface).

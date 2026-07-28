@@ -1,0 +1,47 @@
+---
+title: "passwordMatch"
+description: "Verify if a password matches a hashed password using the NFSFU234FormValidation Library"
+---
+#### passwordMatch
+
+The `passwordMatch` function checks if a plain text password matches a hashed password. It can use bcrypt for hashed comparisons or directly compare plain text passwords.
+
+**Works in:** nodejs, React, HTML5
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `stringPassword` | `string` | `undefined` | The plain text password to verify. |
+| `hashedPassword` | `string` | `undefined` | The hashed password to compare against. |
+| `isHashed` | `boolean` | `false` | Indicates whether the provided password is already hashed. Default is false. |
+
+##### Usage
+
+###### Example: Verify Plain Text Password
+
+```
+(async () => {
+  try {
+    const stringPassword = 'Password123';
+    const hashedPassword = '@Password123';
+    const isMatch = await nfsfu234FormValidation.passwordMatch(stringPassword, hashedPassword);
+    console.log("Passwords Match: ", isMatch); // true or false
+  } catch (error) {
+    console.error("Error verifying password: ", error);
+  }
+})();
+```
+
+###### Example: Verify Hashed Password
+
+```
+(async () => {
+  try {
+    const stringPassword = 'Password123';
+    const hashedPassword = '$2a$10$SJVY.s8OD3S1D3HJh3n3MeI8yzUmJm0bO5L2R3Z78b8MWg8L4NLqG';
+    const isMatch = await nfsfu234FormValidation.passwordMatch(stringPassword, hashedPassword, true);
+    console.log("Passwords Match: ", isMatch); // true or false
+  } catch (error) {
+    console.error("Error verifying password: ", error);
+  }
+})();
+```

@@ -1,0 +1,31 @@
+---
+title: "isEmail"
+description: "Validate if a given string is a valid email address using the NFSFU234FormValidation Library"
+---
+#### isEmail
+
+The `isEmail` function is used to validate whether a given string is a valid email address.
+
+**Works in:** HTML5, React, nodejs
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `email` | `string` | `undefined` | The string to validate as an email address. |
+
+##### Usage
+
+###### Example: Validate Email
+
+```
+const email = 'example@example.com';
+const isValidEmail = nfsfu234FormValidation.isEmail(email);
+console.log(isValidEmail); // true
+```
+
+###### Another Example: Validate Email
+
+```
+const email = 'example@example';
+const isValidEmail = nfsfu234FormValidation.isEmail(email);
+console.log(isValidEmail); // false
+```

@@ -1,0 +1,26 @@
+---
+title: "togglePasswordVisibilityAll"
+description: "Toggles the visibility of password inputs and updates corresponding visibility icons."
+---
+#### togglePasswordVisibilityAll
+
+The `togglePasswordVisibilityAll` function toggles the visibility of all password inputs within a specified form and updates the corresponding visibility icons.
+
+**Works in:** HTML5, React
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `icons` | `object` | `{}` | Object containing icons for showing and hiding the password. |
+| `uform` | `string \| HTMLFormElement \| HTMLDivElement \| null` | `null` | The form element or its ID. |
+| `toggleAll` | `boolean` | `false` | Flag indicating whether to toggle all password inputs. |
+
+##### Usage
+
+###### Example: Toggle Visibility of All Password Inputs
+
+```
+const icons = { show: '🙈', hide: '👀' };
+const form = document.getElementById('myForm');
+
+nfsfu234FormValidation.togglePasswordVisibilityAll(icons, form, true);
+```

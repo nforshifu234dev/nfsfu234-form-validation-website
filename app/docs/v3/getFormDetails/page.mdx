@@ -1,0 +1,73 @@
+---
+title: "getFormDetails"
+description: "Retrieve data from form elements using the NFSFU234FormValidation Library"
+---
+#### getFormDetails
+
+The `getFormDetails` function is used to extract data from input fields, textareas, and select elements within a specified form. The function collects data from elements with the attribute `'data-attr-name'` or `'name'`, and returns an object containing the form's data.
+
+**Works in:** HTML5, React
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `form` | `HTMLFormElement \| HTMLDivElement \| string` | `undefined` | The HTML form element or its ID from which to extract data. This can be a string (ID of the form), an HTMLFormElement, or an HTMLDivElement. |
+
+##### Usage
+
+###### Example: Retrieve Form Details
+
+```
+const formDetails = nfsfu234FormValidation.getFormDetails('myFormId');
+console.log("Form Details: ", formDetails);
+```
+
+###### Example Form HTML
+
+```
+<form id="myFormId">
+  <input type="text" name="fieldName1" value="value1" data-attr-name="fieldName1" />
+  <input type="text" name="fieldName2" value="value2" data-attr-name="fieldName2" />
+  <input type="checkbox" name="checkboxName" checked data-attr-name="checkboxName" />
+  <input type="radio" name="radioName" data-attr-name="radioName" />
+  <textarea name="textareaName" data-attr-name="textareaName">Sample text</textarea>
+  <select name="selectName" data-attr-name="selectName">
+    <option value="option1" selected>Option 1</option>
+    <option value="option2">Option 2</option>
+  </select>
+</form>
+```
+
+###### JavaScript to Retrieve Form Details
+
+```
+const formDetails = nfsfu234FormValidation.getFormDetails('myFormId');
+console.log("Form Details: ", formDetails);
+```
+
+###### Sample Output
+
+```
+{
+  "fieldName1": "value1",
+  "fieldName2": "value2",
+  "checkboxName": true,
+  "radioName": false,
+  "textareaName": "Sample text",
+  "selectName": "option1"
+}
+```
+
+  <b class="text-lg">Note</b>: If you call the function without having either the <b>`'name'`</b> or the <b>`'data-attr-name'`</b> attribute, then the key values will be index number of arrays. Find the example below:
+
+###### Sample Output Without adding the <b>`'name'`</b> or the <b>`'data-attr-name'`</b> HTML Attribute
+
+```
+{
+  0: "value1",
+  1: "value2",
+  2: true,
+  3: false,
+  4: "Sample text",
+  5: "option1"
+}
+```

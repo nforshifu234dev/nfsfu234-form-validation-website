@@ -1,0 +1,15 @@
+/** @type {import('next-sitemap').IConfig} */
+module.exports = {
+  siteUrl: 'https://form-validation.nforshifu234dev.com',
+  generateRobotsTxt: true,
+  changefreq: 'weekly',
+  priority: 0.7,
+  // Older, frozen version paths shouldn't compete with the current version
+  // in search - point crawlers at the latest equivalent instead.
+  transform: async (config, url) => ({
+    loc: url,
+    changefreq: config.changefreq,
+    priority: url.includes('/docs/v3/') ? 0.9 : config.priority,
+    lastmod: new Date().toISOString()
+  })
+}

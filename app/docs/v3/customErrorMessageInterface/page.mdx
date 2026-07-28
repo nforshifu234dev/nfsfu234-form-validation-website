@@ -1,0 +1,60 @@
+---
+title: "CustomMessagesInterface"
+description: "Defines the structure of custom error messages for different input types in the NFSFU234FormValidation Library."
+---
+#### CustomMessagesInterface
+
+The `CustomMessagesInterface` defines the structure of custom error messages for various input types in the NFSFU234FormValidation Library. These custom messages allow developers to specify user-friendly error messages for different types of input fields during form validation.
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `text` | `string` | `undefined` | Custom error message for text inputs. |
+| `checkbox` | `string` | `undefined` | Custom error message for checkbox inputs. |
+| `color` | `string` | `undefined` | Custom error message for color inputs. |
+| `datetime` | `string` | `undefined` | Custom error message for datetime inputs. |
+| `date` | `string` | `undefined` | Custom error message for date inputs. |
+| `datetime-local` | `string` | `undefined` | Custom error message for datetime-local inputs. |
+| `email` | `object` | `undefined` | Custom error messages for email inputs, including specific messages for empty and invalid cases. |
+| `email.empty` | `string` | `undefined` | Custom error message when the email input is empty. |
+| `email.invalid` | `string` | `undefined` | Custom error message when the email input is invalid. |
+| `file` | `string` | `undefined` | Custom error message for file inputs. |
+| `hidden` | `string` | `undefined` | Custom error message for hidden inputs. |
+| `image` | `string` | `undefined` | Custom error message for image inputs. |
+| `month` | `string` | `undefined` | Custom error message for month inputs. |
+| `number` | `string` | `undefined` | Custom error message for number inputs. |
+| `password` | `string` | `undefined` | Custom error message for password inputs. |
+| `radio` | `string` | `undefined` | Custom error message for radio inputs. |
+| `range` | `string` | `undefined` | Custom error message for range inputs. |
+| `reset` | `string` | `undefined` | Custom error message for reset inputs. |
+| `search` | `string` | `undefined` | Custom error message for search inputs. |
+| `submit` | `string` | `undefined` | Custom error message for submit inputs. |
+| `tel` | `string` | `undefined` | Custom error message for tel inputs. |
+| `textarea` | `string` | `undefined` | Custom error message for textarea inputs. |
+| `time` | `string` | `undefined` | Custom error message for time inputs. |
+| `url` | `object` | `undefined` | Custom error messages for URL inputs, including specific messages for empty and invalid cases. |
+| `url.empty` | `string` | `undefined` | Custom error message when the URL input is empty. |
+| `url.invalid` | `string` | `undefined` | Custom error message when the URL input is invalid. |
+| `week` | `string` | `undefined` | Custom error message for week inputs. |
+| `zipcode` | `object` | `undefined` | Custom error messages for zipcode inputs, including specific messages for empty and invalid cases. |
+| `zipcode.empty` | `string` | `undefined` | Custom error message when the zipcode input is empty. |
+| `zipcode.invalid` | `string` | `undefined` | Custom error message when the zipcode input is invalid. |
+
+##### Usage
+
+###### Example: Setting Custom Error Messages using the [`Validate API`](/docs/v3/validate) function
+
+```
+const customMessages = {
+  email: {
+    empty: "Please enter your email address.",
+    invalid: "The email address you entered is not valid."
+  },
+  password: "Your password must be at least 8 characters long."
+};
+
+nfsfu234FormValidation.validate(myForm, { customErrorMessages: customMessages }, (response) => {
+  if (!response.isValid) {
+    console.log(response.errorMessages);
+  }
+});
+```

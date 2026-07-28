@@ -1,0 +1,26 @@
+---
+title: "validateAllCheckbox"
+description: "Validates all checkbox inputs within a form and returns an array of ErrorMessageInterface."
+---
+#### validateAllCheckbox
+
+The `validateAllCheckbox` function validates all checkbox inputs within a specified form. It returns an array of error messages (a nested [ErrorMessageInterface](/docs/v3/errorMessageInterface)) if any checkbox is invalid, or true if all checkboxes are valid.
+
+**Works in:** HTML5, React
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `form` | `HTMLFormElement \| HTMLDivElement \| string` | `undefined` | The form element or its ID containing checkbox inputs. |
+| `options` | `object` | `{}` | Optional settings for validation such as custom error messages. |
+
+##### Usage
+
+###### Example: Validate All Checkboxes in a Form
+
+```
+const formElement = document.getElementById('myForm');
+const result = validateAllCheckbox(formElement, {
+  message: 'You must check all required checkboxes.'
+});
+console.log(result);
+```
