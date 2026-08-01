@@ -1,0 +1,63 @@
+---
+title: "Initialization"
+description: "Learn how to initialize the NFSFU234FormValidation Library"
+---
+
+# 🏁 Initialization
+
+To use the NFSFU234FormValidation library in your respective projects, you must create an instance of the library with the appropriate parameters.
+There are 2 ways of creating an instance of the NFSFU234FormValidation library
+
+##### 1. Elementary Embarkation
+
+In this type of initialization, we'll craft a straightforward NFSFU234FormValidation instance without any supplementary parameters.
+The library will adeptly detect the form with the ID <b>'jsSubmit'</b> or the first <b>form</b> tag it finds and sets all the defaults value for it.
+
+```js
+const nfsfu234FormValidation = new NFSFU234FormValidation(); // Create a fundamental NFSFU234FormValidation instance
+```
+
+##### 2. Customized Instanciation
+
+Here, we furnish custom-made error messages for the form fields and outline AJAX options for form submission. This approach empowers granular customization and mastery over the validation and form submission processes.
+
+```js
+// Example custom error messages for your form
+const customErrorMessages = {
+  "text": "EMPTY FIELD",
+  "select": "SELECT FIELD IS REQUIRED",
+  "email": {
+    "empty": "EMPTY EMAIL",
+    "format": "The email is not in the right format",
+  },
+  // ... Other field types and messages
+};
+
+// Example form details object
+const formDetails = {
+  form: "myForm", // Replace "myForm" with the ID of your form or the actual HTML element of your form (recommended)
+  isErrorMessageInline: true,
+  customErrorMessages: customErrorMessages,
+};
+
+// Example AJAX options object
+const ajaxOptions = {
+  url: "https://api.domain.com/",
+  RequestMethod: "POST",
+  RequestHeader: {
+    "Content-Type": "application/json",
+  }
+};
+
+// Forge a customized NFSFU234FormValidation instance
+const nfsfu234FormValidation = new NFSFU234FormValidation(formDetails, ajaxOptions);
+```
+
+<b class="text-lg">Note</b>: If you initialize an instance of the NFSFU234FormValidation Library without providing parameters, it will seamlessly detect the form with the ID 'jsSubmit' or the first form on the page in the absence of a form ID. This streamlined approach suits scenarios where you're working with a single form and prefer a simplified setup without additional configurations. 🚀👨‍💻
+
+#### See also
+
+- [Installation](/docs/v2/installation)
+- [Usage](/docs/v2/usage)
+- [Available Functions](/docs/v2/available-functions)
+- [FAQ](https://github.com/NFSFU234FormValidation/nfsfu234-form-validation/issues)

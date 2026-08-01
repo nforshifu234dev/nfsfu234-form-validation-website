@@ -1,0 +1,57 @@
+---
+title: "File Upload with Image Preview"
+excerpt: "Validate file type, size, and image dimensions before showing a preview thumbnail."
+frameworks: ["html", "nextjs"]
+date: "2026-07-05"
+---
+
+An avatar upload field that rejects oversized files and wrong dimensions before ever generating a preview — so the user gets feedback immediately instead of after a failed submit.
+
+## Markup
+
+```html
+<form id="profileForm">
+  <input type="file" name="avatar" accept="image/png, image/jpeg">
+  <img id="preview" style="display:none; max-width: 120px;">
+  <div id="avatarError"></div>
+</form>
+```
+
+## Config + validation
+
+```js
+import NFSFU234FormValidation from 'nfsfu234-form-validation';
+
+const form = new NFSFU234FormValidation({ form: 'profileForm' });
+
+const avatarInput = document.querySelector('[name="avatar"]');
+
+avatarInput.addEventListener('change', async () => {
+  const result = await form.validateFile(avatarInput, {
+    required: true,
+    accept: ['image/png', 'image/jpeg'],
+    maxSizeMB: 2,
+    maxWidth: 1000,
+    maxHeight: 1000
+  });
+
+  const errorEl = document.getElementById('avatarError');
+  const preview = document.getElementById('preview');
+
+  if (result !== true) {
+    errorEl.textContent = result.message;
+    preview.style.display = 'none';
+    return;
+  }
+
+  errorEl.textContent = '';
+  preview.src = URL.createObjectURL(avatarInput.files[0]);
+  preview.style.display = 'block';
+});
+```
+
+## Notes
+
+- `.validateFile()` is async because checking image dimensions requires decoding the file first — always `await` it.
+- `maxWidth`/`maxHeight`/`minWidth`/`minHeight` only apply to image files; a non-image `accept` list (e.g. `['.pdf']`) skips the dimension check entirely.
+- Generate the preview only after validation passes, so a rejected file never flashes a broken thumbnail.

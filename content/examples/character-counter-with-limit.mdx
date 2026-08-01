@@ -1,0 +1,73 @@
+---
+title: "Bio Field with Character Counter"
+excerpt: "Wire a live character counter to a textarea and block typing past the limit."
+frameworks: ["html", "nextjs"]
+date: "2026-07-09"
+---
+
+A profile bio field that shows a live "X / 280" counter and disables the submit button until the minimum length is met.
+
+## Markup
+
+```html
+<form id="profileForm">
+  <textarea name="bio" id="bio"></textarea>
+  <div id="bioCounter"></div>
+  <button type="submit" id="saveBtn">Save</button>
+</form>
+```
+
+## Script
+
+```js
+import NFSFU234FormValidation from 'nfsfu234-form-validation';
+
+const form = new NFSFU234FormValidation({ form: 'profileForm' });
+
+const bioField = document.getElementById('bio');
+const counterEl = document.getElementById('bioCounter');
+
+form.restrictInputWithCounter(bioField, counterEl, {
+  maxLength: 280,
+  minLength: 10,
+  shouldButtonDisable: true,
+  formId: 'profileForm'
+});
+```
+
+## Next.js note
+
+```jsx
+'use client';
+import { useEffect } from 'react';
+import NFSFU234FormValidation from 'nfsfu234-form-validation';
+
+export function ProfileForm() {
+  useEffect(() => {
+    const form = new NFSFU234FormValidation({ form: 'profileForm' });
+    const bioField = document.getElementById('bio');
+    const counterEl = document.getElementById('bioCounter');
+
+    form.restrictInputWithCounter(bioField, counterEl, {
+      maxLength: 280,
+      minLength: 10,
+      shouldButtonDisable: true,
+      formId: 'profileForm'
+    });
+  }, []);
+
+  return (
+    <form id="profileForm">
+      <textarea name="bio" id="bio"></textarea>
+      <div id="bioCounter"></div>
+      <button type="submit" id="saveBtn">Save</button>
+    </form>
+  );
+}
+```
+
+## Notes
+
+- `restrictInputWithCounter()` wires everything itself — the counter text, the typing block past `maxLength`, and (with `shouldButtonDisable: true`) disabling `formId`'s submit button until `minLength` is met. No separate `input` listener needed.
+- Works on both `<input>` and `<textarea>` fields — pass either as the first argument.
+- It only handles the live UI restriction. If you also want the bio length enforced at submit time (e.g. someone pastes in text that bypasses the UI block), pair it with a matching `minLength`/`maxLength` rule via `configureForms()` or `.validateTextarea()`.

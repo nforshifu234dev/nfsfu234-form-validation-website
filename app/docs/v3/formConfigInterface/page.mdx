@@ -1,23 +1,34 @@
 ---
 title: "FormConfigInterface"
-description: "One entry in the site-wide form registry, passed to configureForms()."
+description: "Fields available on FormConfigInterface."
+keywords:
+  - "FormConfigInterface"
+  - "form"
+  - "fields"
+  - "ajaxOptions"
+  - "errorType"
+  - "customErrorMessages"
+  - "form validation"
+  - "javascript"
+  - "html forms"
+  - "client-side validation"
+openGraph:
+  title: "FormConfigInterface — NFSFU234FormValidation"
+  description: "Fields available on FormConfigInterface."
+  images:
+    - url: "https://form-validation.nforshifu234dev.com/api/og?title=FormConfigInterface%20%E2%80%94%20NFSFU234FormValidation&subtitle=nfsfu234%2Fform-validation"
+      width: 1200
+      height: 630
 ---
-
 #### FormConfigInterface
-
-One entry in the site-wide form registry, passed to [`configureForms()`](/docs/v3/available-functions). `form` is a CSS selector (an id like `'#loginForm'`, or a class like `'.newsletter-form'` for forms that repeat across pages). Only forms actually present in the current page's DOM get initialized when `autoInit()` runs, so it's safe to register every form on the whole site in one shared config file.
-
-New in v3.
-
-```ts
-interface FormConfigInterface {
-  form: string;
-  fields?: { [fieldName: string]: FieldRuleInterface };
-  ajaxOptions?: object;
-  errorType?: 'inline' | 'modal';
-  customErrorMessages?: { [key: string]: string };
-}
-```
+Fields available on FormConfigInterface.
+| Property | Type | Required |
+| --- | --- | --- |
+| `form` | `string` | required |
+| `fields` | `object` | optional |
+| `ajaxOptions` | `any` | optional |
+| `errorType` | `"inline" \\| "modal"` | optional |
+| `customErrorMessages` | `object` | optional |
 
 ##### Example
 
@@ -44,3 +55,14 @@ NFSFU234FormValidation.autoInit();
 ```
 
 See also: [`FieldRuleInterface`](/docs/v3/fieldRuleInterface).
+
+
+##### Used by
+
+- [`configureForms()`](/docs/v3/configureForms)
+
+
+import { JsonLd } from '@/components/JsonLd.jsx'
+
+<JsonLd data={{"@context":"https://schema.org","@type":"TechArticle","headline":"FormConfigInterface — NFSFU234FormValidation","description":"Fields available on FormConfigInterface.","url":"https://form-validation.nforshifu234dev.com/docs/v3/formConfigInterface","proficiencyLevel":"Beginner","dependencies":"None — zero runtime dependencies","about":{"@type":"SoftwareApplication","name":"NFSFU234FormValidation","applicationCategory":"DeveloperApplication"},"isPartOf":{"@type":"TechArticle","name":"NFSFU234FormValidation Docs","url":"https://form-validation.nforshifu234dev.com/docs/v3/getting-started"},"author":{"@type":"Organization","name":"NFORSHIFU234 Dev","url":"https://nforshifu234dev.com"}}} />
+

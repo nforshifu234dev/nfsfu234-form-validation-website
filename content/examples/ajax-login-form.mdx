@@ -1,0 +1,53 @@
+---
+title: "AJAX Login Form"
+excerpt: "Validate a login form on the client, then submit it via AJAX without a page reload."
+frameworks: ["html", "vite"]
+date: "2026-07-01"
+---
+
+A login form that validates email + password client-side, then submits via AJAX and reads the JSON result — no full page reload, no extra libraries.
+
+## Markup
+
+```html
+<form id="loginForm">
+  <input type="email" name="email" required>
+  <input type="password" name="password" required minlength="8">
+  <button type="submit">Log in</button>
+</form>
+```
+
+## Script
+
+```js
+import NFSFU234FormValidation from 'nfsfu234-form-validation';
+
+const form = new NFSFU234FormValidation({ form: 'loginForm' });
+
+document.getElementById('loginForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  form.submit({
+    isAjax: true,
+    ajaxOptions: {
+      url: '/api/login',
+      RequestMethod: 'POST'
+    }
+  }).then((result) => {
+    if (result.type === 'success') {
+      window.location.href = '/dashboard';
+    } else {
+      form.displayError(result);
+    }
+  });
+});
+```
+
+Validation rules here come straight from the HTML attributes (`required`, `type="email"`, `minlength="8"`) — no config object needed for a form this simple. `.submit()` only fires the AJAX request once every field passes; a failing field short-circuits before any network call, and the request body is built for you from the form's own field values.
+
+## Notes
+
+- **AJAX only fires when you ask for it.** Passing `{ isAjax: true, ajaxOptions }` into `.submit()` is the reliable way to trigger it. The alternative is setting `isAjax="true"`, `action`, and `method` directly as attributes on the `<form>` element itself and calling `.submit()` with no arguments — the library reads those attributes as a fallback when no options object is passed. Either way, `.submit()` with zero args and no `isAjax` attribute on the form will only validate; it will not send a request.
+- The constructor's second argument exists in the type signature but isn't wired up to anything in the current version — set `ajaxOptions` per-call via `.submit({ isAjax: true, ajaxOptions })` instead of expecting it to persist from construction.
+- `ajaxOptions` only recognizes `url`, `RequestMethod`, `RequestHeader`, and `RequestBody` — `RequestBody` is filled in automatically from the form's fields, so you don't set it yourself.
+- `result.type` is always `'success'` or `'error'` — check it before branching.

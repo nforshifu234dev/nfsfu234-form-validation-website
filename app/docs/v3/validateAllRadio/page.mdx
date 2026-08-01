@@ -1,26 +1,44 @@
 ---
 title: "validateAllRadio"
-description: "Validates all radio button groups within a form and returns ErrorMessageInterface."
+description: "Validates every radio group in the form."
+keywords:
+  - "validateAllRadio"
+  - "form"
+  - "customErrorMessage"
+  - "form validation"
+  - "javascript"
+  - "html forms"
+  - "client-side validation"
+openGraph:
+  title: "validateAllRadio() — NFSFU234FormValidation"
+  description: "Validates every radio group in the form."
+  images:
+    - url: "https://form-validation.nforshifu234dev.com/api/og?title=validateAllRadio()%20%E2%80%94%20NFSFU234FormValidation&subtitle=nfsfu234%2Fform-validation"
+      width: 1200
+      height: 630
 ---
 #### validateAllRadio
-
-The `validateAllRadio` function validates all radio button groups within a specified form. It returns an array of error messages (a nested [ErrorMessageInterface](/docs/v3/errorMessageInterface)) if any group is invalid, or a single instance of [ErrorMessageInterface](/docs/v3/errorMessageInterface) if all fields are valid.
-
-**Works in:** HTML5, React
-
-| Parameter | Type | Default | Description |
-| --- | --- | --- | --- |
-| `form` | `HTMLFormElement \| HTMLDivElement \| string` | `undefined` | The form element or its ID containing radio button groups. |
-| `customErrorMessage` | `object` | `{}` | Custom error message to return if validation fails. |
+Validates every radio group in the form.
+**Returns:** `boolean \| ErrorMessageInterface \| ErrorMessageInterface[]`
+| Parameter | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `form` | `HTMLFormElement \\| HTMLDivElement` | `required` | `-` | The form to validate. Defaults to this instance's `form` if omitted. |
+| `customErrorMessage` | `any` | `required` | `-` | Custom error messages keyed by radio group name, overriding the defaults. |
 
 ##### Usage
 
 ###### Example: Validate All Radio Button Groups in a Form
 
-```
+```js
 const formElement = document.getElementById('myForm');
 const result = nfsfu234FormValidation.validateAllRadio(formElement, {
   message: 'Please select an option for all required questions.'
 });
 console.log(result);
 ```
+
+
+import { JsonLd } from '@/components/JsonLd.jsx'
+
+<JsonLd data={{"@context":"https://schema.org","@type":"TechArticle","headline":"validateAllRadio() — NFSFU234FormValidation","description":"Validates every radio group in the form.","url":"https://form-validation.nforshifu234dev.com/docs/v3/validateAllRadio","proficiencyLevel":"Beginner","dependencies":"None — zero runtime dependencies","about":{"@type":"SoftwareApplication","name":"NFSFU234FormValidation","applicationCategory":"DeveloperApplication"},"isPartOf":{"@type":"TechArticle","name":"NFSFU234FormValidation Docs","url":"https://form-validation.nforshifu234dev.com/docs/v3/getting-started"},"author":{"@type":"Organization","name":"NFORSHIFU234 Dev","url":"https://nforshifu234dev.com"}}} />
+

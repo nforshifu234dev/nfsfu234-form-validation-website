@@ -1,0 +1,54 @@
+---
+title: "Migration Guide: v2 → v3"
+description: "How to upgrade from NFSFU234FormValidation v2 to v3, including breaking changes and step-by-step fixes."
+---
+
+## 🔀 Migrating from v2 to v3
+
+v3 is a stable, breaking release. Most sites need two changes to upgrade cleanly — both are mechanical, not architectural.
+
+### 1. `submit()` and `validate()` are now always async
+
+In v2, some code paths returned synchronously. In v3, both **always** return a `Promise`.
+
+```js
+// v2 — synchronous check
+if (nfsfu234FormValidation.submit(myForm) === false) {
+  // handle failure
+}
+```
+
+```js
+// v3 — await it
+const result = await nfsfu234FormValidation.submit(myForm);
+if (result === false) {
+  // handle failure
+}
+```
+Or with `.then()`:
+```js
+nfsfu234FormValidation.submit(myForm).then((result) => {
+  // handle result
+});
+```
+
+### 2. Password hashing functions are removed
+
+`.hashPassword()`, `.verifyPassword()`, `.passwordMatch()`, and the `bcryptjs` dependency are gone in v3 — along with `generatePassword()`'s `shouldHash` option. Client-side hashing never protected a password in transit, and your backend already owns that job (bcrypt/argon2 in Node, or built into Django/Rails/Laravel).
+
+**If you were using these:** move the hashing/verification call to your server, and only send the plain password over HTTPS to your own backend. `checkPassword()` and `generatePassword()` (without `shouldHash`) are unaffected — both remain pure client-side logic.
+
+### 3. New in v3 — nothing forces you to adopt it, but worth knowing
+
+- [`validateFile()` / `validateAllFile()`](/docs/v3/validateFile) for file/image inputs — new in v3, opt-in.
+- [`configureForms()` + `autoInit()`](/docs/v3/formConfigInterface) — a site-wide config registry, opt-in.
+- Radio and checkbox fields are now included in `validate()`/`submit()` by default. If your v2 forms relied on radios/checkboxes being silently skipped, double check your form's expected validation result after upgrading.
+
+### Checklist
+
+- [ ] Add `await` (or `.then()`) everywhere `submit()`/`validate()` is called
+- [ ] Remove any use of `.hashPassword()`, `.verifyPassword()`, `.passwordMatch()`
+- [ ] Move password hashing/verification to your backend
+- [ ] Re-test any form with radio buttons or checkboxes for the new default validation behavior
+
+For the complete list of every change, see the [Changelog](/docs/v3/changelog).

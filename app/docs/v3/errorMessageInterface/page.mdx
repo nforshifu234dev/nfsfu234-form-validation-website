@@ -1,23 +1,38 @@
 ---
 title: "ErrorMessageInterface"
-description: "Defines the structure of the error messages returned by the validation functions in NFSFU234FormValidation Library."
+description: "Fields available on ErrorMessageInterface."
+keywords:
+  - "ErrorMessageInterface"
+  - "message"
+  - "type"
+  - "code"
+  - "data"
+  - "form validation"
+  - "javascript"
+  - "html forms"
+  - "client-side validation"
+openGraph:
+  title: "ErrorMessageInterface — NFSFU234FormValidation"
+  description: "Fields available on ErrorMessageInterface."
+  images:
+    - url: "https://form-validation.nforshifu234dev.com/api/og?title=ErrorMessageInterface%20%E2%80%94%20NFSFU234FormValidation&subtitle=nfsfu234%2Fform-validation"
+      width: 1200
+      height: 630
 ---
 #### ErrorMessageInterface
-
-The `ErrorMessageInterface` defines the structure of the error messages returned by the `validation`, `ajax`, etc. functions in the NFSFU234FormValidation Library.
-
-| Parameter | Type | Default | Description |
-| --- | --- | --- | --- |
-| `message` | `string \| boolean \| number` | `undefined` | The error message which can be a string, boolean, or number. |
-| `type` | `string` | `undefined` | The type of error. |
-| `code` | `number` | `undefined` | The error code. |
-| `data` | `string \| number \| object \| Array<any> \| JSON \| HTMLElement \| null \| undefined \| boolean` | `undefined` | Additional data related to the error which can be of various types. |
+Fields available on ErrorMessageInterface.
+| Property | Type | Required |
+| --- | --- | --- |
+| `message` | `string \\| number \\| boolean` | optional |
+| `type` | `string` | optional |
+| `code` | `number` | optional |
+| `data` | `null \\| string \\| number \\| boolean \\| object \\| any[] \\| JSON \\| HTMLElement` | optional |
 
 ##### Usage
 
 ###### Example: Handling an Error Message using the [`Validate API`](/docs/v3/validate) function 
 
-```
+```js
 const myForm = document.getElementById("myForm");
 nfsfu234FormValidation.validate(myForm, (response) => {
     /**
@@ -35,3 +50,24 @@ nfsfu234FormValidation.validate(myForm, (response) => {
     console.log("Data: ", data);
 });
 ```
+
+
+##### Used by
+
+- [`getFormDetails()`](/docs/v3/getFormDetails)
+- [`loading()`](/docs/v3/loading)
+- [`validateAllInput()`](/docs/v3/validateAllInput)
+- [`validateRadio()`](/docs/v3/validateRadio)
+- [`validateAllRadio()`](/docs/v3/validateAllRadio)
+- [`validateCheckbox()`](/docs/v3/validateCheckbox)
+- [`validateAllCheckbox()`](/docs/v3/validateAllCheckbox)
+- [`validateSelect()`](/docs/v3/validateSelect)
+- [`validateAllSelect()`](/docs/v3/validateAllSelect)
+- [`validateTextarea()`](/docs/v3/validateTextarea)
+- [`validateAllTextarea()`](/docs/v3/validateAllTextarea)
+
+
+import { JsonLd } from '@/components/JsonLd.jsx'
+
+<JsonLd data={{"@context":"https://schema.org","@type":"TechArticle","headline":"ErrorMessageInterface — NFSFU234FormValidation","description":"Fields available on ErrorMessageInterface.","url":"https://form-validation.nforshifu234dev.com/docs/v3/errorMessageInterface","proficiencyLevel":"Beginner","dependencies":"None — zero runtime dependencies","about":{"@type":"SoftwareApplication","name":"NFSFU234FormValidation","applicationCategory":"DeveloperApplication"},"isPartOf":{"@type":"TechArticle","name":"NFSFU234FormValidation Docs","url":"https://form-validation.nforshifu234dev.com/docs/v3/getting-started"},"author":{"@type":"Organization","name":"NFORSHIFU234 Dev","url":"https://nforshifu234dev.com"}}} />
+

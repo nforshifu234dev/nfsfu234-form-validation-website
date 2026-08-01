@@ -1,0 +1,93 @@
+---
+title: "Install with Vite"
+description: "Step-by-step: set up a new Vite + React project and add NFSFU234FormValidation to it, from scratch."
+---
+
+## ⚡ Using NFSFU234FormValidation with Vite
+
+This guide walks through a fresh Vite + React project end to end.
+
+### 1. Create a Vite project
+
+```bash
+npm create vite@latest my-app -- --template react
+cd my-app
+npm install
+```
+
+Swap `react` for `react-ts` if you want TypeScript — the setup below works either way.
+
+### 2. Install the library
+
+```bash
+npm install nfsfu234-form-validation
+```
+
+### 3. Wire it up in a component
+
+No client/server split to worry about here — everything Vite renders is already client-side.
+
+```jsx
+import { useEffect } from 'react'
+import NFSFU234FormValidation from 'nfsfu234-form-validation'
+
+export default function SignupForm() {
+  useEffect(() => {
+    const formElement = document.getElementById('signup-form')
+    const validator = new NFSFU234FormValidation({ form: formElement })
+
+    async function handleSubmit(e) {
+      e.preventDefault()
+      const result = await validator.submit()
+      console.log(result)
+    }
+
+    formElement.addEventListener('submit', handleSubmit)
+    return () => formElement.removeEventListener('submit', handleSubmit)
+  }, [])
+
+  return (
+    <form id="signup-form">
+      <input type="email" name="email" required />
+      <input type="password" name="password" minLength="8" required />
+      <button type="submit">Sign up</button>
+    </form>
+  )
+}
+```
+
+### 4. Or use the site-wide config registry
+
+```jsx
+import { useEffect } from 'react'
+import NFSFU234FormValidation from 'nfsfu234-form-validation'
+
+export default function FormsInit() {
+  useEffect(() => {
+    NFSFU234FormValidation.configureForms([
+      {
+        form: '#signup-form',
+        fields: {
+          email: { required: true, type: 'email' },
+          password: { required: true, minLength: 8 }
+        }
+      }
+    ])
+    NFSFU234FormValidation.autoInit()
+  }, [])
+
+  return null
+}
+```
+
+Mount `<FormsInit />` once near the root of your app.
+
+### 5. Common gotcha: StrictMode double-invoke
+
+Vite's React template enables `<StrictMode>` by default, which mounts, unmounts, and remounts every component once in development. That means the `useEffect` above runs twice on first load. It's harmless here — the cleanup function removes the listener before the effect re-attaches it — but if you see `console.log` firing twice in dev, that's why, not a bug in the library.
+
+### Next steps
+
+- [Configuration reference](/docs/v3/formConfigInterface)
+- [File/image validation](/docs/v3/validateFile)
+- [All available functions](/docs/v3/available-functions)

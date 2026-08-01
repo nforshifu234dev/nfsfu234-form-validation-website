@@ -1,0 +1,101 @@
+---
+title: "Newsletter Signup with a Plan Select Dropdown"
+excerpt: "Validate a <select> field alongside regular inputs in a Create React App signup form."
+frameworks: ["cra"]
+date: "2026-07-14"
+---
+
+A newsletter signup form with a plan dropdown that's required just like any other field — built as a CRA function component.
+
+## Markup
+
+```jsx
+export default function SignupForm() {
+  return (
+    <form id="signupForm">
+      <input type="text" name="name" required />
+      <input type="email" name="email" required />
+      <select name="plan" defaultValue="">
+        <option value="" disabled>Choose a plan</option>
+        <option value="free">Free</option>
+        <option value="pro">Pro</option>
+        <option value="team">Team</option>
+      </select>
+      <button type="submit">Subscribe</button>
+    </form>
+  )
+}
+```
+
+## Wiring it up
+
+```jsx
+import { useEffect } from 'react'
+import NFSFU234FormValidation from 'nfsfu234-form-validation'
+
+export default function SignupForm() {
+  useEffect(() => {
+    const formElement = document.getElementById('signupForm')
+    const validator = new NFSFU234FormValidation({ form: formElement })
+    const planSelect = formElement.querySelector('[name="plan"]')
+
+    async function handleSubmit(e) {
+      e.preventDefault()
+
+      // Check the select on its own first, since "" (the disabled
+      // placeholder option) isn't caught by a plain HTML `required`
+      // attribute on a <select> the way it is on text inputs.
+      const planResult = validator.validateSelect(planSelect, {
+        message: 'Please choose a plan before continuing.'
+      }, (response) => {
+        console.log('plan validation:', response)
+      })
+
+      if (planResult !== true) return
+
+      const result = await validator.submit()
+      console.log(result)
+    }
+
+    formElement.addEventListener('submit', handleSubmit)
+    return () => formElement.removeEventListener('submit', handleSubmit)
+  }, [])
+
+  return (
+    <form id="signupForm">
+      <input type="text" name="name" required />
+      <input type="email" name="email" required />
+      <select name="plan" defaultValue="">
+        <option value="" disabled>Choose a plan</option>
+        <option value="free">Free</option>
+        <option value="pro">Pro</option>
+        <option value="team">Team</option>
+      </select>
+      <button type="submit">Subscribe</button>
+    </form>
+  )
+}
+```
+
+## Validating every select at once
+
+If a form has several dropdowns, `validateAllSelect()` checks them all in one call instead of one at a time:
+
+```jsx
+const formElement = document.getElementById('signupForm')
+const validator = new NFSFU234FormValidation({ form: formElement })
+
+const result = validator.validateAllSelect(formElement, {
+  plan: 'Please choose a plan before continuing.'
+})
+
+if (result !== true) {
+  console.log(result) // a single error object, or an array of them
+}
+```
+
+## Notes
+
+- `validateSelect(field, options, callback)` takes both an options object and a callback — the callback fires with the result in addition to whatever the call itself returns, so pick one to actually read from rather than relying on both.
+- A `<select>`'s HTML `required` attribute alone doesn't stop a disabled placeholder `<option value="">` from being submitted in every browser consistently — validating the field explicitly (as above) is the more reliable check.
+- `validateAllSelect()` returns `true`, a single error object, or an array — same pattern as `validateAllRadio()`/`validateAllCheckbox()`, so normalize before iterating if you're checking more than one dropdown.

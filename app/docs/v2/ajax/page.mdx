@@ -1,0 +1,77 @@
+---
+title: "AJAX"
+description: "Learn how to set up and use the AJAX function of the NFSFU234FormValidation Library"
+---
+
+# AJAX
+
+The `ajax` function is used to make asynchronous HTTP requests. This function provides a structured way to handle AJAX requests with customizable options for headers, request methods, and request bodies.
+
+**Works in:** HTML5, React JS, Node.js
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `AJAXOptions` | `{ url?: string; RequestMethod?: string; RequestHeader?: { [key: string]: string }; RequestBody?: any; RequestBodyIgnore?: boolean; RequestType?: string }` | `undefined` | Options for the AJAX request. This includes URL, request method, headers, request body, and other configurations. |
+
+## Usage
+
+### Example 1: GET Request
+
+```js
+const AJAXOptions = {
+    url: 'https://your-api-endpoint.tld', // URL for the AJAX request
+    RequestMethod: 'GET', // Request method
+    RequestHeader: {
+        'Content-Type': 'application/json', // Example request header
+        // Add other request headers if needed
+    },
+    RequestBodyIgnore: true
+};
+
+nfsfu234FormValidation.ajax(AJAXOptions)
+    .then((response) => {
+        // Success: Server response received in JSON format
+        console.log('Request successful', response);
+    })
+    .catch((error) => {
+        // Error: AJAX request failed or rejected
+        console.error('Request failed', error);
+    });
+```
+
+### Example 2: POST Request
+
+```js
+const AJAXOptions = {
+    url: 'https://your-api-endpoint.tld', // URL for the AJAX request
+    RequestMethod: 'POST', // Request method
+    RequestHeader: {
+        'Content-Type': 'application/json', // Example request header
+        // Add other request headers if needed
+    },
+    RequestBody: {
+        title: 'new product',
+        price: 29.99,
+        description: 'A great product',
+        image: 'https://i.pravatar.cc',
+        category: 'electronics'
+    }
+};
+
+nfsfu234FormValidation.ajax(AJAXOptions)
+    .then((response) => {
+        // Success: Server response received in JSON format
+        console.log('Request successful', response);
+    })
+    .catch((error) => {
+        // Error: AJAX request failed or rejected
+        console.error('Request failed', error);
+    });
+```
+
+#### See also
+
+- [displayError](/docs/v2/displayError)
+- [ErrorMessageInterface](/docs/v2/errorMessageInterface)
+- [Validate](/docs/v2/validate)
+- [Submit](/docs/v2/submit)

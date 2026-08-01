@@ -1,9 +1,0 @@
-@import 'tailwindcss';
-@import 'nextra-theme-docs/style.css';
-
-/* Brand tokens - carried over from the old custom site's design language.
-   CSS variables over Tailwind color utilities, per house convention. */
-:root {
-  --brand-ink: #1c1f26;
-  --brand-accent: #1f8a5f;
-}

@@ -1,26 +1,44 @@
 ---
 title: "validateAllTextarea"
-description: "Validates all textarea inputs within a form and returns ErrorMessageInterface."
+description: "Validates every ``<textarea>`` field in the form."
+keywords:
+  - "validateAllTextarea"
+  - "form"
+  - "options"
+  - "form validation"
+  - "javascript"
+  - "html forms"
+  - "client-side validation"
+openGraph:
+  title: "validateAllTextarea() — NFSFU234FormValidation"
+  description: "Validates every ``<textarea>`` field in the form."
+  images:
+    - url: "https://form-validation.nforshifu234dev.com/api/og?title=validateAllTextarea()%20%E2%80%94%20NFSFU234FormValidation&subtitle=nfsfu234%2Fform-validation"
+      width: 1200
+      height: 630
 ---
 #### validateAllTextarea
-
-The `validateAllTextarea` function validates all textarea inputs within a specified form. It returns an array of error messages (a nested [ErrorMessageInterface](/docs/v3/errorMessageInterface)) or a single instance of [ErrorMessageInterface](/docs/v3/errorMessageInterface) if all fields are valid..
-
-**Works in:** HTML5, React
-
-| Parameter | Type | Default | Description |
-| --- | --- | --- | --- |
-| `form` | `HTMLFormElement \| HTMLDivElement \| string` | `undefined` | The form element or its ID containing textarea inputs. |
-| `options` | `object` | `{}` | Optional settings for validation such as custom error messages. |
+Validates every ``<textarea>`` field in the form.
+**Returns:** `boolean \| ErrorMessageInterface \| ErrorMessageInterface[]`
+| Parameter | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `form` | `HTMLFormElement \\| HTMLDivElement` | `required` | `-` | The form to validate. |
+| `options` | `any` | `required` | `-` | Custom error messages / overrides keyed by field name. |
 
 ##### Usage
 
 ###### Example: Validate All Textarea Inputs in a Form
 
-```
+```js
 const formElement = document.getElementById('myForm');
 const result = nfsfu234FormValidation.validateAllTextarea(formElement, {
   message: 'Please provide valid input in all textareas.'
 });
 console.log(result);
 ```
+
+
+import { JsonLd } from '@/components/JsonLd.jsx'
+
+<JsonLd data={{"@context":"https://schema.org","@type":"TechArticle","headline":"validateAllTextarea() — NFSFU234FormValidation","description":"Validates every ``<textarea>`` field in the form.","url":"https://form-validation.nforshifu234dev.com/docs/v3/validateAllTextarea","proficiencyLevel":"Beginner","dependencies":"None — zero runtime dependencies","about":{"@type":"SoftwareApplication","name":"NFSFU234FormValidation","applicationCategory":"DeveloperApplication"},"isPartOf":{"@type":"TechArticle","name":"NFSFU234FormValidation Docs","url":"https://form-validation.nforshifu234dev.com/docs/v3/getting-started"},"author":{"@type":"Organization","name":"NFORSHIFU234 Dev","url":"https://nforshifu234dev.com"}}} />
+

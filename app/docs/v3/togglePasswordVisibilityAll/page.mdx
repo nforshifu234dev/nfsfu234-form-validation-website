@@ -1,26 +1,46 @@
 ---
 title: "togglePasswordVisibilityAll"
-description: "Toggles the visibility of password inputs and updates corresponding visibility icons."
+description: "Toggles every password field in a form (or just one, unless"
+keywords:
+  - "togglePasswordVisibilityAll"
+  - "icons"
+  - "uform"
+  - "toggleAll"
+  - "form validation"
+  - "javascript"
+  - "html forms"
+  - "client-side validation"
+openGraph:
+  title: "togglePasswordVisibilityAll() — NFSFU234FormValidation"
+  description: "Toggles every password field in a form (or just one, unless"
+  images:
+    - url: "https://form-validation.nforshifu234dev.com/api/og?title=togglePasswordVisibilityAll()%20%E2%80%94%20NFSFU234FormValidation&subtitle=nfsfu234%2Fform-validation"
+      width: 1200
+      height: 630
 ---
 #### togglePasswordVisibilityAll
-
-The `togglePasswordVisibilityAll` function toggles the visibility of all password inputs within a specified form and updates the corresponding visibility icons.
-
-**Works in:** HTML5, React
-
-| Parameter | Type | Default | Description |
-| --- | --- | --- | --- |
-| `icons` | `object` | `{}` | Object containing icons for showing and hiding the password. |
-| `uform` | `string \| HTMLFormElement \| HTMLDivElement \| null` | `null` | The form element or its ID. |
-| `toggleAll` | `boolean` | `false` | Flag indicating whether to toggle all password inputs. |
+Toggles every password field in a form (or just one, unless
+`toggleAll` is set) between masked and visible.
+**Returns:** `void`
+| Parameter | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `icons` | `object` | `required` | `-` | The shared show/hide icon elements (or CSS ids) used across all toggled fields. |
+| `uform` | `null \\| string \\| HTMLFormElement \\| HTMLDivElement` | `optional` | `null` | The form to scan, as an element or its CSS id. Defaults to this instance's `form` if omitted. |
+| `toggleAll` | `boolean` | `optional` | `false` | When `true`, toggles every password field in the form at once. Defaults to `false`. |
 
 ##### Usage
 
 ###### Example: Toggle Visibility of All Password Inputs
 
-```
+```js
 const icons = { show: '🙈', hide: '👀' };
 const form = document.getElementById('myForm');
 
 nfsfu234FormValidation.togglePasswordVisibilityAll(icons, form, true);
 ```
+
+
+import { JsonLd } from '@/components/JsonLd.jsx'
+
+<JsonLd data={{"@context":"https://schema.org","@type":"TechArticle","headline":"togglePasswordVisibilityAll() — NFSFU234FormValidation","description":"Toggles every password field in a form (or just one, unless","url":"https://form-validation.nforshifu234dev.com/docs/v3/togglePasswordVisibilityAll","proficiencyLevel":"Beginner","dependencies":"None — zero runtime dependencies","about":{"@type":"SoftwareApplication","name":"NFSFU234FormValidation","applicationCategory":"DeveloperApplication"},"isPartOf":{"@type":"TechArticle","name":"NFSFU234FormValidation Docs","url":"https://form-validation.nforshifu234dev.com/docs/v3/getting-started"},"author":{"@type":"Organization","name":"NFORSHIFU234 Dev","url":"https://nforshifu234dev.com"}}} />
+

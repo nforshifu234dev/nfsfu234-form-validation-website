@@ -1,0 +1,34 @@
+---
+title: "hashPassword"
+description: "Hashes a password using bcrypt."
+---
+
+# hashPassword
+
+The `hashPassword` function hashes a plain text password using `bcrypt` and returns the hashed password as a promise.
+
+**Works in:** Node.js, React JS, HTML5
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `password` | `string` | `undefined` | The password to be hashed. |
+
+## Usage
+
+### Example: Hash a Password
+
+```js
+nfsfu234FormValidation.hashPassword('@Password12345')
+  .then(hashedPassword => {
+    console.log(hashedPassword); // The hashed password
+  })
+  .catch(error => {
+    console.error("Error hashing password: ", error);
+  });
+```
+
+#### See also
+
+- [generatePassword](/docs/v2/generatePassword)
+- [passwordMatch](/docs/v2/passwordMatch)
+- [togglePasswordVisibility](/docs/v2/togglePasswordVisibility)

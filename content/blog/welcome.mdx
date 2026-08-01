@@ -1,0 +1,45 @@
+---
+title: "Welcome to NFSFU234FormValidation Library"
+excerpt: "Why we built a lightweight, dependency-free validation library for plain HTML and React forms alike."
+date: "2023-08-25"
+updated: "2024-08-31"
+tags: ["introduction", "form validation", "javascript library"]
+---
+
+Hello there! 👋 We're thrilled to introduce you to NFSFU234FormValidation — a lightweight JavaScript library that makes form validation a breeze, whether you're working with plain HTML forms or React.
+
+## Why you'll love it
+
+- **Customizable validation messages** — tailor errors to your product's voice.
+- **Required field support** — make sure the important stuff gets filled in.
+- **Inline error displays** — messages appear right where the user needs them.
+- **Modal error notifications** — for a more deliberate, focused error flow.
+
+## Getting started
+
+Check out the [Installation guide](/docs/v3/installation) to get the library into your project, then head to [Initialization](/docs/v3/initialization) to wire it up.
+
+## Basic example
+
+```js
+const customErrorMessages = {
+  text: "EMPTY FIELD",
+  select: "SELECT FIELD IS REQUIRED",
+  email: {
+    empty: "EMPTY EMAIL",
+    format: "The email is not in the right format"
+  }
+};
+
+const myForm = document.getElementById("myForm");
+nfsfu234FormValidation.validate(myForm, { customErrorMessages }, (response) => {
+  const { message, type, data } = response;
+  console.log(response);
+});
+```
+
+## License & credits
+
+NFSFU234FormValidation is open-source under the [MIT License](https://github.com/NFSFU234FormValidation/nfsfu234-form-validation/?tab=MIT-1-ov-file). Big thanks to everyone who's contributed — see the [Credits page](/docs/v3/credits).
+
+Questions or feature requests? Reach out on our [contact page](/contact).

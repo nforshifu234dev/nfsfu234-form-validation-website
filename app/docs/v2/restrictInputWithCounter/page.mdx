@@ -1,0 +1,33 @@
+---
+title: "restrictInputWithCounter"
+description: "restrictInputWithCounter - part of the NFSFU234FormValidation v2 API."
+---
+
+# restrictInputWithCounter
+
+The `restrictInputWithCounter` function serves as an alias to `restrictInputLengthWithCounter`, providing an alternative method to achieve the same functionality of restricting input length and updating a character counter.
+
+**Works in:** HTML5, React JS
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `inputElement` | `HTMLInputElement \| HTMLTextAreaElement` | `undefined` | The HTML input or textarea element to restrict. |
+| `counterContainer` | `HTMLElement` | `undefined` | The container to display the character count. |
+| `options` | `object` | `{}` | Optional configuration object. |
+
+## Usage
+
+### Example: Use `restrictInputWithCounter`
+
+```js
+const inputElement = document.getElementById('additionalInfo');
+const counterContainer = document.getElementById('counterContainer');
+const options = {
+  maxLength: 150,
+  minLength: 10,
+  shouldButtonDisable: true,
+  formId: 'myForm'
+};
+
+nfsfu234FormValidation.restrictInputWithCounter(inputElement, counterContainer, options);
+```

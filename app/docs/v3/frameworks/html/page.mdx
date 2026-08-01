@@ -1,0 +1,71 @@
+---
+title: "Install with Plain HTML"
+description: "Add NFSFU234FormValidation to a plain HTML page via CDN — no build step, no bundler."
+---
+
+## Using NFSFU234FormValidation with Plain HTML
+
+The simplest possible setup — one script tag, one form.
+
+### 1. Include the library
+
+```html
+<script src="https://unpkg.com/nfsfu234-form-validation"></script>
+```
+
+> Swap this for whichever CDN path matches the actual browser build output on npm (unpkg/jsdelivr resolve the package's `unpkg`/`main` field automatically, but double check the resolved file is the UMD/browser bundle, not the ESM one, once v3 is published).
+
+### 2. Add a form
+
+```html
+<form id="signup-form">
+  <input type="email" name="email" required />
+  <input type="password" name="password" minlength="8" required />
+  <button type="submit">Sign up</button>
+</form>
+```
+
+### 3. Wire it up
+
+```html
+<script>
+  const validator = new NFSFU234FormValidation({ form: 'signup-form' })
+
+  document.getElementById('signup-form').addEventListener('submit', async (e) => {
+    e.preventDefault()
+    const result = await validator.submit()
+    console.log(result)
+  })
+</script>
+```
+
+Place this script tag after the form in the DOM (or defer it), so `document.getElementById` can find the form.
+
+### 4. Or use the config registry
+
+Handy once a page has more than one form:
+
+```html
+<script>
+  NFSFU234FormValidation.configureForms([
+    {
+      form: '#signup-form',
+      fields: {
+        email: { required: true, type: 'email' },
+        password: { required: true, minLength: 8 }
+      }
+    }
+  ])
+  NFSFU234FormValidation.autoInit()
+</script>
+```
+
+### 5. Common gotcha: script order
+
+Because there's no bundler resolving load order for you, the CDN `<script>` tag must run *before* your own script that references `NFSFU234FormValidation`. If you don't want to worry about placement, add `defer` to both tags and keep them in source order.
+
+### Next steps
+
+- [Configuration reference](/docs/v3/formConfigInterface)
+- [File/image validation](/docs/v3/validateFile)
+- [All available functions](/docs/v3/available-functions)

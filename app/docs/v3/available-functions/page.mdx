@@ -1,9 +1,94 @@
 ---
 title: "Available Functions"
-description: "find a compilation of functions available within the NFSFU234FormValidation Library. This comprehensive list showcases their function names, invocation methods, and succinct descriptions. Whether your playground is the browser or the Node.js console, these functions offer a range of capabilities to elevate your form validation game. Explore and employ them to create seamless user experiences! ✨📋"
+description: "Complete reference of every method and static function in NFSFU234FormValidation, grouped by category."
+keywords:
+  - "available functions"
+  - "api reference"
+  - "methods"
+  - "form validation"
+  - "javascript"
+  - "html forms"
+  - "client-side validation"
+openGraph:
+  title: "Available Functions — NFSFU234FormValidation"
+  description: "Complete reference of every method and static function in NFSFU234FormValidation, grouped by category."
+  images:
+    - url: "https://form-validation.nforshifu234dev.com/api/og?title=Available%20Functions%20%E2%80%94%20NFSFU234FormValidation&subtitle=nfsfu234%2Fform-validation"
+      width: 1200
+      height: 630
 ---
-## 📚 Available Functions in NFSFU234FormValidation Library
+# Available Functions
 
-    Here you'll find a compilation of functions available within the NFSFU234FormValidation Library. This comprehensive list showcases their function names, invocation methods, and succinct descriptions. Whether your playground is the browser (HTML5, React JS, Vite JS, etc.) or the Node.js console, these functions offer a range of capabilities to elevate your form validation game. Explore and employ them to create seamless user experiences! ✨📋
+Every public method and static function, grouped by category. Click through to any function for full parameter details and usage examples.
 
-_See the sidebar for the full list of functions._
+### Static Methods
+
+| Function | Type | Description |
+| --- | --- | --- |
+| [`autoInit()`](/docs/v3/autoInit) | Static | Scans the current page for whichever registered forms are present and wires each one up (novalida... |
+| [`configureForms(configs)`](/docs/v3/configureForms) | Static | Register form configs for the whole site in one place - typically a single shared config file inc... |
+
+### Core
+
+| Function | Type | Description |
+| --- | --- | --- |
+| [`submit(userOptions?, callback?)`](/docs/v3/submit) | Instance | Validates the whole form (every input, textarea, select, radio, checkbox, and file field), then -... |
+| [`validate(userOptions?, callback?)`](/docs/v3/validate) | Instance | Validates the whole form (every input, textarea, select, radio, checkbox, and file field) without... |
+
+### Field Validation
+
+| Function | Type | Description |
+| --- | --- | --- |
+| [`validateAllCheckbox(form, options)`](/docs/v3/validateAllCheckbox) | Instance | Validates every checkbox in the form. |
+| [`validateAllFile(form, options?)`](/docs/v3/validateAllFile) | Instance | Validates every ``<input type="file">`` field in the form. Async - see validateFile. |
+| [`validateAllInput(form, customErrorMessages)`](/docs/v3/validateAllInput) | Instance | Validates every input in the form. Returns `true`, or an array of per-field error results. |
+| [`validateAllRadio(form, customErrorMessage)`](/docs/v3/validateAllRadio) | Instance | Validates every radio group in the form. |
+| [`validateAllSelect(form, options)`](/docs/v3/validateAllSelect) | Instance | Validates every ``<select>`` field in the form. |
+| [`validateAllTextarea(form, options)`](/docs/v3/validateAllTextarea) | Instance | Validates every ``<textarea>`` field in the form. |
+| [`validateCheckbox(checkboxInputField, options?)`](/docs/v3/validateCheckbox) | Instance | Validates a single checkbox field. |
+| [`validateFile(fileInputField, options?)`](/docs/v3/validateFile) | Instance | Validates a single ``<input type="file">`` field: required/min/max file count, accepted types (`a... |
+| [`validateInput(inputField, options?, callback?)`](/docs/v3/validateInput) | Instance | Validates a single input field, via its HTML attributes or an explicit `options` override. |
+| [`validateRadio(radioInputField, customErrorMessage?)`](/docs/v3/validateRadio) | Instance | Validates a single radio group by its input name. |
+| [`validateSelect(selectField, options, callback)`](/docs/v3/validateSelect) | Instance | Validates a single ``<select>`` field. |
+| [`validateTextarea(textareaField, options)`](/docs/v3/validateTextarea) | Instance | Validates a single ``<textarea>`` field. |
+
+### Format & Type Checks
+
+| Function | Type | Description |
+| --- | --- | --- |
+| [`checkVariableType(variable)`](/docs/v3/checkVariableType) | Instance | Returns the runtime type of a variable as a lowercase string (e.g. `'string'`, `'number'`, `'obje... |
+| [`containsOnlyIntegers(str)`](/docs/v3/containsOnlyIntegers) | Instance | Checks whether a string consists only of integer digits. |
+| [`countString(string)`](/docs/v3/countString) | Instance | Counts the number of characters in a string. |
+| [`isEmail(email)`](/docs/v3/isEmail) | Instance | Checks whether a string is a syntactically valid email address. |
+| [`isNumber(number)`](/docs/v3/isNumber) | Instance | Checks whether a value is numeric. |
+| [`isOnline()`](/docs/v3/isOnline) | Instance | Checks whether the browser is currently connected to the internet. |
+| [`isURL(url)`](/docs/v3/isURL) | Instance | Checks whether a string is a syntactically valid URL. |
+| [`isZip(zipCode)`](/docs/v3/isZip) | Instance | Alias for isZipCode. |
+| [`isZipCode(zipCode)`](/docs/v3/isZipCode) | Instance | Checks whether a value is a syntactically valid ZIP/postal code. |
+
+### Password Utilities
+
+| Function | Type | Description |
+| --- | --- | --- |
+| [`checkPassword(password, minLength?, maxLength?, includeSymbolsCheck?, userSymbolRegex?)`](/docs/v3/checkPassword) | Instance | Validates a password against length and (optionally) symbol requirements. |
+| [`generatePassword(length?, shouldHash?)`](/docs/v3/generatePassword) | Instance | Generates a random password of the given length. |
+| [`generateRandomPassword(length, shouldHash)`](/docs/v3/generateRandomPassword) | Instance | Alias for generatePassword. |
+| [`getPasswordStrength(password)`](/docs/v3/getPasswordStrength) | Instance | Alias for passwordStrength. |
+| [`passwordStrength(password)`](/docs/v3/passwordStrength) | Instance | Scores a password's strength heuristically (length + character-class diversity), purely client-si... |
+| [`togglePasswordVisibility(input, showIcon?, hideIcon?)`](/docs/v3/togglePasswordVisibility) | Instance | Toggles a single password field between masked and visible, swapping an optional show/hide icon a... |
+| [`togglePasswordVisibilityAll(icons, uform?, toggleAll?)`](/docs/v3/togglePasswordVisibilityAll) | Instance | Toggles every password field in a form (or just one, unless `toggleAll` is set) between masked an... |
+
+### Form & Request Utilities
+
+| Function | Type | Description |
+| --- | --- | --- |
+| [`ajax(AJAXOptions)`](/docs/v3/ajax) | Instance | Sends an AJAX request using the supplied request configuration.  The returned Promise is also sto... |
+| [`displayError(details)`](/docs/v3/displayError) | Instance | Manually displays an error message, either inline next to a field or as a modal, using the same r... |
+| [`getAJAXResponse()`](/docs/v3/getAJAXResponse) | Instance | Returns the Promise from the most recent AJAX request.  This is useful if you need to access the... |
+| [`getFormDetails(form)`](/docs/v3/getFormDetails) | Instance | Reads every field's current value from a form - inputs, textareas, selects, checkboxes, and radio... |
+| [`getPageURL()`](/docs/v3/getPageUrl) | Instance | Gets the current page's URL. |
+| [`loading(message, submitBtn?, form?)`](/docs/v3/loading) | Instance | Shows a loading message/animation on a submit button (or the form itself) while an async operatio... |
+| [`redirect(url?, delay?)`](/docs/v3/redirect) | Instance | Redirects the browser to a URL, optionally after a delay. |
+| [`reset(u_form)`](/docs/v3/reset) | Instance | Resets all fields in a form to their default/empty values. |
+| [`restrictInputWithCounter(inputElement, counterContainer, options?)`](/docs/v3/restrictInputWithCounter) | Instance | Wires a live character counter to an input/textarea, and (depending on `options`) restricts furth... |
+

@@ -1,0 +1,43 @@
+---
+title: "generatePassword"
+description: "Generate a random password with optional hashing using the NFSFU234FormValidation Library"
+---
+
+# generatePassword
+
+The `generatePassword` function generates a random password of specified length, optionally hashes the password, and returns the plain and hashed passwords if hashing is enabled.
+
+**Works in:** HTML5, React JS, Node.js
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `length` | `number` | `Random value between 8 and 18` | The length of the generated password. If not provided, a random length between 8 and 18 characters will be used. |
+| `shouldHash` | `boolean` | `false` | A flag indicating whether the generated password should be hashed. Default is false. |
+
+## Usage
+
+### Example: Generate Random Password
+
+```js
+const randomPassword = nfsfu234FormValidation.generatePassword();
+randomPassword.then(password => {
+    console.log("Generated Password: ", password); // Example output: "A!3d7fhJ"
+});
+```
+
+### Example: Generate Random Password with Hashing
+
+```js
+const randomPasswordWithHash = nfsfu234FormValidation.generatePassword(12, true);
+randomPasswordWithHash.then(passwordInfo => {
+    const { password, hashedPassword } = passwordInfo;
+    console.log("Generated Password: ", password); // Example output: "B@9k2zLwQp4m"
+    console.log("Hashed Password: ", hashedPassword); // Example output: "$2a$10$eBzFgqRvKjZtqJjvZvQXXO..."
+});
+```
+
+#### See also
+
+- [hashPassword](/docs/v2/hashPassword)
+- [passwordMatch](/docs/v2/passwordMatch)
+- [togglePasswordVisibility](/docs/v2/togglePasswordVisibility)

@@ -1,23 +1,35 @@
 ---
 title: "validateTextarea"
-description: "Validates a textarea input field and returns an ErrorMessageInterface."
+description: "Validates a single ``<textarea>`` field."
+keywords:
+  - "validateTextarea"
+  - "textareaField"
+  - "options"
+  - "form validation"
+  - "javascript"
+  - "html forms"
+  - "client-side validation"
+openGraph:
+  title: "validateTextarea() — NFSFU234FormValidation"
+  description: "Validates a single ``<textarea>`` field."
+  images:
+    - url: "https://form-validation.nforshifu234dev.com/api/og?title=validateTextarea()%20%E2%80%94%20NFSFU234FormValidation&subtitle=nfsfu234%2Fform-validation"
+      width: 1200
+      height: 630
 ---
 #### validateTextarea
-
-The `validateTextarea` function validates a specified textarea input field. It checks if the textarea meets the validation criteria defined in the `options` and returns an [ErrorMessageInterface](/docs/v3/errorMessageInterface).
-
-**Works in:** HTML5, React
-
-| Parameter | Type | Default | Description |
-| --- | --- | --- | --- |
-| `textareaField` | `HTMLTextAreaElement` | `undefined` | The textarea input field to validate. |
-| `options` | `object` | `{}` | Optional settings for validation such as custom error messages. |
+Validates a single ``<textarea>`` field.
+**Returns:** `string \| boolean \| ErrorMessageInterface`
+| Parameter | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `textareaField` | `HTMLTextAreaElement` | `required` | `-` | The textarea to validate. |
+| `options` | `any` | `required` | `-` | Overrides for the field's validation rule (e.g. `required`, `minLength`, `maxLength`). |
 
 ##### Usage
 
 ###### Example: Validate a Textarea Input
 
-```
+```js
 // Using with a textarea input element
 const textareaElement = document.querySelector('textarea');
 const result = nfsfu234FormValidation.validateTextarea(textareaElement, {
@@ -25,3 +37,9 @@ const result = nfsfu234FormValidation.validateTextarea(textareaElement, {
 });
 console.log(result);
 ```
+
+
+import { JsonLd } from '@/components/JsonLd.jsx'
+
+<JsonLd data={{"@context":"https://schema.org","@type":"TechArticle","headline":"validateTextarea() — NFSFU234FormValidation","description":"Validates a single ``<textarea>`` field.","url":"https://form-validation.nforshifu234dev.com/docs/v3/validateTextarea","proficiencyLevel":"Beginner","dependencies":"None — zero runtime dependencies","about":{"@type":"SoftwareApplication","name":"NFSFU234FormValidation","applicationCategory":"DeveloperApplication"},"isPartOf":{"@type":"TechArticle","name":"NFSFU234FormValidation Docs","url":"https://form-validation.nforshifu234dev.com/docs/v3/getting-started"},"author":{"@type":"Organization","name":"NFORSHIFU234 Dev","url":"https://nforshifu234dev.com"}}} />
+

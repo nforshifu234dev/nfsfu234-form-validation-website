@@ -1,45 +1,75 @@
 ---
 title: "Getting Started"
-description: "Get Started with using the NFSFU234FormValidation Library"
+description: "Install NFSFU234FormValidation, attach it to a form, and see it validate in under a minute."
 ---
-## 🏎️ Getting Started
 
-NFSFU234FormValidation is a lightweight and user-friendly JavaScript library designed for validating HTML form elements, with a special emphasis on textarea fields. It offers customizable validation messages, comprehensive support for required field checks, seamless inline error displays, and convenient modal error notifications.
+# 🏎️ Getting Started
 
-{/* <br /> */}
+NFSFU234FormValidation is a lightweight, dependency-free client-side validation library. It reads the `required`, `pattern`, `minlength`, and `type` attributes already on your form — no config needed for the common cases.
 
-    ### 🛠️ Installation
-    
-        For information on how to install the `NFSFU234FormValidation Library` into your project, check out the [`Installation` page](/docs/v3/installation/).
-    
+## Install
 
-    ### 🏁 Initialization
-    
-        For information on how to initialize the `NFSFU234FormValidation Library` in your project, check out the [`Initialization` page](/docs/v3/initialization/).
-    
+```bash
+npm install nfsfu234-form-validation
+```
 
-    ### 🚀 Usage
-    
-        For information on how to use the `NFSFU234FormValidation Library` in your project, check out the [`Usage` page](/docs/v3/usage/).
-    
+Or via CDN, no build step required:
 
-    ### 📚 Available Functions
-    
-        To view all the APIs (methods) available in the `NFSFU234FormValidation Library` , check out the [`Available Functions` page](/docs/v3/available-functions/)
-    
+```html
+<script src="https://cdn.jsdelivr.net/npm/nfsfu234-form-validation/dist/js/nfsfu234FormValidation.global.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nfsfu234-form-validation/dist/css/nfsfu234FormValidation.min.css">
+```
 
-    ### License 📜
-    
-        Licensed under the `MIT License`.
+## Quick start
 
-        For further insights, dive into the [`LICENSE`](https://github.com/NFSFU234FormValidation/nfsfu234-form-validation/?tab=MIT-1-ov-file).
-    
+Given a form with standard HTML validation attributes:
 
-    ### Credits 🙌
-    
-        [`Credits`](/docs/v3/credits)
-    
+```html
+<form id="loginForm">
+  <input type="email" name="email" required>
+  <input type="password" name="password" required minlength="8">
+  <button type="submit">Log in</button>
+</form>
+```
 
-    ### Support 🤝
-    
-    [`Support` Page](/contact)
+Attach the library and call `.submit()`:
+
+```js
+import NFSFU234FormValidation from 'nfsfu234-form-validation';
+
+const form = new NFSFU234FormValidation({ form: 'loginForm' });
+
+document.getElementById('loginForm').addEventListener('submit', () => {
+  form.submit().then((result) => {
+    if (result.type === 'success') {
+      // validated (and submitted via AJAX, if configured)
+    }
+  });
+});
+```
+
+That's it — `email` gets checked as a real email address, `password` is checked against `minlength="8"`, and both are checked for `required`. Nothing else to configure.
+
+## Where to go next
+
+| If you want to... | Go to |
+| --- | --- |
+| See every install option (npm, CDN, framework setup) | [Installation](/docs/v3/installation) |
+| Understand the constructor and how a form gets resolved | [Initialization](/docs/v3/initialization) |
+| Learn `.validate()`, `.submit()`, and per-field validation | [Usage](/docs/v3/usage) |
+| Validate every form on a multi-page site from one config | [`configureForms`](/docs/v3/configureForms) + [`autoInit`](/docs/v3/autoInit) |
+| Browse the complete method list | [Available Functions](/docs/v3/available-functions) |
+| See framework-specific setup (React, Next.js, Vite, Expo) | [Frameworks](/docs/v3/frameworks) |
+| See real, working examples | [Examples](/examples) |
+
+## License 📜
+
+Licensed under the MIT License — see [LICENSE](https://github.com/NFSFU234FormValidation/nfsfu234-form-validation/blob/main/LICENSE).
+
+## Credits 🙌
+
+[Credits](/docs/v3/credits)
+
+## Support 🤝
+
+Questions or issues? [Contact us](/contact) or [open a GitHub issue](https://github.com/NFSFU234FormValidation/nfsfu234-form-validation/issues).

@@ -1,0 +1,74 @@
+---
+title: "Waitlist Form That Resets After Submit (Expo Web)"
+excerpt: "Submit a waitlist signup via AJAX and clear the form automatically on success, gated to Expo's web target."
+frameworks: ["expo"]
+date: "2026-07-15"
+---
+
+A waitlist form on an Expo project's web build — validates, submits via AJAX, then clears itself with `.reset()` once the request succeeds, so the visitor sees an empty form ready for someone else rather than their own submitted values lingering on screen.
+
+## Screen
+
+```jsx
+import { useEffect, useRef } from 'react'
+import { Platform, View, Text } from 'react-native'
+import NFSFU234FormValidation from 'nfsfu234-form-validation'
+
+export default function WaitlistScreen() {
+  const validatorRef = useRef(null)
+
+  useEffect(() => {
+    if (Platform.OS !== 'web') return
+
+    const formElement = document.getElementById('waitlist-form')
+    const validator = new NFSFU234FormValidation({ form: formElement })
+    validatorRef.current = validator
+
+    async function handleSubmit(e) {
+      e.preventDefault()
+
+      const result = await validator.submit({
+        isAjax: true,
+        ajaxOptions: {
+          url: '/api/waitlist',
+          RequestMethod: 'POST'
+        }
+      })
+
+      const statusEl = document.getElementById('waitlist-status')
+
+      if (result.type === 'success') {
+        statusEl.textContent = "You're on the list — we'll be in touch."
+        validator.reset(validator.form)
+      } else {
+        statusEl.textContent = result.message || 'Something went wrong. Try again.'
+      }
+    }
+
+    formElement.addEventListener('submit', handleSubmit)
+    return () => formElement.removeEventListener('submit', handleSubmit)
+  }, [])
+
+  if (Platform.OS !== 'web') {
+    return (
+      <View>
+        <Text>The waitlist form is available on the web version of this app.</Text>
+      </View>
+    )
+  }
+
+  return (
+    <form id="waitlist-form">
+      <input type="email" name="email" required placeholder="you@example.com" />
+      <button type="submit">Join the waitlist</button>
+      <p id="waitlist-status"></p>
+    </form>
+  )
+}
+```
+
+## Notes
+
+- `.reset(validator.form)` clears every field back to its default/empty state — call it only after a confirmed success, not before, so a failed submission doesn't wipe what the visitor already typed.
+- Same `{ isAjax: true, ajaxOptions }` pattern as the [AJAX Login Form](/examples/ajax-login-form) example — `.submit()` only fires the request when told to, either this way or via `isAjax`/`action`/`method` attributes on the `<form>` itself.
+- The `Platform.OS !== 'web'` guard matters here specifically because `.reset()`, like `.submit()` and `.validateInput()`, reaches directly into `document` — calling it on iOS/Android throws rather than silently no-opping, so gate the whole flow the same way the [Expo install guide](/docs/v3/frameworks/expo) does, not just the constructor call.

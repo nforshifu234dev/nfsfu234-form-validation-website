@@ -1,24 +1,38 @@
 ---
 title: "validateInput"
-description: "Validates an input field and returns an ErrorMessageInterface."
+description: "Validates a single input field, via its HTML attributes or an"
+keywords:
+  - "validateInput"
+  - "inputField"
+  - "options"
+  - "callback"
+  - "form validation"
+  - "javascript"
+  - "html forms"
+  - "client-side validation"
+openGraph:
+  title: "validateInput() — NFSFU234FormValidation"
+  description: "Validates a single input field, via its HTML attributes or an"
+  images:
+    - url: "https://form-validation.nforshifu234dev.com/api/og?title=validateInput()%20%E2%80%94%20NFSFU234FormValidation&subtitle=nfsfu234%2Fform-validation"
+      width: 1200
+      height: 630
 ---
 #### validateInput
-
-The `validateInput` function validates a specified input field and returns a promise that resolves to the [ErrorMessageInterface](/docs/v3/errorMessageInterface).
-
-**Works in:** HTML5, React
-
-| Parameter | Type | Default | Description |
-| --- | --- | --- | --- |
-| `inputField` | `HTMLInputElement \| string` | `undefined` | The input field to validate or its ID. |
-| `options` | `object` | `{}` | Additional options for validation. |
-| `callback` | `Function` | `undefined` | Callback function to execute after validation. |
+Validates a single input field, via its HTML attributes or an
+explicit `options` override.
+**Returns:** `true \| Promise<unknown>`
+| Parameter | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `inputField` | `string \\| HTMLInputElement` | `required` | `-` | The input to validate, as an element or its CSS id. |
+| `options` | `any` | `optional` | `{}` | Overrides for the field's validation rule (`required`, `type`, `minLength`, `maxLength`, `pattern`, `message`, etc.). Defaults to `{}`. |
+| `callback` | `any` | `optional` | `-` | Optional callback invoked with the result instead of/alongside the returned value. |
 
 ##### Usage
 
 ###### Example: Validate an Email Input Field
 
-```
+```js
 // Using with an input element
 const inputElement = document.querySelector('input[type="email"]');
 nfsfu234FormValidation.validateInput(inputElement, {
@@ -46,3 +60,9 @@ nfsfu234FormValidation.validateInput('emailInputId', {
   console.log(response);
 });
 ```
+
+
+import { JsonLd } from '@/components/JsonLd.jsx'
+
+<JsonLd data={{"@context":"https://schema.org","@type":"TechArticle","headline":"validateInput() — NFSFU234FormValidation","description":"Validates a single input field, via its HTML attributes or an","url":"https://form-validation.nforshifu234dev.com/docs/v3/validateInput","proficiencyLevel":"Beginner","dependencies":"None — zero runtime dependencies","about":{"@type":"SoftwareApplication","name":"NFSFU234FormValidation","applicationCategory":"DeveloperApplication"},"isPartOf":{"@type":"TechArticle","name":"NFSFU234FormValidation Docs","url":"https://form-validation.nforshifu234dev.com/docs/v3/getting-started"},"author":{"@type":"Organization","name":"NFORSHIFU234 Dev","url":"https://nforshifu234dev.com"}}} />
+

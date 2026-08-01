@@ -1,23 +1,40 @@
 ---
 title: "countString"
-description: "Count the number of characters in a string using the NFSFU234FormValidation Library"
+description: "Counts the number of characters in a string."
+keywords:
+  - "countString"
+  - "string"
+  - "form validation"
+  - "javascript"
+  - "html forms"
+  - "client-side validation"
+openGraph:
+  title: "countString() — NFSFU234FormValidation"
+  description: "Counts the number of characters in a string."
+  images:
+    - url: "https://form-validation.nforshifu234dev.com/api/og?title=countString()%20%E2%80%94%20NFSFU234FormValidation&subtitle=nfsfu234%2Fform-validation"
+      width: 1200
+      height: 630
 ---
 #### countString
-
-The `countString` function counts the number of characters in a given string.
-
-**Works in:** HTML5, React, nodejs
-
-| Parameter | Type | Default | Description |
-| --- | --- | --- | --- |
-| `str` | `string` | `undefined` | The string whose characters are to be counted. |
+Counts the number of characters in a string.
+**Returns:** `number`
+| Parameter | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `string` | `string` | `required` | `-` | The string to measure. |
 
 ##### Usage
 
 ###### Example: Count Characters in a String
 
-```
+```js
 const text = 'Hello World';
 const characterCount = nfsfu234FormValidation.countString(text);
 console.log(characterCount); // 11
 ```
+
+
+import { JsonLd } from '@/components/JsonLd.jsx'
+
+<JsonLd data={{"@context":"https://schema.org","@type":"TechArticle","headline":"countString() — NFSFU234FormValidation","description":"Counts the number of characters in a string.","url":"https://form-validation.nforshifu234dev.com/docs/v3/countString","proficiencyLevel":"Beginner","dependencies":"None — zero runtime dependencies","about":{"@type":"SoftwareApplication","name":"NFSFU234FormValidation","applicationCategory":"DeveloperApplication"},"isPartOf":{"@type":"TechArticle","name":"NFSFU234FormValidation Docs","url":"https://form-validation.nforshifu234dev.com/docs/v3/getting-started"},"author":{"@type":"Organization","name":"NFORSHIFU234 Dev","url":"https://nforshifu234dev.com"}}} />
+

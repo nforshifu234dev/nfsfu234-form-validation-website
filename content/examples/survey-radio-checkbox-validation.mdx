@@ -1,0 +1,71 @@
+---
+title: "Survey Form: Radio and Checkbox Groups"
+excerpt: "Validate a radio group and standalone checkboxes independently, and handle their array-of-errors return shape."
+frameworks: ["html", "vite"]
+date: "2026-07-10"
+---
+
+A short survey — one required radio group plus a required checkbox — validated separately from the rest of the form before allowing submission.
+
+## Markup
+
+```html
+<form id="surveyForm">
+  <fieldset>
+    <legend>How was your experience?</legend>
+    <label><input type="radio" name="experience" value="great" required> Great</label>
+    <label><input type="radio" name="experience" value="okay" required> Okay</label>
+    <label><input type="radio" name="experience" value="poor" required> Poor</label>
+  </fieldset>
+
+  <label><input type="checkbox" name="terms" required> I agree to the terms</label>
+  <label><input type="checkbox" name="updates"> Send me product updates</label>
+
+  <div id="surveyErrors"></div>
+  <button type="submit">Submit survey</button>
+</form>
+```
+
+## Script
+
+```js
+import NFSFU234FormValidation from 'nfsfu234-form-validation';
+
+const form = new NFSFU234FormValidation({ form: 'surveyForm' });
+
+document.getElementById('surveyForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const radioResult = form.validateAllRadio(form.form, {
+    experience: 'Please tell us about your experience.'
+  });
+
+  const checkboxResult = form.validateAllCheckbox(form.form, {
+    terms: 'You must agree to the terms to continue.'
+  });
+
+  // Both can return true, a single error object, or an array of them —
+  // normalize before reading.
+  const errors = [
+    ...(Array.isArray(radioResult) ? radioResult : [radioResult]),
+    ...(Array.isArray(checkboxResult) ? checkboxResult : [checkboxResult])
+  ].filter((r) => r !== true);
+
+  const errorsEl = document.getElementById('surveyErrors');
+
+  if (errors.length > 0) {
+    errorsEl.textContent = errors.map((err) => err.message).join(' ');
+    return;
+  }
+
+  errorsEl.textContent = '';
+  // both groups passed — hand off to the rest of the form
+  form.submit();
+});
+```
+
+## Notes
+
+- `validateAllRadio()` and `validateAllCheckbox()` only check their own field type. If a form mixes radios, checkboxes, inputs, and selects and you want one combined pass, `.validate()` or `.submit()` already run every field type together — reach for these two only when you need to gate on a subset of fields independently, as above.
+- The return type for both is `boolean | ErrorMessageInterface | ErrorMessageInterface[]` — not guaranteed to always be an array, so normalize (as shown) before iterating.
+- The `customErrorMessage` object is keyed by the radio group's shared `name` or the checkbox's `name`, not by index or position.

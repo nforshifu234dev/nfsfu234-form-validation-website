@@ -36,3 +36,9 @@ yarn-error.log*
 next-env.d.ts
 
 migrate.mjs.reference
+
+load_folders.py
+changelog-stat.txt
+changelog-full.diff
+file_structure.txt
+file_structure_metadata.txt

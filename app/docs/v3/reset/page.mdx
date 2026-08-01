@@ -1,25 +1,42 @@
 ---
 title: "reset"
-description: "Resets the values of all form elements within a specified form."
+description: "Resets all fields in a form to their default/empty values."
+keywords:
+  - "reset"
+  - "u_form"
+  - "form validation"
+  - "javascript"
+  - "html forms"
+  - "client-side validation"
+openGraph:
+  title: "reset() — NFSFU234FormValidation"
+  description: "Resets all fields in a form to their default/empty values."
+  images:
+    - url: "https://form-validation.nforshifu234dev.com/api/og?title=reset()%20%E2%80%94%20NFSFU234FormValidation&subtitle=nfsfu234%2Fform-validation"
+      width: 1200
+      height: 630
 ---
 #### reset
-
-The `reset` function resets the values of all form elements (inputs, textareas, and selects) within a specified form. If no form is provided, it defaults to the document's body. It can handle form elements specified by an ID, an HTMLFormElement, or an HTMLDivElement.
-
-**Works in:** React, HTML5
-
-| Parameter | Type | Default | Description |
-| --- | --- | --- | --- |
-| `form` | `HTMLFormElement \| HTMLDivElement \| string \| null` | `null` | The form element, its ID, or null to use the document body. |
+Resets all fields in a form to their default/empty values.
+**Returns:** `boolean`
+| Parameter | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `u_form` | `string \\| HTMLFormElement \\| HTMLDivElement` | `required` | `-` | The form to reset, as an element or its CSS id. Defaults to this instance's `form` if omitted. |
 
 ##### Usage
 
 ###### Example: Reset Form Elements
 
-```
+```js
 const formId = "myForm";
 nfsfu234FormValidation.reset(formId); // Resets the form with ID 'myForm'
 
 const formElement = document.getElementById('myForm');
 nfsfu234FormValidation.reset(formElement); // Resets the form element directly
 ```
+
+
+import { JsonLd } from '@/components/JsonLd.jsx'
+
+<JsonLd data={{"@context":"https://schema.org","@type":"TechArticle","headline":"reset() — NFSFU234FormValidation","description":"Resets all fields in a form to their default/empty values.","url":"https://form-validation.nforshifu234dev.com/docs/v3/reset","proficiencyLevel":"Beginner","dependencies":"None — zero runtime dependencies","about":{"@type":"SoftwareApplication","name":"NFSFU234FormValidation","applicationCategory":"DeveloperApplication"},"isPartOf":{"@type":"TechArticle","name":"NFSFU234FormValidation Docs","url":"https://form-validation.nforshifu234dev.com/docs/v3/getting-started"},"author":{"@type":"Organization","name":"NFORSHIFU234 Dev","url":"https://nforshifu234dev.com"}}} />
+

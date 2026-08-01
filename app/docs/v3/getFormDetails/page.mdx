@@ -1,29 +1,42 @@
 ---
 title: "getFormDetails"
-description: "Retrieve data from form elements using the NFSFU234FormValidation Library"
+description: "Reads every field's current value from a form - inputs, textareas,"
+keywords:
+  - "getFormDetails"
+  - "form"
+  - "form validation"
+  - "javascript"
+  - "html forms"
+  - "client-side validation"
+openGraph:
+  title: "getFormDetails() — NFSFU234FormValidation"
+  description: "Reads every field's current value from a form - inputs, textareas,"
+  images:
+    - url: "https://form-validation.nforshifu234dev.com/api/og?title=getFormDetails()%20%E2%80%94%20NFSFU234FormValidation&subtitle=nfsfu234%2Fform-validation"
+      width: 1200
+      height: 630
 ---
 #### getFormDetails
-
-The `getFormDetails` function is used to extract data from input fields, textareas, and select elements within a specified form. The function collects data from elements with the attribute `'data-attr-name'` or `'name'`, and returns an object containing the form's data.
-
-**Works in:** HTML5, React
-
-| Parameter | Type | Default | Description |
-| --- | --- | --- | --- |
-| `form` | `HTMLFormElement \| HTMLDivElement \| string` | `undefined` | The HTML form element or its ID from which to extract data. This can be a string (ID of the form), an HTMLFormElement, or an HTMLDivElement. |
+Reads every field's current value from a form - inputs, textareas,
+selects, checkboxes, and radios - keyed by field name (falling back to
+`data-attr-name` where `name` isn't set).
+**Returns:** `boolean \| ErrorMessageInterface \| Record<string, string \| boolean>`
+| Parameter | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `form` | `string \\| HTMLFormElement \\| HTMLDivElement` | `required` | `-` | The form to read, or its CSS id. Falls back to this instance's `form` if omitted. |
 
 ##### Usage
 
 ###### Example: Retrieve Form Details
 
-```
+```js
 const formDetails = nfsfu234FormValidation.getFormDetails('myFormId');
 console.log("Form Details: ", formDetails);
 ```
 
 ###### Example Form HTML
 
-```
+```html
 <form id="myFormId">
   <input type="text" name="fieldName1" value="value1" data-attr-name="fieldName1" />
   <input type="text" name="fieldName2" value="value2" data-attr-name="fieldName2" />
@@ -39,14 +52,14 @@ console.log("Form Details: ", formDetails);
 
 ###### JavaScript to Retrieve Form Details
 
-```
+```js
 const formDetails = nfsfu234FormValidation.getFormDetails('myFormId');
 console.log("Form Details: ", formDetails);
 ```
 
 ###### Sample Output
 
-```
+```json
 {
   "fieldName1": "value1",
   "fieldName2": "value2",
@@ -61,7 +74,7 @@ console.log("Form Details: ", formDetails);
 
 ###### Sample Output Without adding the <b>`'name'`</b> or the <b>`'data-attr-name'`</b> HTML Attribute
 
-```
+```js
 {
   0: "value1",
   1: "value2",
@@ -71,3 +84,9 @@ console.log("Form Details: ", formDetails);
   5: "option1"
 }
 ```
+
+
+import { JsonLd } from '@/components/JsonLd.jsx'
+
+<JsonLd data={{"@context":"https://schema.org","@type":"TechArticle","headline":"getFormDetails() — NFSFU234FormValidation","description":"Reads every field's current value from a form - inputs, textareas,","url":"https://form-validation.nforshifu234dev.com/docs/v3/getFormDetails","proficiencyLevel":"Beginner","dependencies":"None — zero runtime dependencies","about":{"@type":"SoftwareApplication","name":"NFSFU234FormValidation","applicationCategory":"DeveloperApplication"},"isPartOf":{"@type":"TechArticle","name":"NFSFU234FormValidation Docs","url":"https://form-validation.nforshifu234dev.com/docs/v3/getting-started"},"author":{"@type":"Organization","name":"NFORSHIFU234 Dev","url":"https://nforshifu234dev.com"}}} />
+

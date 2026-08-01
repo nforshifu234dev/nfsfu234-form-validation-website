@@ -1,23 +1,38 @@
 ---
-title: "Submit"
-description: "Learn how to submit forms using the NFSFU234FormValidation Library."
+title: "submit"
+description: "Validates the whole form (every input, textarea, select, radio,"
+keywords:
+  - "submit"
+  - "userOptions"
+  - "callback"
+  - "form validation"
+  - "javascript"
+  - "html forms"
+  - "client-side validation"
+openGraph:
+  title: "submit() — NFSFU234FormValidation"
+  description: "Validates the whole form (every input, textarea, select, radio,"
+  images:
+    - url: "https://form-validation.nforshifu234dev.com/api/og?title=submit()%20%E2%80%94%20NFSFU234FormValidation&subtitle=nfsfu234%2Fform-validation"
+      width: 1200
+      height: 630
 ---
-#### Submit
-
-The `submit` function is used to submit a form. When you call this function, you are going to be automatically validating the form and then it will process for submitting. 
-
-**Works in:** HTML5, React
-
-| Parameter | Type | Default | Description |
-| --- | --- | --- | --- |
-| `userOptions` | `HTMLFormElement \| HTMLDivElement \| string \| { form: string \| HTMLFormElement \| HTMLDivElement, customErrorMessages?: { [key: string]: string } }` | `undefined` | Options for the form submission. Can be a string (ID of the form), an HTMLFormElement, an HTMLDivElement, or an object containing form and custom error messages. |
-| `callback` | `function` | `undefined` | Optional callback function to execute after form submission. Receives an error message object as its parameter. |
+#### submit
+Validates the whole form (every input, textarea, select, radio,
+checkbox, and file field), then - if validation passes and AJAX is
+configured - submits it and resolves once the request completes.
+Always async; always returns a `Promise`.
+**Returns:** `Promise<any>`
+| Parameter | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `userOptions` | `string \\| HTMLFormElement \\| HTMLDivElement \\| object` | `optional` | `-` | Overrides the form/customErrorMessages set at construction. |
+| `callback` | `any` | `optional` | `-` | Optional callback invoked with the result instead of/alongside the returned Promise. |
 
 ##### Usage
 
 ###### Option 1.
 
-```
+```js
 const myForm = document.getElementById("myForm");
 nfsfu234FormValidation.submit(myForm)
 .then((response) => {
@@ -28,10 +43,16 @@ nfsfu234FormValidation.submit(myForm)
 
 ###### Option 2.
 
-```
+```js
 const myForm = document.getElementById("myForm");
 nfsfu234FormValidation.submit(myForm,(response) => {
     const { message, type, data } = response
     console.log(response);
 });
 ```
+
+
+import { JsonLd } from '@/components/JsonLd.jsx'
+
+<JsonLd data={{"@context":"https://schema.org","@type":"TechArticle","headline":"submit() — NFSFU234FormValidation","description":"Validates the whole form (every input, textarea, select, radio,","url":"https://form-validation.nforshifu234dev.com/docs/v3/submit","proficiencyLevel":"Beginner","dependencies":"None — zero runtime dependencies","about":{"@type":"SoftwareApplication","name":"NFSFU234FormValidation","applicationCategory":"DeveloperApplication"},"isPartOf":{"@type":"TechArticle","name":"NFSFU234FormValidation Docs","url":"https://form-validation.nforshifu234dev.com/docs/v3/getting-started"},"author":{"@type":"Organization","name":"NFORSHIFU234 Dev","url":"https://nforshifu234dev.com"}}} />
+

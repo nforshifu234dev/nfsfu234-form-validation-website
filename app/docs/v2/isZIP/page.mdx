@@ -1,0 +1,31 @@
+---
+title: "isZIP"
+description: "Validate if a given value is a valid ZIP code using the NFSFU234FormValidation Library"
+---
+
+# isZIP
+
+The `isZIP` function validates whether a given value is a valid ZIP code.
+
+**Works in:** HTML5, React JS, Node.js
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `zipCode` | `string \| number` | `undefined` | The value to validate as a ZIP code. |
+
+## Usage
+
+### Example: Validate ZIP Code
+
+```js
+const zipCode = '12345';
+const isValidZIP = nfsfu234FormValidation.isZIP(zipCode);
+console.log(isValidZIP); // true
+```
+
+#### See also
+
+- [isURL](/docs/v2/isURL)
+- [isOnline](/docs/v2/isOnline)
+- [isNumber](/docs/v2/isNumber)
+- [isEmail](/docs/v2/isEmail)

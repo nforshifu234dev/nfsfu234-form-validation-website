@@ -1,0 +1,32 @@
+---
+title: "reset"
+description: "Resets the values of all form elements within a specified form."
+---
+
+# reset
+
+The `reset` function resets the values of all form elements (inputs, textareas, and selects) within a specified form. If no form is provided, it defaults to the document's body. It can handle form elements specified by an ID, an HTMLFormElement, or an HTMLDivElement.
+
+**Works in:** React JS, HTML5
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `form` | `HTMLFormElement \| HTMLDivElement \| string \| null` | `null` | The form element, its ID, or null to use the document body. |
+
+## Usage
+
+### Example: Reset Form Elements
+
+```js
+const formId = "myForm";
+nfsfu234FormValidation.reset(formId); // Resets the form with ID 'myForm'
+
+const formElement = document.getElementById('myForm');
+nfsfu234FormValidation.reset(formElement); // Resets the form element directly
+```
+
+#### See also
+
+- [Submit](/docs/v2/submit)
+- [Validate](/docs/v2/validate)
+- [AJAX](/docs/v2/ajax)

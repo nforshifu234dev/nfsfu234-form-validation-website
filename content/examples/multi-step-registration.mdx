@@ -1,0 +1,79 @@
+---
+title: "Multi-step Registration Form"
+excerpt: "Split a signup form across steps and validate each step before advancing, using a declarative field config."
+frameworks: ["nextjs", "vite"]
+date: "2026-07-03"
+---
+
+A three-step signup flow — account details, profile, confirmation — where each step's fields are validated before the user can move to the next one.
+
+## Config
+
+Register the rules for the whole form once, even though only one step's fields are visible at a time:
+
+```js
+import NFSFU234FormValidation from 'nfsfu234-form-validation';
+
+NFSFU234FormValidation.configureForms([
+  {
+    form: '#signupForm',
+    fields: {
+      email: { required: true, type: 'email' },
+      password: { required: true, minLength: 8 },
+      displayName: { required: true, maxLength: 40 },
+      bio: { maxLength: 300 }
+    }
+  }
+]);
+
+NFSFU234FormValidation.autoInit();
+```
+
+## Per-step validation
+
+Instead of calling `.submit()` on the whole form at once, validate just the fields belonging to the current step before advancing:
+
+```js
+const form = new NFSFU234FormValidation({ form: 'signupForm' });
+
+async function goToNextStep(stepFields) {
+  for (const field of stepFields) {
+    const input = document.querySelector(`[name="${field}"]`);
+    const ok = await form.validateInput(input);
+    if (ok !== true) return false; // stop on first invalid field
+  }
+  return true;
+}
+
+document.getElementById('step1Next').addEventListener('click', async () => {
+  if (await goToNextStep(['email', 'password'])) showStep(2);
+});
+```
+
+## Next.js note
+
+Initialize inside a client component, since the library touches the DOM directly:
+
+```jsx
+'use client';
+import { useEffect } from 'react';
+import NFSFU234FormValidation from 'nfsfu234-form-validation';
+
+export function SignupForm() {
+  useEffect(() => {
+    NFSFU234FormValidation.configureForms([/* ...same config as above... */]);
+    NFSFU234FormValidation.autoInit();
+  }, []);
+
+  return (
+    <form id="signupForm">
+      {/* step fields */}
+    </form>
+  );
+}
+```
+
+## Notes
+
+- `configureForms()` + `autoInit()` only wires up forms actually present in the DOM, so it's safe to call even before later steps have mounted.
+- `.validateInput()` validates one field at a time and returns `true` or an error object — perfect for gating step transitions without validating the whole form.

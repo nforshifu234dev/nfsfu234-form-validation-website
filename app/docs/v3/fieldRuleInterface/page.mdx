@@ -1,34 +1,47 @@
 ---
 title: "FieldRuleInterface"
-description: "Declarative validation rule for a single field, used inside configureForms()."
+description: "Fields available on FieldRuleInterface."
+keywords:
+  - "FieldRuleInterface"
+  - "required"
+  - "type"
+  - "minLength"
+  - "maxLength"
+  - "pattern"
+  - "message"
+  - "accept"
+  - "maxSizeMB"
+  - "minFiles"
+openGraph:
+  title: "FieldRuleInterface — NFSFU234FormValidation"
+  description: "Fields available on FieldRuleInterface."
+  images:
+    - url: "https://form-validation.nforshifu234dev.com/api/og?title=FieldRuleInterface%20%E2%80%94%20NFSFU234FormValidation&subtitle=nfsfu234%2Fform-validation"
+      width: 1200
+      height: 630
 ---
-
 #### FieldRuleInterface
-
-A declarative validation rule for a single field, keyed by its `name` or `id` inside a [`FormConfigInterface`](/docs/v3/formConfigInterface). Any property left unset here falls back to whatever the field's own HTML attributes say (`required`, `type`, `pattern`, `minlength`/`maxlength`, `accept`). Anything set here overrides the attribute-derived value for that field.
-
-New in v3.
-
-```ts
-interface FieldRuleInterface {
-  required?: boolean;
-  type?: 'email' | 'url' | 'zip' | 'date' | 'integer' | string;
-  minLength?: number;
-  maxLength?: number;
-  pattern?: string;
-  message?: string;
-
-  // File/image-specific - input[type="file"] fields only:
-  accept?: string[];   // MIME types ('image/png'), wildcards ('image/*'), extensions ('.pdf'), or category shorthand ('image', 'video', 'audio', 'document')
-  maxSizeMB?: number;
-  minFiles?: number;
-  maxFiles?: number;
-  maxWidth?: number;   // image-only, in pixels
-  maxHeight?: number;  // image-only
-  minWidth?: number;   // image-only
-  minHeight?: number;  // image-only
-}
-```
+Fields available on FieldRuleInterface.
+| Property | Type | Required |
+| --- | --- | --- |
+| `required` | `boolean` | optional |
+| `type` | `string` | optional |
+| `minLength` | `number` | optional |
+| `maxLength` | `number` | optional |
+| `pattern` | `string` | optional |
+| `message` | `string` | optional |
+| `accept` | `string[]` | optional |
+| `maxSizeMB` | `number` | optional |
+| `minFiles` | `number` | optional |
+| `maxFiles` | `number` | optional |
+| `maxWidth` | `number` | optional |
+| `maxHeight` | `number` | optional |
+| `minWidth` | `number` | optional |
+| `minHeight` | `number` | optional |
+| `requiredMessage` | `string` | optional |
+| `typeMessage` | `string` | optional |
+| `sizeMessage` | `string` | optional |
+| `dimensionMessage` | `string` | optional |
 
 ##### Example
 
@@ -45,3 +58,9 @@ NFSFU234FormValidation.configureForms([
 ```
 
 See also: [`validateFile`](/docs/v3/validateFile), [`FormConfigInterface`](/docs/v3/formConfigInterface).
+
+
+import { JsonLd } from '@/components/JsonLd.jsx'
+
+<JsonLd data={{"@context":"https://schema.org","@type":"TechArticle","headline":"FieldRuleInterface — NFSFU234FormValidation","description":"Fields available on FieldRuleInterface.","url":"https://form-validation.nforshifu234dev.com/docs/v3/fieldRuleInterface","proficiencyLevel":"Beginner","dependencies":"None — zero runtime dependencies","about":{"@type":"SoftwareApplication","name":"NFSFU234FormValidation","applicationCategory":"DeveloperApplication"},"isPartOf":{"@type":"TechArticle","name":"NFSFU234FormValidation Docs","url":"https://form-validation.nforshifu234dev.com/docs/v3/getting-started"},"author":{"@type":"Organization","name":"NFORSHIFU234 Dev","url":"https://nforshifu234dev.com"}}} />
+

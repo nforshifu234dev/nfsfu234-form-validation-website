@@ -1,0 +1,31 @@
+---
+title: "NFSFU234FormValidation v3 Is Here — File Uploads, Config-Driven Rules, and More"
+excerpt: "The stable v3 release: file/image validation, a site-wide form config registry, real async submit/validate, and a genuinely dependency-free package."
+date: "2026-08-25"
+updated: "2026-08-25"
+tags: ["library update", "form validation", "javascript", "v3"]
+---
+
+The wait's over — **NFSFU234FormValidation v3** is officially stable. This release moves the library from "vanilla-JS form checker" to something built for real, modern forms: file/image uploads, a site-wide config registry, and no more silent gaps in what gets validated.
+
+## Highlights
+
+- **File and image validation** — `validateFile()` / `validateAllFile()` handle required/min/max file counts, MIME/extension allowlists via `accept`, max size, and image dimension limits. This is the part `<input accept>` alone was never able to do.
+- **Site-wide form config** — `configureForms([...])` + `autoInit()` let you declare validation rules for every form across a multi-page site in one place. Each page automatically wires up whichever registered form is actually present.
+- **Declarative field rules** — a field's config (`required`, `type`, `minLength`, `maxLength`, `pattern`, `message`) can now override or extend its HTML attributes, across input, textarea, select, radio, and checkbox validation.
+- **Radio and checkbox validation, actually included** — previously silently skipped by the form-wide orchestrator; now they run through `validate()`/`submit()` like everything else.
+- **Real async `submit()`/`validate()`** — both now consistently return a `Promise`, supporting the new async file/image checks under the hood.
+- **Genuinely dependency-free** — `.hashPassword()`, `.verifyPassword()`, `.passwordMatch()`, and the `bcryptjs` dependency are gone. Client-side password hashing never protected anything meaningful in transit, and your backend already owns that job. `package.json`'s `dependencies` is now actually empty, not just described that way.
+
+## Breaking changes to know about
+
+If you're upgrading from v2, two things need attention:
+
+- Any code checking a synchronous return value from `submit()`/`validate()` (`if (form.submit() === false)`) needs to `await` it or use `.then()` instead — both are always `async` now.
+- If you were using `.hashPassword()`, `.verifyPassword()`, or `.passwordMatch()`, those are removed. Move that logic to your backend, where it belongs.
+
+## Full details
+
+Every change — added, changed, fixed, and removed — is documented in the [v3 Changelog](/docs/v3/changelog), including the complete beta → stable history.
+
+Ready to upgrade? Start with [Installation](/docs/v3/installation), or jump straight to [file validation](/docs/v3/validateFile) if that's what brought you here.

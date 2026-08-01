@@ -1,0 +1,40 @@
+---
+title: "validateAllInput"
+description: "Validates all input fields within a form and returns an ErrorMessageInterface."
+---
+
+# validateAllInput
+
+The `validateAllInput` function validates all input fields within a specified form and returns an array of error messages (a nested [ErrorMessageInterface](/docs/v2/errorMessageInterface)) if invalid, or a single instance of [ErrorMessageInterface](/docs/v2/errorMessageInterface) if all fields are valid.
+
+**Works in:** HTML5, React JS
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `form` | `HTMLFormElement \| HTMLDivElement \| string` | `undefined` | The form element or its ID. |
+| `options` | `object` | `{}` | Additional options for validation. |
+
+## Usage
+
+### Example: Validate All Input Fields in a Form
+
+```js
+const formElement = document.getElementById('myForm');
+
+nfsfu234FormValidation.validateAllInput(formElement, {
+  customErrorMessages: {
+    email: 'Please enter a valid email address.',
+    url: 'Please enter a valid URL.',
+    date: 'Please enter a valid date.',
+  }
+}).then(response => {
+  console.log(response);
+});
+```
+
+#### See also
+
+- [customErrorMessageInterface](/docs/v2/customErrorMessageInterface)
+- [ErrorMessageInterface](/docs/v2/errorMessageInterface)
+- [displayError](/docs/v2/displayError)
+- [validateInput](/docs/v2/validateInput)

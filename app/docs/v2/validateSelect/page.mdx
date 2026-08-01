@@ -1,0 +1,38 @@
+---
+title: "validateSelect"
+description: "Validates a select input field and returns an ErrorMessageInterface."
+---
+
+# validateSelect
+
+The `validateSelect` function validates a specified select input field. It checks if a valid option is selected and returns an [ErrorMessageInterface](/docs/v2/errorMessageInterface).
+
+**Works in:** HTML5, React JS
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `selectField` | `HTMLSelectElement` | `undefined` | The select input field to validate. |
+| `options` | `object` | `{}` | Optional settings for validation such as custom error messages. |
+| `callback` | `function` | `undefined` | Optional callback function to process the validation result. |
+
+## Usage
+
+### Example: Validate a Select Input
+
+```js
+// Using with a select input element
+const selectElement = document.querySelector('select');
+const result = nfsfu234FormValidation.validateSelect(selectElement, {
+  message: 'Please select an option from the dropdown.'
+}, (response) => {
+  console.log(response);
+});
+console.log(result);
+```
+
+#### See also
+
+- [customErrorMessageInterface](/docs/v2/customErrorMessageInterface)
+- [ErrorMessageInterface](/docs/v2/errorMessageInterface)
+- [displayError](/docs/v2/displayError)
+- [validateAllSelect](/docs/v2/validateAllSelect)

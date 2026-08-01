@@ -1,23 +1,35 @@
 ---
 title: "validateRadio"
-description: "Validates a radio input field and returns an ErrorMessageInterface."
+description: "Validates a single radio group by its input name."
+keywords:
+  - "validateRadio"
+  - "radioInputField"
+  - "customErrorMessage"
+  - "form validation"
+  - "javascript"
+  - "html forms"
+  - "client-side validation"
+openGraph:
+  title: "validateRadio() — NFSFU234FormValidation"
+  description: "Validates a single radio group by its input name."
+  images:
+    - url: "https://form-validation.nforshifu234dev.com/api/og?title=validateRadio()%20%E2%80%94%20NFSFU234FormValidation&subtitle=nfsfu234%2Fform-validation"
+      width: 1200
+      height: 630
 ---
 #### validateRadio
-
-The `validateRadio` function validates a specified radio input field. It checks if a radio button within a group is selected and returns an [ErrorMessageInterface](/docs/v3/errorMessageInterface).
-
-**Works in:** HTML5, React
-
-| Parameter | Type | Default | Description |
-| --- | --- | --- | --- |
-| `radioInputField` | `HTMLInputElement \| string` | `undefined` | The radio input field or its ID to validate. |
-| `customErrorMessage` | `object` | `{}` | Custom error message to return if validation fails. |
+Validates a single radio group by its input name.
+**Returns:** `string \| boolean \| ErrorMessageInterface`
+| Parameter | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `radioInputField` | `string \\| HTMLInputElement` | `required` | `-` | Any radio input in the group (or its CSS id) - the group is resolved by shared `name`. |
+| `customErrorMessage` | `any` | `optional` | `-` | A custom message to use instead of the default, if the group is invalid. |
 
 ##### Usage
 
 ###### Example: Validate a Radio Button Group
 
-```
+```js
 // Using with a radio input element
 const radioElement = document.querySelector('input[name="gender"]');
 const result = nfsfu234FormValidation.validateRadio(radioElement, {
@@ -31,3 +43,9 @@ const resultById = nfsfu234FormValidation.validateRadio('genderRadioId', {
 });
 console.log(resultById);
 ```
+
+
+import { JsonLd } from '@/components/JsonLd.jsx'
+
+<JsonLd data={{"@context":"https://schema.org","@type":"TechArticle","headline":"validateRadio() — NFSFU234FormValidation","description":"Validates a single radio group by its input name.","url":"https://form-validation.nforshifu234dev.com/docs/v3/validateRadio","proficiencyLevel":"Beginner","dependencies":"None — zero runtime dependencies","about":{"@type":"SoftwareApplication","name":"NFSFU234FormValidation","applicationCategory":"DeveloperApplication"},"isPartOf":{"@type":"TechArticle","name":"NFSFU234FormValidation Docs","url":"https://form-validation.nforshifu234dev.com/docs/v3/getting-started"},"author":{"@type":"Organization","name":"NFORSHIFU234 Dev","url":"https://nforshifu234dev.com"}}} />
+
