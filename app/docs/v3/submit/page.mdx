@@ -19,14 +19,21 @@ openGraph:
 ---
 #### submit
 Validates the whole form (every input, textarea, select, radio,
-checkbox, and file field), then - if validation passes and AJAX is
-configured - submits it and resolves once the request completes.
-Always async; always returns a `Promise`.
+checkbox, and file field), then—if validation succeeds and AJAX is
+enabled—submits the form using either the supplied AJAX options or
+the instance's default AJAX configuration.
+
+The method first resolves the target form from the supplied
+`userOptions` (or falls back to the form attached to this instance),
+validates it, and finally submits it if appropriate.
+
+Validation-only usage is also supported. When AJAX is not enabled,
+the method simply resolves with the validation result.
 **Returns:** `Promise<any>`
 | Parameter | Type | Required | Default | Description |
 | --- | --- | --- | --- | --- |
-| `userOptions` | `string \\| HTMLFormElement \\| HTMLDivElement \\| object` | `optional` | `-` | Overrides the form/customErrorMessages set at construction. |
-| `callback` | `any` | `optional` | `-` | Optional callback invoked with the result instead of/alongside the returned Promise. |
+| `userOptions` | `FormConstructorInterface` | `optional` | `-` | Overrides the form and custom error messages configured on this instance. |
+| `callback` | `object` | `optional` | `-` | Optional callback invoked with the validation result. |
 
 ##### Usage
 

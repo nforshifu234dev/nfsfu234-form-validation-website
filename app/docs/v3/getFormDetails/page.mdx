@@ -20,7 +20,7 @@ openGraph:
 Reads every field's current value from a form - inputs, textareas,
 selects, checkboxes, and radios - keyed by field name (falling back to
 `data-attr-name` where `name` isn't set).
-**Returns:** `boolean \| ErrorMessageInterface \| Record<string, string \| boolean>`
+**Returns:** `false \| ErrorMessageInterface \| Record<string, string \| boolean>`
 | Parameter | Type | Required | Default | Description |
 | --- | --- | --- | --- | --- |
 | `form` | `string \\| HTMLFormElement \\| HTMLDivElement` | `required` | `-` | The form to read, or its CSS id. Falls back to this instance's `form` if omitted. |

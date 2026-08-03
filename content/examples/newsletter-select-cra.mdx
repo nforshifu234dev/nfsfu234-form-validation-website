@@ -1,101 +1,142 @@
 ---
-title: "Newsletter Signup with a Plan Select Dropdown"
+title: "Newsletter Signup with a Plan Select Dropdown - React (CRA) Select Validation"
 excerpt: "Validate a <select> field alongside regular inputs in a Create React App signup form."
 frameworks: ["cra"]
 date: "2026-07-14"
 ---
 
-A newsletter signup form with a plan dropdown that's required just like any other field — built as a CRA function component.
+A newsletter signup form with a required plan selector. The example shows how to validate `<select>` elements before submitting the form in a React application.
 
-## Markup
-
-```jsx
-export default function SignupForm() {
-  return (
-    <form id="signupForm">
-      <input type="text" name="name" required />
-      <input type="email" name="email" required />
-      <select name="plan" defaultValue="">
-        <option value="" disabled>Choose a plan</option>
-        <option value="free">Free</option>
-        <option value="pro">Pro</option>
-        <option value="team">Team</option>
-      </select>
-      <button type="submit">Subscribe</button>
-    </form>
-  )
-}
-```
-
-## Wiring it up
+## React Component
 
 ```jsx
-import { useEffect } from 'react'
-import NFSFU234FormValidation from 'nfsfu234-form-validation'
+import { useEffect } from "react";
+import NFSFU234FormValidation from "@nfsfu234/form-validation";
 
 export default function SignupForm() {
   useEffect(() => {
-    const formElement = document.getElementById('signupForm')
-    const validator = new NFSFU234FormValidation({ form: formElement })
-    const planSelect = formElement.querySelector('[name="plan"]')
+    NFSFU234FormValidation.configureForms([
+      {
+        form: "#signupForm",
+        fields: {
+          name: {
+            required: true,
+            minLength: 2,
+          },
+          email: {
+            required: true,
+            type: "email",
+          },
+          plan: {
+            required: true,
+          },
+        },
+      },
+    ]);
 
-    async function handleSubmit(e) {
-      e.preventDefault()
-
-      // Check the select on its own first, since "" (the disabled
-      // placeholder option) isn't caught by a plain HTML `required`
-      // attribute on a <select> the way it is on text inputs.
-      const planResult = validator.validateSelect(planSelect, {
-        message: 'Please choose a plan before continuing.'
-      }, (response) => {
-        console.log('plan validation:', response)
-      })
-
-      if (planResult !== true) return
-
-      const result = await validator.submit()
-      console.log(result)
-    }
-
-    formElement.addEventListener('submit', handleSubmit)
-    return () => formElement.removeEventListener('submit', handleSubmit)
-  }, [])
+    NFSFU234FormValidation.autoInit();
+  }, []);
 
   return (
     <form id="signupForm">
-      <input type="text" name="name" required />
-      <input type="email" name="email" required />
+      <input
+        type="text"
+        name="name"
+        placeholder="Full name"
+        required
+      />
+
+      <input
+        type="email"
+        name="email"
+        placeholder="Email address"
+        required
+      />
+
       <select name="plan" defaultValue="">
-        <option value="" disabled>Choose a plan</option>
+        <option value="" disabled>
+          Choose a plan
+        </option>
         <option value="free">Free</option>
         <option value="pro">Pro</option>
         <option value="team">Team</option>
       </select>
-      <button type="submit">Subscribe</button>
+
+      <button type="submit">
+        Subscribe
+      </button>
     </form>
-  )
+  );
 }
 ```
 
-## Validating every select at once
+Once the page loads, `autoInit()` finds `#signupForm`, enables validation, and automatically validates the text fields, email field, and plan selector when the form is submitted.
 
-If a form has several dropdowns, `validateAllSelect()` checks them all in one call instead of one at a time:
+---
+
+## Validating a single select manually
+
+Sometimes you want to validate a dropdown before showing the next section of a form.
 
 ```jsx
-const formElement = document.getElementById('signupForm')
-const validator = new NFSFU234FormValidation({ form: formElement })
+const validator = new NFSFU234FormValidation({
+  form: "signupForm",
+});
 
-const result = validator.validateAllSelect(formElement, {
-  plan: 'Please choose a plan before continuing.'
-})
+const planSelect =
+  document.querySelector('[name="plan"]');
 
-if (result !== true) {
-  console.log(result) // a single error object, or an array of them
+const result = validator.validateSelect(
+  planSelect,
+  {
+    message: "Please choose a subscription plan.",
+  }
+);
+
+if (result === true) {
+  console.log("Plan selected");
 }
 ```
 
-## Notes
+---
 
-- `validateSelect(field, options, callback)` takes both an options object and a callback — the callback fires with the result in addition to whatever the call itself returns, so pick one to actually read from rather than relying on both.
-- A `<select>`'s HTML `required` attribute alone doesn't stop a disabled placeholder `<option value="">` from being submitted in every browser consistently — validating the field explicitly (as above) is the more reliable check.
-- `validateAllSelect()` returns `true`, a single error object, or an array — same pattern as `validateAllRadio()`/`validateAllCheckbox()`, so normalize before iterating if you're checking more than one dropdown.
+## Validating multiple select fields
+
+If your form contains several dropdowns, validate them all in one call.
+
+```jsx
+const validator = new NFSFU234FormValidation({
+  form: "signupForm",
+});
+
+const result = validator.validateAllSelect(
+  document.getElementById("signupForm"),
+  {
+    country: "Please select a country.",
+    plan: "Please choose a subscription plan.",
+    industry: "Select your industry.",
+  }
+);
+
+if (result === true) {
+  console.log("All dropdowns are valid.");
+}
+```
+
+---
+
+## Why use `validateSelect()`?
+
+Although browsers support the `required` attribute on `<select>` elements, custom placeholder options and browser differences can lead to inconsistent behaviour. `validateSelect()` provides a consistent validation experience and lets you define your own error messages.
+
+`validateAllSelect()` follows the same pattern, making it easy to validate every dropdown in a form with one call.
+
+---
+
+## Continue learning
+
+- [Form Configuration](/docs/v3/formConfigInterface)
+- [Initialization](/docs/v3/initialization)
+- [Validation Methods](/docs/v3/usage)
+- [Examples](/examples)
+- [Available Functions](/docs/v3/available-functions)

@@ -4,54 +4,169 @@ excerpt: "Validate file type, size, and image dimensions before showing a previe
 frameworks: ["html", "nextjs"]
 date: "2026-07-05"
 ---
+# Avatar Upload Validation
 
-An avatar upload field that rejects oversized files and wrong dimensions before ever generating a preview — so the user gets feedback immediately instead of after a failed submit.
+Uploading a file only to have the server reject it wastes time and bandwidth. With `validateFile()`, you can validate the selected file immediately—checking its type, size, and image dimensions before generating a preview or submitting the form.
 
-## Markup
+---
+
+## HTML
 
 ```html
 <form id="profileForm">
-  <input type="file" name="avatar" accept="image/png, image/jpeg">
-  <img id="preview" style="display:none; max-width: 120px;">
-  <div id="avatarError"></div>
+    <input
+        type="file"
+        name="avatar"
+        accept="image/png,image/jpeg"
+    />
+
+    <div id="avatarError"></div>
+
+    <img
+        id="preview"
+        style="display:none; max-width:120px;"
+        alt="Avatar Preview"
+    />
 </form>
 ```
 
-## Config + validation
+---
 
-```js
-import NFSFU234FormValidation from 'nfsfu234-form-validation';
+## JavaScript
 
-const form = new NFSFU234FormValidation({ form: 'profileForm' });
+```javascript
+import NFSFU234FormValidation from "@nfsfu234/form-validation";
 
-const avatarInput = document.querySelector('[name="avatar"]');
+const validator = new NFSFU234FormValidation({
+    form: "profileForm"
+});
 
-avatarInput.addEventListener('change', async () => {
-  const result = await form.validateFile(avatarInput, {
-    required: true,
-    accept: ['image/png', 'image/jpeg'],
-    maxSizeMB: 2,
-    maxWidth: 1000,
-    maxHeight: 1000
-  });
+const avatarInput = document.querySelector(
+    '[name="avatar"]'
+);
 
-  const errorEl = document.getElementById('avatarError');
-  const preview = document.getElementById('preview');
+const preview = document.getElementById("preview");
+const error = document.getElementById("avatarError");
 
-  if (result !== true) {
-    errorEl.textContent = result.message;
-    preview.style.display = 'none';
-    return;
-  }
+avatarInput.addEventListener("change", async () => {
 
-  errorEl.textContent = '';
-  preview.src = URL.createObjectURL(avatarInput.files[0]);
-  preview.style.display = 'block';
+    const result = await validator.validateFile(
+        avatarInput,
+        {
+            required: true,
+
+            accept: [
+                "image/png",
+                "image/jpeg"
+            ],
+
+            maxSizeMB: 2,
+
+            maxWidth: 1000,
+            maxHeight: 1000
+        }
+    );
+
+    if (result !== true) {
+
+        error.textContent = result.message;
+
+        preview.style.display = "none";
+
+        preview.removeAttribute("src");
+
+        return;
+    }
+
+    error.textContent = "";
+
+    preview.src = URL.createObjectURL(
+        avatarInput.files[0]
+    );
+
+    preview.style.display = "block";
 });
 ```
 
-## Notes
+---
 
-- `.validateFile()` is async because checking image dimensions requires decoding the file first — always `await` it.
-- `maxWidth`/`maxHeight`/`minWidth`/`minHeight` only apply to image files; a non-image `accept` list (e.g. `['.pdf']`) skips the dimension check entirely.
-- Generate the preview only after validation passes, so a rejected file never flashes a broken thumbnail.
+## What happens?
+
+Every time the user selects a file, the library automatically validates it before anything else happens.
+
+The validation checks:
+
+- The field is not empty (when `required` is enabled).
+- The file type matches the allowed formats.
+- The file size is within the configured limit.
+- Image dimensions stay within the allowed width and height.
+
+Only after every check succeeds is the preview displayed.
+
+---
+
+## Validation Rules
+
+```javascript
+await validator.validateFile(fileInput, {
+    required: true,
+
+    accept: [
+        "image/png",
+        "image/jpeg"
+    ],
+
+    maxSizeMB: 2,
+
+    maxWidth: 1000,
+    maxHeight: 1000
+});
+```
+
+You can also use:
+
+```javascript
+minWidth
+minHeight
+```
+
+to enforce minimum image dimensions.
+
+---
+
+## Why validate before previewing?
+
+Generating a preview for an invalid file creates a confusing user experience.
+
+A user could briefly see an image before immediately being told it isn't allowed.
+
+Validating first means:
+
+- Invalid files never appear.
+- Users receive feedback immediately.
+- No unnecessary uploads occur.
+- The interface stays consistent.
+
+---
+
+## Important
+
+`validateFile()` is asynchronous because image dimensions cannot be determined until the browser has decoded the selected file.
+
+Always use:
+
+```javascript
+const result = await validator.validateFile(...);
+```
+
+instead of calling it synchronously.
+
+---
+
+## Continue learning
+
+- 📁 **[validateFile()](/docs/v3/validateFile)** — Learn every available validation option.
+- 🖼️ **[File & Image Validation](/docs/v3/validateFile)** — Validate uploads across entire forms.
+- ⚙️ **[Form Configuration](/docs/v3/formConfigInterface)** — Configure validation rules declaratively.
+- 📡 **[AJAX Requests](/docs/v3/ajax)** — Upload validated files without reloading the page.
+- 📚 **[Available Functions](/docs/v3/available-functions)** — Explore the complete API reference.

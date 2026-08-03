@@ -19,13 +19,12 @@ openGraph:
 ---
 #### validate
 Validates the whole form (every input, textarea, select, radio,
-checkbox, and file field) without submitting it. Always async;
-always returns a `Promise`.
-**Returns:** `Promise<any>`
+checkbox, and file field) without submitting it.
+**Returns:** `Promise<false \| ErrorMessageInterface>`
 | Parameter | Type | Required | Default | Description |
 | --- | --- | --- | --- | --- |
-| `userOptions` | `string \\| HTMLFormElement \\| HTMLDivElement \\| object` | `optional` | `-` | Overrides the form/customErrorMessages set at construction. |
-| `callback` | `any` | `optional` | `-` | Optional callback invoked with the result instead of/alongside the returned Promise. |
+| `userOptions` | `FormConstructorInterface` | `optional` | `-` | Overrides the form/customErrorMessages configured on this instance. |
+| `callback` | `object` | `optional` | `-` | Optional callback invoked with the validation result. |
 
 ##### Usage
 

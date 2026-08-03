@@ -51,7 +51,7 @@ const navbar = (
         </b>
       </span>
     }
-    projectLink="https://github.com/NFSFU234FormValidation/nfsfu234-form-validation"
+    projectLink="https://github.com/nfsfu234/nfsfu234-form-validation"
   >
     <a href="/about" className="navbar-extra-link" style={{ fontSize: '0.85rem', marginRight: '0.75rem' }}>About</a>
     <a href="/blog" className="navbar-extra-link" style={{ fontSize: '0.85rem', marginRight: '0.75rem' }}>Blog</a>

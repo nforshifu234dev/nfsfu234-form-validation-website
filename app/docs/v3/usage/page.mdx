@@ -1,175 +1,190 @@
 ---
-title: "Usage"
-description: "Learn how to set up and use the NFSFU234FormValidation Library"
+title: Usage
+description: Learn how to validate your first form with NFSFU234FormValidation.
 ---
-## 🚀 Usage
 
-    The NFSFU234FormValidation Library is a versatile toolbox that empowers you to validate forms, submit them, and handle AJAX requests effortlessly. 
-    This guide will walk you through setting up and using the NFSFU234FormValidation library. For detailed installation and initialization instructions, please refer to the [Installation](/installation) and [Initialization](/initialization) sections.
+# Usage
 
-### Step 1: Import the Library
+This guide shows the quickest way to get started.
 
-    To start using the NFSFU234FormValidation library, add the following CDN link in the <code>&lt;head&gt;</code> section of your HTML document.
+If you haven't installed the library yet, visit the [Installation](/docs/v3/installation) guide first.
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Validation Example</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/some-css-framework/1.0.0/css-framework.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/NFSFU234FormValidation/1.0.0/NFSFU234FormValidation.min.js" defer></script>
-</head>
-<body>
-```
+---
 
-### Step 2: Create Your HTML Form
-
-    Create an HTML form that you want to validate. Include the form ID so the library can detect it.
+## Step 1 — Create your form
 
 ```html
-<body>
-    
-        <h2>Contact Us</h2>
-        <form id="contactForm">
-            
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
-            
-            
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-            
-            
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" required></textarea>
-            
-            <button type="submit">Submit</button>
-        </form>
-    
-    <script src="script.js"></script>
-</body>
-</html>
+<form id="contactForm">
+  <input
+    type="text"
+    name="name"
+    required
+    placeholder="Your name"
+  />
+
+  <input
+    type="email"
+    name="email"
+    required
+    placeholder="Email address"
+  />
+
+  <textarea
+    name="message"
+    required
+    placeholder="Your message"
+  ></textarea>
+
+  <button type="submit">
+    Send
+  </button>
+</form>
 ```
 
-### Step 3: Initialize the Library
+---
 
-    Create a JavaScript file (e.g., <code>script.js</code>) and initialize the NFSFU234FormValidation library for your form.
+## Step 2 — Create a validator
 
-```js
-// script.js
+```javascript
+import "@nfsfu234/form-validation/css";
+import { NFSFU234FormValidation } from "@nfsfu234/form-validation";
 
-document.addEventListener('DOMContentLoaded', () => {
-    const nfsfu234FormValidation = new NFSFU234FormValidation(); // Create a basic instance
+const validator = new NFSFU234FormValidation("contactForm");
+```
 
-    // Example custom error messages for your form
-    const customErrorMessages = {
-        "text": "EMPTY FIELD",
-        "select": "SELECT FIELD IS REQUIRED",
-        "email": {
-            "empty": "EMPTY EMAIL",
-            "format": "The email is not in the right format",
-        },
-        // ... Other field types and messages
-    };
+The constructor accepts:
 
-    // Example form details object
-    const formDetails = {
-        form: "contactForm", // Replace "contactForm" with the ID of your form
-        isErrorMessageInline: true,
-        customErrorMessages: customErrorMessages,
-    };
+- a form ID
+- a form element
+- `null` (utility-only instance)
+- no argument (automatic form detection)
+- a configuration object
 
-    // Example AJAX options object
-    const ajaxOptions = {
-        url: "https://api.domain.com/",
-        RequestMethod: "POST",
-        RequestHeader: {
-            "Content-Type": "application/json",
-        }
-    };
+---
 
-    // Create a customized instance
-    const nfsfu234FormValidation = new NFSFU234FormValidation(formDetails, ajaxOptions);
+## Step 3 — Validate the form
+
+```javascript
+const valid = await validator.validate();
+
+if (!valid) {
+  return;
+}
+
+console.log("Form is valid.");
+```
+
+Since v3, `validate()` is asynchronous.
+
+---
+
+## Step 4 — Submit
+
+```javascript
+const submitted = await validator.submit();
+
+if (submitted) {
+  console.log("Submitted successfully.");
+}
+```
+
+---
+
+# Configuration Example
+
+```javascript
+const validator = new NFSFU234FormValidation({
+  form: "contactForm",
+
+  customErrorMessages: {
+    email: {
+      empty: "Email is required.",
+      format: "Enter a valid email."
+    }
+  }
 });
 ```
 
-### Common Methods
+---
 
-    Here are some common methods you might use with the NFSFU234FormValidation library.
+# Site-wide configuration
 
-<ul>
-    <li>
-        <h4 class="font-semibold text-md">submit() method. <a href="/docs/submit" class="text-[11px] text-[#ff5f2e]">Read More...</a></h4>
-```js
-// This function will detect the form and submit to the default URL set in the action HTML5 attribute
-const submitResponse = nfsfu234FormValidation.submit(form);
-submitResponse
-    .then((response) => {
-        console.log(response); // Logs the response to your browser's console
-    })
-    .catch((error) => {
-        console.error(error);
-    });
+Large applications can register every form once.
+
+```javascript
+NFSFU234FormValidation.configureForms([
+  {
+    form: "loginForm"
+  },
+  {
+    form: "registerForm"
+  }
+]);
+
+NFSFU234FormValidation.autoInit();
 ```
-    </li>
 
-    <li>
-        <h4 class="font-semibold text-md">validate() method. <a href="/docs/validate" class="text-[11px] text-[#ff5f2e]">Read More...</a></h4>
-```js
-form.querySelector("button[type=submit]").addEventListener('click', () => {
-    nfsfu234FormValidation.validate(form, (response) => {
-        const { message, type, data, code } = response;
-        console.log(message);
+Every page automatically initializes the forms that exist.
 
-        if (message !== 'success' && type !== 'success' && code !== 200) {
-            const allInputsErrorMessages = response.data.data.inputs;
-            const allTextareasErrorMessages = response.data.data.textareas;
-            const allSelectsErrorMessages = response.data.data.selects;
+---
 
-            console.log(allInputsErrorMessages);
-            console.log("");
-            console.log(allTextareasErrorMessages);
-            console.log("");
-            console.log(allSelectsErrorMessages);
+# AJAX
 
-            return false;
-        }
+The library includes a built-in AJAX helper.
 
-        console.log("Your form has been validated✅.");
-    });
+```javascript
+const response = await validator.ajax({
+  url: "/api/contact",
+  RequestMethod: "POST",
+  RequestHeader: {
+    "Content-Type": "application/json"
+  }
+});
+
+console.log(response);
+```
+
+You can also use the static helper.
+
+```javascript
+await NFSFU234FormValidation.ajax({
+  url: "/api/contact",
+  RequestMethod: "POST"
 });
 ```
-    </li>
 
-    <li>
-        <h4 class="font-semibold text-md">ajax() method. <a href="/docs/ajax" class="text-[11px] text-[#ff5f2e]">Read More...</a></h4>
-```js
-const AJAXOptions = {
-    url: 'https://api.domain.com/', // URL for the AJAX request
-    RequestMethod: 'GET', // Request method
-    RequestHeader: {
-        'Content-Type': 'application/json', // Example request header
-        // Add other request headers if needed
-    },
-};
+---
 
-nfsfu234FormValidation.ajax(AJAXOptions)
-    .then((response) => {
-        // Success: Server response received in JSON format
-        console.log('Request successful', response);
-    })
-    .catch((error) => {
-        // Error: AJAX request failed or rejected
-        console.error('Request failed', error);
-    });
+# File validation
+
+Version 3 introduces built-in validation for file inputs.
+
+```javascript
+await validator.validateFile("resume", {
+  required: true,
+  maxSizeMB: 5,
+  accept: [
+    ".pdf",
+    ".docx"
+  ]
+});
 ```
-    </li>
-</ul>
 
-For more methods and detailed explanations, visit the <a href="/docs/v3/available-functions">available functions documentation</a> page.
+You can also validate every file input automatically.
 
-Armed with this knowledge, you're all set to proficiently initialize and employ the NFSFU234FormValidation Library within your projects. 
-So therefore, Congratulations! You've successfully integrated NFSFU234FormValidation into your project, enhancing your ability to validate form inputs and deliver exceptional user experiences. 
-Happy coding! 🚀👨‍💻.
+```javascript
+await validator.validateAllFile();
+```
+
+---
+
+# Learn more
+
+Continue exploring the documentation:
+
+- [Initialization](/docs/v3/initialization)
+- [validate()](/docs/v3/validate)
+- [submit()](/docs/v3/submit)
+- [validateFile()](/docs/v3/validateFile)
+- [AJAX](/docs/v3/ajax)
+- [Examples](/examples)

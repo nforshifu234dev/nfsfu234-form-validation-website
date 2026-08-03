@@ -9,7 +9,7 @@ const LINKS = [
   { href: '/blog', label: 'Blog' },
   { href: '/faq', label: 'FAQ' },
   { href: '/examples', label: 'Examples' },
-  { href: 'https://github.com/NFSFU234FormValidation/nfsfu234-form-validation', label: 'GitHub' }
+  { href: 'https://github.com/nfsfu234/nfsfu234-form-validation', label: 'GitHub' }
 ]
 
 export function SiteNav() {

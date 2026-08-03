@@ -25,7 +25,7 @@ export const marketingPrimaryColumn = {
 export const docsPrimaryColumn = {
   title: 'Project',
   links: [
-    { label: 'GitHub', href: 'https://github.com/NFSFU234FormValidation/nfsfu234-form-validation', iconKey: 'github' },
+    { label: 'GitHub', href: 'https://github.com/nfsfu234/nfsfu234-form-validation', iconKey: 'github' },
     { label: 'npm', href: 'https://www.npmjs.com/package/nfsfu234-form-validation', iconKey: 'npm' },
     { label: 'Changelog', href: '/docs/v3/changelog' },
     { label: 'MIT License', href: '#' }
@@ -54,7 +54,8 @@ export const sharedFooterColumns = [
   {
     title: 'Other Libraries',
     links: [
-      { label: 'NFSFU234 Tour Guide', href: 'https://tour-guide.nforshifu234dev.com' }
+      { label: 'NFSFU234 Tour Guide', href: 'https://tour-guide.nforshifu234dev.com' },
+      { label: 'NFSFU234 Shot Sweep', href: 'https://shotsweep.nforshifu234dev.com' }
     ]
   }
 ]

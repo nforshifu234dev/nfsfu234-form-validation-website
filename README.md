@@ -1,52 +1,41 @@
-# 🌐 NFSFU234FormValidation Official Documentation Website
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![npm](https://img.shields.io/npm/v/nfsfu234-form-validation)](https://www.npmjs.com/package/nfsfu234-form-validation)
-[![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=next.js)](https://nextjs.org/)
-[![React](https://img.shields.io/badge/React-19-61DAFB?logo=react\&logoColor=white)](https://react.dev/)
-[![Nextra](https://img.shields.io/badge/Nextra-4.6-blue)](https://nextra.site/)
-[![Live Documentation](https://img.shields.io/badge/Live-Documentation-orange)](https://form-validation.nforshifu234dev.com/)
-[![Made by NFORSHIFU234 Dev](https://img.shields.io/badge/Made%20by-NFORSHIFU234%20Dev-ff7a00)](https://www.nforshifu234dev.com)
+# 🌐 NFSFU234FormValidation Documentation Website
 
 > The official documentation website for **NFSFU234FormValidation**.
 
-This repository powers the public documentation experience for **NFSFU234FormValidation**, bringing together versioned documentation, API references, practical examples, migration guides, technical articles, and developer resources in one place.
-
-Built with **Next.js**, **Nextra**, **MDX**, and **TypeScript**, the website is designed to provide a fast, modern, and developer-friendly documentation experience.
-
----
-
-## 🌍 Part of the NFORSHIFU234 Ecosystem
-
-NFSFU234FormValidation is one of several projects built and maintained by **NFORSHIFU234 Dev**, a software engineering brand of **NFORSHIFU LOGICFORGE LTD.**
-
-The ecosystem includes:
-
-* 📜 **NFSFU234FormValidation** — A lightweight, framework-agnostic JavaScript form validation library.
-* 🧭 [**NFSFU234TourGuide**](https://tour-guide.nforshifu234dev.com) — An open-source library for building interactive product tours and onboarding experiences.
-* 💙 [**WishIT**](https://www.wish-it.app) — A platform for creating beautiful digital tribute pages and celebrating life's special moments.
-* 🩺 [**HealthHub AI**](https://healthhub.nforshifu234dev.com) — A multilingual health guidance application focused on making basic healthcare information more accessible.
-* 👨🏾‍💻 [**IAMNOTSHIFU**](https://www.iamnotshifu.com) — The personal brand of founder and engineer **Nyuiring-yoh Rhagninyui Shifu-Nfor**, sharing projects, insights, and the journey behind the ecosystem.
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![npm](https://img.shields.io/npm/v/%40nfsfu234%2Fform-validation)](https://www.npmjs.com/package/@nfsfu234/form-validation)
+[![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=next.js)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)](https://react.dev/)
+[![Nextra](https://img.shields.io/badge/Nextra-4-blue)](https://nextra.site/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Documentation](https://img.shields.io/badge/Live-Documentation-orange)](https://form-validation.nforshifu234dev.com/)
+[![Made by NFORSHIFU234 Dev](https://img.shields.io/badge/Made%20by-NFORSHIFU234%20Dev-ff7a00)](https://www.nforshifu234dev.com)
 
 ---
 
-## ✨ Features
+## 📖 About
 
-* 📚 Versioned documentation (`v2` & `v3`)
-* ⚡ Automatically generated API reference from the library's TypeDoc output
-* 💡 Practical examples and implementation guides
-* 📰 MDX-powered technical blog
-* 🔍 Full-text search powered by Pagefind
-* 🎨 Modern, responsive developer experience
-* 📈 SEO optimisation with structured metadata, Open Graph images, canonical URLs, and sitemaps
-* 🔄 Migration guides between major releases
-* 🍪 Privacy-friendly cookie consent for analytics
+This repository powers the official documentation for **NFSFU234FormValidation**.
+
+It contains everything developers need to successfully integrate the library into modern web applications, including:
+
+- 🚀 Getting Started guides
+- 📦 Installation instructions
+- 📚 Complete API reference
+- 🧩 Framework integrations
+- 💡 Real-world examples
+- 🔀 Migration guides
+- 📰 Technical articles
+- 🔍 Full-text search
+- 📱 Responsive documentation experience
+
+Built with **Next.js**, **Nextra**, **MDX**, and **TypeScript**, the website is designed to be fast, searchable, SEO-friendly, and easy to contribute to.
 
 ---
 
 ## 🌍 Live Website
 
-Visit the official documentation website:
+Visit the official documentation:
 
 **https://form-validation.nforshifu234dev.com**
 
@@ -54,142 +43,193 @@ Visit the official documentation website:
 
 ## 📦 Looking for the Library?
 
-This repository contains the **official documentation website**, not the validation library itself.
+This repository contains **only the documentation website**.
 
-If you're looking to install or use **NFSFU234FormValidation**, visit the main repository:
+If you're looking for the validation library itself, visit:
 
-**📜 Library Repository**
+**Library Repository**
 
-https://github.com/NFSFU234FormValidation/nfsfu234-form-validation
+https://github.com/nfsfu234/nfsfu234-form-validation
 
 Install with npm:
 
 ```bash
-npm install nfsfu234-form-validation
+npm install @nfsfu234/form-validation
 ```
 
-Or include it directly via CDN:
+Or use the browser build:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/nfsfu234-form-validation/dist/js/nfsfu234FormValidation.global.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nfsfu234-form-validation/dist/css/nfsfu234FormValidation.min.css">
+<script src="https://cdn.jsdelivr.net/npm/@nfsfu234/form-validation/dist/js/nfsfu234FormValidation.global.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@nfsfu234/form-validation/dist/css/nfsfu234FormValidation.min.css"
+/>
 ```
 
-For complete installation guides, API documentation, migration guides, examples, and developer resources, visit the official documentation website.
+---
+
+## ✨ Features
+
+- 📚 Versioned documentation
+- ⚡ Generated API Reference from TypeDoc
+- 💡 Practical examples
+- 🧩 Framework guides
+- 🔀 Migration guides
+- 📰 MDX-powered blog
+- 🔍 Pagefind search
+- 📈 SEO optimized
+- 🌙 Responsive design
+- ⚙️ Automatic documentation generation
+
+---
+
+## 🧩 Documentation Sections
+
+The documentation is organized into dedicated sections.
+
+```
+Getting Started
+Installation
+Framework Guides
+Initialization
+Configuration
+API Reference
+Examples
+Migration Guides
+Blog
+Changelog
+Credits
+```
 
 ---
 
 ## 🚀 Getting Started
 
-Clone the repository:
+Clone the repository.
 
 ```bash
-git clone https://github.com/NFSFU234FormValidation/website.git
+git clone https://github.com/nfsfu234/nfsfu234-form-validation-website.git
 ```
 
-Navigate into the project:
+Move into the project.
 
 ```bash
 cd website
 ```
 
-Install dependencies:
+Install dependencies.
 
 ```bash
 npm install
 ```
 
-Start the development server:
+Start the development server.
 
 ```bash
 npm run dev
 ```
 
-Open your browser:
+Open:
 
-```text
+```
 http://localhost:3000
 ```
 
 ---
 
-## 🛠️ Available Scripts
+## 🛠 Available Scripts
 
-| Script                         | Description                                                               |
-| :----------------------------- | :------------------------------------------------------------------------ |
-| `npm run dev`                  | Starts the Next.js development server.                                    |
-| `npm run build`                | Builds the production website.                                            |
-| `npm run start`                | Starts the production server.                                             |
-| `npm run docs:fetch-api:local` | Fetches the TypeDoc JSON from a local checkout of the library.            |
-| `npm run docs:fetch-api`       | Fetches the TypeDoc JSON for the published library version.               |
-| `npm run docs:generate:local`  | Fetches the local TypeDoc JSON and regenerates the API documentation.     |
-| `npm run docs:generate`        | Fetches the published TypeDoc JSON and regenerates the API documentation. |
+| Script | Description |
+|---------|-------------|
+| `npm run dev` | Start development server |
+| `npm run build` | Create production build |
+| `npm run start` | Start production server |
+| `npm run lint` | Run linting |
+| `npm run docs:fetch-api:local` | Fetch TypeDoc JSON from a local library checkout |
+| `npm run docs:fetch-api` | Fetch TypeDoc JSON from the published package |
+| `npm run docs:generate:local` | Generate API docs using a local checkout |
+| `npm run docs:generate` | Generate API docs from the published package |
 
-> **Note:** Production builds automatically generate the Pagefind search index, `robots.txt`, and XML sitemaps.
+Production builds automatically generate:
+
+- XML Sitemap
+- robots.txt
+- Pagefind Search Index
 
 ---
 
-## 📂 Project Structure
+## 📁 Project Structure
 
 ```text
-app/                Application routes
-components/         Shared React components
-content/            Documentation, blog posts, and examples
-lib/                Shared utilities
-public/             Static assets
-scripts/            Documentation generation utilities
+app/
+components/
+content/
+lib/
+public/
+scripts/
 ```
 
 ---
 
-## ⚙️ Documentation Generation Pipeline
+## ⚙ Documentation Generation
 
-The API reference is **generated**, not hand-written.
+The API documentation is automatically generated directly from the TypeDoc output of the **NFSFU234FormValidation** library.
 
-Documentation pages are generated directly from the **NFSFU234FormValidation** library's TypeDoc JSON output, ensuring the API reference stays synchronised with every library release while allowing guides, tutorials, blog posts, and examples to evolve independently.
+This keeps every public method, interface, and option synchronized with each release while allowing guides, tutorials, and examples to be written independently.
 
-Generate documentation using a local checkout of the library:
+Generate documentation locally:
 
 ```bash
 npm run docs:generate:local
 ```
 
-Generate documentation using the published npm version:
+Generate documentation from the published package:
 
 ```bash
 npm run docs:generate
 ```
 
-For a detailed explanation of how the documentation pipeline works, see **[DOCS_PIPELINE.md](DOCS_PIPELINE.md)**.
+---
+
+## 🌍 Part of the NFORSHIFU234 Ecosystem
+
+NFSFU234FormValidation is one of several projects created and maintained by **NFORSHIFU234 Dev**, a software engineering brand of **NFORSHIFU LOGICFORGE LTD.**
+
+- 📜 NFSFU234FormValidation
+- 🧭 NFSFU234TourGuide
+- 💙 WishIT
+- 🩺 HealthHub AI
+- 👨🏾‍💻 IAMNOTSHIFU
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are always welcome!
+Contributions are always welcome.
 
-Whether you've found a typo, discovered a bug, want to improve the documentation, or have an idea for a new guide, blog post, or example, feel free to open an issue or submit a pull request.
+Whether you've found a typo, discovered a bug, want to improve a guide, or have an idea for a new example, feel free to open an issue or submit a pull request.
 
-Before contributing, please read **[CONTRIBUTING.md](CONTRIBUTING.md)** for the project's contribution guidelines and documentation workflow.
-
----
-
-## 📜 License
-
-This project is licensed under the **MIT License**.
-
-See the **[LICENSE](LICENSE)** file for more information.
+Please read **CONTRIBUTING.md** before contributing.
 
 ---
 
-## 🌍 Building the NFORSHIFU234 Ecosystem
+## 📄 License
 
-NFSFU234FormValidation is one of several open-source and commercial projects built and maintained by **NFORSHIFU234 Dev**, a software engineering brand of **NFORSHIFU LOGICFORGE LTD.**
+Licensed under the **MIT License**.
 
-Our mission is to build modern, developer-first software, libraries, and intelligent tools that solve real-world problems and empower developers around the world.
+See **LICENSE** for details.
 
-Whether you're here to contribute, learn, or simply explore, thank you for being part of the journey.
+---
 
-Built with ❤️ by **NFORSHIFU234 Dev**.
+## ❤️ Acknowledgements
+
+Thank you to everyone who uses, contributes to, reports issues for, or shares NFSFU234FormValidation.
+
+Every piece of feedback helps improve both the library and its documentation.
+
+---
+
+Built with ❤️ by **NFORSHIFU234 Dev**
 
 Happy coding! 🚀

@@ -17,7 +17,18 @@ const DRY_RUN = process.argv.includes('--dry-run');
 // stale-folder cleanup below would have deleted it as "unrecognized." Any
 // future hand-authored folder under OUT_DIR needs to be added here too, or
 // cleanup will remove it.
-const GUIDE_PAGES = new Set(['getting-started', 'installation', 'initialization', 'usage', 'credits', 'changelog', 'frameworks', 'migration']);
+const GUIDE_PAGES = new Set([
+  "getting-started",
+  "quick-start",
+  "installation",
+  "initialization",
+  "usage",
+  "frameworks",
+  "examples",
+  "migration",
+  "changelog",
+  "credits"
+]);
 
 const api = JSON.parse(fs.readFileSync(API_JSON, 'utf8'));
 
@@ -436,15 +447,16 @@ try {
 } catch {}
 
 const priority = [
-  'getting-started',
-  'installation',
-  'initialization',
-  'usage',
-  'frameworks',
-  'migration',
-  'examples',
-  'blog',
-  'available-functions'
+  "getting-started",
+  "quick-start",
+  "installation",
+  "initialization",
+  "usage",
+  "frameworks",
+  "examples",
+  "migration",
+  "blog",
+  "available-functions"
 ];
 
 const finalMeta = {};

@@ -4,70 +4,173 @@ excerpt: "Wire a live character counter to a textarea and block typing past the 
 frameworks: ["html", "nextjs"]
 date: "2026-07-09"
 ---
+# Live Character Counter
 
-A profile bio field that shows a live "X / 280" counter and disables the submit button until the minimum length is met.
+A character counter gives users immediate feedback while they're typing. This example creates a profile bio field that displays the current character count, prevents typing beyond the maximum limit, and disables the **Save** button until the minimum length requirement has been reached.
 
-## Markup
+Perfect for profile bios, social posts, comments, descriptions, and any field with character limits.
+
+---
+
+## HTML
 
 ```html
 <form id="profileForm">
-  <textarea name="bio" id="bio"></textarea>
-  <div id="bioCounter"></div>
-  <button type="submit" id="saveBtn">Save</button>
+    <label for="bio">
+        Bio
+    </label>
+
+    <textarea
+        id="bio"
+        name="bio"
+        placeholder="Tell everyone a little about yourself..."
+    ></textarea>
+
+    <div id="bioCounter"></div>
+
+    <button
+        type="submit"
+        id="saveBtn"
+    >
+        Save
+    </button>
 </form>
 ```
 
-## Script
+---
 
-```js
-import NFSFU234FormValidation from 'nfsfu234-form-validation';
+## JavaScript
 
-const form = new NFSFU234FormValidation({ form: 'profileForm' });
+```javascript
+import NFSFU234FormValidation from "@nfsfu234/form-validation";
 
-const bioField = document.getElementById('bio');
-const counterEl = document.getElementById('bioCounter');
-
-form.restrictInputWithCounter(bioField, counterEl, {
-  maxLength: 280,
-  minLength: 10,
-  shouldButtonDisable: true,
-  formId: 'profileForm'
+const validator = new NFSFU234FormValidation({
+    form: "profileForm"
 });
+
+const bio = document.getElementById("bio");
+const counter = document.getElementById("bioCounter");
+
+validator.restrictInputWithCounter(
+    bio,
+    counter,
+    {
+        minLength: 10,
+        maxLength: 280,
+
+        shouldButtonDisable: true,
+
+        formId: "profileForm"
+    }
+);
 ```
 
-## Next.js note
+---
+
+## What happens?
+
+As the user types, the library automatically:
+
+- Displays a live character counter.
+- Prevents typing beyond **280** characters.
+- Disables the submit button until at least **10** characters have been entered.
+- Re-enables the button once the minimum requirement is met.
+
+No additional event listeners are required.
+
+---
+
+## Using with Next.js
+
+Because the library interacts with the DOM, initialize it inside a Client Component.
 
 ```jsx
-'use client';
-import { useEffect } from 'react';
-import NFSFU234FormValidation from 'nfsfu234-form-validation';
+"use client";
 
-export function ProfileForm() {
-  useEffect(() => {
-    const form = new NFSFU234FormValidation({ form: 'profileForm' });
-    const bioField = document.getElementById('bio');
-    const counterEl = document.getElementById('bioCounter');
+import { useEffect } from "react";
+import NFSFU234FormValidation from "@nfsfu234/form-validation";
 
-    form.restrictInputWithCounter(bioField, counterEl, {
-      maxLength: 280,
-      minLength: 10,
-      shouldButtonDisable: true,
-      formId: 'profileForm'
-    });
-  }, []);
+export default function ProfileForm() {
+    useEffect(() => {
+        const validator = new NFSFU234FormValidation({
+            form: "profileForm"
+        });
 
-  return (
-    <form id="profileForm">
-      <textarea name="bio" id="bio"></textarea>
-      <div id="bioCounter"></div>
-      <button type="submit" id="saveBtn">Save</button>
-    </form>
-  );
+        validator.restrictInputWithCounter(
+            document.getElementById("bio"),
+            document.getElementById("bioCounter"),
+            {
+                minLength: 10,
+                maxLength: 280,
+
+                shouldButtonDisable: true,
+
+                formId: "profileForm"
+            }
+        );
+    }, []);
+
+    return (
+        <form id="profileForm">
+            <textarea
+                id="bio"
+                name="bio"
+            />
+
+            <div id="bioCounter"></div>
+
+            <button
+                id="saveBtn"
+                type="submit"
+            >
+                Save
+            </button>
+        </form>
+    );
 }
 ```
 
-## Notes
+---
 
-- `restrictInputWithCounter()` wires everything itself — the counter text, the typing block past `maxLength`, and (with `shouldButtonDisable: true`) disabling `formId`'s submit button until `minLength` is met. No separate `input` listener needed.
-- Works on both `<input>` and `<textarea>` fields — pass either as the first argument.
-- It only handles the live UI restriction. If you also want the bio length enforced at submit time (e.g. someone pastes in text that bypasses the UI block), pair it with a matching `minLength`/`maxLength` rule via `configureForms()` or `.validateTextarea()`.
+## Configuration
+
+```javascript
+validator.restrictInputWithCounter(
+    inputElement,
+    counterElement,
+    {
+        minLength: 10,
+        maxLength: 280,
+
+        shouldButtonDisable: true,
+
+        formId: "profileForm"
+    }
+);
+```
+
+| Option | Description |
+|---------|-------------|
+| `minLength` | Minimum number of characters required. |
+| `maxLength` | Maximum number of characters allowed. |
+| `shouldButtonDisable` | Automatically disables and enables the form's submit button. |
+| `formId` | The form whose submit button should be controlled. |
+
+---
+
+## Things to know
+
+- Works with both `<input>` and `<textarea>` elements.
+- Automatically updates the counter while the user types.
+- Automatically prevents typing beyond the configured maximum.
+- No manual `input` event listeners are needed.
+- For complete protection, also validate the field during form submission using HTML validation attributes or the library's validation methods.
+
+---
+
+## Continue learning
+
+- ⚙️ **[Form Configuration](/docs/v3/formConfigInterface)** — Configure validation rules in JavaScript.
+- 📝 **[Textarea Validation](/docs/v3/validateTextarea)** — Validate textareas during form submission.
+- 📚 **[Available Functions](/docs/v3/available-functions)** — Explore every public API.
+- 💡 **[Examples](/examples)** — Discover more complete form examples.

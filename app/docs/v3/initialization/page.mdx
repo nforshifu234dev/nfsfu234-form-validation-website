@@ -2,54 +2,152 @@
 title: "Initialization"
 description: "Learn how to initialize the NFSFU234FormValidation Library"
 ---
-## 🏁 Initialization
+# 🏁 Initialization
 
-    To use the NFSFU234FormValidation library in your respective projects, you must create an instance of the library with the appropriate parameters. 
-    There are 2 ways of creating an instance of the NFSFU234FormValidation library
+To use **NFSFU234FormValidation**, create an instance of the library using one of the initialization methods below. The constructor is flexible and supports automatic form detection, utility-only instances, specific form elements, form IDs, and full configuration objects.
 
-###### 1. Elementary Embarkation
+## 1. Automatic Form Detection
 
-In this type of initialization, we'll craft a straightforward NFSFU234FormValidation instance without any supplementary parameters. 
-The library will adeptly detect the form with the ID <b>'jsSubmit'</b> or the first <b>form</b> tag it finds and sets all the defaults value for it.
+This is the simplest way to get started. The library automatically looks for a form with the ID **`jsForm`**. If none exists, it falls back to the first `<form>` element on the page.
 
 ```js
-const nfsfu234FormValidation = new NFSFU234FormValidation(); // Create a fundamental NFSFU234FormValidation instance
+const validator = new NFSFU234FormValidation();
 ```
 
-###### 2. Customized Instanciation
+This is ideal for pages that contain a single form and require little or no configuration.
 
-Here, we furnish custom-made error messages for the form fields and outline AJAX options for form submission. This approach empowers granular customization and mastery over the validation and form submission processes.
+---
+
+## 2. Utility-Only (Form-less) Instance
+
+If you only need the library's utility methods—such as password generation, password strength checking, AJAX requests, or validation helpers—you can create an instance without attaching it to any form by passing `null`.
 
 ```js
-// Example custom error messages for your form
-const customErrorMessages = {
-  "text": "EMPTY FIELD",
-  "select": "SELECT FIELD IS REQUIRED",
-  "email": {
-    "empty": "EMPTY EMAIL",
-    "format": "The email is not in the right format",
-  },
-  // ... Other field types and messages
-};
+const validator = new NFSFU234FormValidation(null);
 
-// Example form details object
-const formDetails = {
-  form: "myForm", // Replace "myForm" with the ID of your form or the actual HTML element of your form (recommended)
-  isErrorMessageInline: true,
-  customErrorMessages: customErrorMessages,
-};
+// Utility examples
+const strength = validator.passwordStrength("hunter2");
 
-// Example AJAX options object
-const ajaxOptions = {
-  url: "https://api.domain.com/",
-  RequestMethod: "POST",
-  RequestHeader: {
-    "Content-Type": "application/json",
-  }
-};
+const password = await validator.generatePassword(16);
 
-// Forge a customized NFSFU234FormValidation instance
-const nfsfu234FormValidation = new NFSFU234FormValidation(formDetails, ajaxOptions);
+const response = await validator.ajax({
+    url: "https://api.example.com/login",
+    RequestMethod: "POST"
+});
 ```
 
-<b class="text-lg">Note</b>: If you initialize an instance of the NFSFU234FormValidation Library without providing parameters, it will seamlessly detect the form with the ID 'jsSubmit' or the first form on the page in the absence of a form ID. This streamlined approach suits scenarios where you're working with a single form and prefer a simplified setup without additional configurations. 🚀👨‍💻
+When initialized this way, the library:
+
+* does **not** search for a form
+* does **not** add the `novalidate` attribute
+* does **not** register a submit listener
+
+This is especially useful in frameworks such as React, Vue, Angular, or during server-side rendering.
+
+If you only need the AJAX helper, you don't even need to create an instance:
+
+```js
+await NFSFU234FormValidation.ajax({
+    url: "https://api.example.com/login",
+    RequestMethod: "POST"
+});
+```
+
+---
+
+## 3. Using a Form ID
+
+You can initialize the library by passing the ID of an existing form.
+
+```js
+const validator = new NFSFU234FormValidation("contactForm");
+```
+
+This is equivalent to passing:
+
+```js
+document.getElementById("contactForm");
+```
+
+---
+
+## 4. Using a Form Element
+
+If you already have a reference to the form element, pass it directly.
+
+```js
+const form = document.getElementById("contactForm");
+
+const validator = new NFSFU234FormValidation(form);
+```
+
+This is the recommended approach when working with JavaScript frameworks or dynamically created forms.
+
+---
+
+## 5. Using a Configuration Object (Recommended)
+
+For larger applications, the recommended approach is to initialize the validator using a configuration object. This keeps your form reference, custom validation messages, and AJAX configuration together.
+
+```js
+const validator = new NFSFU234FormValidation({
+    form: "contactForm",
+
+    customErrorMessages: {
+        email: "Please enter a valid email address.",
+        password: "Password must be at least 8 characters long."
+    },
+
+    ajaxOptions: {
+        url: "/api/contact",
+        RequestMethod: "POST",
+        RequestHeader: {
+            "Content-Type": "application/json"
+        }
+    }
+});
+```
+
+You may also pass the form element directly instead of its ID:
+
+```js
+const form = document.getElementById("contactForm");
+
+const validator = new NFSFU234FormValidation({
+    form,
+
+    customErrorMessages: {
+        email: "Please enter a valid email address."
+    },
+
+    ajaxOptions: {
+        url: "/api/contact",
+        RequestMethod: "POST"
+    }
+});
+```
+
+This initialization style is recommended because it groups all form-related configuration into a single object, making your code easier to read, maintain, and extend.
+
+---
+
+## Backwards Compatibility
+
+The previous two-parameter constructor is still supported for backwards compatibility.
+
+```js
+const validator = new NFSFU234FormValidation(
+    {
+        form: "contactForm",
+        customErrorMessages: {
+            email: "Invalid email address."
+        }
+    },
+    {
+        url: "/api/contact",
+        RequestMethod: "POST"
+    }
+);
+```
+
+However, new projects should prefer the single configuration object approach, as it is cleaner, easier to maintain, and represents the recommended API going forward.

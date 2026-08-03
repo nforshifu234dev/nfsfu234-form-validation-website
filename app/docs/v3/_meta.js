@@ -1,20 +1,22 @@
 export default {
   "getting-started": "Getting Started",
+  "quick-start": "Quick Start",
   "installation": "Installation",
   "initialization": "Initialization",
   "usage": "Usage",
   "frameworks": "Frameworks",
-  "migration": "Migration Guide",
   "examples": {
     "title": "Examples ↗",
     "href": "/examples"
   },
+  "migration": "Migration Guide",
   "blog": {
     "title": "Blog ↗",
     "href": "/blog"
   },
   "available-functions": "available-functions",
   "ajax": "ajax",
+  "aJAXOptionsInterface": "aJAXOptionsInterface",
   "autoInit": "autoInit",
   "checkPassword": "checkPassword",
   "checkVariableType": "checkVariableType",

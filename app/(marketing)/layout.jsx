@@ -8,7 +8,10 @@ import './landing.css'
 
 export const metadata = {
   metadataBase: new URL('https://form-validation.nforshifu234dev.com'),
-  title: 'NFSFU234FormValidation — Validation your HTML already wrote',
+  title: {
+    default: 'NFSFU234FormValidation — Validation your HTML already wrote',
+    template: '%s | NFSFU234FormValidation'
+  },
   description:
     'A lightweight, dependency-free client-side form validation library for HTML forms - inputs, textareas, selects, radios, checkboxes, and file/image uploads. Works in plain HTML, React, Next.js, and Expo web.',
   keywords: ['form validation', 'javascript', 'html forms', 'client-side validation', 'zero dependencies'],

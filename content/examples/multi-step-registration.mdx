@@ -1,79 +1,245 @@
 ---
-title: "Multi-step Registration Form"
+title: "Multi-step Registration Form - React (CRA) Form Validation"
 excerpt: "Split a signup form across steps and validate each step before advancing, using a declarative field config."
 frameworks: ["nextjs", "vite"]
 date: "2026-07-03"
 ---
 
-A three-step signup flow — account details, profile, confirmation — where each step's fields are validated before the user can move to the next one.
+# Multi-step Registration Form
 
-## Config
+Build a registration wizard where users can't continue to the next step until the current step is valid.
 
-Register the rules for the whole form once, even though only one step's fields are visible at a time:
+Instead of validating the entire form at once, validate only the fields that belong to the active step. When the final step is reached, submit the entire form normally.
+
+---
+
+## Complete example
+
+### HTML
+
+```html
+<form id="signupForm">
+  <!-- Step 1 -->
+  <section id="step-1">
+    <input
+      type="email"
+      name="email"
+      placeholder="Email"
+      required
+    />
+
+    <input
+      type="password"
+      name="password"
+      required
+      minlength="8"
+      placeholder="Password"
+    />
+
+    <button
+      type="button"
+      id="step1Next"
+    >
+      Continue
+    </button>
+  </section>
+
+  <!-- Step 2 -->
+  <section
+    id="step-2"
+    hidden
+  >
+    <input
+      type="text"
+      name="displayName"
+      maxlength="40"
+      required
+      placeholder="Display name"
+    />
+
+    <textarea
+      name="bio"
+      maxlength="300"
+      placeholder="Tell us about yourself"
+    ></textarea>
+
+    <button
+      type="button"
+      id="step2Back"
+    >
+      Back
+    </button>
+
+    <button
+      type="button"
+      id="step2Next"
+    >
+      Continue
+    </button>
+  </section>
+
+  <!-- Step 3 -->
+  <section
+    id="step-3"
+    hidden
+  >
+    <label>
+      <input
+        type="checkbox"
+        name="terms"
+        required
+      />
+
+      I agree to the Terms of Service
+    </label>
+
+    <button
+      type="button"
+      id="step3Back"
+    >
+      Back
+    </button>
+
+    <button type="submit">
+      Create account
+    </button>
+  </section>
+</form>
+```
+
+---
+
+### JavaScript
 
 ```js
-import NFSFU234FormValidation from 'nfsfu234-form-validation';
+import NFSFU234FormValidation from "@nfsfu234/form-validation";
 
 NFSFU234FormValidation.configureForms([
   {
-    form: '#signupForm',
+    form: "#signupForm",
+
     fields: {
-      email: { required: true, type: 'email' },
-      password: { required: true, minLength: 8 },
-      displayName: { required: true, maxLength: 40 },
-      bio: { maxLength: 300 }
-    }
-  }
+      email: {
+        required: true,
+        type: "email",
+      },
+
+      password: {
+        required: true,
+        minLength: 8,
+      },
+
+      displayName: {
+        required: true,
+        maxLength: 40,
+      },
+
+      bio: {
+        maxLength: 300,
+      },
+
+      terms: {
+        required: true,
+      },
+    },
+  },
 ]);
 
 NFSFU234FormValidation.autoInit();
-```
 
-## Per-step validation
+const validator = new NFSFU234FormValidation({
+  form: "signupForm",
+});
 
-Instead of calling `.submit()` on the whole form at once, validate just the fields belonging to the current step before advancing:
+function showStep(step) {
+  document.querySelectorAll("section").forEach((section) => {
+    section.hidden = true;
+  });
 
-```js
-const form = new NFSFU234FormValidation({ form: 'signupForm' });
+  document.getElementById(`step-${step}`).hidden = false;
+}
 
-async function goToNextStep(stepFields) {
-  for (const field of stepFields) {
+async function validateStep(fields) {
+  for (const field of fields) {
     const input = document.querySelector(`[name="${field}"]`);
-    const ok = await form.validateInput(input);
-    if (ok !== true) return false; // stop on first invalid field
+
+    const result = await validator.validateInput(input);
+
+    if (result !== true) {
+      return false;
+    }
   }
+
   return true;
 }
 
-document.getElementById('step1Next').addEventListener('click', async () => {
-  if (await goToNextStep(['email', 'password'])) showStep(2);
-});
+document
+  .getElementById("step1Next")
+  .addEventListener("click", async () => {
+    if (await validateStep(["email", "password"])) {
+      showStep(2);
+    }
+  });
+
+document
+  .getElementById("step2Back")
+  .addEventListener("click", () => {
+    showStep(1);
+  });
+
+document
+  .getElementById("step2Next")
+  .addEventListener("click", async () => {
+    if (await validateStep(["displayName", "bio"])) {
+      showStep(3);
+    }
+  });
+
+document
+  .getElementById("step3Back")
+  .addEventListener("click", () => {
+    showStep(2);
+  });
+
+document
+  .getElementById("signupForm")
+  .addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const result = await validator.submit();
+
+    if (result.type === "success") {
+      console.log("Registration complete.");
+    }
+  });
 ```
 
-## Next.js note
+---
 
-Initialize inside a client component, since the library touches the DOM directly:
+## Why this approach?
 
-```jsx
-'use client';
-import { useEffect } from 'react';
-import NFSFU234FormValidation from 'nfsfu234-form-validation';
+Validating one step at a time creates a much better user experience than validating the whole form after the user clicks **Create account**.
 
-export function SignupForm() {
-  useEffect(() => {
-    NFSFU234FormValidation.configureForms([/* ...same config as above... */]);
-    NFSFU234FormValidation.autoInit();
-  }, []);
+Each section is completed before moving forward, while the final `.submit()` still performs a complete validation of the form before submission.
 
-  return (
-    <form id="signupForm">
-      {/* step fields */}
-    </form>
-  );
-}
-```
+---
 
-## Notes
+## Perfect for
 
-- `configureForms()` + `autoInit()` only wires up forms actually present in the DOM, so it's safe to call even before later steps have mounted.
-- `.validateInput()` validates one field at a time and returns `true` or an error object — perfect for gating step transitions without validating the whole form.
+- Registration wizards
+- Checkout flows
+- Employee onboarding
+- Loan applications
+- Surveys
+- Long profile forms
+
+---
+
+## Continue learning
+
+- [Form Configuration](/docs/v3/formConfigInterface)
+- [Initialization](/docs/v3/initialization)
+- [submit()](/docs/v3/submit)
+- [validateInput()](/docs/v3/validateInput)
+- [validate()](/docs/v3/validate)
+- [Auto Initialization](/docs/v3/autoInit)

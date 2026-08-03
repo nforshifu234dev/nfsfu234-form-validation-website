@@ -1,107 +1,299 @@
+# 🌐 Using NFSFU234FormValidation with Expo Web
+
+NFSFU234FormValidation works with **Expo Web**, where your application runs in a real browser and has access to the DOM.
+
+Since the library validates native HTML forms, it **does not run on iOS or Android**. If your Expo application targets multiple platforms, simply execute your validation logic only when running on the **web**.
+
+> **Compatible with**
+>
+> - ✅ Expo Web
+> - ✅ React Native Web
+> - ✅ JavaScript
+> - ✅ TypeScript
+> - ❌ Android
+> - ❌ iOS
+
 ---
-title: "Install with Expo (Web)"
-description: "Step-by-step: add NFSFU234FormValidation to an Expo project's web target, from scratch."
----
 
-## Using NFSFU234FormValidation with Expo (Web)
+## 1. Create an Expo project
 
-NFSFU234FormValidation reads and manipulates real DOM elements, so it only works on Expo's **web** target — there's no DOM on iOS or Android. Every example below is guarded with a `Platform.OS === 'web'` check for that reason.
-
-### 1. Create an Expo project
+If you already have an Expo application, skip to **Install**.
 
 ```bash
 npx create-expo-app my-app
+
 cd my-app
 ```
 
-### 2. Install the library
+Start the development server.
 
 ```bash
-npm install nfsfu234-form-validation
+npx expo start
 ```
 
-It's pure JS with no native modules, so a plain `npm install` is enough — no `expo install` or config plugin needed.
+Press **W** to open your application in the browser.
 
-### 3. Wire it up on a web-only screen
+---
 
-```jsx
-import { useEffect } from 'react'
-import { Platform, View, Text } from 'react-native'
-import NFSFU234FormValidation from 'nfsfu234-form-validation'
+## 2. Install NFSFU234FormValidation
+
+Install the package from npm.
+
+```bash
+npm install @nfsfu234/form-validation
+```
+
+Import the stylesheet once in your web entry point.
+
+```tsx
+import "@nfsfu234/form-validation/css";
+```
+
+No native modules, config plugins, or `expo install` commands are required.
+
+---
+
+## 3. Create your first validated form
+
+Because Expo can run on both native and web platforms, always check the current platform before using the library.
+
+```tsx
+import { Platform, Text, View } from "react-native";
+import { useEffect } from "react";
+import NFSFU234FormValidation from "@nfsfu234/form-validation";
 
 export default function SignupScreen() {
-  useEffect(() => {
-    if (Platform.OS !== 'web') return
+    useEffect(() => {
+        if (Platform.OS !== "web") {
+            return;
+        }
 
-    const formElement = document.getElementById('signup-form')
-    const validator = new NFSFU234FormValidation({ form: formElement })
+        const validator = new NFSFU234FormValidation({
+            form: "signupForm"
+        });
 
-    async function handleSubmit(e) {
-      e.preventDefault()
-      const result = await validator.submit()
-      console.log(result)
+        const form = document.getElementById("signupForm");
+
+        async function handleSubmit(event) {
+            event.preventDefault();
+
+            const result = await validator.submit();
+
+            console.log(result);
+        }
+
+        form?.addEventListener("submit", handleSubmit);
+
+        return () => {
+            form?.removeEventListener("submit", handleSubmit);
+        };
+    }, []);
+
+    if (Platform.OS !== "web") {
+        return (
+            <View>
+                <Text>
+                    This form is only available on the web version of the application.
+                </Text>
+            </View>
+        );
     }
 
-    formElement.addEventListener('submit', handleSubmit)
-    return () => formElement.removeEventListener('submit', handleSubmit)
-  }, [])
-
-  if (Platform.OS !== 'web') {
     return (
-      <View>
-        <Text>Sign-up is available on the web version of this app.</Text>
-      </View>
-    )
-  }
+        <form id="signupForm">
+            <input
+                type="email"
+                name="email"
+                required
+            />
 
-  // On web, react-native-web renders <View>/<Text> as real DOM elements,
-  // but for a form with native HTML semantics (required, minLength, submit
-  // events) it's simplest to drop into raw HTML tags here.
-  return (
-    <form id="signup-form">
-      <input type="email" name="email" required />
-      <input type="password" name="password" minLength="8" required />
-      <button type="submit">Sign up</button>
-    </form>
-  )
+            <input
+                type="password"
+                name="password"
+                required
+                minLength={8}
+            />
+
+            <button type="submit">
+                Create Account
+            </button>
+        </form>
+    );
 }
 ```
 
-### 4. Or use the site-wide config registry
+The library automatically validates your HTML attributes, including:
 
-Same guard applies:
+- `required`
+- `type`
+- `pattern`
+- `minLength`
+- `maxLength`
+- `min`
+- `max`
 
-```jsx
-import { useEffect } from 'react'
-import { Platform } from 'react-native'
-import NFSFU234FormValidation from 'nfsfu234-form-validation'
+---
 
-export default function FormsInit() {
-  useEffect(() => {
-    if (Platform.OS !== 'web') return
+## 4. Enable AJAX form submission
 
-    NFSFU234FormValidation.configureForms([
-      {
-        form: '#signup-form',
-        fields: {
-          email: { required: true, type: 'email' },
-          password: { required: true, minLength: 8 }
+Configure AJAX during initialization.
+
+```tsx
+const validator = new NFSFU234FormValidation({
+    form: "signupForm",
+
+    ajaxOptions: {
+        url: "/api/signup",
+
+        RequestMethod: "POST",
+
+        RequestHeader: {
+            "Content-Type": "application/json"
         }
-      }
-    ])
-    NFSFU234FormValidation.autoInit()
-  }, [])
+    }
+});
+```
 
-  return null
+Submitting the form remains exactly the same.
+
+```ts
+const result = await validator.submit();
+```
+
+The library validates the form before sending the AJAX request.
+
+---
+
+## 5. Managing multiple forms
+
+For larger Expo Web applications, register every form once and let the library initialize whichever forms exist on the current page.
+
+```tsx
+import { Platform } from "react-native";
+import { useEffect } from "react";
+import NFSFU234FormValidation from "@nfsfu234/form-validation";
+
+export default function FormsProvider() {
+    useEffect(() => {
+        if (Platform.OS !== "web") {
+            return;
+        }
+
+        NFSFU234FormValidation.configureForms([
+            {
+                form: "#signupForm",
+
+                fields: {
+                    email: {
+                        required: true,
+                        type: "email"
+                    },
+
+                    password: {
+                        required: true,
+                        minLength: 8
+                    }
+                }
+            }
+        ]);
+
+        NFSFU234FormValidation.autoInit();
+    }, []);
+
+    return null;
 }
 ```
 
-### 5. Common gotcha: it silently no-ops on native, but other calls won't
+Mount this component once near the root of your application.
 
-The constructor itself checks `typeof window === 'undefined'` and just sets `form` to `undefined` rather than throwing — so building `new NFSFU234FormValidation()` on iOS/Android won't crash. But calling instance methods like `.validateInput()` or `.submit()` on native *will* throw, since those reach for `document` directly. Always gate the whole flow behind `Platform.OS === 'web'`, not just the constructor call.
+---
 
-### Next steps
+## 6. Validating uploaded files
 
-- [Configuration reference](/docs/v3/formConfigInterface)
-- [File/image validation](/docs/v3/validateFile)
-- [All available functions](/docs/v3/available-functions)
+NFSFU234FormValidation can validate uploaded files before submission.
+
+```ts
+fields: {
+    avatar: {
+        required: true,
+        accept: [
+            "image/png",
+            "image/jpeg"
+        ],
+
+        maxSizeMB: 5,
+
+        maxWidth: 2000,
+        maxHeight: 2000
+    }
+}
+```
+
+Supported validation includes:
+
+- Accepted file types
+- Maximum file size
+- Image dimensions
+- Minimum and maximum file count
+
+---
+
+## 7. Common pitfalls
+
+### Don't forget the platform check
+
+Always ensure you're running on the web before creating a validator or calling validation methods.
+
+```tsx
+if (Platform.OS !== "web") {
+    return;
+}
+```
+
+---
+
+### Remember to `await`
+
+Incorrect
+
+```ts
+validator.submit();
+```
+
+Correct
+
+```ts
+const result = await validator.submit();
+```
+
+---
+
+### Import the stylesheet
+
+Import the stylesheet once in your web entry point.
+
+```tsx
+import "@nfsfu234/form-validation/css";
+```
+
+---
+
+### Expo Go is different
+
+Expo Go running on Android or iOS does **not** provide browser DOM APIs like `window`, `document`, or HTML forms.
+
+NFSFU234FormValidation is designed for **Expo Web** only. If your application targets native platforms, conditionally render an alternative UI or skip validation entirely when `Platform.OS !== "web"`.
+
+---
+
+## Next steps
+
+Continue exploring the library:
+
+- [Initialization](/docs/v3/initialization)
+- [Configuration Reference](/docs/v3/formConfigInterface)
+- [configureForms()](/docs/v3/configureForms)
+- [autoInit()](/docs/v3/autoInit)
+- [validateFile()](/docs/v3/validateFile)
+- [AJAX](/docs/v3/ajax)
+- [Available Functions](/docs/v3/available-functions)

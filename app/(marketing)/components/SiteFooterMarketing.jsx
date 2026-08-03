@@ -10,6 +10,7 @@ export function SiteFooterMarketing() {
       <div className="land-wrap">
         <div className="land-footer-top">
           <a href="/" className="land-footer-brand">
+            <img src="/logo.png" className="w-24" alt="" />
             <span>
               <span className="land-brand-scope">nfsfu234/</span>form-validation
             </span>
@@ -38,7 +39,7 @@ export function SiteFooterMarketing() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-4">
+        <div className="site-footer-brand">
 
           <span className="footer-version-badge">
             <span className="footer-version-dot" />
@@ -46,13 +47,13 @@ export function SiteFooterMarketing() {
           </span>
 
           <div className="footer-install-chip">
-            <span className="land-prompt">$</span> npm i nfsfu234-form-validation
+            <span className="land-prompt">$</span> npm i @nfsfu234/form-validation
           </div>
 
         </div>
 
         <div className="footer-icon-row">
-          <a href="https://github.com/NFSFU234FormValidation/nfsfu234-form-validation" aria-label="GitHub" className="footer-icon-btn" dangerouslySetInnerHTML={{ __html: socialIcons.github }} />
+          <a href="https://github.com/nfsfu234/nfsfu234-form-validation" aria-label="GitHub" className="footer-icon-btn" dangerouslySetInnerHTML={{ __html: socialIcons.github }} />
           <a href="https://www.npmjs.com/package/nfsfu234-form-validation" aria-label="npm" className="footer-icon-btn" dangerouslySetInnerHTML={{ __html: socialIcons.npm }} />
           <a href="https://x.com/nf_validator234" aria-label="X" className="footer-icon-btn" dangerouslySetInnerHTML={{ __html: socialIcons.x }} />
           <a href="https://www.instagram.com/nforshifu234dev_projects/" aria-label="Instagram" className="footer-icon-btn" dangerouslySetInnerHTML={{ __html: socialIcons.instagram }} />

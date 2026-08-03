@@ -6,14 +6,292 @@
 	"flags": {},
 	"children": [
 		{
-			"id": 190,
+			"id": 256,
+			"name": "AJAXOptionsInterface",
+			"variant": "declaration",
+			"kind": 256,
+			"flags": {},
+			"comment": {
+				"summary": [
+					{
+						"kind": "text",
+						"text": "Request configuration accepted by "
+					},
+					{
+						"kind": "inline-tag",
+						"tag": "@link",
+						"text": "NFSFU234FormValidation.ajax",
+						"target": 7
+					},
+					{
+						"kind": "text",
+						"text": " and\r\nits instance counterpart."
+					}
+				]
+			},
+			"children": [
+				{
+					"id": 257,
+					"name": "url",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "The request URL."
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "interfaces/AJAXOptionsInterface.ts",
+							"line": 9,
+							"character": 4
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					}
+				},
+				{
+					"id": 258,
+					"name": "RequestMethod",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {
+						"isOptional": true
+					},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "The HTTP method. Defaults to \"GET\" if omitted."
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "interfaces/AJAXOptionsInterface.ts",
+							"line": 12,
+							"character": 4
+						}
+					],
+					"type": {
+						"type": "union",
+						"types": [
+							{
+								"type": "literal",
+								"value": "GET"
+							},
+							{
+								"type": "literal",
+								"value": "POST"
+							},
+							{
+								"type": "literal",
+								"value": "PUT"
+							},
+							{
+								"type": "literal",
+								"value": "PATCH"
+							},
+							{
+								"type": "literal",
+								"value": "UPDATE"
+							},
+							{
+								"type": "literal",
+								"value": "DELETE"
+							}
+						]
+					}
+				},
+				{
+					"id": 259,
+					"name": "RequestHeader",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {
+						"isOptional": true
+					},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "Request headers, keyed by header name."
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "interfaces/AJAXOptionsInterface.ts",
+							"line": 15,
+							"character": 4
+						}
+					],
+					"type": {
+						"type": "reflection",
+						"declaration": {
+							"id": 260,
+							"name": "__type",
+							"variant": "declaration",
+							"kind": 65536,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "interfaces/AJAXOptionsInterface.ts",
+									"line": 15,
+									"character": 20
+								}
+							],
+							"indexSignatures": [
+								{
+									"id": 261,
+									"name": "__index",
+									"variant": "signature",
+									"kind": 8192,
+									"flags": {},
+									"sources": [
+										{
+											"fileName": "interfaces/AJAXOptionsInterface.ts",
+											"line": 15,
+											"character": 22
+										}
+									],
+									"parameters": [
+										{
+											"id": 262,
+											"name": "key",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {},
+											"type": {
+												"type": "intrinsic",
+												"name": "string"
+											}
+										}
+									],
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								}
+							]
+						}
+					}
+				},
+				{
+					"id": 263,
+					"name": "RequestBody",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {
+						"isOptional": true
+					},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "The request body - a plain object, FormData, or JSON-serializable value."
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "interfaces/AJAXOptionsInterface.ts",
+							"line": 18,
+							"character": 4
+						}
+					],
+					"type": {
+						"type": "union",
+						"types": [
+							{
+								"type": "intrinsic",
+								"name": "object"
+							},
+							{
+								"type": "reference",
+								"target": {
+									"sourceFileName": "node_modules/typescript/lib/lib.es5.d.ts",
+									"qualifiedName": "JSON"
+								},
+								"name": "JSON",
+								"package": "typescript"
+							},
+							{
+								"type": "reference",
+								"target": {
+									"sourceFileName": "node_modules/typescript/lib/lib.dom.d.ts",
+									"qualifiedName": "FormData"
+								},
+								"name": "FormData",
+								"package": "typescript"
+							}
+						]
+					}
+				},
+				{
+					"id": 264,
+					"name": "RequestBodyIgnore",
+					"variant": "declaration",
+					"kind": 1024,
+					"flags": {
+						"isOptional": true
+					},
+					"comment": {
+						"summary": [
+							{
+								"kind": "text",
+								"text": "When true, skips the \"empty body on a POST/PUT/DELETE/UPDATE request\"\r\nguard - use for requests that intentionally send no body."
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "interfaces/AJAXOptionsInterface.ts",
+							"line": 24,
+							"character": 4
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "boolean"
+					}
+				}
+			],
+			"groups": [
+				{
+					"title": "Properties",
+					"children": [
+						257,
+						258,
+						259,
+						263,
+						264
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "interfaces/AJAXOptionsInterface.ts",
+					"line": 7,
+					"character": 10
+				}
+			]
+		},
+		{
+			"id": 216,
 			"name": "ErrorMessageInterface",
 			"variant": "declaration",
 			"kind": 256,
 			"flags": {},
 			"children": [
 				{
-					"id": 191,
+					"id": 217,
 					"name": "message",
 					"variant": "declaration",
 					"kind": 1024,
@@ -46,7 +324,7 @@
 					}
 				},
 				{
-					"id": 192,
+					"id": 218,
 					"name": "type",
 					"variant": "declaration",
 					"kind": 1024,
@@ -66,7 +344,7 @@
 					}
 				},
 				{
-					"id": 193,
+					"id": 219,
 					"name": "code",
 					"variant": "declaration",
 					"kind": 1024,
@@ -86,7 +364,7 @@
 					}
 				},
 				{
-					"id": 194,
+					"id": 220,
 					"name": "data",
 					"variant": "declaration",
 					"kind": 1024,
@@ -156,10 +434,10 @@
 				{
 					"title": "Properties",
 					"children": [
-						191,
-						192,
-						193,
-						194
+						217,
+						218,
+						219,
+						220
 					]
 				}
 			],
@@ -172,14 +450,14 @@
 			]
 		},
 		{
-			"id": 207,
+			"id": 233,
 			"name": "FieldRuleInterface",
 			"variant": "declaration",
 			"kind": 256,
 			"flags": {},
 			"children": [
 				{
-					"id": 208,
+					"id": 234,
 					"name": "required",
 					"variant": "declaration",
 					"kind": 1024,
@@ -199,7 +477,7 @@
 					}
 				},
 				{
-					"id": 209,
+					"id": 235,
 					"name": "type",
 					"variant": "declaration",
 					"kind": 1024,
@@ -219,7 +497,7 @@
 					}
 				},
 				{
-					"id": 210,
+					"id": 236,
 					"name": "minLength",
 					"variant": "declaration",
 					"kind": 1024,
@@ -239,7 +517,7 @@
 					}
 				},
 				{
-					"id": 211,
+					"id": 237,
 					"name": "maxLength",
 					"variant": "declaration",
 					"kind": 1024,
@@ -259,7 +537,7 @@
 					}
 				},
 				{
-					"id": 212,
+					"id": 238,
 					"name": "pattern",
 					"variant": "declaration",
 					"kind": 1024,
@@ -279,7 +557,7 @@
 					}
 				},
 				{
-					"id": 213,
+					"id": 239,
 					"name": "message",
 					"variant": "declaration",
 					"kind": 1024,
@@ -299,7 +577,7 @@
 					}
 				},
 				{
-					"id": 214,
+					"id": 240,
 					"name": "accept",
 					"variant": "declaration",
 					"kind": 1024,
@@ -322,7 +600,7 @@
 					}
 				},
 				{
-					"id": 215,
+					"id": 241,
 					"name": "maxSizeMB",
 					"variant": "declaration",
 					"kind": 1024,
@@ -342,7 +620,7 @@
 					}
 				},
 				{
-					"id": 216,
+					"id": 242,
 					"name": "minFiles",
 					"variant": "declaration",
 					"kind": 1024,
@@ -362,7 +640,7 @@
 					}
 				},
 				{
-					"id": 217,
+					"id": 243,
 					"name": "maxFiles",
 					"variant": "declaration",
 					"kind": 1024,
@@ -382,7 +660,7 @@
 					}
 				},
 				{
-					"id": 218,
+					"id": 244,
 					"name": "maxWidth",
 					"variant": "declaration",
 					"kind": 1024,
@@ -402,7 +680,7 @@
 					}
 				},
 				{
-					"id": 219,
+					"id": 245,
 					"name": "maxHeight",
 					"variant": "declaration",
 					"kind": 1024,
@@ -422,7 +700,7 @@
 					}
 				},
 				{
-					"id": 220,
+					"id": 246,
 					"name": "minWidth",
 					"variant": "declaration",
 					"kind": 1024,
@@ -442,7 +720,7 @@
 					}
 				},
 				{
-					"id": 221,
+					"id": 247,
 					"name": "minHeight",
 					"variant": "declaration",
 					"kind": 1024,
@@ -462,7 +740,7 @@
 					}
 				},
 				{
-					"id": 222,
+					"id": 248,
 					"name": "requiredMessage",
 					"variant": "declaration",
 					"kind": 1024,
@@ -482,7 +760,7 @@
 					}
 				},
 				{
-					"id": 223,
+					"id": 249,
 					"name": "typeMessage",
 					"variant": "declaration",
 					"kind": 1024,
@@ -502,7 +780,7 @@
 					}
 				},
 				{
-					"id": 224,
+					"id": 250,
 					"name": "sizeMessage",
 					"variant": "declaration",
 					"kind": 1024,
@@ -522,7 +800,7 @@
 					}
 				},
 				{
-					"id": 225,
+					"id": 251,
 					"name": "dimensionMessage",
 					"variant": "declaration",
 					"kind": 1024,
@@ -546,24 +824,24 @@
 				{
 					"title": "Properties",
 					"children": [
-						208,
-						209,
-						210,
-						211,
-						212,
-						213,
-						214,
-						215,
-						216,
-						217,
-						218,
-						219,
-						220,
-						221,
-						222,
-						223,
-						224,
-						225
+						234,
+						235,
+						236,
+						237,
+						238,
+						239,
+						240,
+						241,
+						242,
+						243,
+						244,
+						245,
+						246,
+						247,
+						248,
+						249,
+						250,
+						251
 					]
 				}
 			],
@@ -576,14 +854,14 @@
 			]
 		},
 		{
-			"id": 195,
+			"id": 221,
 			"name": "FormConfigInterface",
 			"variant": "declaration",
 			"kind": 256,
 			"flags": {},
 			"children": [
 				{
-					"id": 196,
+					"id": 222,
 					"name": "form",
 					"variant": "declaration",
 					"kind": 1024,
@@ -601,7 +879,7 @@
 					}
 				},
 				{
-					"id": 197,
+					"id": 223,
 					"name": "fields",
 					"variant": "declaration",
 					"kind": 1024,
@@ -618,7 +896,7 @@
 					"type": {
 						"type": "reflection",
 						"declaration": {
-							"id": 198,
+							"id": 224,
 							"name": "__type",
 							"variant": "declaration",
 							"kind": 65536,
@@ -632,7 +910,7 @@
 							],
 							"indexSignatures": [
 								{
-									"id": 199,
+									"id": 225,
 									"name": "__index",
 									"variant": "signature",
 									"kind": 8192,
@@ -646,7 +924,7 @@
 									],
 									"parameters": [
 										{
-											"id": 200,
+											"id": 226,
 											"name": "fieldName",
 											"variant": "param",
 											"kind": 32768,
@@ -659,9 +937,9 @@
 									],
 									"type": {
 										"type": "reference",
-										"target": 207,
+										"target": 233,
 										"name": "FieldRuleInterface",
-										"package": "nfsfu234-form-validation",
+										"package": "@nfsfu234/form-validation",
 										"qualifiedName": "default"
 									}
 								}
@@ -670,7 +948,7 @@
 					}
 				},
 				{
-					"id": 201,
+					"id": 227,
 					"name": "ajaxOptions",
 					"variant": "declaration",
 					"kind": 1024,
@@ -690,7 +968,7 @@
 					}
 				},
 				{
-					"id": 202,
+					"id": 228,
 					"name": "errorType",
 					"variant": "declaration",
 					"kind": 1024,
@@ -719,7 +997,7 @@
 					}
 				},
 				{
-					"id": 203,
+					"id": 229,
 					"name": "customErrorMessages",
 					"variant": "declaration",
 					"kind": 1024,
@@ -736,7 +1014,7 @@
 					"type": {
 						"type": "reflection",
 						"declaration": {
-							"id": 204,
+							"id": 230,
 							"name": "__type",
 							"variant": "declaration",
 							"kind": 65536,
@@ -750,7 +1028,7 @@
 							],
 							"indexSignatures": [
 								{
-									"id": 205,
+									"id": 231,
 									"name": "__index",
 									"variant": "signature",
 									"kind": 8192,
@@ -764,7 +1042,7 @@
 									],
 									"parameters": [
 										{
-											"id": 206,
+											"id": 232,
 											"name": "key",
 											"variant": "param",
 											"kind": 32768,
@@ -789,11 +1067,11 @@
 				{
 					"title": "Properties",
 					"children": [
-						196,
-						197,
-						201,
-						202,
-						203
+						222,
+						223,
+						227,
+						228,
+						229
 					]
 				}
 			],
@@ -804,6 +1082,283 @@
 					"character": 25
 				}
 			]
+		},
+		{
+			"id": 265,
+			"name": "FormConstructorInterface",
+			"variant": "declaration",
+			"kind": 2097152,
+			"flags": {},
+			"comment": {
+				"summary": [
+					{
+						"kind": "text",
+						"text": "Accepted values for the first argument passed to\r\n"
+					},
+					{
+						"kind": "code",
+						"text": "`new NFSFU234FormValidation(...)`"
+					},
+					{
+						"kind": "text",
+						"text": ".\r\n\r\n"
+					},
+					{
+						"kind": "code",
+						"text": "`undefined`"
+					},
+					{
+						"kind": "text",
+						"text": "\r\n  Automatically resolves "
+					},
+					{
+						"kind": "code",
+						"text": "`#jsForm`"
+					},
+					{
+						"kind": "text",
+						"text": ", then the first "
+					},
+					{
+						"kind": "code",
+						"text": "`<form>`"
+					},
+					{
+						"kind": "text",
+						"text": ".\r\n\r\n"
+					},
+					{
+						"kind": "code",
+						"text": "`null`"
+					},
+					{
+						"kind": "text",
+						"text": "\r\n  Disables automatic form resolution and creates a utility-only\r\n  instance with no associated form.\r\n\r\n"
+					},
+					{
+						"kind": "code",
+						"text": "`string`"
+					},
+					{
+						"kind": "text",
+						"text": "\r\n  Treated as the ID of a form element.\r\n\r\n"
+					},
+					{
+						"kind": "code",
+						"text": "`HTMLFormElement | HTMLDivElement`"
+					},
+					{
+						"kind": "text",
+						"text": "\r\n  Uses the supplied element directly.\r\n\r\n"
+					},
+					{
+						"kind": "code",
+						"text": "`{ form, customErrorMessages }`"
+					},
+					{
+						"kind": "text",
+						"text": "\r\n  Allows passing both the target form and instance-specific\r\n  custom validation messages."
+					}
+				]
+			},
+			"sources": [
+				{
+					"fileName": "interfaces/FormConstructorInterface.ts",
+					"line": 26,
+					"character": 5
+				}
+			],
+			"type": {
+				"type": "union",
+				"types": [
+					{
+						"type": "literal",
+						"value": null
+					},
+					{
+						"type": "intrinsic",
+						"name": "string"
+					},
+					{
+						"type": "reference",
+						"target": {
+							"sourceFileName": "node_modules/typescript/lib/lib.dom.d.ts",
+							"qualifiedName": "HTMLFormElement"
+						},
+						"name": "HTMLFormElement",
+						"package": "typescript"
+					},
+					{
+						"type": "reference",
+						"target": {
+							"sourceFileName": "node_modules/typescript/lib/lib.dom.d.ts",
+							"qualifiedName": "HTMLDivElement"
+						},
+						"name": "HTMLDivElement",
+						"package": "typescript"
+					},
+					{
+						"type": "reflection",
+						"declaration": {
+							"id": 266,
+							"name": "__type",
+							"variant": "declaration",
+							"kind": 65536,
+							"flags": {},
+							"children": [
+								{
+									"id": 267,
+									"name": "form",
+									"variant": "declaration",
+									"kind": 1024,
+									"flags": {
+										"isOptional": true
+									},
+									"sources": [
+										{
+											"fileName": "interfaces/FormConstructorInterface.ts",
+											"line": 32,
+											"character": 10
+										}
+									],
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "string"
+											},
+											{
+												"type": "reference",
+												"target": {
+													"sourceFileName": "node_modules/typescript/lib/lib.dom.d.ts",
+													"qualifiedName": "HTMLFormElement"
+												},
+												"name": "HTMLFormElement",
+												"package": "typescript"
+											},
+											{
+												"type": "reference",
+												"target": {
+													"sourceFileName": "node_modules/typescript/lib/lib.dom.d.ts",
+													"qualifiedName": "HTMLDivElement"
+												},
+												"name": "HTMLDivElement",
+												"package": "typescript"
+											}
+										]
+									}
+								},
+								{
+									"id": 268,
+									"name": "customErrorMessages",
+									"variant": "declaration",
+									"kind": 1024,
+									"flags": {
+										"isOptional": true
+									},
+									"sources": [
+										{
+											"fileName": "interfaces/FormConstructorInterface.ts",
+											"line": 33,
+											"character": 10
+										}
+									],
+									"type": {
+										"type": "reflection",
+										"declaration": {
+											"id": 269,
+											"name": "__type",
+											"variant": "declaration",
+											"kind": 65536,
+											"flags": {},
+											"sources": [
+												{
+													"fileName": "interfaces/FormConstructorInterface.ts",
+													"line": 33,
+													"character": 32
+												}
+											],
+											"indexSignatures": [
+												{
+													"id": 270,
+													"name": "__index",
+													"variant": "signature",
+													"kind": 8192,
+													"flags": {},
+													"sources": [
+														{
+															"fileName": "interfaces/FormConstructorInterface.ts",
+															"line": 33,
+															"character": 34
+														}
+													],
+													"parameters": [
+														{
+															"id": 271,
+															"name": "key",
+															"variant": "param",
+															"kind": 32768,
+															"flags": {},
+															"type": {
+																"type": "intrinsic",
+																"name": "string"
+															}
+														}
+													],
+													"type": {
+														"type": "intrinsic",
+														"name": "string"
+													}
+												}
+											]
+										}
+									}
+								},
+								{
+									"id": 272,
+									"name": "ajaxOptions",
+									"variant": "declaration",
+									"kind": 1024,
+									"flags": {
+										"isOptional": true
+									},
+									"sources": [
+										{
+											"fileName": "interfaces/FormConstructorInterface.ts",
+											"line": 34,
+											"character": 10
+										}
+									],
+									"type": {
+										"type": "reference",
+										"target": 256,
+										"name": "AJAXOptionsInterface",
+										"package": "@nfsfu234/form-validation"
+									}
+								}
+							],
+							"groups": [
+								{
+									"title": "Properties",
+									"children": [
+										267,
+										268,
+										272
+									]
+								}
+							],
+							"sources": [
+								{
+									"fileName": "interfaces/FormConstructorInterface.ts",
+									"line": 31,
+									"character": 6
+								}
+							]
+						}
+					}
+				]
+			}
 		},
 		{
 			"id": 1,
@@ -839,7 +1394,7 @@
 			},
 			"children": [
 				{
-					"id": 12,
+					"id": 15,
 					"name": "form",
 					"variant": "declaration",
 					"kind": 1024,
@@ -889,7 +1444,7 @@
 					"sources": [
 						{
 							"fileName": "nfsfu234FormValidation.ts",
-							"line": 63,
+							"line": 65,
 							"character": 11
 						}
 					],
@@ -922,7 +1477,7 @@
 					}
 				},
 				{
-					"id": 13,
+					"id": 17,
 					"name": "customErrorMessages",
 					"variant": "declaration",
 					"kind": 1024,
@@ -940,14 +1495,14 @@
 					"sources": [
 						{
 							"fileName": "nfsfu234FormValidation.ts",
-							"line": 70,
+							"line": 74,
 							"character": 11
 						}
 					],
 					"type": {
 						"type": "reflection",
 						"declaration": {
-							"id": 14,
+							"id": 18,
 							"name": "__type",
 							"variant": "declaration",
 							"kind": 65536,
@@ -955,13 +1510,13 @@
 							"sources": [
 								{
 									"fileName": "nfsfu234FormValidation.ts",
-									"line": 70,
+									"line": 74,
 									"character": 32
 								}
 							],
 							"indexSignatures": [
 								{
-									"id": 15,
+									"id": 19,
 									"name": "__index",
 									"variant": "signature",
 									"kind": 8192,
@@ -969,13 +1524,13 @@
 									"sources": [
 										{
 											"fileName": "nfsfu234FormValidation.ts",
-											"line": 70,
+											"line": 74,
 											"character": 34
 										}
 									],
 									"parameters": [
 										{
-											"id": 16,
+											"id": 20,
 											"name": "key",
 											"variant": "param",
 											"kind": 32768,
@@ -997,7 +1552,7 @@
 					"defaultValue": "{}"
 				},
 				{
-					"id": 7,
+					"id": 10,
 					"name": "constructor",
 					"variant": "declaration",
 					"kind": 512,
@@ -1005,97 +1560,61 @@
 					"sources": [
 						{
 							"fileName": "nfsfu234FormValidation.ts",
-							"line": 78,
+							"line": 99,
 							"character": 4
 						}
 					],
 					"signatures": [
 						{
-							"id": 8,
+							"id": 11,
 							"name": "new NFSFU234FormValidation",
 							"variant": "signature",
 							"kind": 16384,
 							"flags": {},
+							"comment": {
+								"summary": [
+									{
+										"kind": "text",
+										"text": "Creates a new validator instance.\n\nThe constructor accepts either:\n\n- nothing (automatic form detection)\n- null (utility-only instance)\n- a form id\n- a form element\n- a configuration object\n\nExisting two-parameter initialization is still supported:\n\nnew NFSFU234FormValidation(formDetails, ajaxOptions)\n\nor\n\nnew NFSFU234FormValidation({\n    form,\n    customErrorMessages,\n    ajaxOptions\n})"
+									}
+								]
+							},
 							"sources": [
 								{
 									"fileName": "nfsfu234FormValidation.ts",
-									"line": 78,
+									"line": 99,
 									"character": 4
 								}
 							],
 							"parameters": [
 								{
-									"id": 9,
+									"id": 12,
 									"name": "formDetails",
 									"variant": "param",
 									"kind": 32768,
 									"flags": {
 										"isOptional": true
 									},
-									"comment": {
-										"summary": [
-											{
-												"kind": "text",
-												"text": "The form to attach to: a CSS id string, an\nelement, or "
-											},
-											{
-												"kind": "code",
-												"text": "`{ form, customErrorMessages }`"
-											},
-											{
-												"kind": "text",
-												"text": ". Falls back to "
-											},
-											{
-												"kind": "code",
-												"text": "`#jsForm`"
-											},
-											{
-												"kind": "text",
-												"text": ",\nthen the first "
-											},
-											{
-												"kind": "code",
-												"text": "`<form>`"
-											},
-											{
-												"kind": "text",
-												"text": " on the page, if omitted."
-											}
-										]
-									},
 									"type": {
-										"type": "intrinsic",
-										"name": "any"
+										"type": "reference",
+										"target": 265,
+										"name": "FormConstructorInterface",
+										"package": "@nfsfu234/form-validation"
 									}
 								},
 								{
-									"id": 10,
-									"name": "AJAXOptions",
+									"id": 13,
+									"name": "ajaxOptions",
 									"variant": "param",
 									"kind": 32768,
 									"flags": {
 										"isOptional": true
 									},
-									"comment": {
-										"summary": [
-											{
-												"kind": "text",
-												"text": "Default AJAX request options used by "
-											},
-											{
-												"kind": "code",
-												"text": "`.submit()`"
-											},
-											{
-												"kind": "text",
-												"text": "."
-											}
-										]
-									},
 									"type": {
-										"type": "intrinsic",
-										"name": "any"
+										"type": "reference",
+										"target": 256,
+										"name": "AJAXOptionsInterface",
+										"package": "@nfsfu234/form-validation"
 									}
 								}
 							],
@@ -1103,7 +1622,7 @@
 								"type": "reference",
 								"target": 1,
 								"name": "NFSFU234FormValidation",
-								"package": "nfsfu234-form-validation"
+								"package": "@nfsfu234/form-validation"
 							}
 						}
 					]
@@ -1120,7 +1639,7 @@
 					"sources": [
 						{
 							"fileName": "nfsfu234FormValidation.ts",
-							"line": 129,
+							"line": 350,
 							"character": 18
 						}
 					],
@@ -1142,7 +1661,7 @@
 							"sources": [
 								{
 									"fileName": "nfsfu234FormValidation.ts",
-									"line": 129,
+									"line": 350,
 									"character": 18
 								}
 							],
@@ -1165,9 +1684,9 @@
 										"type": "array",
 										"elementType": {
 											"type": "reference",
-											"target": 195,
+											"target": 221,
 											"name": "FormConfigInterface",
-											"package": "nfsfu234-form-validation",
+											"package": "@nfsfu234/form-validation",
 											"qualifiedName": "default"
 										}
 									}
@@ -1192,7 +1711,7 @@
 					"sources": [
 						{
 							"fileName": "nfsfu234FormValidation.ts",
-							"line": 140,
+							"line": 361,
 							"character": 18
 						}
 					],
@@ -1233,7 +1752,7 @@
 							"sources": [
 								{
 									"fileName": "nfsfu234FormValidation.ts",
-									"line": 140,
+									"line": 361,
 									"character": 18
 								}
 							],
@@ -1243,14 +1762,14 @@
 									"type": "reference",
 									"target": 1,
 									"name": "NFSFU234FormValidation",
-									"package": "nfsfu234-form-validation"
+									"package": "@nfsfu234/form-validation"
 								}
 							}
 						}
 					]
 				},
 				{
-					"id": 32,
+					"id": 61,
 					"name": "submit",
 					"variant": "declaration",
 					"kind": 2048,
@@ -1260,13 +1779,13 @@
 					"sources": [
 						{
 							"fileName": "nfsfu234FormValidation.ts",
-							"line": 208,
+							"line": 469,
 							"character": 17
 						}
 					],
 					"signatures": [
 						{
-							"id": 33,
+							"id": 62,
 							"name": "submit",
 							"variant": "signature",
 							"kind": 4096,
@@ -1275,15 +1794,15 @@
 								"summary": [
 									{
 										"kind": "text",
-										"text": "Validates the whole form (every input, textarea, select, radio,\ncheckbox, and file field), then - if validation passes and AJAX is\nconfigured - submits it and resolves once the request completes.\nAlways async; always returns a "
+										"text": "Validates the whole form (every input, textarea, select, radio,\ncheckbox, and file field), then—if validation succeeds and AJAX is\nenabled—submits the form using either the supplied AJAX options or\nthe instance's default AJAX configuration.\n\nThe method first resolves the target form from the supplied\n"
 									},
 									{
 										"kind": "code",
-										"text": "`Promise`"
+										"text": "`userOptions`"
 									},
 									{
 										"kind": "text",
-										"text": "."
+										"text": " (or falls back to the form attached to this instance),\nvalidates it, and finally submits it if appropriate.\n\nValidation-only usage is also supported. When AJAX is not enabled,\nthe method simply resolves with the validation result."
 									}
 								],
 								"blockTags": [
@@ -1292,23 +1811,7 @@
 										"content": [
 											{
 												"kind": "text",
-												"text": "A "
-											},
-											{
-												"kind": "code",
-												"text": "`Promise`"
-											},
-											{
-												"kind": "text",
-												"text": " resolving to "
-											},
-											{
-												"kind": "code",
-												"text": "`{ message, type, data }`"
-											},
-											{
-												"kind": "text",
-												"text": " on validation-only outcomes, or the raw AJAX response on a successful AJAX submission."
+												"text": "A Promise resolving to an ErrorMessageInterface when no AJAX\nsubmission occurs, or the AJAX response when submitted."
 											}
 										]
 									}
@@ -1317,13 +1820,13 @@
 							"sources": [
 								{
 									"fileName": "nfsfu234FormValidation.ts",
-									"line": 208,
+									"line": 469,
 									"character": 17
 								}
 							],
 							"parameters": [
 								{
-									"id": 34,
+									"id": 63,
 									"name": "userOptions",
 									"variant": "param",
 									"kind": 32768,
@@ -1334,175 +1837,19 @@
 										"summary": [
 											{
 												"kind": "text",
-												"text": "Overrides the form/customErrorMessages set at construction."
+												"text": "Overrides the form and custom error messages\nconfigured on this instance."
 											}
 										]
 									},
 									"type": {
-										"type": "union",
-										"types": [
-											{
-												"type": "intrinsic",
-												"name": "string"
-											},
-											{
-												"type": "reference",
-												"target": {
-													"sourceFileName": "node_modules/typescript/lib/lib.dom.d.ts",
-													"qualifiedName": "HTMLFormElement"
-												},
-												"name": "HTMLFormElement",
-												"package": "typescript"
-											},
-											{
-												"type": "reference",
-												"target": {
-													"sourceFileName": "node_modules/typescript/lib/lib.dom.d.ts",
-													"qualifiedName": "HTMLDivElement"
-												},
-												"name": "HTMLDivElement",
-												"package": "typescript"
-											},
-											{
-												"type": "reflection",
-												"declaration": {
-													"id": 35,
-													"name": "__type",
-													"variant": "declaration",
-													"kind": 65536,
-													"flags": {},
-													"children": [
-														{
-															"id": 36,
-															"name": "form",
-															"variant": "declaration",
-															"kind": 1024,
-															"flags": {},
-															"sources": [
-																{
-																	"fileName": "nfsfu234FormValidation.ts",
-																	"line": 209,
-																	"character": 68
-																}
-															],
-															"type": {
-																"type": "union",
-																"types": [
-																	{
-																		"type": "intrinsic",
-																		"name": "string"
-																	},
-																	{
-																		"type": "reference",
-																		"target": {
-																			"sourceFileName": "node_modules/typescript/lib/lib.dom.d.ts",
-																			"qualifiedName": "HTMLFormElement"
-																		},
-																		"name": "HTMLFormElement",
-																		"package": "typescript"
-																	},
-																	{
-																		"type": "reference",
-																		"target": {
-																			"sourceFileName": "node_modules/typescript/lib/lib.dom.d.ts",
-																			"qualifiedName": "HTMLDivElement"
-																		},
-																		"name": "HTMLDivElement",
-																		"package": "typescript"
-																	}
-																]
-															}
-														},
-														{
-															"id": 37,
-															"name": "customErrorMessages",
-															"variant": "declaration",
-															"kind": 1024,
-															"flags": {
-																"isOptional": true
-															},
-															"sources": [
-																{
-																	"fileName": "nfsfu234FormValidation.ts",
-																	"line": 209,
-																	"character": 117
-																}
-															],
-															"type": {
-																"type": "reflection",
-																"declaration": {
-																	"id": 38,
-																	"name": "__type",
-																	"variant": "declaration",
-																	"kind": 65536,
-																	"flags": {},
-																	"sources": [
-																		{
-																			"fileName": "nfsfu234FormValidation.ts",
-																			"line": 209,
-																			"character": 139
-																		}
-																	],
-																	"indexSignatures": [
-																		{
-																			"id": 39,
-																			"name": "__index",
-																			"variant": "signature",
-																			"kind": 8192,
-																			"flags": {},
-																			"sources": [
-																				{
-																					"fileName": "nfsfu234FormValidation.ts",
-																					"line": 209,
-																					"character": 141
-																				}
-																			],
-																			"parameters": [
-																				{
-																					"id": 40,
-																					"name": "key",
-																					"variant": "param",
-																					"kind": 32768,
-																					"flags": {},
-																					"type": {
-																						"type": "intrinsic",
-																						"name": "string"
-																					}
-																				}
-																			],
-																			"type": {
-																				"type": "intrinsic",
-																				"name": "string"
-																			}
-																		}
-																	]
-																}
-															}
-														}
-													],
-													"groups": [
-														{
-															"title": "Properties",
-															"children": [
-																36,
-																37
-															]
-														}
-													],
-													"sources": [
-														{
-															"fileName": "nfsfu234FormValidation.ts",
-															"line": 209,
-															"character": 66
-														}
-													]
-												}
-											}
-										]
+										"type": "reference",
+										"target": 265,
+										"name": "FormConstructorInterface",
+										"package": "@nfsfu234/form-validation"
 									}
 								},
 								{
-									"id": 41,
+									"id": 64,
 									"name": "callback",
 									"variant": "param",
 									"kind": 32768,
@@ -1513,13 +1860,62 @@
 										"summary": [
 											{
 												"kind": "text",
-												"text": "Optional callback invoked with the result instead of/alongside the returned Promise."
+												"text": "Optional callback invoked with the validation result."
 											}
 										]
 									},
 									"type": {
-										"type": "intrinsic",
-										"name": "any"
+										"type": "reflection",
+										"declaration": {
+											"id": 65,
+											"name": "__type",
+											"variant": "declaration",
+											"kind": 65536,
+											"flags": {},
+											"sources": [
+												{
+													"fileName": "nfsfu234FormValidation.ts",
+													"line": 471,
+													"character": 19
+												}
+											],
+											"signatures": [
+												{
+													"id": 66,
+													"name": "__type",
+													"variant": "signature",
+													"kind": 4096,
+													"flags": {},
+													"sources": [
+														{
+															"fileName": "nfsfu234FormValidation.ts",
+															"line": 471,
+															"character": 19
+														}
+													],
+													"parameters": [
+														{
+															"id": 67,
+															"name": "result",
+															"variant": "param",
+															"kind": 32768,
+															"flags": {},
+															"type": {
+																"type": "reference",
+																"target": 216,
+																"name": "ErrorMessageInterface",
+																"package": "@nfsfu234/form-validation",
+																"qualifiedName": "default"
+															}
+														}
+													],
+													"type": {
+														"type": "intrinsic",
+														"name": "void"
+													}
+												}
+											]
+										}
 									}
 								}
 							],
@@ -1542,7 +1938,7 @@
 					]
 				},
 				{
-					"id": 42,
+					"id": 68,
 					"name": "validate",
 					"variant": "declaration",
 					"kind": 2048,
@@ -1552,13 +1948,13 @@
 					"sources": [
 						{
 							"fileName": "nfsfu234FormValidation.ts",
-							"line": 341,
+							"line": 576,
 							"character": 17
 						}
 					],
 					"signatures": [
 						{
-							"id": 43,
+							"id": 69,
 							"name": "validate",
 							"variant": "signature",
 							"kind": 4096,
@@ -1567,15 +1963,7 @@
 								"summary": [
 									{
 										"kind": "text",
-										"text": "Validates the whole form (every input, textarea, select, radio,\ncheckbox, and file field) without submitting it. Always async;\nalways returns a "
-									},
-									{
-										"kind": "code",
-										"text": "`Promise`"
-									},
-									{
-										"kind": "text",
-										"text": "."
+										"text": "Validates the whole form (every input, textarea, select, radio,\ncheckbox, and file field) without submitting it."
 									}
 								],
 								"blockTags": [
@@ -1584,23 +1972,7 @@
 										"content": [
 											{
 												"kind": "text",
-												"text": "A "
-											},
-											{
-												"kind": "code",
-												"text": "`Promise`"
-											},
-											{
-												"kind": "text",
-												"text": " resolving to "
-											},
-											{
-												"kind": "code",
-												"text": "`{ message, type, data }`"
-											},
-											{
-												"kind": "text",
-												"text": " describing the validation outcome."
+												"text": "A Promise resolving to the validation result."
 											}
 										]
 									}
@@ -1609,13 +1981,13 @@
 							"sources": [
 								{
 									"fileName": "nfsfu234FormValidation.ts",
-									"line": 341,
+									"line": 576,
 									"character": 17
 								}
 							],
 							"parameters": [
 								{
-									"id": 44,
+									"id": 70,
 									"name": "userOptions",
 									"variant": "param",
 									"kind": 32768,
@@ -1626,132 +1998,19 @@
 										"summary": [
 											{
 												"kind": "text",
-												"text": "Overrides the form/customErrorMessages set at construction."
+												"text": "Overrides the form/customErrorMessages configured\non this instance."
 											}
 										]
 									},
 									"type": {
-										"type": "union",
-										"types": [
-											{
-												"type": "intrinsic",
-												"name": "string"
-											},
-											{
-												"type": "reference",
-												"target": {
-													"sourceFileName": "node_modules/typescript/lib/lib.dom.d.ts",
-													"qualifiedName": "HTMLFormElement"
-												},
-												"name": "HTMLFormElement",
-												"package": "typescript"
-											},
-											{
-												"type": "reference",
-												"target": {
-													"sourceFileName": "node_modules/typescript/lib/lib.dom.d.ts",
-													"qualifiedName": "HTMLDivElement"
-												},
-												"name": "HTMLDivElement",
-												"package": "typescript"
-											},
-											{
-												"type": "reflection",
-												"declaration": {
-													"id": 45,
-													"name": "__type",
-													"variant": "declaration",
-													"kind": 65536,
-													"flags": {},
-													"children": [
-														{
-															"id": 46,
-															"name": "form",
-															"variant": "declaration",
-															"kind": 1024,
-															"flags": {},
-															"sources": [
-																{
-																	"fileName": "nfsfu234FormValidation.ts",
-																	"line": 342,
-																	"character": 68
-																}
-															],
-															"type": {
-																"type": "union",
-																"types": [
-																	{
-																		"type": "intrinsic",
-																		"name": "string"
-																	},
-																	{
-																		"type": "reference",
-																		"target": {
-																			"sourceFileName": "node_modules/typescript/lib/lib.dom.d.ts",
-																			"qualifiedName": "HTMLFormElement"
-																		},
-																		"name": "HTMLFormElement",
-																		"package": "typescript"
-																	},
-																	{
-																		"type": "reference",
-																		"target": {
-																			"sourceFileName": "node_modules/typescript/lib/lib.dom.d.ts",
-																			"qualifiedName": "HTMLDivElement"
-																		},
-																		"name": "HTMLDivElement",
-																		"package": "typescript"
-																	}
-																]
-															}
-														},
-														{
-															"id": 47,
-															"name": "customErrorMessages",
-															"variant": "declaration",
-															"kind": 1024,
-															"flags": {
-																"isOptional": true
-															},
-															"sources": [
-																{
-																	"fileName": "nfsfu234FormValidation.ts",
-																	"line": 342,
-																	"character": 117
-																}
-															],
-															"type": {
-																"type": "array",
-																"elementType": {
-																	"type": "intrinsic",
-																	"name": "any"
-																}
-															}
-														}
-													],
-													"groups": [
-														{
-															"title": "Properties",
-															"children": [
-																46,
-																47
-															]
-														}
-													],
-													"sources": [
-														{
-															"fileName": "nfsfu234FormValidation.ts",
-															"line": 342,
-															"character": 66
-														}
-													]
-												}
-											}
-										]
+										"type": "reference",
+										"target": 265,
+										"name": "FormConstructorInterface",
+										"package": "@nfsfu234/form-validation"
 									}
 								},
 								{
-									"id": 48,
+									"id": 71,
 									"name": "callback",
 									"variant": "param",
 									"kind": 32768,
@@ -1762,13 +2021,172 @@
 										"summary": [
 											{
 												"kind": "text",
-												"text": "Optional callback invoked with the result instead of/alongside the returned Promise."
+												"text": "Optional callback invoked with the validation result."
 											}
 										]
 									},
 									"type": {
-										"type": "intrinsic",
-										"name": "any"
+										"type": "reflection",
+										"declaration": {
+											"id": 72,
+											"name": "__type",
+											"variant": "declaration",
+											"kind": 65536,
+											"flags": {},
+											"sources": [
+												{
+													"fileName": "nfsfu234FormValidation.ts",
+													"line": 578,
+													"character": 19
+												}
+											],
+											"signatures": [
+												{
+													"id": 73,
+													"name": "__type",
+													"variant": "signature",
+													"kind": 4096,
+													"flags": {},
+													"sources": [
+														{
+															"fileName": "nfsfu234FormValidation.ts",
+															"line": 578,
+															"character": 19
+														}
+													],
+													"parameters": [
+														{
+															"id": 74,
+															"name": "result",
+															"variant": "param",
+															"kind": 32768,
+															"flags": {},
+															"type": {
+																"type": "reference",
+																"target": 216,
+																"name": "ErrorMessageInterface",
+																"package": "@nfsfu234/form-validation",
+																"qualifiedName": "default"
+															}
+														}
+													],
+													"type": {
+														"type": "intrinsic",
+														"name": "void"
+													}
+												}
+											]
+										}
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"target": {
+									"sourceFileName": "node_modules/typescript/lib/lib.es5.d.ts",
+									"qualifiedName": "Promise"
+								},
+								"typeArguments": [
+									{
+										"type": "union",
+										"types": [
+											{
+												"type": "literal",
+												"value": false
+											},
+											{
+												"type": "reference",
+												"target": 216,
+												"name": "ErrorMessageInterface",
+												"package": "@nfsfu234/form-validation",
+												"qualifiedName": "default"
+											}
+										]
+									}
+								],
+								"name": "Promise",
+								"package": "typescript"
+							}
+						}
+					]
+				},
+				{
+					"id": 7,
+					"name": "ajax",
+					"variant": "declaration",
+					"kind": 2048,
+					"flags": {
+						"isPublic": true,
+						"isStatic": true
+					},
+					"sources": [
+						{
+							"fileName": "nfsfu234FormValidation.ts",
+							"line": 622,
+							"character": 18
+						}
+					],
+					"signatures": [
+						{
+							"id": 8,
+							"name": "ajax",
+							"variant": "signature",
+							"kind": 4096,
+							"flags": {},
+							"comment": {
+								"summary": [
+									{
+										"kind": "text",
+										"text": "Sends an AJAX request using the supplied request configuration.\nSends an AJAX request using the supplied request configuration. Static\n- does not require a form or an instance. Use this when you only need\nthe AJAX helper and don't want to construct the class just to call it\n(e.g. "
+									},
+									{
+										"kind": "code",
+										"text": "`NFSFU234FormValidation.ajax({...})`"
+									},
+									{
+										"kind": "text",
+										"text": " in a React component with\nno form to attach to)."
+									}
+								],
+								"blockTags": [
+									{
+										"tag": "@returns",
+										"content": [
+											{
+												"kind": "text",
+												"text": "A Promise that resolves with the server response."
+											}
+										]
+									}
+								]
+							},
+							"sources": [
+								{
+									"fileName": "nfsfu234FormValidation.ts",
+									"line": 622,
+									"character": 18
+								}
+							],
+							"parameters": [
+								{
+									"id": 9,
+									"name": "AJAXOptions",
+									"variant": "param",
+									"kind": 32768,
+									"flags": {},
+									"comment": {
+										"summary": [
+											{
+												"kind": "text",
+												"text": "The request configuration, including the URL,\nHTTP method, headers, and request body."
+											}
+										]
+									},
+									"type": {
+										"type": "reference",
+										"target": 256,
+										"name": "AJAXOptionsInterface",
+										"package": "@nfsfu234/form-validation"
 									}
 								}
 							],
@@ -1791,7 +2209,7 @@
 					]
 				},
 				{
-					"id": 49,
+					"id": 75,
 					"name": "ajax",
 					"variant": "declaration",
 					"kind": 2048,
@@ -1801,13 +2219,13 @@
 					"sources": [
 						{
 							"fileName": "nfsfu234FormValidation.ts",
-							"line": 436,
+							"line": 637,
 							"character": 11
 						}
 					],
 					"signatures": [
 						{
-							"id": 50,
+							"id": 76,
 							"name": "ajax",
 							"variant": "signature",
 							"kind": 4096,
@@ -1816,13 +2234,23 @@
 								"summary": [
 									{
 										"kind": "text",
-										"text": "Sends an AJAX request using the supplied request configuration.\n\nThe returned Promise is also stored internally so it can later be\nretrieved with "
+										"text": "Instance version of "
+									},
+									{
+										"kind": "inline-tag",
+										"tag": "@link",
+										"text": "NFSFU234FormValidation.ajax",
+										"target": 7
+									},
+									{
+										"kind": "text",
+										"text": ". Sends an AJAX\nrequest using the supplied request configuration.\n\n The returned Promise is also stored internally so it can later be\n retrieved with "
 									},
 									{
 										"kind": "inline-tag",
 										"tag": "@link",
 										"text": "()",
-										"target": 52,
+										"target": 78,
 										"tsLinkText": "()"
 									},
 									{
@@ -1845,13 +2273,13 @@
 							"sources": [
 								{
 									"fileName": "nfsfu234FormValidation.ts",
-									"line": 436,
+									"line": 637,
 									"character": 11
 								}
 							],
 							"parameters": [
 								{
-									"id": 51,
+									"id": 77,
 									"name": "AJAXOptions",
 									"variant": "param",
 									"kind": 32768,
@@ -1860,13 +2288,15 @@
 										"summary": [
 											{
 												"kind": "text",
-												"text": "The request configuration, including the URL,\nHTTP method, headers, and request body."
+												"text": "The request configuration, including the URL,\n HTTP method, headers, and request body."
 											}
 										]
 									},
 									"type": {
-										"type": "intrinsic",
-										"name": "any"
+										"type": "reference",
+										"target": 256,
+										"name": "AJAXOptionsInterface",
+										"package": "@nfsfu234/form-validation"
 									}
 								}
 							],
@@ -1889,7 +2319,7 @@
 					]
 				},
 				{
-					"id": 52,
+					"id": 78,
 					"name": "getAJAXResponse",
 					"variant": "declaration",
 					"kind": 2048,
@@ -1897,13 +2327,13 @@
 					"sources": [
 						{
 							"fileName": "nfsfu234FormValidation.ts",
-							"line": 450,
+							"line": 649,
 							"character": 4
 						}
 					],
 					"signatures": [
 						{
-							"id": 53,
+							"id": 79,
 							"name": "getAJAXResponse",
 							"variant": "signature",
 							"kind": 4096,
@@ -1918,7 +2348,7 @@
 										"kind": "inline-tag",
 										"tag": "@link",
 										"text": "()",
-										"target": 49,
+										"target": 7,
 										"tsLinkText": "()"
 									},
 									{
@@ -1929,7 +2359,7 @@
 										"kind": "inline-tag",
 										"tag": "@link",
 										"text": "()",
-										"target": 32,
+										"target": 61,
 										"tsLinkText": "()"
 									},
 									{
@@ -1960,7 +2390,7 @@
 							"sources": [
 								{
 									"fileName": "nfsfu234FormValidation.ts",
-									"line": 450,
+									"line": 649,
 									"character": 4
 								}
 							],
@@ -1992,7 +2422,7 @@
 					]
 				},
 				{
-					"id": 54,
+					"id": 80,
 					"name": "getFormDetails",
 					"variant": "declaration",
 					"kind": 2048,
@@ -2000,13 +2430,13 @@
 					"sources": [
 						{
 							"fileName": "nfsfu234FormValidation.ts",
-							"line": 467,
+							"line": 666,
 							"character": 4
 						}
 					],
 					"signatures": [
 						{
-							"id": 55,
+							"id": 81,
 							"name": "getFormDetails",
 							"variant": "signature",
 							"kind": 4096,
@@ -2057,13 +2487,13 @@
 							"sources": [
 								{
 									"fileName": "nfsfu234FormValidation.ts",
-									"line": 467,
+									"line": 666,
 									"character": 4
 								}
 							],
 							"parameters": [
 								{
-									"id": 56,
+									"id": 82,
 									"name": "form",
 									"variant": "param",
 									"kind": 32768,
@@ -2117,14 +2547,14 @@
 								"type": "union",
 								"types": [
 									{
-										"type": "intrinsic",
-										"name": "boolean"
+										"type": "literal",
+										"value": false
 									},
 									{
 										"type": "reference",
-										"target": 190,
+										"target": 216,
 										"name": "ErrorMessageInterface",
-										"package": "nfsfu234-form-validation",
+										"package": "@nfsfu234/form-validation",
 										"qualifiedName": "default"
 									},
 									{
@@ -2161,7 +2591,7 @@
 					]
 				},
 				{
-					"id": 57,
+					"id": 83,
 					"name": "loading",
 					"variant": "declaration",
 					"kind": 2048,
@@ -2169,13 +2599,13 @@
 					"sources": [
 						{
 							"fileName": "nfsfu234FormValidation.ts",
-							"line": 491,
+							"line": 690,
 							"character": 4
 						}
 					],
 					"signatures": [
 						{
-							"id": 58,
+							"id": 84,
 							"name": "loading",
 							"variant": "signature",
 							"kind": 4096,
@@ -2230,13 +2660,13 @@
 							"sources": [
 								{
 									"fileName": "nfsfu234FormValidation.ts",
-									"line": 491,
+									"line": 690,
 									"character": 4
 								}
 							],
 							"parameters": [
 								{
-									"id": 59,
+									"id": 85,
 									"name": "message",
 									"variant": "param",
 									"kind": 32768,
@@ -2255,7 +2685,7 @@
 									}
 								},
 								{
-									"id": 60,
+									"id": 86,
 									"name": "submitBtn",
 									"variant": "param",
 									"kind": 32768,
@@ -2293,7 +2723,7 @@
 									"defaultValue": "null"
 								},
 								{
-									"id": 61,
+									"id": 87,
 									"name": "form",
 									"variant": "param",
 									"kind": 32768,
@@ -2352,9 +2782,9 @@
 									},
 									{
 										"type": "reference",
-										"target": 190,
+										"target": 216,
 										"name": "ErrorMessageInterface",
-										"package": "nfsfu234-form-validation",
+										"package": "@nfsfu234/form-validation",
 										"qualifiedName": "default"
 									}
 								]
@@ -2363,7 +2793,7 @@
 					]
 				},
 				{
-					"id": 62,
+					"id": 88,
 					"name": "displayError",
 					"variant": "declaration",
 					"kind": 2048,
@@ -2371,13 +2801,13 @@
 					"sources": [
 						{
 							"fileName": "nfsfu234FormValidation.ts",
-							"line": 508,
+							"line": 707,
 							"character": 4
 						}
 					],
 					"signatures": [
 						{
-							"id": 63,
+							"id": 89,
 							"name": "displayError",
 							"variant": "signature",
 							"kind": 4096,
@@ -2393,13 +2823,13 @@
 							"sources": [
 								{
 									"fileName": "nfsfu234FormValidation.ts",
-									"line": 508,
+									"line": 707,
 									"character": 4
 								}
 							],
 							"parameters": [
 								{
-									"id": 64,
+									"id": 90,
 									"name": "details",
 									"variant": "param",
 									"kind": 32768,
@@ -2442,7 +2872,7 @@
 					]
 				},
 				{
-					"id": 65,
+					"id": 91,
 					"name": "isEmail",
 					"variant": "declaration",
 					"kind": 2048,
@@ -2450,13 +2880,13 @@
 					"sources": [
 						{
 							"fileName": "nfsfu234FormValidation.ts",
-							"line": 518,
+							"line": 717,
 							"character": 4
 						}
 					],
 					"signatures": [
 						{
-							"id": 66,
+							"id": 92,
 							"name": "isEmail",
 							"variant": "signature",
 							"kind": 4096,
@@ -2495,13 +2925,13 @@
 							"sources": [
 								{
 									"fileName": "nfsfu234FormValidation.ts",
-									"line": 518,
+									"line": 717,
 									"character": 4
 								}
 							],
 							"parameters": [
 								{
-									"id": 67,
+									"id": 93,
 									"name": "email",
 									"variant": "param",
 									"kind": 32768,
@@ -2528,7 +2958,7 @@
 					]
 				},
 				{
-					"id": 68,
+					"id": 94,
 					"name": "isURL",
 					"variant": "declaration",
 					"kind": 2048,
@@ -2536,13 +2966,13 @@
 					"sources": [
 						{
 							"fileName": "nfsfu234FormValidation.ts",
-							"line": 528,
+							"line": 727,
 							"character": 4
 						}
 					],
 					"signatures": [
 						{
-							"id": 69,
+							"id": 95,
 							"name": "isURL",
 							"variant": "signature",
 							"kind": 4096,
@@ -2581,13 +3011,13 @@
 							"sources": [
 								{
 									"fileName": "nfsfu234FormValidation.ts",
-									"line": 528,
+									"line": 727,
 									"character": 4
 								}
 							],
 							"parameters": [
 								{
-									"id": 70,
+									"id": 96,
 									"name": "url",
 									"variant": "param",
 									"kind": 32768,
@@ -2614,7 +3044,7 @@
 					]
 				},
 				{
-					"id": 71,
+					"id": 97,
 					"name": "isNumber",
 					"variant": "declaration",
 					"kind": 2048,
@@ -2622,13 +3052,13 @@
 					"sources": [
 						{
 							"fileName": "nfsfu234FormValidation.ts",
-							"line": 538,
+							"line": 737,
 							"character": 4
 						}
 					],
 					"signatures": [
 						{
-							"id": 72,
+							"id": 98,
 							"name": "isNumber",
 							"variant": "signature",
 							"kind": 4096,
@@ -2659,13 +3089,13 @@
 							"sources": [
 								{
 									"fileName": "nfsfu234FormValidation.ts",
-									"line": 538,
+									"line": 737,
 									"character": 4
 								}
 							],
 							"parameters": [
 								{
-									"id": 73,
+									"id": 99,
 									"name": "number",
 									"variant": "param",
 									"kind": 32768,
@@ -2701,7 +3131,7 @@
 					]
 				},
 				{
-					"id": 74,
+					"id": 100,
 					"name": "isZipCode",
 					"variant": "declaration",
 					"kind": 2048,
@@ -2709,13 +3139,13 @@
 					"sources": [
 						{
 							"fileName": "nfsfu234FormValidation.ts",
-							"line": 548,
+							"line": 747,
 							"character": 4
 						}
 					],
 					"signatures": [
 						{
-							"id": 75,
+							"id": 101,
 							"name": "isZipCode",
 							"variant": "signature",
 							"kind": 4096,
@@ -2754,13 +3184,13 @@
 							"sources": [
 								{
 									"fileName": "nfsfu234FormValidation.ts",
-									"line": 548,
+									"line": 747,
 									"character": 4
 								}
 							],
 							"parameters": [
 								{
-									"id": 76,
+									"id": 102,
 									"name": "zipCode",
 									"variant": "param",
 									"kind": 32768,
@@ -2796,7 +3226,7 @@
 					]
 				},
 				{
-					"id": 77,
+					"id": 103,
 					"name": "isZip",
 					"variant": "declaration",
 					"kind": 2048,
@@ -2804,13 +3234,13 @@
 					"sources": [
 						{
 							"fileName": "nfsfu234FormValidation.ts",
-							"line": 554,
+							"line": 753,
 							"character": 4
 						}
 					],
 					"signatures": [
 						{
-							"id": 78,
+							"id": 104,
 							"name": "isZip",
 							"variant": "signature",
 							"kind": 4096,
@@ -2825,7 +3255,7 @@
 										"kind": "inline-tag",
 										"tag": "@link",
 										"text": "isZipCode",
-										"target": 74
+										"target": 100
 									},
 									{
 										"kind": "text",
@@ -2836,13 +3266,13 @@
 							"sources": [
 								{
 									"fileName": "nfsfu234FormValidation.ts",
-									"line": 554,
+									"line": 753,
 									"character": 4
 								}
 							],
 							"parameters": [
 								{
-									"id": 79,
+									"id": 105,
 									"name": "zipCode",
 									"variant": "param",
 									"kind": 32768,
@@ -2870,7 +3300,7 @@
 					]
 				},
 				{
-					"id": 80,
+					"id": 106,
 					"name": "countString",
 					"variant": "declaration",
 					"kind": 2048,
@@ -2878,13 +3308,13 @@
 					"sources": [
 						{
 							"fileName": "nfsfu234FormValidation.ts",
-							"line": 564,
+							"line": 763,
 							"character": 4
 						}
 					],
 					"signatures": [
 						{
-							"id": 81,
+							"id": 107,
 							"name": "countString",
 							"variant": "signature",
 							"kind": 4096,
@@ -2911,13 +3341,13 @@
 							"sources": [
 								{
 									"fileName": "nfsfu234FormValidation.ts",
-									"line": 564,
+									"line": 763,
 									"character": 4
 								}
 							],
 							"parameters": [
 								{
-									"id": 82,
+									"id": 108,
 									"name": "string",
 									"variant": "param",
 									"kind": 32768,
@@ -2944,7 +3374,7 @@
 					]
 				},
 				{
-					"id": 83,
+					"id": 109,
 					"name": "generatePassword",
 					"variant": "declaration",
 					"kind": 2048,
@@ -2952,13 +3382,13 @@
 					"sources": [
 						{
 							"fileName": "nfsfu234FormValidation.ts",
-							"line": 575,
+							"line": 774,
 							"character": 10
 						}
 					],
 					"signatures": [
 						{
-							"id": 84,
+							"id": 110,
 							"name": "generatePassword",
 							"variant": "signature",
 							"kind": 4096,
@@ -2993,13 +3423,13 @@
 							"sources": [
 								{
 									"fileName": "nfsfu234FormValidation.ts",
-									"line": 575,
+									"line": 774,
 									"character": 10
 								}
 							],
 							"parameters": [
 								{
-									"id": 85,
+									"id": 111,
 									"name": "length",
 									"variant": "param",
 									"kind": 32768,
@@ -3020,7 +3450,7 @@
 									}
 								},
 								{
-									"id": 86,
+									"id": 112,
 									"name": "shouldHash",
 									"variant": "param",
 									"kind": 32768,
@@ -3060,7 +3490,7 @@
 					]
 				},
 				{
-					"id": 87,
+					"id": 113,
 					"name": "generateRandomPassword",
 					"variant": "declaration",
 					"kind": 2048,
@@ -3068,13 +3498,13 @@
 					"sources": [
 						{
 							"fileName": "nfsfu234FormValidation.ts",
-							"line": 581,
+							"line": 780,
 							"character": 10
 						}
 					],
 					"signatures": [
 						{
-							"id": 88,
+							"id": 114,
 							"name": "generateRandomPassword",
 							"variant": "signature",
 							"kind": 4096,
@@ -3089,7 +3519,7 @@
 										"kind": "inline-tag",
 										"tag": "@link",
 										"text": "generatePassword",
-										"target": 83
+										"target": 109
 									},
 									{
 										"kind": "text",
@@ -3100,13 +3530,13 @@
 							"sources": [
 								{
 									"fileName": "nfsfu234FormValidation.ts",
-									"line": 581,
+									"line": 780,
 									"character": 10
 								}
 							],
 							"parameters": [
 								{
-									"id": 89,
+									"id": 115,
 									"name": "length",
 									"variant": "param",
 									"kind": 32768,
@@ -3117,7 +3547,7 @@
 									}
 								},
 								{
-									"id": 90,
+									"id": 116,
 									"name": "shouldHash",
 									"variant": "param",
 									"kind": 32768,
@@ -3147,7 +3577,7 @@
 					]
 				},
 				{
-					"id": 91,
+					"id": 117,
 					"name": "passwordStrength",
 					"variant": "declaration",
 					"kind": 2048,
@@ -3155,13 +3585,13 @@
 					"sources": [
 						{
 							"fileName": "nfsfu234FormValidation.ts",
-							"line": 592,
+							"line": 791,
 							"character": 4
 						}
 					],
 					"signatures": [
 						{
-							"id": 92,
+							"id": 118,
 							"name": "passwordStrength",
 							"variant": "signature",
 							"kind": 4096,
@@ -3177,13 +3607,13 @@
 							"sources": [
 								{
 									"fileName": "nfsfu234FormValidation.ts",
-									"line": 592,
+									"line": 791,
 									"character": 4
 								}
 							],
 							"parameters": [
 								{
-									"id": 93,
+									"id": 119,
 									"name": "password",
 									"variant": "param",
 									"kind": 32768,
@@ -3204,15 +3634,15 @@
 							],
 							"type": {
 								"type": "reference",
-								"target": 226,
+								"target": 252,
 								"name": "PasswordStrengthResult",
-								"package": "nfsfu234-form-validation"
+								"package": "@nfsfu234/form-validation"
 							}
 						}
 					]
 				},
 				{
-					"id": 94,
+					"id": 120,
 					"name": "getPasswordStrength",
 					"variant": "declaration",
 					"kind": 2048,
@@ -3220,13 +3650,13 @@
 					"sources": [
 						{
 							"fileName": "nfsfu234FormValidation.ts",
-							"line": 601,
+							"line": 800,
 							"character": 4
 						}
 					],
 					"signatures": [
 						{
-							"id": 95,
+							"id": 121,
 							"name": "getPasswordStrength",
 							"variant": "signature",
 							"kind": 4096,
@@ -3241,7 +3671,7 @@
 										"kind": "inline-tag",
 										"tag": "@link",
 										"text": "passwordStrength",
-										"target": 91
+										"target": 117
 									},
 									{
 										"kind": "text",
@@ -3252,13 +3682,13 @@
 							"sources": [
 								{
 									"fileName": "nfsfu234FormValidation.ts",
-									"line": 601,
+									"line": 800,
 									"character": 4
 								}
 							],
 							"parameters": [
 								{
-									"id": 96,
+									"id": 122,
 									"name": "password",
 									"variant": "param",
 									"kind": 32768,
@@ -3279,15 +3709,15 @@
 							],
 							"type": {
 								"type": "reference",
-								"target": 226,
+								"target": 252,
 								"name": "PasswordStrengthResult",
-								"package": "nfsfu234-form-validation"
+								"package": "@nfsfu234/form-validation"
 							}
 						}
 					]
 				},
 				{
-					"id": 97,
+					"id": 123,
 					"name": "checkPassword",
 					"variant": "declaration",
 					"kind": 2048,
@@ -3295,13 +3725,13 @@
 					"sources": [
 						{
 							"fileName": "nfsfu234FormValidation.ts",
-							"line": 616,
+							"line": 815,
 							"character": 4
 						}
 					],
 					"signatures": [
 						{
-							"id": 98,
+							"id": 124,
 							"name": "checkPassword",
 							"variant": "signature",
 							"kind": 4096,
@@ -3332,13 +3762,13 @@
 							"sources": [
 								{
 									"fileName": "nfsfu234FormValidation.ts",
-									"line": 616,
+									"line": 815,
 									"character": 4
 								}
 							],
 							"parameters": [
 								{
-									"id": 99,
+									"id": 125,
 									"name": "password",
 									"variant": "param",
 									"kind": 32768,
@@ -3357,7 +3787,7 @@
 									}
 								},
 								{
-									"id": 100,
+									"id": 126,
 									"name": "minLength",
 									"variant": "param",
 									"kind": 32768,
@@ -3385,7 +3815,7 @@
 									"defaultValue": "8"
 								},
 								{
-									"id": 101,
+									"id": 127,
 									"name": "maxLength",
 									"variant": "param",
 									"kind": 32768,
@@ -3413,7 +3843,7 @@
 									"defaultValue": "20"
 								},
 								{
-									"id": 102,
+									"id": 128,
 									"name": "includeSymbolsCheck",
 									"variant": "param",
 									"kind": 32768,
@@ -3441,7 +3871,7 @@
 									"defaultValue": "false"
 								},
 								{
-									"id": 103,
+									"id": 129,
 									"name": "userSymbolRegex",
 									"variant": "param",
 									"kind": 32768,
@@ -3508,7 +3938,7 @@
 					]
 				},
 				{
-					"id": 104,
+					"id": 130,
 					"name": "togglePasswordVisibility",
 					"variant": "declaration",
 					"kind": 2048,
@@ -3516,13 +3946,13 @@
 					"sources": [
 						{
 							"fileName": "nfsfu234FormValidation.ts",
-							"line": 629,
+							"line": 828,
 							"character": 4
 						}
 					],
 					"signatures": [
 						{
-							"id": 105,
+							"id": 131,
 							"name": "togglePasswordVisibility",
 							"variant": "signature",
 							"kind": 4096,
@@ -3538,13 +3968,13 @@
 							"sources": [
 								{
 									"fileName": "nfsfu234FormValidation.ts",
-									"line": 629,
+									"line": 828,
 									"character": 4
 								}
 							],
 							"parameters": [
 								{
-									"id": 106,
+									"id": 132,
 									"name": "input",
 									"variant": "param",
 									"kind": 32768,
@@ -3568,7 +3998,7 @@
 									}
 								},
 								{
-									"id": 107,
+									"id": 133,
 									"name": "showIcon",
 									"variant": "param",
 									"kind": 32768,
@@ -3606,7 +4036,7 @@
 									"defaultValue": "null"
 								},
 								{
-									"id": 108,
+									"id": 134,
 									"name": "hideIcon",
 									"variant": "param",
 									"kind": 32768,
@@ -3652,7 +4082,7 @@
 					]
 				},
 				{
-					"id": 109,
+					"id": 135,
 					"name": "togglePasswordVisibilityAll",
 					"variant": "declaration",
 					"kind": 2048,
@@ -3660,13 +4090,13 @@
 					"sources": [
 						{
 							"fileName": "nfsfu234FormValidation.ts",
-							"line": 641,
+							"line": 840,
 							"character": 4
 						}
 					],
 					"signatures": [
 						{
-							"id": 110,
+							"id": 136,
 							"name": "togglePasswordVisibilityAll",
 							"variant": "signature",
 							"kind": 4096,
@@ -3690,13 +4120,13 @@
 							"sources": [
 								{
 									"fileName": "nfsfu234FormValidation.ts",
-									"line": 641,
+									"line": 840,
 									"character": 4
 								}
 							],
 							"parameters": [
 								{
-									"id": 111,
+									"id": 137,
 									"name": "icons",
 									"variant": "param",
 									"kind": 32768,
@@ -3712,14 +4142,14 @@
 									"type": {
 										"type": "reflection",
 										"declaration": {
-											"id": 112,
+											"id": 138,
 											"name": "__type",
 											"variant": "declaration",
 											"kind": 65536,
 											"flags": {},
 											"children": [
 												{
-													"id": 113,
+													"id": 139,
 													"name": "show",
 													"variant": "declaration",
 													"kind": 1024,
@@ -3727,7 +4157,7 @@
 													"sources": [
 														{
 															"fileName": "nfsfu234FormValidation.ts",
-															"line": 642,
+															"line": 841,
 															"character": 8
 														}
 													],
@@ -3755,7 +4185,7 @@
 													}
 												},
 												{
-													"id": 114,
+													"id": 140,
 													"name": "hide",
 													"variant": "declaration",
 													"kind": 1024,
@@ -3763,7 +4193,7 @@
 													"sources": [
 														{
 															"fileName": "nfsfu234FormValidation.ts",
-															"line": 643,
+															"line": 842,
 															"character": 8
 														}
 													],
@@ -3795,15 +4225,15 @@
 												{
 													"title": "Properties",
 													"children": [
-														113,
-														114
+														139,
+														140
 													]
 												}
 											],
 											"sources": [
 												{
 													"fileName": "nfsfu234FormValidation.ts",
-													"line": 641,
+													"line": 840,
 													"character": 39
 												}
 											]
@@ -3811,7 +4241,7 @@
 									}
 								},
 								{
-									"id": 115,
+									"id": 141,
 									"name": "uform",
 									"variant": "param",
 									"kind": 32768,
@@ -3866,7 +4296,7 @@
 									"defaultValue": "null"
 								},
 								{
-									"id": 116,
+									"id": 142,
 									"name": "toggleAll",
 									"variant": "param",
 									"kind": 32768,
@@ -3910,7 +4340,7 @@
 					]
 				},
 				{
-					"id": 117,
+					"id": 143,
 					"name": "validateInput",
 					"variant": "declaration",
 					"kind": 2048,
@@ -3918,13 +4348,13 @@
 					"sources": [
 						{
 							"fileName": "nfsfu234FormValidation.ts",
-							"line": 657,
+							"line": 856,
 							"character": 4
 						}
 					],
 					"signatures": [
 						{
-							"id": 118,
+							"id": 144,
 							"name": "validateInput",
 							"variant": "signature",
 							"kind": 4096,
@@ -3979,13 +4409,13 @@
 							"sources": [
 								{
 									"fileName": "nfsfu234FormValidation.ts",
-									"line": 657,
+									"line": 856,
 									"character": 4
 								}
 							],
 							"parameters": [
 								{
-									"id": 119,
+									"id": 145,
 									"name": "inputField",
 									"variant": "param",
 									"kind": 32768,
@@ -4018,7 +4448,7 @@
 									}
 								},
 								{
-									"id": 120,
+									"id": 146,
 									"name": "options",
 									"variant": "param",
 									"kind": 32768,
@@ -4094,7 +4524,7 @@
 									"defaultValue": "{}"
 								},
 								{
-									"id": 121,
+									"id": 147,
 									"name": "callback",
 									"variant": "param",
 									"kind": 32768,
@@ -4143,7 +4573,7 @@
 					]
 				},
 				{
-					"id": 122,
+					"id": 148,
 					"name": "validateAllInput",
 					"variant": "declaration",
 					"kind": 2048,
@@ -4151,13 +4581,13 @@
 					"sources": [
 						{
 							"fileName": "nfsfu234FormValidation.ts",
-							"line": 712,
+							"line": 911,
 							"character": 4
 						}
 					],
 					"signatures": [
 						{
-							"id": 123,
+							"id": 149,
 							"name": "validateAllInput",
 							"variant": "signature",
 							"kind": 4096,
@@ -4181,13 +4611,13 @@
 							"sources": [
 								{
 									"fileName": "nfsfu234FormValidation.ts",
-									"line": 712,
+									"line": 911,
 									"character": 4
 								}
 							],
 							"parameters": [
 								{
-									"id": 124,
+									"id": 150,
 									"name": "form",
 									"variant": "param",
 									"kind": 32768,
@@ -4237,7 +4667,7 @@
 									}
 								},
 								{
-									"id": 125,
+									"id": 151,
 									"name": "customErrorMessages",
 									"variant": "param",
 									"kind": 32768,
@@ -4267,9 +4697,9 @@
 										"type": "array",
 										"elementType": {
 											"type": "reference",
-											"target": 190,
+											"target": 216,
 											"name": "ErrorMessageInterface",
-											"package": "nfsfu234-form-validation",
+											"package": "@nfsfu234/form-validation",
 											"qualifiedName": "default"
 										}
 									}
@@ -4279,7 +4709,7 @@
 					]
 				},
 				{
-					"id": 126,
+					"id": 152,
 					"name": "validateRadio",
 					"variant": "declaration",
 					"kind": 2048,
@@ -4287,13 +4717,13 @@
 					"sources": [
 						{
 							"fileName": "nfsfu234FormValidation.ts",
-							"line": 724,
+							"line": 923,
 							"character": 4
 						}
 					],
 					"signatures": [
 						{
-							"id": 127,
+							"id": 153,
 							"name": "validateRadio",
 							"variant": "signature",
 							"kind": 4096,
@@ -4309,13 +4739,13 @@
 							"sources": [
 								{
 									"fileName": "nfsfu234FormValidation.ts",
-									"line": 724,
+									"line": 923,
 									"character": 4
 								}
 							],
 							"parameters": [
 								{
-									"id": 128,
+									"id": 154,
 									"name": "radioInputField",
 									"variant": "param",
 									"kind": 32768,
@@ -4356,7 +4786,7 @@
 									}
 								},
 								{
-									"id": 129,
+									"id": 155,
 									"name": "customErrorMessage",
 									"variant": "param",
 									"kind": 32768,
@@ -4390,9 +4820,9 @@
 									},
 									{
 										"type": "reference",
-										"target": 190,
+										"target": 216,
 										"name": "ErrorMessageInterface",
-										"package": "nfsfu234-form-validation",
+										"package": "@nfsfu234/form-validation",
 										"qualifiedName": "default"
 									}
 								]
@@ -4401,7 +4831,7 @@
 					]
 				},
 				{
-					"id": 130,
+					"id": 156,
 					"name": "validateAllRadio",
 					"variant": "declaration",
 					"kind": 2048,
@@ -4409,13 +4839,13 @@
 					"sources": [
 						{
 							"fileName": "nfsfu234FormValidation.ts",
-							"line": 734,
+							"line": 933,
 							"character": 4
 						}
 					],
 					"signatures": [
 						{
-							"id": 131,
+							"id": 157,
 							"name": "validateAllRadio",
 							"variant": "signature",
 							"kind": 4096,
@@ -4431,13 +4861,13 @@
 							"sources": [
 								{
 									"fileName": "nfsfu234FormValidation.ts",
-									"line": 734,
+									"line": 933,
 									"character": 4
 								}
 							],
 							"parameters": [
 								{
-									"id": 132,
+									"id": 158,
 									"name": "form",
 									"variant": "param",
 									"kind": 32768,
@@ -4483,7 +4913,7 @@
 									}
 								},
 								{
-									"id": 133,
+									"id": 159,
 									"name": "customErrorMessage",
 									"variant": "param",
 									"kind": 32768,
@@ -4511,18 +4941,18 @@
 									},
 									{
 										"type": "reference",
-										"target": 190,
+										"target": 216,
 										"name": "ErrorMessageInterface",
-										"package": "nfsfu234-form-validation",
+										"package": "@nfsfu234/form-validation",
 										"qualifiedName": "default"
 									},
 									{
 										"type": "array",
 										"elementType": {
 											"type": "reference",
-											"target": 190,
+											"target": 216,
 											"name": "ErrorMessageInterface",
-											"package": "nfsfu234-form-validation",
+											"package": "@nfsfu234/form-validation",
 											"qualifiedName": "default"
 										}
 									}
@@ -4532,7 +4962,7 @@
 					]
 				},
 				{
-					"id": 134,
+					"id": 160,
 					"name": "validateCheckbox",
 					"variant": "declaration",
 					"kind": 2048,
@@ -4540,13 +4970,13 @@
 					"sources": [
 						{
 							"fileName": "nfsfu234FormValidation.ts",
-							"line": 745,
+							"line": 944,
 							"character": 4
 						}
 					],
 					"signatures": [
 						{
-							"id": 135,
+							"id": 161,
 							"name": "validateCheckbox",
 							"variant": "signature",
 							"kind": 4096,
@@ -4562,13 +4992,13 @@
 							"sources": [
 								{
 									"fileName": "nfsfu234FormValidation.ts",
-									"line": 745,
+									"line": 944,
 									"character": 4
 								}
 							],
 							"parameters": [
 								{
-									"id": 136,
+									"id": 162,
 									"name": "checkboxInputField",
 									"variant": "param",
 									"kind": 32768,
@@ -4592,7 +5022,7 @@
 									}
 								},
 								{
-									"id": 137,
+									"id": 163,
 									"name": "options",
 									"variant": "param",
 									"kind": 32768,
@@ -4630,9 +5060,9 @@
 									},
 									{
 										"type": "reference",
-										"target": 190,
+										"target": 216,
 										"name": "ErrorMessageInterface",
-										"package": "nfsfu234-form-validation",
+										"package": "@nfsfu234/form-validation",
 										"qualifiedName": "default"
 									}
 								]
@@ -4641,7 +5071,7 @@
 					]
 				},
 				{
-					"id": 138,
+					"id": 164,
 					"name": "validateAllCheckbox",
 					"variant": "declaration",
 					"kind": 2048,
@@ -4649,13 +5079,13 @@
 					"sources": [
 						{
 							"fileName": "nfsfu234FormValidation.ts",
-							"line": 755,
+							"line": 954,
 							"character": 4
 						}
 					],
 					"signatures": [
 						{
-							"id": 139,
+							"id": 165,
 							"name": "validateAllCheckbox",
 							"variant": "signature",
 							"kind": 4096,
@@ -4671,13 +5101,13 @@
 							"sources": [
 								{
 									"fileName": "nfsfu234FormValidation.ts",
-									"line": 755,
+									"line": 954,
 									"character": 4
 								}
 							],
 							"parameters": [
 								{
-									"id": 140,
+									"id": 166,
 									"name": "form",
 									"variant": "param",
 									"kind": 32768,
@@ -4723,7 +5153,7 @@
 									}
 								},
 								{
-									"id": 141,
+									"id": 167,
 									"name": "options",
 									"variant": "param",
 									"kind": 32768,
@@ -4751,18 +5181,18 @@
 									},
 									{
 										"type": "reference",
-										"target": 190,
+										"target": 216,
 										"name": "ErrorMessageInterface",
-										"package": "nfsfu234-form-validation",
+										"package": "@nfsfu234/form-validation",
 										"qualifiedName": "default"
 									},
 									{
 										"type": "array",
 										"elementType": {
 											"type": "reference",
-											"target": 190,
+											"target": 216,
 											"name": "ErrorMessageInterface",
-											"package": "nfsfu234-form-validation",
+											"package": "@nfsfu234/form-validation",
 											"qualifiedName": "default"
 										}
 									}
@@ -4772,7 +5202,7 @@
 					]
 				},
 				{
-					"id": 142,
+					"id": 168,
 					"name": "validateFile",
 					"variant": "declaration",
 					"kind": 2048,
@@ -4780,13 +5210,13 @@
 					"sources": [
 						{
 							"fileName": "nfsfu234FormValidation.ts",
-							"line": 772,
+							"line": 971,
 							"character": 4
 						}
 					],
 					"signatures": [
 						{
-							"id": 143,
+							"id": 169,
 							"name": "validateFile",
 							"variant": "signature",
 							"kind": 4096,
@@ -4861,13 +5291,13 @@
 							"sources": [
 								{
 									"fileName": "nfsfu234FormValidation.ts",
-									"line": 772,
+									"line": 971,
 									"character": 4
 								}
 							],
 							"parameters": [
 								{
-									"id": 144,
+									"id": 170,
 									"name": "fileInputField",
 									"variant": "param",
 									"kind": 32768,
@@ -4891,7 +5321,7 @@
 									}
 								},
 								{
-									"id": 145,
+									"id": 171,
 									"name": "options",
 									"variant": "param",
 									"kind": 32768,
@@ -5008,9 +5438,9 @@
 											},
 											{
 												"type": "reference",
-												"target": 190,
+												"target": 216,
 												"name": "ErrorMessageInterface",
-												"package": "nfsfu234-form-validation",
+												"package": "@nfsfu234/form-validation",
 												"qualifiedName": "default"
 											}
 										]
@@ -5023,7 +5453,7 @@
 					]
 				},
 				{
-					"id": 146,
+					"id": 172,
 					"name": "validateAllFile",
 					"variant": "declaration",
 					"kind": 2048,
@@ -5031,13 +5461,13 @@
 					"sources": [
 						{
 							"fileName": "nfsfu234FormValidation.ts",
-							"line": 784,
+							"line": 983,
 							"character": 4
 						}
 					],
 					"signatures": [
 						{
-							"id": 147,
+							"id": 173,
 							"name": "validateAllFile",
 							"variant": "signature",
 							"kind": 4096,
@@ -5060,7 +5490,7 @@
 										"kind": "inline-tag",
 										"tag": "@link",
 										"text": "validateFile",
-										"target": 142
+										"target": 168
 									},
 									{
 										"kind": "text",
@@ -5106,13 +5536,13 @@
 							"sources": [
 								{
 									"fileName": "nfsfu234FormValidation.ts",
-									"line": 784,
+									"line": 983,
 									"character": 4
 								}
 							],
 							"parameters": [
 								{
-									"id": 148,
+									"id": 174,
 									"name": "form",
 									"variant": "param",
 									"kind": 32768,
@@ -5158,7 +5588,7 @@
 									}
 								},
 								{
-									"id": 149,
+									"id": 175,
 									"name": "options",
 									"variant": "param",
 									"kind": 32768,
@@ -5197,9 +5627,9 @@
 												"type": "array",
 												"elementType": {
 													"type": "reference",
-													"target": 190,
+													"target": 216,
 													"name": "ErrorMessageInterface",
-													"package": "nfsfu234-form-validation",
+													"package": "@nfsfu234/form-validation",
 													"qualifiedName": "default"
 												}
 											}
@@ -5213,7 +5643,7 @@
 					]
 				},
 				{
-					"id": 150,
+					"id": 176,
 					"name": "validateSelect",
 					"variant": "declaration",
 					"kind": 2048,
@@ -5221,13 +5651,13 @@
 					"sources": [
 						{
 							"fileName": "nfsfu234FormValidation.ts",
-							"line": 797,
+							"line": 996,
 							"character": 4
 						}
 					],
 					"signatures": [
 						{
-							"id": 151,
+							"id": 177,
 							"name": "validateSelect",
 							"variant": "signature",
 							"kind": 4096,
@@ -5251,13 +5681,13 @@
 							"sources": [
 								{
 									"fileName": "nfsfu234FormValidation.ts",
-									"line": 797,
+									"line": 996,
 									"character": 4
 								}
 							],
 							"parameters": [
 								{
-									"id": 152,
+									"id": 178,
 									"name": "selectField",
 									"variant": "param",
 									"kind": 32768,
@@ -5281,7 +5711,7 @@
 									}
 								},
 								{
-									"id": 153,
+									"id": 179,
 									"name": "options",
 									"variant": "param",
 									"kind": 32768,
@@ -5308,7 +5738,7 @@
 									}
 								},
 								{
-									"id": 154,
+									"id": 180,
 									"name": "callback",
 									"variant": "param",
 									"kind": 32768,
@@ -5336,9 +5766,9 @@
 									},
 									{
 										"type": "reference",
-										"target": 190,
+										"target": 216,
 										"name": "ErrorMessageInterface",
-										"package": "nfsfu234-form-validation",
+										"package": "@nfsfu234/form-validation",
 										"qualifiedName": "default"
 									}
 								]
@@ -5347,7 +5777,7 @@
 					]
 				},
 				{
-					"id": 155,
+					"id": 181,
 					"name": "validateAllSelect",
 					"variant": "declaration",
 					"kind": 2048,
@@ -5355,13 +5785,13 @@
 					"sources": [
 						{
 							"fileName": "nfsfu234FormValidation.ts",
-							"line": 809,
+							"line": 1008,
 							"character": 4
 						}
 					],
 					"signatures": [
 						{
-							"id": 156,
+							"id": 182,
 							"name": "validateAllSelect",
 							"variant": "signature",
 							"kind": 4096,
@@ -5385,13 +5815,13 @@
 							"sources": [
 								{
 									"fileName": "nfsfu234FormValidation.ts",
-									"line": 809,
+									"line": 1008,
 									"character": 4
 								}
 							],
 							"parameters": [
 								{
-									"id": 157,
+									"id": 183,
 									"name": "form",
 									"variant": "param",
 									"kind": 32768,
@@ -5429,7 +5859,7 @@
 									}
 								},
 								{
-									"id": 158,
+									"id": 184,
 									"name": "options",
 									"variant": "param",
 									"kind": 32768,
@@ -5457,18 +5887,18 @@
 									},
 									{
 										"type": "reference",
-										"target": 190,
+										"target": 216,
 										"name": "ErrorMessageInterface",
-										"package": "nfsfu234-form-validation",
+										"package": "@nfsfu234/form-validation",
 										"qualifiedName": "default"
 									},
 									{
 										"type": "array",
 										"elementType": {
 											"type": "reference",
-											"target": 190,
+											"target": 216,
 											"name": "ErrorMessageInterface",
-											"package": "nfsfu234-form-validation",
+											"package": "@nfsfu234/form-validation",
 											"qualifiedName": "default"
 										}
 									}
@@ -5478,7 +5908,7 @@
 					]
 				},
 				{
-					"id": 159,
+					"id": 185,
 					"name": "validateTextarea",
 					"variant": "declaration",
 					"kind": 2048,
@@ -5486,13 +5916,13 @@
 					"sources": [
 						{
 							"fileName": "nfsfu234FormValidation.ts",
-							"line": 819,
+							"line": 1018,
 							"character": 4
 						}
 					],
 					"signatures": [
 						{
-							"id": 160,
+							"id": 186,
 							"name": "validateTextarea",
 							"variant": "signature",
 							"kind": 4096,
@@ -5516,13 +5946,13 @@
 							"sources": [
 								{
 									"fileName": "nfsfu234FormValidation.ts",
-									"line": 819,
+									"line": 1018,
 									"character": 4
 								}
 							],
 							"parameters": [
 								{
-									"id": 161,
+									"id": 187,
 									"name": "textareaField",
 									"variant": "param",
 									"kind": 32768,
@@ -5546,7 +5976,7 @@
 									}
 								},
 								{
-									"id": 162,
+									"id": 188,
 									"name": "options",
 									"variant": "param",
 									"kind": 32768,
@@ -5602,9 +6032,9 @@
 									},
 									{
 										"type": "reference",
-										"target": 190,
+										"target": 216,
 										"name": "ErrorMessageInterface",
-										"package": "nfsfu234-form-validation",
+										"package": "@nfsfu234/form-validation",
 										"qualifiedName": "default"
 									}
 								]
@@ -5613,7 +6043,7 @@
 					]
 				},
 				{
-					"id": 163,
+					"id": 189,
 					"name": "validateAllTextarea",
 					"variant": "declaration",
 					"kind": 2048,
@@ -5621,13 +6051,13 @@
 					"sources": [
 						{
 							"fileName": "nfsfu234FormValidation.ts",
-							"line": 829,
+							"line": 1028,
 							"character": 4
 						}
 					],
 					"signatures": [
 						{
-							"id": 164,
+							"id": 190,
 							"name": "validateAllTextarea",
 							"variant": "signature",
 							"kind": 4096,
@@ -5651,13 +6081,13 @@
 							"sources": [
 								{
 									"fileName": "nfsfu234FormValidation.ts",
-									"line": 829,
+									"line": 1028,
 									"character": 4
 								}
 							],
 							"parameters": [
 								{
-									"id": 165,
+									"id": 191,
 									"name": "form",
 									"variant": "param",
 									"kind": 32768,
@@ -5695,7 +6125,7 @@
 									}
 								},
 								{
-									"id": 166,
+									"id": 192,
 									"name": "options",
 									"variant": "param",
 									"kind": 32768,
@@ -5723,18 +6153,18 @@
 									},
 									{
 										"type": "reference",
-										"target": 190,
+										"target": 216,
 										"name": "ErrorMessageInterface",
-										"package": "nfsfu234-form-validation",
+										"package": "@nfsfu234/form-validation",
 										"qualifiedName": "default"
 									},
 									{
 										"type": "array",
 										"elementType": {
 											"type": "reference",
-											"target": 190,
+											"target": 216,
 											"name": "ErrorMessageInterface",
-											"package": "nfsfu234-form-validation",
+											"package": "@nfsfu234/form-validation",
 											"qualifiedName": "default"
 										}
 									}
@@ -5744,7 +6174,7 @@
 					]
 				},
 				{
-					"id": 167,
+					"id": 193,
 					"name": "restrictInputWithCounter",
 					"variant": "declaration",
 					"kind": 2048,
@@ -5752,13 +6182,13 @@
 					"sources": [
 						{
 							"fileName": "nfsfu234FormValidation.ts",
-							"line": 842,
+							"line": 1041,
 							"character": 4
 						}
 					],
 					"signatures": [
 						{
-							"id": 168,
+							"id": 194,
 							"name": "restrictInputWithCounter",
 							"variant": "signature",
 							"kind": 4096,
@@ -5782,13 +6212,13 @@
 							"sources": [
 								{
 									"fileName": "nfsfu234FormValidation.ts",
-									"line": 842,
+									"line": 1041,
 									"character": 4
 								}
 							],
 							"parameters": [
 								{
-									"id": 169,
+									"id": 195,
 									"name": "inputElement",
 									"variant": "param",
 									"kind": 32768,
@@ -5826,7 +6256,7 @@
 									}
 								},
 								{
-									"id": 170,
+									"id": 196,
 									"name": "counterContainer",
 									"variant": "param",
 									"kind": 32768,
@@ -5850,7 +6280,7 @@
 									}
 								},
 								{
-									"id": 171,
+									"id": 197,
 									"name": "options",
 									"variant": "param",
 									"kind": 32768,
@@ -5886,7 +6316,7 @@
 					]
 				},
 				{
-					"id": 172,
+					"id": 198,
 					"name": "containsOnlyIntegers",
 					"variant": "declaration",
 					"kind": 2048,
@@ -5896,13 +6326,13 @@
 					"sources": [
 						{
 							"fileName": "nfsfu234FormValidation.ts",
-							"line": 852,
+							"line": 1051,
 							"character": 11
 						}
 					],
 					"signatures": [
 						{
-							"id": 173,
+							"id": 199,
 							"name": "containsOnlyIntegers",
 							"variant": "signature",
 							"kind": 4096,
@@ -5941,13 +6371,13 @@
 							"sources": [
 								{
 									"fileName": "nfsfu234FormValidation.ts",
-									"line": 852,
+									"line": 1051,
 									"character": 11
 								}
 							],
 							"parameters": [
 								{
-									"id": 174,
+									"id": 200,
 									"name": "str",
 									"variant": "param",
 									"kind": 32768,
@@ -5974,7 +6404,7 @@
 					]
 				},
 				{
-					"id": 175,
+					"id": 201,
 					"name": "getPageURL",
 					"variant": "declaration",
 					"kind": 2048,
@@ -5982,13 +6412,13 @@
 					"sources": [
 						{
 							"fileName": "nfsfu234FormValidation.ts",
-							"line": 861,
+							"line": 1060,
 							"character": 4
 						}
 					],
 					"signatures": [
 						{
-							"id": 176,
+							"id": 202,
 							"name": "getPageURL",
 							"variant": "signature",
 							"kind": 4096,
@@ -6023,7 +6453,7 @@
 							"sources": [
 								{
 									"fileName": "nfsfu234FormValidation.ts",
-									"line": 861,
+									"line": 1060,
 									"character": 4
 								}
 							],
@@ -6044,7 +6474,7 @@
 					]
 				},
 				{
-					"id": 177,
+					"id": 203,
 					"name": "redirect",
 					"variant": "declaration",
 					"kind": 2048,
@@ -6052,13 +6482,13 @@
 					"sources": [
 						{
 							"fileName": "nfsfu234FormValidation.ts",
-							"line": 871,
+							"line": 1070,
 							"character": 4
 						}
 					],
 					"signatures": [
 						{
-							"id": 178,
+							"id": 204,
 							"name": "redirect",
 							"variant": "signature",
 							"kind": 4096,
@@ -6074,13 +6504,13 @@
 							"sources": [
 								{
 									"fileName": "nfsfu234FormValidation.ts",
-									"line": 871,
+									"line": 1070,
 									"character": 4
 								}
 							],
 							"parameters": [
 								{
-									"id": 179,
+									"id": 205,
 									"name": "url",
 									"variant": "param",
 									"kind": 32768,
@@ -6133,7 +6563,7 @@
 									"defaultValue": "null"
 								},
 								{
-									"id": 180,
+									"id": 206,
 									"name": "delay",
 									"variant": "param",
 									"kind": 32768,
@@ -6169,7 +6599,7 @@
 					]
 				},
 				{
-					"id": 181,
+					"id": 207,
 					"name": "checkVariableType",
 					"variant": "declaration",
 					"kind": 2048,
@@ -6177,13 +6607,13 @@
 					"sources": [
 						{
 							"fileName": "nfsfu234FormValidation.ts",
-							"line": 888,
+							"line": 1087,
 							"character": 4
 						}
 					],
 					"signatures": [
 						{
-							"id": 182,
+							"id": 208,
 							"name": "checkVariableType",
 							"variant": "signature",
 							"kind": 4096,
@@ -6239,13 +6669,13 @@
 							"sources": [
 								{
 									"fileName": "nfsfu234FormValidation.ts",
-									"line": 888,
+									"line": 1087,
 									"character": 4
 								}
 							],
 							"parameters": [
 								{
-									"id": 183,
+									"id": 209,
 									"name": "variable",
 									"variant": "param",
 									"kind": 32768,
@@ -6272,7 +6702,7 @@
 					]
 				},
 				{
-					"id": 184,
+					"id": 210,
 					"name": "isOnline",
 					"variant": "declaration",
 					"kind": 2048,
@@ -6280,13 +6710,13 @@
 					"sources": [
 						{
 							"fileName": "nfsfu234FormValidation.ts",
-							"line": 897,
+							"line": 1096,
 							"character": 4
 						}
 					],
 					"signatures": [
 						{
-							"id": 185,
+							"id": 211,
 							"name": "isOnline",
 							"variant": "signature",
 							"kind": 4096,
@@ -6317,7 +6747,7 @@
 							"sources": [
 								{
 									"fileName": "nfsfu234FormValidation.ts",
-									"line": 897,
+									"line": 1096,
 									"character": 4
 								}
 							],
@@ -6329,7 +6759,7 @@
 					]
 				},
 				{
-					"id": 186,
+					"id": 212,
 					"name": "reset",
 					"variant": "declaration",
 					"kind": 2048,
@@ -6337,13 +6767,13 @@
 					"sources": [
 						{
 							"fileName": "nfsfu234FormValidation.ts",
-							"line": 907,
+							"line": 1106,
 							"character": 4
 						}
 					],
 					"signatures": [
 						{
-							"id": 187,
+							"id": 213,
 							"name": "reset",
 							"variant": "signature",
 							"kind": 4096,
@@ -6374,13 +6804,13 @@
 							"sources": [
 								{
 									"fileName": "nfsfu234FormValidation.ts",
-									"line": 907,
+									"line": 1106,
 									"character": 4
 								}
 							],
 							"parameters": [
 								{
-									"id": 188,
+									"id": 214,
 									"name": "u_form",
 									"variant": "param",
 									"kind": 32768,
@@ -6442,14 +6872,14 @@
 				{
 					"title": "Constructors",
 					"children": [
-						7
+						10
 					]
 				},
 				{
 					"title": "Properties",
 					"children": [
-						12,
-						13
+						15,
+						17
 					]
 				},
 				{
@@ -6457,58 +6887,59 @@
 					"children": [
 						2,
 						5,
-						32,
-						42,
-						49,
-						52,
-						54,
-						57,
-						62,
-						65,
+						61,
 						68,
-						71,
-						74,
-						77,
+						7,
+						75,
+						78,
 						80,
 						83,
-						87,
+						88,
 						91,
 						94,
 						97,
-						104,
+						100,
+						103,
+						106,
 						109,
+						113,
 						117,
-						122,
-						126,
+						120,
+						123,
 						130,
-						134,
-						138,
-						142,
-						146,
-						150,
-						155,
-						159,
-						163,
-						167,
+						135,
+						143,
+						148,
+						152,
+						156,
+						160,
+						164,
+						168,
 						172,
-						175,
-						177,
+						176,
 						181,
-						184,
-						186
+						185,
+						189,
+						193,
+						198,
+						201,
+						203,
+						207,
+						210,
+						212
 					]
 				}
 			],
 			"sources": [
 				{
 					"fileName": "nfsfu234FormValidation.ts",
-					"line": 53,
+					"line": 55,
 					"character": 6
 				}
 			]
 		},
 		{
-			"id": 189,
+			"id": 215,
 			"name": "default",
 			"variant": "reference",
 			"kind": 4194304,
@@ -6516,21 +6947,21 @@
 			"sources": [
 				{
 					"fileName": "nfsfu234FormValidation.ts",
-					"line": 934,
+					"line": 1133,
 					"character": 0
 				}
 			],
 			"target": 1
 		},
 		{
-			"id": 226,
+			"id": 252,
 			"name": "PasswordStrengthResult",
 			"variant": "declaration",
 			"kind": 256,
 			"flags": {},
 			"children": [
 				{
-					"id": 227,
+					"id": 253,
 					"name": "score",
 					"variant": "declaration",
 					"kind": 1024,
@@ -6548,7 +6979,7 @@
 					}
 				},
 				{
-					"id": 228,
+					"id": 254,
 					"name": "label",
 					"variant": "declaration",
 					"kind": 1024,
@@ -6587,7 +7018,7 @@
 					}
 				},
 				{
-					"id": 229,
+					"id": 255,
 					"name": "suggestions",
 					"variant": "declaration",
 					"kind": 1024,
@@ -6612,9 +7043,9 @@
 				{
 					"title": "Properties",
 					"children": [
-						227,
-						228,
-						229
+						253,
+						254,
+						255
 					]
 				}
 			],
@@ -6631,7 +7062,7 @@
 		{
 			"title": "References",
 			"children": [
-				189
+				215
 			]
 		},
 		{
@@ -6643,444 +7074,21 @@
 		{
 			"title": "Interfaces",
 			"children": [
-				190,
-				207,
-				195,
-				226
+				256,
+				216,
+				233,
+				221,
+				252
+			]
+		},
+		{
+			"title": "Type Aliases",
+			"children": [
+				265
 			]
 		}
 	],
-	"packageName": "nfsfu234-form-validation",
-	"readme": [
-		{
-			"kind": "text",
-			"text": "# 📜 NFSFU234FormValidation\n\n[![npm](https://img.shields.io/npm/v/nfsfu234-form-validation?style=for-the-badge)](https://www.npmjs.com/package/nfsfu234-form-validation)\n[![License](https://img.shields.io/npm/l/nfsfu234-form-validation?style=for-the-badge)](https://github.com/NFSFU234FormValidation/nfsfu234-form-validation/blob/main/LICENSE)\n[![jsDelivr](https://data.jsdelivr.com/v1/package/npm/nfsfu234-form-validation/badge)](https://www.jsdelivr.com/package/npm/nfsfu234-form-validation)\n\nA lightweight, dependency-free client-side form validation library for HTML forms - inputs, textareas, selects, radios, checkboxes, and file/image uploads - with inline or modal error messages, AJAX submission, and a declarative config layer for validating forms across a whole multi-page site.\n\nWorks in plain HTML/CSS/JS, and in React/Next.js projects (initialize it client-side, e.g. inside "
-		},
-		{
-			"kind": "code",
-			"text": "`useEffect`"
-		},
-		{
-			"kind": "text",
-			"text": " or a "
-		},
-		{
-			"kind": "code",
-			"text": "`'use client'`"
-		},
-		{
-			"kind": "text",
-			"text": " component).\n\n## Installation\n\n"
-		},
-		{
-			"kind": "code",
-			"text": "```bash\nnpm install nfsfu234-form-validation\n```"
-		},
-		{
-			"kind": "text",
-			"text": "\n\nOr via CDN, no build step required:\n\n"
-		},
-		{
-			"kind": "code",
-			"text": "```html\n<script src=\"https://cdn.jsdelivr.net/npm/nfsfu234-form-validation/dist/js/nfsfu234FormValidation.global.js\"></script>\n<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/nfsfu234-form-validation/dist/css/nfsfu234FormValidation.min.css\">\n```"
-		},
-		{
-			"kind": "text",
-			"text": "\n\n## Quick start\n\n"
-		},
-		{
-			"kind": "code",
-			"text": "```html\n<form id=\"loginForm\">\n  <input type=\"email\" name=\"email\" required>\n  <input type=\"password\" name=\"password\" required>\n  <button type=\"submit\">Log in</button>\n</form>\n```"
-		},
-		{
-			"kind": "text",
-			"text": "\n\n"
-		},
-		{
-			"kind": "code",
-			"text": "```js\nimport NFSFU234FormValidation from 'nfsfu234-form-validation';\n\nconst form = new NFSFU234FormValidation({ form: 'loginForm' });\n\ndocument.getElementById('loginForm').addEventListener('submit', () => {\n  form.submit().then((result) => {\n    if (result.type === 'success') {\n      // validated (and submitted via AJAX, if configured)\n    }\n  });\n});\n```"
-		},
-		{
-			"kind": "text",
-			"text": "\n\nValidation rules are picked up automatically from standard HTML attributes ("
-		},
-		{
-			"kind": "code",
-			"text": "`required`"
-		},
-		{
-			"kind": "text",
-			"text": ", "
-		},
-		{
-			"kind": "code",
-			"text": "`type=\"email\"`"
-		},
-		{
-			"kind": "text",
-			"text": ", etc.) - no extra markup needed for the common cases.\n\n## Validating a whole multi-page site at once\n\nIf you have many forms across many pages, register them all once (e.g. in a shared script included on every page) instead of hand-wiring each page:\n\n"
-		},
-		{
-			"kind": "code",
-			"text": "```js\nNFSFU234FormValidation.configureForms([\n  {\n    form: '#loginForm',\n    fields: {\n      email: { required: true, type: 'email' },\n      password: { required: true, minLength: 8 }\n    },\n    ajaxOptions: { RequestMethod: 'POST', RequestType: 'json' }\n  },\n  {\n    form: '#contactForm',\n    fields: { message: { required: true, maxLength: 500 } }\n  },\n  {\n    form: '#profileForm',\n    fields: {\n      avatar: { required: true, accept: ['image/png', 'image/jpeg'], maxSizeMB: 2, maxWidth: 1000, maxHeight: 1000 },\n      resume: { accept: ['.pdf'], maxSizeMB: 5 }\n    }\n  }\n]);\n\n// once per page - only wires up whichever registered form actually exists on this page\nNFSFU234FormValidation.autoInit();\n```"
-		},
-		{
-			"kind": "text",
-			"text": "\n\nA field's config rule overrides its HTML attributes where it sets a value; where the config is silent, the field's own attributes still apply.\n\n## API reference\n\n### Constructor\n\n"
-		},
-		{
-			"kind": "code",
-			"text": "```ts\nnew NFSFU234FormValidation(formDetails?: { form?: string | HTMLElement, customErrorMessages?: object }, ajaxOptions?: object)\n```"
-		},
-		{
-			"kind": "text",
-			"text": "\n\nResolves the form in this order: explicit "
-		},
-		{
-			"kind": "code",
-			"text": "`formDetails.form`"
-		},
-		{
-			"kind": "text",
-			"text": " → "
-		},
-		{
-			"kind": "code",
-			"text": "`#jsForm`"
-		},
-		{
-			"kind": "text",
-			"text": " → the first "
-		},
-		{
-			"kind": "code",
-			"text": "`<form>`"
-		},
-		{
-			"kind": "text",
-			"text": " on the page.\n\n### Instance methods\n\n| Method | Description |\n|---|---|\n| "
-		},
-		{
-			"kind": "code",
-			"text": "`.validate(userOptions?, callback?)`"
-		},
-		{
-			"kind": "text",
-			"text": " | Validates every input, textarea, select, radio, and checkbox in the form. Returns a "
-		},
-		{
-			"kind": "code",
-			"text": "`Promise`"
-		},
-		{
-			"kind": "text",
-			"text": " (or calls "
-		},
-		{
-			"kind": "code",
-			"text": "`callback`"
-		},
-		{
-			"kind": "text",
-			"text": ") with "
-		},
-		{
-			"kind": "code",
-			"text": "`{ message, type, data }`"
-		},
-		{
-			"kind": "text",
-			"text": ". |\n| "
-		},
-		{
-			"kind": "code",
-			"text": "`.submit(userOptions?, callback?)`"
-		},
-		{
-			"kind": "text",
-			"text": " | Same as "
-		},
-		{
-			"kind": "code",
-			"text": "`.validate()`"
-		},
-		{
-			"kind": "text",
-			"text": ", then submits via AJAX if "
-		},
-		{
-			"kind": "code",
-			"text": "`isAjax`"
-		},
-		{
-			"kind": "text",
-			"text": " is configured (HTML attribute or option). |\n| "
-		},
-		{
-			"kind": "code",
-			"text": "`.validateInput(field, options?)`"
-		},
-		{
-			"kind": "text",
-			"text": " / "
-		},
-		{
-			"kind": "code",
-			"text": "`.validateAllInput(options?)`"
-		},
-		{
-			"kind": "text",
-			"text": " | Validate one input, or every input in the form. |\n| "
-		},
-		{
-			"kind": "code",
-			"text": "`.validateTextarea(field, options?)`"
-		},
-		{
-			"kind": "text",
-			"text": " / "
-		},
-		{
-			"kind": "code",
-			"text": "`.validateAllTextarea(options?)`"
-		},
-		{
-			"kind": "text",
-			"text": " | Same, for textareas. |\n| "
-		},
-		{
-			"kind": "code",
-			"text": "`.validateSelect(field, options?)`"
-		},
-		{
-			"kind": "text",
-			"text": " / "
-		},
-		{
-			"kind": "code",
-			"text": "`.validateAllSelect(options?)`"
-		},
-		{
-			"kind": "text",
-			"text": " | Same, for selects. |\n| "
-		},
-		{
-			"kind": "code",
-			"text": "`.validateRadio(field, options?)`"
-		},
-		{
-			"kind": "text",
-			"text": " / "
-		},
-		{
-			"kind": "code",
-			"text": "`.validateAllRadio(options?)`"
-		},
-		{
-			"kind": "text",
-			"text": " | Same, for radio groups. |\n| "
-		},
-		{
-			"kind": "code",
-			"text": "`.validateCheckbox(field, options?)`"
-		},
-		{
-			"kind": "text",
-			"text": " / "
-		},
-		{
-			"kind": "code",
-			"text": "`.validateAllCheckbox(options?)`"
-		},
-		{
-			"kind": "text",
-			"text": " | Same, for checkboxes. |\n| "
-		},
-		{
-			"kind": "code",
-			"text": "`.validateFile(field, options?)`"
-		},
-		{
-			"kind": "text",
-			"text": " / "
-		},
-		{
-			"kind": "code",
-			"text": "`.validateAllFile(options?)`"
-		},
-		{
-			"kind": "text",
-			"text": " | Same, for "
-		},
-		{
-			"kind": "code",
-			"text": "`<input type=\"file\">`"
-		},
-		{
-			"kind": "text",
-			"text": " fields (async - image dimension checks require decoding the file). |\n| "
-		},
-		{
-			"kind": "code",
-			"text": "`.displayError(options)`"
-		},
-		{
-			"kind": "text",
-			"text": " | Manually show an inline or modal error. |\n| "
-		},
-		{
-			"kind": "code",
-			"text": "`.isEmail(value)`"
-		},
-		{
-			"kind": "text",
-			"text": " / "
-		},
-		{
-			"kind": "code",
-			"text": "`.isURL(value)`"
-		},
-		{
-			"kind": "text",
-			"text": " / "
-		},
-		{
-			"kind": "code",
-			"text": "`.isZip(value)`"
-		},
-		{
-			"kind": "text",
-			"text": " | Format checks. |\n| "
-		},
-		{
-			"kind": "code",
-			"text": "`.hashPassword(password)`"
-		},
-		{
-			"kind": "text",
-			"text": " / "
-		},
-		{
-			"kind": "code",
-			"text": "`.verifyPassword(a, b)`"
-		},
-		{
-			"kind": "text",
-			"text": " / "
-		},
-		{
-			"kind": "code",
-			"text": "`.generatePassword(length?, hash?)`"
-		},
-		{
-			"kind": "text",
-			"text": " / "
-		},
-		{
-			"kind": "code",
-			"text": "`.checkPassword(value, min?, max?)`"
-		},
-		{
-			"kind": "text",
-			"text": " | Password utilities (bcrypt-backed). |\n| "
-		},
-		{
-			"kind": "code",
-			"text": "`.togglePasswordVisibility(field, showIcon?, hideIcon?)`"
-		},
-		{
-			"kind": "text",
-			"text": " / "
-		},
-		{
-			"kind": "code",
-			"text": "`.togglePasswordVisibilityAll(icons?, form?, all?)`"
-		},
-		{
-			"kind": "text",
-			"text": " | Password field visibility toggling. |\n| "
-		},
-		{
-			"kind": "code",
-			"text": "`.reset(form?)`"
-		},
-		{
-			"kind": "text",
-			"text": " | Clears all fields in a form. |\n| "
-		},
-		{
-			"kind": "code",
-			"text": "`.isOnline()`"
-		},
-		{
-			"kind": "text",
-			"text": " | Checks "
-		},
-		{
-			"kind": "code",
-			"text": "`navigator.onLine`"
-		},
-		{
-			"kind": "text",
-			"text": ". |\n\n### Static methods\n\n| Method | Description |\n|---|---|\n| "
-		},
-		{
-			"kind": "code",
-			"text": "`NFSFU234FormValidation.configureForms(configs: FormConfigInterface[])`"
-		},
-		{
-			"kind": "text",
-			"text": " | Register form configs for the whole site. |\n| "
-		},
-		{
-			"kind": "code",
-			"text": "`NFSFU234FormValidation.autoInit()`"
-		},
-		{
-			"kind": "text",
-			"text": " | Wire up whichever registered forms exist on the current page. |\n\n### "
-		},
-		{
-			"kind": "code",
-			"text": "`FormConfigInterface`"
-		},
-		{
-			"kind": "text",
-			"text": "\n\n"
-		},
-		{
-			"kind": "code",
-			"text": "```ts\n{\n  form: string;                                     // CSS selector, e.g. '#loginForm' or '.newsletter-form'\n  fields?: { [fieldName: string]: FieldRuleInterface };\n  ajaxOptions?: object;\n  errorType?: 'inline' | 'modal';\n  customErrorMessages?: { [key: string]: string };\n}\n```"
-		},
-		{
-			"kind": "text",
-			"text": "\n\n### "
-		},
-		{
-			"kind": "code",
-			"text": "`FieldRuleInterface`"
-		},
-		{
-			"kind": "text",
-			"text": "\n\n"
-		},
-		{
-			"kind": "code",
-			"text": "```ts\n{\n  required?: boolean;\n  type?: 'email' | 'url' | 'zip' | 'date' | 'integer' | string;\n  minLength?: number;\n  maxLength?: number;\n  pattern?: string;\n  message?: string;\n\n  // File/image-specific (input[type=\"file\"] fields only):\n  accept?: string[];    // MIME types ('image/png'), wildcards ('image/*'), or extensions ('.pdf')\n  maxSizeMB?: number;\n  minFiles?: number;\n  maxFiles?: number;\n  maxWidth?: number;     // image-only, in pixels\n  maxHeight?: number;    // image-only\n  minWidth?: number;     // image-only\n  minHeight?: number;    // image-only\n}\n```"
-		},
-		{
-			"kind": "text",
-			"text": "\n\n## What this library does *not* do\n\n- No server-side validation, no email delivery, no database checks - it's entirely client-side. "
-		},
-		{
-			"kind": "code",
-			"text": "`.submit()`"
-		},
-		{
-			"kind": "text",
-			"text": "'s AJAX support sends validated data to whatever backend you already have; it doesn't provide one.\n- Client-side password hashing is a convenience utility, not a security feature - hashing happens in the browser, so it doesn't protect a password in transit the way server-side hashing over TLS does.\n\n## Documentation & Examples 📚\n\n- **[Live docs](https://form-validation.nforshifu234dev.com/)**\n- **[Examples repository](https://github.com/NFSFU234FormValidation/examples)**\n\n## License 📝\n\nMIT - see [LICENSE](https://github.com/NFSFU234FormValidation/nfsfu234-form-validation/blob/main/LICENSE)."
-		}
-	],
+	"packageName": "@nfsfu234/form-validation",
 	"symbolIdMap": {
 		"0": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
@@ -7112,587 +7120,487 @@
 		},
 		"7": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.__constructor"
+			"qualifiedName": "NFSFU234FormValidation.ajax"
 		},
 		"8": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation"
+			"qualifiedName": "NFSFU234FormValidation.ajax"
 		},
 		"9": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "formDetails"
+			"qualifiedName": "AJAXOptions"
 		},
 		"10": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "AJAXOptions"
+			"qualifiedName": "NFSFU234FormValidation.__constructor"
+		},
+		"11": {
+			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
+			"qualifiedName": "NFSFU234FormValidation"
 		},
 		"12": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.form"
+			"qualifiedName": "formDetails"
 		},
 		"13": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.customErrorMessages"
-		},
-		"14": {
-			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "__type"
+			"qualifiedName": "ajaxOptions"
 		},
 		"15": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "__type.__index"
+			"qualifiedName": "NFSFU234FormValidation.form"
 		},
-		"32": {
+		"17": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.submit"
+			"qualifiedName": "NFSFU234FormValidation.customErrorMessages"
 		},
-		"33": {
-			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.submit"
-		},
-		"34": {
-			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "userOptions"
-		},
-		"35": {
+		"18": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
 			"qualifiedName": "__type"
 		},
-		"36": {
-			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "__type.form"
-		},
-		"37": {
-			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "__type.customErrorMessages"
-		},
-		"38": {
-			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "__type"
-		},
-		"39": {
+		"19": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
 			"qualifiedName": "__type.__index"
-		},
-		"41": {
-			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "callback"
-		},
-		"42": {
-			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.validate"
-		},
-		"43": {
-			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.validate"
-		},
-		"44": {
-			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "userOptions"
-		},
-		"45": {
-			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "__type"
-		},
-		"46": {
-			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "__type.form"
-		},
-		"47": {
-			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "__type.customErrorMessages"
-		},
-		"48": {
-			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "callback"
-		},
-		"49": {
-			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.ajax"
-		},
-		"50": {
-			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.ajax"
-		},
-		"51": {
-			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "AJAXOptions"
-		},
-		"52": {
-			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.getAJAXResponse"
-		},
-		"53": {
-			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.getAJAXResponse"
-		},
-		"54": {
-			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.getFormDetails"
-		},
-		"55": {
-			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.getFormDetails"
-		},
-		"56": {
-			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "form"
-		},
-		"57": {
-			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.loading"
-		},
-		"58": {
-			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.loading"
-		},
-		"59": {
-			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "message"
-		},
-		"60": {
-			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "submitBtn"
 		},
 		"61": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "form"
+			"qualifiedName": "NFSFU234FormValidation.submit"
 		},
 		"62": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.displayError"
+			"qualifiedName": "NFSFU234FormValidation.submit"
 		},
 		"63": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.displayError"
+			"qualifiedName": "userOptions"
 		},
 		"64": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "details"
+			"qualifiedName": "callback"
 		},
 		"65": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.isEmail"
+			"qualifiedName": "__type"
 		},
 		"66": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.isEmail"
+			"qualifiedName": "__type"
 		},
 		"67": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "email"
+			"qualifiedName": "result"
 		},
 		"68": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.isURL"
+			"qualifiedName": "NFSFU234FormValidation.validate"
 		},
 		"69": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.isURL"
+			"qualifiedName": "NFSFU234FormValidation.validate"
 		},
 		"70": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "url"
+			"qualifiedName": "userOptions"
 		},
 		"71": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.isNumber"
+			"qualifiedName": "callback"
 		},
 		"72": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.isNumber"
+			"qualifiedName": "__type"
 		},
 		"73": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "number"
+			"qualifiedName": "__type"
 		},
 		"74": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.isZipCode"
+			"qualifiedName": "result"
 		},
 		"75": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.isZipCode"
+			"qualifiedName": "NFSFU234FormValidation.ajax"
 		},
 		"76": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "zipCode"
+			"qualifiedName": "NFSFU234FormValidation.ajax"
 		},
 		"77": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.isZip"
+			"qualifiedName": "AJAXOptions"
 		},
 		"78": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.isZip"
+			"qualifiedName": "NFSFU234FormValidation.getAJAXResponse"
 		},
 		"79": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "zipCode"
+			"qualifiedName": "NFSFU234FormValidation.getAJAXResponse"
 		},
 		"80": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.countString"
+			"qualifiedName": "NFSFU234FormValidation.getFormDetails"
 		},
 		"81": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.countString"
+			"qualifiedName": "NFSFU234FormValidation.getFormDetails"
 		},
 		"82": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "string"
+			"qualifiedName": "form"
 		},
 		"83": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.generatePassword"
+			"qualifiedName": "NFSFU234FormValidation.loading"
 		},
 		"84": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.generatePassword"
+			"qualifiedName": "NFSFU234FormValidation.loading"
 		},
 		"85": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "length"
+			"qualifiedName": "message"
 		},
 		"86": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "shouldHash"
+			"qualifiedName": "submitBtn"
 		},
 		"87": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.generateRandomPassword"
+			"qualifiedName": "form"
 		},
 		"88": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.generateRandomPassword"
+			"qualifiedName": "NFSFU234FormValidation.displayError"
 		},
 		"89": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "length"
+			"qualifiedName": "NFSFU234FormValidation.displayError"
 		},
 		"90": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "shouldHash"
+			"qualifiedName": "details"
 		},
 		"91": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.passwordStrength"
+			"qualifiedName": "NFSFU234FormValidation.isEmail"
 		},
 		"92": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.passwordStrength"
+			"qualifiedName": "NFSFU234FormValidation.isEmail"
 		},
 		"93": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "password"
+			"qualifiedName": "email"
 		},
 		"94": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.getPasswordStrength"
+			"qualifiedName": "NFSFU234FormValidation.isURL"
 		},
 		"95": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.getPasswordStrength"
+			"qualifiedName": "NFSFU234FormValidation.isURL"
 		},
 		"96": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "password"
+			"qualifiedName": "url"
 		},
 		"97": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.checkPassword"
+			"qualifiedName": "NFSFU234FormValidation.isNumber"
 		},
 		"98": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.checkPassword"
+			"qualifiedName": "NFSFU234FormValidation.isNumber"
 		},
 		"99": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "password"
+			"qualifiedName": "number"
 		},
 		"100": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "minLength"
+			"qualifiedName": "NFSFU234FormValidation.isZipCode"
 		},
 		"101": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "maxLength"
+			"qualifiedName": "NFSFU234FormValidation.isZipCode"
 		},
 		"102": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "includeSymbolsCheck"
+			"qualifiedName": "zipCode"
 		},
 		"103": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "userSymbolRegex"
+			"qualifiedName": "NFSFU234FormValidation.isZip"
 		},
 		"104": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.togglePasswordVisibility"
+			"qualifiedName": "NFSFU234FormValidation.isZip"
 		},
 		"105": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.togglePasswordVisibility"
+			"qualifiedName": "zipCode"
 		},
 		"106": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "input"
+			"qualifiedName": "NFSFU234FormValidation.countString"
 		},
 		"107": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "showIcon"
+			"qualifiedName": "NFSFU234FormValidation.countString"
 		},
 		"108": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "hideIcon"
+			"qualifiedName": "string"
 		},
 		"109": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.togglePasswordVisibilityAll"
+			"qualifiedName": "NFSFU234FormValidation.generatePassword"
 		},
 		"110": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.togglePasswordVisibilityAll"
+			"qualifiedName": "NFSFU234FormValidation.generatePassword"
 		},
 		"111": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "icons"
+			"qualifiedName": "length"
 		},
 		"112": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "__type"
+			"qualifiedName": "shouldHash"
 		},
 		"113": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "__type.show"
+			"qualifiedName": "NFSFU234FormValidation.generateRandomPassword"
 		},
 		"114": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "__type.hide"
+			"qualifiedName": "NFSFU234FormValidation.generateRandomPassword"
 		},
 		"115": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "uform"
+			"qualifiedName": "length"
 		},
 		"116": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "toggleAll"
+			"qualifiedName": "shouldHash"
 		},
 		"117": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.validateInput"
+			"qualifiedName": "NFSFU234FormValidation.passwordStrength"
 		},
 		"118": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.validateInput"
+			"qualifiedName": "NFSFU234FormValidation.passwordStrength"
 		},
 		"119": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "inputField"
+			"qualifiedName": "password"
 		},
 		"120": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "options"
+			"qualifiedName": "NFSFU234FormValidation.getPasswordStrength"
 		},
 		"121": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "callback"
+			"qualifiedName": "NFSFU234FormValidation.getPasswordStrength"
 		},
 		"122": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.validateAllInput"
+			"qualifiedName": "password"
 		},
 		"123": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.validateAllInput"
+			"qualifiedName": "NFSFU234FormValidation.checkPassword"
 		},
 		"124": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "form"
+			"qualifiedName": "NFSFU234FormValidation.checkPassword"
 		},
 		"125": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "customErrorMessages"
+			"qualifiedName": "password"
 		},
 		"126": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.validateRadio"
+			"qualifiedName": "minLength"
 		},
 		"127": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.validateRadio"
+			"qualifiedName": "maxLength"
 		},
 		"128": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "radioInputField"
+			"qualifiedName": "includeSymbolsCheck"
 		},
 		"129": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "customErrorMessage"
+			"qualifiedName": "userSymbolRegex"
 		},
 		"130": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.validateAllRadio"
+			"qualifiedName": "NFSFU234FormValidation.togglePasswordVisibility"
 		},
 		"131": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.validateAllRadio"
+			"qualifiedName": "NFSFU234FormValidation.togglePasswordVisibility"
 		},
 		"132": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "form"
+			"qualifiedName": "input"
 		},
 		"133": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "customErrorMessage"
+			"qualifiedName": "showIcon"
 		},
 		"134": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.validateCheckbox"
+			"qualifiedName": "hideIcon"
 		},
 		"135": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.validateCheckbox"
+			"qualifiedName": "NFSFU234FormValidation.togglePasswordVisibilityAll"
 		},
 		"136": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "checkboxInputField"
+			"qualifiedName": "NFSFU234FormValidation.togglePasswordVisibilityAll"
 		},
 		"137": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "options"
+			"qualifiedName": "icons"
 		},
 		"138": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.validateAllCheckbox"
+			"qualifiedName": "__type"
 		},
 		"139": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.validateAllCheckbox"
+			"qualifiedName": "__type.show"
 		},
 		"140": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "form"
+			"qualifiedName": "__type.hide"
 		},
 		"141": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "options"
+			"qualifiedName": "uform"
 		},
 		"142": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.validateFile"
+			"qualifiedName": "toggleAll"
 		},
 		"143": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.validateFile"
+			"qualifiedName": "NFSFU234FormValidation.validateInput"
 		},
 		"144": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "fileInputField"
+			"qualifiedName": "NFSFU234FormValidation.validateInput"
 		},
 		"145": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "options"
+			"qualifiedName": "inputField"
 		},
 		"146": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.validateAllFile"
+			"qualifiedName": "options"
 		},
 		"147": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.validateAllFile"
+			"qualifiedName": "callback"
 		},
 		"148": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "form"
+			"qualifiedName": "NFSFU234FormValidation.validateAllInput"
 		},
 		"149": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "options"
+			"qualifiedName": "NFSFU234FormValidation.validateAllInput"
 		},
 		"150": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.validateSelect"
+			"qualifiedName": "form"
 		},
 		"151": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.validateSelect"
+			"qualifiedName": "customErrorMessages"
 		},
 		"152": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "selectField"
+			"qualifiedName": "NFSFU234FormValidation.validateRadio"
 		},
 		"153": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "options"
+			"qualifiedName": "NFSFU234FormValidation.validateRadio"
 		},
 		"154": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "callback"
+			"qualifiedName": "radioInputField"
 		},
 		"155": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.validateAllSelect"
+			"qualifiedName": "customErrorMessage"
 		},
 		"156": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.validateAllSelect"
+			"qualifiedName": "NFSFU234FormValidation.validateAllRadio"
 		},
 		"157": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "form"
+			"qualifiedName": "NFSFU234FormValidation.validateAllRadio"
 		},
 		"158": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "options"
+			"qualifiedName": "form"
 		},
 		"159": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.validateTextarea"
+			"qualifiedName": "customErrorMessage"
 		},
 		"160": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.validateTextarea"
+			"qualifiedName": "NFSFU234FormValidation.validateCheckbox"
 		},
 		"161": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "textareaField"
+			"qualifiedName": "NFSFU234FormValidation.validateCheckbox"
 		},
 		"162": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "options"
+			"qualifiedName": "checkboxInputField"
 		},
 		"163": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.validateAllTextarea"
+			"qualifiedName": "options"
 		},
 		"164": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.validateAllTextarea"
+			"qualifiedName": "NFSFU234FormValidation.validateAllCheckbox"
 		},
 		"165": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "form"
+			"qualifiedName": "NFSFU234FormValidation.validateAllCheckbox"
 		},
 		"166": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "options"
+			"qualifiedName": "form"
 		},
 		"167": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.restrictInputWithCounter"
+			"qualifiedName": "options"
 		},
 		"168": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.restrictInputWithCounter"
+			"qualifiedName": "NFSFU234FormValidation.validateFile"
 		},
 		"169": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "inputElement"
+			"qualifiedName": "NFSFU234FormValidation.validateFile"
 		},
 		"170": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "counterContainer"
+			"qualifiedName": "fileInputField"
 		},
 		"171": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
@@ -7700,227 +7608,391 @@
 		},
 		"172": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.containsOnlyIntegers"
+			"qualifiedName": "NFSFU234FormValidation.validateAllFile"
 		},
 		"173": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.containsOnlyIntegers"
+			"qualifiedName": "NFSFU234FormValidation.validateAllFile"
 		},
 		"174": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "str"
+			"qualifiedName": "form"
 		},
 		"175": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.getPageURL"
+			"qualifiedName": "options"
 		},
 		"176": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.getPageURL"
+			"qualifiedName": "NFSFU234FormValidation.validateSelect"
 		},
 		"177": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.redirect"
+			"qualifiedName": "NFSFU234FormValidation.validateSelect"
 		},
 		"178": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.redirect"
+			"qualifiedName": "selectField"
 		},
 		"179": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "url"
+			"qualifiedName": "options"
 		},
 		"180": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "delay"
+			"qualifiedName": "callback"
 		},
 		"181": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.checkVariableType"
+			"qualifiedName": "NFSFU234FormValidation.validateAllSelect"
 		},
 		"182": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.checkVariableType"
+			"qualifiedName": "NFSFU234FormValidation.validateAllSelect"
 		},
 		"183": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "variable"
+			"qualifiedName": "form"
 		},
 		"184": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.isOnline"
+			"qualifiedName": "options"
 		},
 		"185": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.isOnline"
+			"qualifiedName": "NFSFU234FormValidation.validateTextarea"
 		},
 		"186": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.reset"
+			"qualifiedName": "NFSFU234FormValidation.validateTextarea"
 		},
 		"187": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "NFSFU234FormValidation.reset"
+			"qualifiedName": "textareaField"
 		},
 		"188": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "u_form"
+			"qualifiedName": "options"
 		},
 		"189": {
 			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
-			"qualifiedName": "default"
+			"qualifiedName": "NFSFU234FormValidation.validateAllTextarea"
 		},
 		"190": {
+			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
+			"qualifiedName": "NFSFU234FormValidation.validateAllTextarea"
+		},
+		"191": {
+			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
+			"qualifiedName": "form"
+		},
+		"192": {
+			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
+			"qualifiedName": "options"
+		},
+		"193": {
+			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
+			"qualifiedName": "NFSFU234FormValidation.restrictInputWithCounter"
+		},
+		"194": {
+			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
+			"qualifiedName": "NFSFU234FormValidation.restrictInputWithCounter"
+		},
+		"195": {
+			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
+			"qualifiedName": "inputElement"
+		},
+		"196": {
+			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
+			"qualifiedName": "counterContainer"
+		},
+		"197": {
+			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
+			"qualifiedName": "options"
+		},
+		"198": {
+			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
+			"qualifiedName": "NFSFU234FormValidation.containsOnlyIntegers"
+		},
+		"199": {
+			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
+			"qualifiedName": "NFSFU234FormValidation.containsOnlyIntegers"
+		},
+		"200": {
+			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
+			"qualifiedName": "str"
+		},
+		"201": {
+			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
+			"qualifiedName": "NFSFU234FormValidation.getPageURL"
+		},
+		"202": {
+			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
+			"qualifiedName": "NFSFU234FormValidation.getPageURL"
+		},
+		"203": {
+			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
+			"qualifiedName": "NFSFU234FormValidation.redirect"
+		},
+		"204": {
+			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
+			"qualifiedName": "NFSFU234FormValidation.redirect"
+		},
+		"205": {
+			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
+			"qualifiedName": "url"
+		},
+		"206": {
+			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
+			"qualifiedName": "delay"
+		},
+		"207": {
+			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
+			"qualifiedName": "NFSFU234FormValidation.checkVariableType"
+		},
+		"208": {
+			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
+			"qualifiedName": "NFSFU234FormValidation.checkVariableType"
+		},
+		"209": {
+			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
+			"qualifiedName": "variable"
+		},
+		"210": {
+			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
+			"qualifiedName": "NFSFU234FormValidation.isOnline"
+		},
+		"211": {
+			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
+			"qualifiedName": "NFSFU234FormValidation.isOnline"
+		},
+		"212": {
+			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
+			"qualifiedName": "NFSFU234FormValidation.reset"
+		},
+		"213": {
+			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
+			"qualifiedName": "NFSFU234FormValidation.reset"
+		},
+		"214": {
+			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
+			"qualifiedName": "u_form"
+		},
+		"215": {
+			"sourceFileName": "src/ts/nfsfu234FormValidation.ts",
+			"qualifiedName": "default"
+		},
+		"216": {
 			"sourceFileName": "src/ts/interfaces/ErrorMessagesInterface.ts",
 			"qualifiedName": "default"
 		},
-		"191": {
+		"217": {
 			"sourceFileName": "src/ts/interfaces/ErrorMessagesInterface.ts",
 			"qualifiedName": "default.message"
 		},
-		"192": {
+		"218": {
 			"sourceFileName": "src/ts/interfaces/ErrorMessagesInterface.ts",
 			"qualifiedName": "default.type"
 		},
-		"193": {
+		"219": {
 			"sourceFileName": "src/ts/interfaces/ErrorMessagesInterface.ts",
 			"qualifiedName": "default.code"
 		},
-		"194": {
+		"220": {
 			"sourceFileName": "src/ts/interfaces/ErrorMessagesInterface.ts",
 			"qualifiedName": "default.data"
 		},
-		"195": {
+		"221": {
 			"sourceFileName": "src/ts/interfaces/FormConfigInterface.ts",
 			"qualifiedName": "default"
 		},
-		"196": {
+		"222": {
 			"sourceFileName": "src/ts/interfaces/FormConfigInterface.ts",
 			"qualifiedName": "default.form"
 		},
-		"197": {
+		"223": {
 			"sourceFileName": "src/ts/interfaces/FormConfigInterface.ts",
 			"qualifiedName": "default.fields"
 		},
-		"198": {
+		"224": {
 			"sourceFileName": "src/ts/interfaces/FormConfigInterface.ts",
 			"qualifiedName": "__type"
 		},
-		"199": {
+		"225": {
 			"sourceFileName": "src/ts/interfaces/FormConfigInterface.ts",
 			"qualifiedName": "__type.__index"
 		},
-		"201": {
+		"227": {
 			"sourceFileName": "src/ts/interfaces/FormConfigInterface.ts",
 			"qualifiedName": "default.ajaxOptions"
 		},
-		"202": {
+		"228": {
 			"sourceFileName": "src/ts/interfaces/FormConfigInterface.ts",
 			"qualifiedName": "default.errorType"
 		},
-		"203": {
+		"229": {
 			"sourceFileName": "src/ts/interfaces/FormConfigInterface.ts",
 			"qualifiedName": "default.customErrorMessages"
 		},
-		"204": {
+		"230": {
 			"sourceFileName": "src/ts/interfaces/FormConfigInterface.ts",
 			"qualifiedName": "__type"
 		},
-		"205": {
+		"231": {
 			"sourceFileName": "src/ts/interfaces/FormConfigInterface.ts",
 			"qualifiedName": "__type.__index"
 		},
-		"207": {
+		"233": {
 			"sourceFileName": "src/ts/interfaces/FieldRuleInterface.ts",
 			"qualifiedName": "default"
 		},
-		"208": {
+		"234": {
 			"sourceFileName": "src/ts/interfaces/FieldRuleInterface.ts",
 			"qualifiedName": "default.required"
 		},
-		"209": {
+		"235": {
 			"sourceFileName": "src/ts/interfaces/FieldRuleInterface.ts",
 			"qualifiedName": "default.type"
 		},
-		"210": {
+		"236": {
 			"sourceFileName": "src/ts/interfaces/FieldRuleInterface.ts",
 			"qualifiedName": "default.minLength"
 		},
-		"211": {
+		"237": {
 			"sourceFileName": "src/ts/interfaces/FieldRuleInterface.ts",
 			"qualifiedName": "default.maxLength"
 		},
-		"212": {
+		"238": {
 			"sourceFileName": "src/ts/interfaces/FieldRuleInterface.ts",
 			"qualifiedName": "default.pattern"
 		},
-		"213": {
+		"239": {
 			"sourceFileName": "src/ts/interfaces/FieldRuleInterface.ts",
 			"qualifiedName": "default.message"
 		},
-		"214": {
+		"240": {
 			"sourceFileName": "src/ts/interfaces/FieldRuleInterface.ts",
 			"qualifiedName": "default.accept"
 		},
-		"215": {
+		"241": {
 			"sourceFileName": "src/ts/interfaces/FieldRuleInterface.ts",
 			"qualifiedName": "default.maxSizeMB"
 		},
-		"216": {
+		"242": {
 			"sourceFileName": "src/ts/interfaces/FieldRuleInterface.ts",
 			"qualifiedName": "default.minFiles"
 		},
-		"217": {
+		"243": {
 			"sourceFileName": "src/ts/interfaces/FieldRuleInterface.ts",
 			"qualifiedName": "default.maxFiles"
 		},
-		"218": {
+		"244": {
 			"sourceFileName": "src/ts/interfaces/FieldRuleInterface.ts",
 			"qualifiedName": "default.maxWidth"
 		},
-		"219": {
+		"245": {
 			"sourceFileName": "src/ts/interfaces/FieldRuleInterface.ts",
 			"qualifiedName": "default.maxHeight"
 		},
-		"220": {
+		"246": {
 			"sourceFileName": "src/ts/interfaces/FieldRuleInterface.ts",
 			"qualifiedName": "default.minWidth"
 		},
-		"221": {
+		"247": {
 			"sourceFileName": "src/ts/interfaces/FieldRuleInterface.ts",
 			"qualifiedName": "default.minHeight"
 		},
-		"222": {
+		"248": {
 			"sourceFileName": "src/ts/interfaces/FieldRuleInterface.ts",
 			"qualifiedName": "default.requiredMessage"
 		},
-		"223": {
+		"249": {
 			"sourceFileName": "src/ts/interfaces/FieldRuleInterface.ts",
 			"qualifiedName": "default.typeMessage"
 		},
-		"224": {
+		"250": {
 			"sourceFileName": "src/ts/interfaces/FieldRuleInterface.ts",
 			"qualifiedName": "default.sizeMessage"
 		},
-		"225": {
+		"251": {
 			"sourceFileName": "src/ts/interfaces/FieldRuleInterface.ts",
 			"qualifiedName": "default.dimensionMessage"
 		},
-		"226": {
+		"252": {
 			"sourceFileName": "src/ts/password-handling/passwordStrength.ts",
 			"qualifiedName": "PasswordStrengthResult"
 		},
-		"227": {
+		"253": {
 			"sourceFileName": "src/ts/password-handling/passwordStrength.ts",
 			"qualifiedName": "PasswordStrengthResult.score"
 		},
-		"228": {
+		"254": {
 			"sourceFileName": "src/ts/password-handling/passwordStrength.ts",
 			"qualifiedName": "PasswordStrengthResult.label"
 		},
-		"229": {
+		"255": {
 			"sourceFileName": "src/ts/password-handling/passwordStrength.ts",
 			"qualifiedName": "PasswordStrengthResult.suggestions"
+		},
+		"256": {
+			"sourceFileName": "src/ts/interfaces/AJAXOptionsInterface.ts",
+			"qualifiedName": "AJAXOptionsInterface"
+		},
+		"257": {
+			"sourceFileName": "src/ts/interfaces/AJAXOptionsInterface.ts",
+			"qualifiedName": "AJAXOptionsInterface.url"
+		},
+		"258": {
+			"sourceFileName": "src/ts/interfaces/AJAXOptionsInterface.ts",
+			"qualifiedName": "AJAXOptionsInterface.RequestMethod"
+		},
+		"259": {
+			"sourceFileName": "src/ts/interfaces/AJAXOptionsInterface.ts",
+			"qualifiedName": "AJAXOptionsInterface.RequestHeader"
+		},
+		"260": {
+			"sourceFileName": "src/ts/interfaces/AJAXOptionsInterface.ts",
+			"qualifiedName": "__type"
+		},
+		"261": {
+			"sourceFileName": "src/ts/interfaces/AJAXOptionsInterface.ts",
+			"qualifiedName": "__type.__index"
+		},
+		"263": {
+			"sourceFileName": "src/ts/interfaces/AJAXOptionsInterface.ts",
+			"qualifiedName": "AJAXOptionsInterface.RequestBody"
+		},
+		"264": {
+			"sourceFileName": "src/ts/interfaces/AJAXOptionsInterface.ts",
+			"qualifiedName": "AJAXOptionsInterface.RequestBodyIgnore"
+		},
+		"265": {
+			"sourceFileName": "src/ts/interfaces/FormConstructorInterface.ts",
+			"qualifiedName": "FormConstructorInterface"
+		},
+		"266": {
+			"sourceFileName": "src/ts/interfaces/FormConstructorInterface.ts",
+			"qualifiedName": "__type"
+		},
+		"267": {
+			"sourceFileName": "src/ts/interfaces/FormConstructorInterface.ts",
+			"qualifiedName": "__type.form"
+		},
+		"268": {
+			"sourceFileName": "src/ts/interfaces/FormConstructorInterface.ts",
+			"qualifiedName": "__type.customErrorMessages"
+		},
+		"269": {
+			"sourceFileName": "src/ts/interfaces/FormConstructorInterface.ts",
+			"qualifiedName": "__type"
+		},
+		"270": {
+			"sourceFileName": "src/ts/interfaces/FormConstructorInterface.ts",
+			"qualifiedName": "__type.__index"
+		},
+		"272": {
+			"sourceFileName": "src/ts/interfaces/FormConstructorInterface.ts",
+			"qualifiedName": "__type.ajaxOptions"
 		}
 	},
 	"files": {

@@ -2,7 +2,7 @@
 import fs from 'node:fs';
 import https from 'node:https';
 
-const PACKAGE_NAME = 'nfsfu234-form-validation';
+const PACKAGE_NAME = '@nfsfu234/form-validation';
 const OUT_FILE = './lib-api.json';
 
 function parseArgs() {

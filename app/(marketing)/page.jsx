@@ -29,68 +29,111 @@ function Icon({ paths, ...props }) {
 
 const FEATURES = [
   {
-    title: 'Reads your markup first',
+    title: "HTML-first validation",
     body: (
       <>
-        <code>required</code>, <code>pattern</code>, <code>minlength</code>,{' '}
-        <code>type</code> &mdash; validated straight off the attributes
-        already on your inputs.
-      </>
-    ),
-    icon: <path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
-  },
-  {
-    title: "Configure only what's different",
-    body: (
-      <>
-        One <code>configureForms()</code> call overrides or extends any
-        field, for every form on the site.
-      </>
-    ),
-    icon: <circle cx="12" cy="12" r="3" />
-  },
-  {
-    title: 'Files and images, properly',
-    body: (
-      <>
-        Count limits, MIME/extension allowlists, max size, and image
-        dimension checks &mdash; the part <code>accept</code> can&apos;t do.
-      </>
-    ),
-    icon: <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M9 15l2 2 4-4" />
-  },
-  {
-    title: 'Every field type included',
-    body: (
-      <>
-        Inputs, textareas, selects, radios, and checkboxes all run through{' '}
-        <code>validate()</code> and <code>submit()</code> &mdash; none
-        silently skipped.
+        Built on top of native HTML validation. The library reads
+        <code> required</code>, <code>type</code>,{" "}
+        <code>pattern</code>, <code>minlength</code>,{" "}
+        <code>maxlength</code>, <code>min</code>,{" "}
+        <code>max</code>, <code>step</code>, and other standard
+        attributes before applying any custom rules.
       </>
     ),
     icon: (
       <>
-        <rect x="3" y="3" width="7" height="7" rx="1" />
-        <rect x="14" y="3" width="7" height="7" rx="1" />
-        <rect x="3" y="14" width="7" height="7" rx="1" />
-        <rect x="14" y="14" width="7" height="7" rx="1" />
+        <path d="M4 4h16v16H4z" />
+        <path d="M8 8h8" />
+        <path d="M8 12h8" />
+        <path d="M8 16h5" />
       </>
     )
   },
+
   {
-    title: 'Errors, your way',
-    body: 'Inline text, a DOM element, or nothing at all — set per field or per form.',
-    icon: <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-  },
-  {
-    title: 'Zero runtime dependencies',
+    title: "Configure once. Use everywhere.",
     body: (
       <>
-        Check <code>package.json</code>. It&apos;s genuinely empty. Nothing
-        to audit, nothing to update.
+        Register every form on your website with{" "}
+        <code>configureForms()</code>, then initialize only the forms
+        on the current page using <code>autoInit()</code>. Perfect for
+        multi-page applications.
       </>
     ),
-    icon: <path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z" />
+    icon: (
+      <>
+        <rect x="3" y="4" width="18" height="16" rx="2" />
+        <path d="M7 9h10" />
+        <path d="M7 13h10" />
+      </>
+    )
+  },
+
+  {
+    title: "File & image validation",
+    body: (
+      <>
+        Validate uploads beyond what HTML can do. Restrict file types,
+        image dimensions, file size, number of files, MIME types, and
+        more—all before upload.
+      </>
+    ),
+    icon: (
+      <>
+        <path d="M5 20h14" />
+        <path d="M12 16V4" />
+        <path d="m7 9 5-5 5 5" />
+      </>
+    )
+  },
+
+  {
+    title: "One library. Every form element.",
+    body: (
+      <>
+        Validate inputs, textareas, selects, checkboxes, radio groups,
+        files and custom configurations using one consistent API.
+      </>
+    ),
+    icon: (
+      <>
+        <circle cx="12" cy="12" r="9" />
+        <path d="m9 12 2 2 4-4" />
+      </>
+    )
+  },
+
+  {
+    title: "Flexible error handling",
+    body: (
+      <>
+        Display inline errors, target your own DOM elements, or disable
+        built-in rendering completely and integrate with your own UI.
+      </>
+    ),
+    icon: (
+      <>
+        <path d="M12 3v12" />
+        <circle cx="12" cy="19" r="1" />
+      </>
+    )
+  },
+
+  {
+    title: "Zero runtime dependencies",
+    body: (
+      <>
+        No third-party runtime packages. Smaller bundles, fewer supply
+        chain concerns, easier upgrades, and complete control over your
+        application.
+      </>
+    ),
+    icon: (
+      <>
+        <circle cx="12" cy="12" r="9" />
+        <path d="m8 12 2 2 6-6" />
+      </>
+    )
   }
 ]
 
@@ -198,40 +241,69 @@ export default function LandingPage() {
       <header className="land-hero">
         <div className="land-glow land-glow-1" />
         <div className="land-glow land-glow-2" />
+
         <div className="land-wrap land-hero-content">
           <span className="land-badge">
             <span className="land-badge-dot" />
-            v3 &middot; zero dependencies
+            Version 3 · Zero runtime dependencies
           </span>
+
           <h1>
-            Validation your HTML
+            Validate the HTML
             <br />
-            <span className="land-gradient-text">already wrote.</span>
+            <span className="land-gradient-text">you already wrote.</span>
           </h1>
+
           <p>
-            Point it at a form and it reads the <code>required</code>,{' '}
-            <code>pattern</code>, <code>minlength</code>, and{' '}
-            <code>type</code> attributes you already set. Override anything
-            with one config object. Works in plain HTML, React, Next.js, and
-            Expo web &mdash; the same API everywhere.
+            NFSFU234FormValidation reads the validation attributes already
+            present on your forms—<code>required</code>,{" "}
+            <code>type</code>,{" "}
+            <code>pattern</code>,{" "}
+            <code>minlength</code>,{" "}
+            <code>maxlength</code>,{" "}
+            <code>min</code>,{" "}
+            <code>max</code>,{" "}
+            <code>step</code> and more.
           </p>
+
+          <p>
+            When native HTML validation isn't enough, extend it with one configuration object—or configure an entire website using the same API.
+            Configure one form or an entire website
+            using the same API.
+          </p>
+
           <div className="land-hero-actions">
-            <a href="/docs/v3/getting-started" className="land-btn land-btn-primary">
-              Get started
-            </a>
             <a
-              href="https://github.com/NFSFU234FormValidation/nfsfu234-form-validation"
+              href="/docs/v3/quick-start"
+              className="land-btn land-btn-primary"
+            >
+              Quick Start
+            </a>
+
+            <a
+              href="/docs/v3/getting-started"
               className="land-btn land-btn-secondary"
             >
-              View on GitHub
+              Documentation
+            </a>
+
+            <a
+              href="https://github.com/nfsfu234/nfsfu234-form-validation"
+              className="land-btn land-btn-secondary"
+            >
+              GitHub
             </a>
           </div>
+
           <InstallTerminal />
+
           <div className="land-framework-strip">
             <span>Plain HTML</span>
-            <span>React</span>
             <span>Next.js</span>
-            <span>Expo web</span>
+            <span>React</span>
+            <span>Vite</span>
+            <span>Expo Web</span>
+            <span>TypeScript</span>
           </div>
         </div>
       </header>
@@ -239,19 +311,22 @@ export default function LandingPage() {
       <div className="land-stats">
         <div className="land-stat">
           <strong>0</strong>
-          <span>Dependencies</span>
+          <span>Runtime Dependencies</span>
         </div>
+
         <div className="land-stat">
-          <strong>6</strong>
-          <span>Field types</span>
+          <strong>HTML First</strong>
+          <span>Uses Native Validation</span>
         </div>
+
         <div className="land-stat">
-          <strong>4</strong>
-          <span>Frameworks</span>
+          <strong>v3</strong>
+          <span>Configuration Driven</span>
         </div>
+
         <div className="land-stat">
           <strong>MIT</strong>
-          <span>License</span>
+          <span>Open Source</span>
         </div>
       </div>
 
@@ -283,6 +358,68 @@ export default function LandingPage() {
 
       <section className="land-section">
         <div className="land-wrap">
+
+          <div className="land-section-head">
+            <span className="land-eyebrow">
+              New in Version 3
+            </span>
+
+            <h2>
+              Built for modern websites, not just forms.
+            </h2>
+
+            <p>
+              Version 3 introduces configuration-driven validation,
+              automatic form registration, generated API documentation,
+              stronger TypeScript support and a cleaner developer
+              experience from installation to deployment.
+            </p>
+          </div>
+
+          <div className="land-features">
+
+            <div className="land-feature">
+              <h3>configureForms()</h3>
+
+              <p>
+                Register every form once and keep all validation rules in one
+                place.
+              </p>
+            </div>
+
+            <div className="land-feature">
+              <h3>autoInit()</h3>
+
+              <p>
+                Automatically initialize only the forms that exist on the
+                current page.
+              </p>
+            </div>
+
+            <div className="land-feature">
+              <h3>Async Validation</h3>
+
+              <p>
+                Both <code>validate()</code> and{" "}
+                <code>submit()</code> return promises for cleaner async code.
+              </p>
+            </div>
+
+            <div className="land-feature">
+              <h3>TypeScript Ready</h3>
+
+              <p>
+                Ships with full typings and generated API documentation.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <section className="land-section">
+        <div className="land-wrap">
           <div className="land-code-section">
             <div className="land-code-copy">
               <span className="land-eyebrow">See it work</span>
@@ -304,37 +441,146 @@ export default function LandingPage() {
 
       <section className="land-section" style={{ paddingTop: 0 }}>
         <div className="land-wrap">
-          <div className="land-sibling-card">
-            <div className="land-sibling-copy">
-              <span className="land-eyebrow">From the same ecosystem</span>
-              <h3>Handling the form is half the job.</h3>
-              <p>
-                <strong>NFSFU234TourGuide</strong> is our zero-dependency
-                React library for onboarding, walkthroughs, and product
-                tours &mdash; ~3&ndash;4kB gzipped. Pair it with this
-                library to validate the form, then walk new users through
-                it.
-              </p>
-              <a href="https://tour-guide.nforshifu234dev.com">
-                Explore NFSFU234TourGuide &rarr;
-              </a>
-            </div>
+
+          <div className="land-section-head">
+            <span className="land-eyebrow">
+              The NFSFU234 Ecosystem
+            </span>
+
+            <h2>
+              Focused tools. Better web experiences.
+            </h2>
+
+            <p>
+              Every NFSFU234 library solves a specific frontend problem while
+              remaining lightweight, dependency-free where possible, and designed
+              to work well alongside the rest of the ecosystem.
+            </p>
           </div>
+
+          <div className="land-features">
+
+            <div className="land-feature">
+
+              <span className="land-feature-label">
+                FLAGSHIP LIBRARY
+              </span>
+
+              <h3>NFSFU234FormValidation</h3>
+
+              <p className="my-3">
+                HTML-first form validation with configuration-driven rules, AJAX
+                submission, automatic form initialization, file validation, and
+                first-class TypeScript support.
+              </p>
+
+              <a href="/docs/v3/getting-started">
+                Explore FormValidation →
+              </a>
+
+            </div>
+
+            <div className="land-feature">
+
+              <span className="land-feature-label">
+                REACT LIBRARY
+              </span>
+
+              <h3>NFSFU234TourGuide</h3>
+
+              <p className="my-3">
+                Create beautiful onboarding experiences, guided product tours,
+                feature walkthroughs, and user education flows for React
+                applications.
+              </p>
+
+              <a href="https://tour-guide.nforshifu234dev.com">
+                Explore TourGuide →
+              </a>
+
+            </div>
+
+            <div className="land-feature">
+
+              <span className="land-feature-label">
+                DEVELOPER TOOL
+              </span>
+
+              <h3>NFSFU234ShotSweep</h3>
+
+              <p className="my-3">
+                Generate beautiful website screenshots for documentation, blogs,
+                portfolios, testing, automation, social sharing, and marketing
+                content.
+              </p>
+
+              <a href="https://shotsweep.nforshifu234dev.com">
+                Explore ShotSweep →
+              </a>
+
+            </div>
+
+          </div>
+
         </div>
       </section>
 
       <section className="land-section">
         <div className="land-wrap">
+
           <div className="land-cta">
-            <h2>Ship the form. Skip the validation library.</h2>
-            <p>One npm install and a script tag. No build step required.</p>
+
+            <span className="land-eyebrow">
+              Build with the ecosystem
+            </span>
+
+            <h2>
+              Build less boilerplate. Ship more software.
+            </h2>
+
+            <p>
+              Validate forms, guide users through your application, and create
+              beautiful website screenshots—all with lightweight tools built for
+              modern JavaScript applications.
+            </p>
+
             <div className="land-hero-actions">
-              <a href="/docs/v3/getting-started" className="land-btn land-btn-primary">
-                Get started
+
+              <a
+                href="/docs/v3/quick-start"
+                className="land-btn land-btn-primary"
+              >
+                Quick Start
               </a>
-              <InstallTerminal variant="compact" />
+
+              <a
+                href="/docs/v3"
+                className="land-btn land-btn-secondary"
+              >
+                Browse Documentation
+              </a>
+
             </div>
+
+            <div
+              style={{
+                marginTop: "2rem",
+                display: "flex",
+                gap: "1rem",
+                justifyContent: "center",
+                flexWrap: "wrap",
+                opacity: 0.75,
+                fontSize: ".9rem"
+              }}
+            >
+              <span>✓ Open Source</span>
+              <span>✓ MIT Licensed</span>
+              <span>✓ Modern JavaScript</span>
+              <span>✓ Developer-first</span>
+            </div>
+
           </div>
+
         </div>
       </section>
 

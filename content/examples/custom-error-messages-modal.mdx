@@ -4,78 +4,193 @@ excerpt: "Override default validation messages and show them as modals instead o
 frameworks: ["nextjs", "vite"]
 date: "2026-07-11"
 ---
+# Contact Form with Custom Error Messages
 
-A contact form where every validation failure shows as a modal with your own wording, configured once — no manual `displayError()` calls needed.
+A contact form should guide users toward fixing mistakes instead of showing confusing validation errors. In this example, every validation failure displays your own custom message in a modal—without writing any validation logic or manually calling `displayError()`.
 
-## Markup
+Once configured, the library automatically validates the form whenever it's submitted.
+
+---
+
+## HTML
 
 ```html
 <form id="contactForm">
-  <input type="email" name="email">
-  <textarea name="message"></textarea>
-  <button type="submit">Send</button>
+    <input
+        type="email"
+        name="email"
+        placeholder="Email address"
+    />
+
+    <textarea
+        name="message"
+        placeholder="How can we help?"
+    ></textarea>
+
+    <button type="submit">
+        Send Message
+    </button>
 </form>
 ```
 
-## Config
+---
 
-```js
-import NFSFU234FormValidation from 'nfsfu234-form-validation';
+## JavaScript
+
+```javascript
+import NFSFU234FormValidation from "@nfsfu234/form-validation";
 
 NFSFU234FormValidation.configureForms([
-  {
-    form: '#contactForm',
-    errorType: 'modal',
-    fields: {
-      email: { required: true, type: 'email' },
-      message: { required: true, minLength: 20, maxLength: 500 }
-    },
-    customErrorMessages: {
-      email: 'We need a valid email address to get back to you.',
-      message: 'Give us at least 20 characters so we know what you need help with.'
+    {
+        form: "#contactForm",
+
+        errorType: "modal",
+
+        fields: {
+            email: {
+                required: true,
+                type: "email"
+            },
+
+            message: {
+                required: true,
+                minLength: 20,
+                maxLength: 500
+            }
+        },
+
+        customErrorMessages: {
+            email:
+                "We need a valid email address so we can reply to you.",
+
+            message:
+                "Please tell us a little more about your issue (minimum 20 characters)."
+        }
     }
-  }
 ]);
 
 NFSFU234FormValidation.autoInit();
 ```
 
-That's the whole setup — `autoInit()` wires the submit handler, adds `novalidate`, and runs validation on submit. Every failure on `email` or `message` shows as a modal using the message you defined, instead of the library's default text or inline placement.
+---
 
-## Next.js note
+## What happens?
+
+When the user submits the form, the library automatically:
+
+- Finds the registered form.
+- Adds the `novalidate` attribute.
+- Validates every configured field.
+- Displays your custom validation messages.
+- Prevents submission while validation fails.
+- Allows submission once every field passes validation.
+
+No event listeners or manual validation code are required.
+
+---
+
+## Using with Next.js
+
+Initialize the configuration inside a Client Component.
 
 ```jsx
-'use client';
-import { useEffect } from 'react';
-import NFSFU234FormValidation from 'nfsfu234-form-validation';
+"use client";
 
-export function ContactFormInit() {
-  useEffect(() => {
-    NFSFU234FormValidation.configureForms([
-      {
-        form: '#contactForm',
-        errorType: 'modal',
-        fields: {
-          email: { required: true, type: 'email' },
-          message: { required: true, minLength: 20, maxLength: 500 }
-        },
-        customErrorMessages: {
-          email: 'We need a valid email address to get back to you.',
-          message: 'Give us at least 20 characters so we know what you need help with.'
-        }
-      }
-    ]);
-    NFSFU234FormValidation.autoInit();
-  }, []);
+import { useEffect } from "react";
+import NFSFU234FormValidation from "@nfsfu234/form-validation";
 
-  return null;
+export default function ContactFormInit() {
+    useEffect(() => {
+        NFSFU234FormValidation.configureForms([
+            {
+                form: "#contactForm",
+
+                errorType: "modal",
+
+                fields: {
+                    email: {
+                        required: true,
+                        type: "email"
+                    },
+
+                    message: {
+                        required: true,
+                        minLength: 20,
+                        maxLength: 500
+                    }
+                },
+
+                customErrorMessages: {
+                    email:
+                        "We need a valid email address so we can reply to you.",
+
+                    message:
+                        "Please tell us a little more about your issue (minimum 20 characters)."
+                }
+            }
+        ]);
+
+        NFSFU234FormValidation.autoInit();
+    }, []);
+
+    return null;
 }
 ```
 
-Mount `<ContactFormInit />` once near the form (or in the root layout, same as the multi-step registration example) — `autoInit()` only wires up forms actually present in the current page's DOM.
+Mount this component once in your application. `autoInit()` only initializes forms that actually exist on the current page.
 
-## Notes
+---
 
-- Switch `errorType` to `'inline'` (or omit it) to render the same custom messages next to each field instead of as modals — no other change needed.
-- `customErrorMessages` is keyed by field name, matching whatever key you used in `fields`. A field without an entry falls back to the library's default message for that rule.
-- This is entirely config-driven — no `displayError()` call needed for validation failures. `displayError()` is for messages you want to trigger manually outside the normal validate/submit flow.
+## Configuration
+
+### Display validation as a modal
+
+```javascript
+errorType: "modal"
+```
+
+To display validation messages directly beneath each field instead, use:
+
+```javascript
+errorType: "inline"
+```
+
+or simply omit the option to use the library's default behavior.
+
+---
+
+### Customize validation messages
+
+Messages are matched by the field name.
+
+```javascript
+customErrorMessages: {
+    email: "Enter a valid email address.",
+    message: "Your message must contain at least 20 characters."
+}
+```
+
+Fields without custom messages automatically use the library's default validation messages.
+
+---
+
+## Why use `configureForms()`?
+
+For larger applications, defining validation rules in one place is often easier than attaching validation to every form individually.
+
+`configureForms()` lets you:
+
+- Register multiple forms.
+- Keep validation rules together.
+- Customize messages once.
+- Automatically initialize forms with `autoInit()`.
+
+---
+
+## Continue learning
+
+- ⚙️ **[Form Configuration](/docs/v3/formConfigInterface)** — Learn everything `configureForms()` supports.
+- 🤖 **[autoInit()](/docs/v3/autoInit)** — Automatically initialize forms across your application.
+- 🎨 **[Custom Error Messages](/docs/v3/custom-error-messages)** — Personalize validation feedback.
+- 📡 **[AJAX Requests](/docs/v3/ajax)** — Submit forms without reloading the page.
+- 📚 **[Available Functions](/docs/v3/available-functions)** — Explore the complete API reference.

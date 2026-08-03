@@ -1,0 +1,257 @@
+---
+title: "Quick Start"
+description: "Get @nfsfu234/form-validation running in minutes."
+keywords:
+    - "quick start"
+    - "form validation"
+    - "@nfsfu234/form-validation"
+    - "javascript"
+    - "typescript"
+    - "forms"
+---
+
+# Quick Start
+
+New to **@nfsfu234/form-validation**? This page gets you from installation to a working form in just a few minutes.
+
+If you're looking for more advanced setup, see the dedicated guides for:
+
+* [Installation](/docs/v3/installation)
+* [Initialization](/docs/v3/initialization)
+* [Usage](/docs/v3/usage)
+* [Frameworks](/docs/v3/frameworks)
+
+---
+
+## 1. Install
+
+Choose your preferred package manager.
+
+```bash
+npm install @nfsfu234/form-validation
+```
+
+or
+
+```bash
+pnpm add @nfsfu234/form-validation
+```
+
+or
+
+```bash
+yarn add @nfsfu234/form-validation
+```
+
+or
+
+```bash
+bun add @nfsfu234/form-validation
+```
+
+You can also use the browser build from jsDelivr.
+
+```html
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@nfsfu234/form-validation/dist/css/nfsfu234FormValidation.min.css"
+/>
+
+<script src="https://cdn.jsdelivr.net/npm/@nfsfu234/form-validation/dist/js/nfsfu234FormValidation.js"></script>
+```
+
+---
+
+## 2. Create your form
+
+```html
+<form id="contactForm">
+  <input
+    type="text"
+    name="name"
+    placeholder="Your name"
+    required
+  />
+
+  <input
+    type="email"
+    name="email"
+    placeholder="Email address"
+    required
+  />
+
+  <textarea
+    name="message"
+    placeholder="Message"
+    required
+  ></textarea>
+
+  <button type="submit">
+    Send Message
+  </button>
+</form>
+```
+
+---
+
+## 3. Initialize the validator
+
+The simplest setup requires only one line.
+
+```js
+const validator = new NFSFU234FormValidation("contactForm");
+```
+
+If you omit the form ID, the library automatically discovers the first form on the page.
+
+```js
+const validator = new NFSFU234FormValidation();
+```
+
+---
+
+## 4. Submit with validation
+
+```js
+const validator = new NFSFU234FormValidation("contactForm");
+
+document
+  .querySelector("#contactForm")
+  .addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const result = await validator.submit();
+
+    if (result.type === "success") {
+      console.log("Form submitted successfully.");
+    } else {
+      console.log(result);
+    }
+  });
+```
+
+---
+
+## 5. Validate without submitting
+
+Sometimes you only want to validate the form.
+
+```js
+const validator = new NFSFU234FormValidation("contactForm");
+
+const result = await validator.validate();
+
+if (result.type === "success") {
+  console.log("Everything looks good.");
+}
+```
+
+---
+
+## 6. Make AJAX requests
+
+You can send requests without creating an instance.
+
+```js
+const response = await NFSFU234FormValidation.ajax({
+  url: "/api/contact",
+  RequestMethod: "POST",
+  body: {
+    name: "John Doe",
+    email: "john@example.com",
+  },
+});
+
+console.log(response);
+```
+
+---
+
+## 7. Utility-only mode
+
+Need password generation, email validation, AJAX utilities, or other helper methods without a form?
+
+Create a utility-only instance.
+
+```js
+const validator = new NFSFU234FormValidation(null);
+
+validator.isEmail("hello@example.com");
+
+validator.generatePassword();
+```
+
+---
+
+# For multi-page websites
+
+Version **3.0.0** introduces one of the library's biggest additions: centralized form configuration.
+
+Instead of initializing every form manually on every page, register all your forms once and let the library automatically initialize whichever forms exist on the current page.
+
+## Configure every form
+
+```js
+import { NFSFU234FormValidation } from "@nfsfu234/form-validation";
+
+NFSFU234FormValidation.configureForms([
+  {
+    form: "contactForm",
+    customErrorMessages: {
+      email: {
+        empty: "Email is required.",
+      },
+    },
+  },
+
+  {
+    form: "newsletterForm",
+  },
+
+  {
+    form: "checkoutForm",
+    isErrorMessageInline: true,
+  },
+]);
+```
+
+---
+
+## Automatically initialize them
+
+```js
+document.addEventListener("DOMContentLoaded", () => {
+  NFSFU234FormValidation.autoInit();
+});
+```
+
+The library checks the current page and only initializes forms that actually exist.
+
+This means the same configuration file can be shared across an entire website without additional setup.
+
+---
+
+## Why use this approach?
+
+Using `configureForms()` together with `autoInit()` makes large projects much easier to maintain.
+
+Benefits include:
+
+* One central configuration for every form.
+* No repeated initialization code.
+* Works across multi-page websites.
+* Only existing forms are initialized.
+* Easier maintenance as your project grows.
+
+---
+
+## What's next?
+
+Now that your project is running, continue with the rest of the documentation:
+
+* **[Installation](/docs/v3/installation)** — every installation method.
+* **[Initialization](/docs/v3/initialization)** — constructor options and configuration.
+* **[Usage](/docs/v3/usage)** — common workflows and examples.
+* **[Available Functions](/docs/v3/available-functions)** — complete API reference.
+* **[Frameworks](/docs/v3/frameworks)** — React, Next.js, Vite, and more.
+* **[Migration](/docs/v3/migration)** — upgrading from previous versions.
