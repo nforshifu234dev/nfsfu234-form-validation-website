@@ -522,7 +522,7 @@ function GetInTouch() {
         </li>
 
         <li>
-          <a href="https://github.com/nfsfu234/nfsfu234-form-validation" className="land-button">
+          <a href="https://github.com/nforshifu234dev/nfsfu234-form-validation" className="land-button">
             View the project on GitHub
           </a>
         </li>

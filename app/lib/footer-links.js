@@ -25,7 +25,7 @@ export const marketingPrimaryColumn = {
 export const docsPrimaryColumn = {
   title: 'Project',
   links: [
-    { label: 'GitHub', href: 'https://github.com/nfsfu234/nfsfu234-form-validation', iconKey: 'github' },
+    { label: 'GitHub', href: 'https://github.com/nforshifu234dev/nfsfu234-form-validation', iconKey: 'github' },
     { label: 'npm', href: 'https://www.npmjs.com/package/nfsfu234-form-validation', iconKey: 'npm' },
     { label: 'Changelog', href: '/docs/v3/changelog' },
     { label: 'MIT License', href: '#' }

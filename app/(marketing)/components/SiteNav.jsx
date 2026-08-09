@@ -10,7 +10,7 @@ const LINKS = [
   { href: '/blog', label: 'Blog' },
   { href: '/faq', label: 'FAQ' },
   { href: '/examples', label: 'Examples' },
-  { href: 'https://github.com/nfsfu234/nfsfu234-form-validation', label: 'GitHub', external: true }
+  { href: 'https://github.com/nforshifu234dev/nfsfu234-form-validation', label: 'GitHub', external: true }
 ]
 
 function isLinkActive(pathname, link) {

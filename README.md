@@ -49,7 +49,7 @@ If you're looking for the validation library itself, visit:
 
 **Library Repository**
 
-https://github.com/nfsfu234/nfsfu234-form-validation
+https://github.com/nforshifu234dev/nfsfu234-form-validation
 
 Install with npm:
 

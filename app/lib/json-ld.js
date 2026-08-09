@@ -16,8 +16,8 @@ export function buildSoftwareApplicationLd() {
     },
     softwareVersion: '3',
     url: SITE_URL,
-    codeRepository: 'https://github.com/nfsfu234/nfsfu234-form-validation',
-    license: 'https://github.com/nfsfu234/nfsfu234-form-validation/blob/main/LICENSE',
+    codeRepository: 'https://github.com/nforshifu234dev/nfsfu234-form-validation',
+    license: 'https://github.com/nforshifu234dev/nfsfu234-form-validation/blob/main/LICENSE',
     downloadUrl: 'https://www.npmjs.com/package/nfsfu234-form-validation'
   }
 }

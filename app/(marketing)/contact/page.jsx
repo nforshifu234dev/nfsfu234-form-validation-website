@@ -32,7 +32,7 @@ export default function ContactPage() {
         <h2>Bug reports &amp; feature requests</h2>
         <p>
           For anything code-related, opening a{' '}
-          <a href="https://github.com/nfsfu234/nfsfu234-form-validation/issues">
+          <a href="https://github.com/nforshifu234dev/nfsfu234-form-validation/issues">
             GitHub issue
           </a>{' '}
           gets it in front of us fastest and keeps a public record for other
@@ -42,7 +42,7 @@ export default function ContactPage() {
         <h2>Contributing</h2>
         <p>
           Want to contribute code or docs? Check the{' '}
-          <a href="https://github.com/nfsfu234/nfsfu234-form-validation/blob/main/CONTRIBUTING.md">
+          <a href="https://github.com/nforshifu234dev/nfsfu234-form-validation/blob/main/CONTRIBUTING.md">
             contribution guidelines
           </a>.
         </p>

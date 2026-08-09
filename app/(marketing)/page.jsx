@@ -302,7 +302,7 @@ export default function LandingPage() {
             </a>
 
             <a
-              href="https://github.com/nfsfu234/nfsfu234-form-validation"
+              href="https://github.com/nforshifu234dev/nfsfu234-form-validation"
               className="land-btn land-btn-secondary"
             >
               GitHub

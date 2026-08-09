@@ -53,7 +53,7 @@ export function SiteFooterMarketing() {
         </div>
 
         <div className="footer-icon-row">
-          <a href="https://github.com/nfsfu234/nfsfu234-form-validation" aria-label="GitHub" className="footer-icon-btn" dangerouslySetInnerHTML={{ __html: socialIcons.github }} />
+          <a href="https://github.com/nforshifu234dev/nfsfu234-form-validation" aria-label="GitHub" className="footer-icon-btn" dangerouslySetInnerHTML={{ __html: socialIcons.github }} />
           <a href="https://www.npmjs.com/package/nfsfu234-form-validation" aria-label="npm" className="footer-icon-btn" dangerouslySetInnerHTML={{ __html: socialIcons.npm }} />
           <a href="https://x.com/nf_validator234" aria-label="X" className="footer-icon-btn" dangerouslySetInnerHTML={{ __html: socialIcons.x }} />
           <a href="https://www.instagram.com/nforshifu234dev_projects/" aria-label="Instagram" className="footer-icon-btn" dangerouslySetInnerHTML={{ __html: socialIcons.instagram }} />

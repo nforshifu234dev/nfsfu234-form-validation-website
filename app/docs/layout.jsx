@@ -52,7 +52,7 @@ const navbar = (
         </b>
       </span>
     }
-    projectLink="https://github.com/nfsfu234/nfsfu234-form-validation"
+    projectLink="https://github.com/nforshifu234dev/nfsfu234-form-validation"
   >
     <NavExtraLinks />
     <VersionSwitcher />
