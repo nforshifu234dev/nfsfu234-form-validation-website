@@ -8,6 +8,7 @@ import { CookieBanner } from '../components/CookieBanner.jsx'
 import { Analytics } from '../components/Analytics.jsx'
 import './globals.css'
 import { VersionSwitcher } from '../components/VersionSwitcher.jsx'
+import { NavExtraLinks } from '@/components/NavExtraLinks.jsx'
 
 export const metadata = {
   metadataBase: new URL('https://form-validation.nforshifu234dev.com'),
@@ -53,10 +54,7 @@ const navbar = (
     }
     projectLink="https://github.com/nfsfu234/nfsfu234-form-validation"
   >
-    <a href="/about" className="navbar-extra-link" style={{ fontSize: '0.85rem', marginRight: '0.75rem' }}>About</a>
-    <a href="/blog" className="navbar-extra-link" style={{ fontSize: '0.85rem', marginRight: '0.75rem' }}>Blog</a>
-    <a href="/faq" className="navbar-extra-link" style={{ fontSize: '0.85rem', marginRight: '0.75rem' }}>FAQs</a>
-    <a href="/examples" className="navbar-extra-link" style={{ fontSize: '0.85rem', marginRight: '0.75rem' }}>Examples</a>
+    <NavExtraLinks />
     <VersionSwitcher />
   </Navbar>
 )

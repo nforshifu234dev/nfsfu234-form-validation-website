@@ -3,10 +3,11 @@
 import InstallTerminal from '@/components/InstallTerminal'
 import { Reveal } from '@/components/Reveal'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { JsonLdScript } from './components/JsonLdScript'
 import { buildOrganizationLd, buildSoftwareApplicationLd } from '@/lib/json-ld'
-
+import { NFSFU234FormValidation } from '@nfsfu234/form-validation'
+import '@nfsfu234/form-validation/css'
 
 function Icon({ paths, ...props }) {
   return (
@@ -137,36 +138,45 @@ const FEATURES = [
   }
 ]
 
-function useFieldValidation(validate) {
-  const [value, setValue] = useState('')
-  const [touched, setTouched] = useState(false)
-
-  const result = validate(value)
-  const status = !touched ? 'idle' : result === true ? 'valid' : 'invalid'
-
-  return {
-    value,
-    status,
-    error: status === 'invalid' ? result : '',
-    onChange: (e) => setValue(e.target.value),
-    onBlur: () => setTouched(true)
-  }
-}
-
 function LiveDemo() {
-  const name = useFieldValidation((v) =>
-    v.trim().length > 0 ? true : 'This field is required.'
-  )
-  const email = useFieldValidation((v) => {
-    if (!v.trim()) return 'This field is required.'
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)
-      ? true
-      : 'Enter a valid email address.'
-  })
-  const message = useFieldValidation((v) => {
-    if (!v.trim()) return 'This field is required.'
-    return v.trim().length >= 10 ? true : 'Must be at least 10 characters.'
-  })
+  const formRef = useRef(null)
+  const validatorRef = useRef(null)
+
+  useEffect(() => {
+    if (!formRef.current) return
+
+    validatorRef.current = new NFSFU234FormValidation({
+      form: formRef.current,
+      errorType: 'inline',
+      customErrorMessages: {
+        name: { empty: 'This field is required.' },
+        email: {
+          empty: 'This field is required.',
+          format: 'Enter a valid email address.'
+        },
+        message: {
+          empty: 'This field is required.',
+          minlength: 'Must be at least 10 characters.'
+        }
+      }
+    })
+    // Constructing against a real form already wires novalidate + a
+    // submit listener — no manual addEventListener needed here.
+  }, [])
+
+  const validateField = (fieldId) => {
+    const field = formRef.current?.querySelector(`#${fieldId}`)
+    if (field && validatorRef.current) {
+      validatorRef.current.validateInput(field)
+    }
+  }
+
+  const validateTextareaField = (fieldId) => {
+    const field = formRef.current?.querySelector(`#${fieldId}`)
+    if (field && validatorRef.current) {
+      validatorRef.current.validateTextarea(field)
+    }
+  }
 
   return (
     <div className="land-demo-panel">
@@ -174,58 +184,55 @@ function LiveDemo() {
         <span>live-form.html</span>
       </div>
 
-      <div className={`land-demo-field is-${name.status === 'idle' ? '' : name.status}`}>
-        <label htmlFor="d-name">Full name</label>
-        <div className="land-demo-input-row">
-          <input
-            id="d-name"
-            type="text"
-            placeholder="Ada Lovelace"
-            value={name.value}
-            onChange={name.onChange}
-            onBlur={name.onBlur}
-          />
-          <span className="land-demo-seal">&#10003;</span>
+      <form ref={formRef} id="liveDemoForm" noValidate>
+        <div className="land-demo-field">
+          <label htmlFor="d-name">Full name</label>
+          <div className="land-demo-input-row">
+            <input
+              id="d-name"
+              name="name"
+              type="text"
+              placeholder="Ada Lovelace"
+              required
+              onBlur={() => validateField('d-name')}
+            />
+          </div>
         </div>
-        <div className="land-demo-error">{name.error}</div>
-        <div className="land-demo-attr">required</div>
-      </div>
 
-      <div className={`land-demo-field is-${email.status === 'idle' ? '' : email.status}`}>
-        <label htmlFor="d-email">Email</label>
-        <div className="land-demo-input-row">
-          <input
-            id="d-email"
-            type="text"
-            placeholder="ada@example.com"
-            value={email.value}
-            onChange={email.onChange}
-            onBlur={email.onBlur}
-          />
-          <span className="land-demo-seal">&#10003;</span>
+        <div className="land-demo-field">
+          <label htmlFor="d-email">Email</label>
+          <div className="land-demo-input-row">
+            <input
+              id="d-email"
+              name="email"
+              type="email"
+              placeholder="ada@example.com"
+              required
+              onBlur={() => validateField('d-email')}
+            />
+          </div>
+          <div className="land-demo-attr">type="email" required</div>
         </div>
-        <div className="land-demo-error">{email.error}</div>
-        <div className="land-demo-attr">type=&quot;email&quot; required</div>
-      </div>
 
-      <div
-        className={`land-demo-field is-${message.status === 'idle' ? '' : message.status}`}
-        style={{ marginBottom: 0 }}
-      >
-        <label htmlFor="d-msg">Message</label>
-        <div className="land-demo-input-row">
-          <textarea
-            id="d-msg"
-            placeholder="Tell us what you're building..."
-            value={message.value}
-            onChange={message.onChange}
-            onBlur={message.onBlur}
-          />
-          <span className="land-demo-seal">&#10003;</span>
+        <div className="land-demo-field" style={{ marginBottom: 0 }}>
+          <label htmlFor="d-msg">Message</label>
+          <div className="land-demo-input-row">
+            <textarea
+              id="d-msg"
+              name="message"
+              placeholder="Tell us what you're building..."
+              minLength={10}
+              required
+              onBlur={() => validateTextareaField('d-msg')}
+            />
+          </div>
+          <div className="land-demo-attr">minlength="10" required</div>
         </div>
-        <div className="land-demo-error">{message.error}</div>
-        <div className="land-demo-attr">minlength=&quot;10&quot; required</div>
-      </div>
+
+        <button type="submit" className="land-btn land-btn-primary" style={{ marginTop: '1.5rem' }}>
+          Send Message
+        </button>
+      </form>
     </div>
   )
 }
@@ -247,6 +254,13 @@ export default function LandingPage() {
             <span className="land-badge-dot" />
             Version 3 · Zero runtime dependencies
           </span>
+
+          <p style={{ fontSize: '.85rem', opacity: 0.7, marginTop: '0.5rem' }}>
+            Upgrading from v2?{' '}
+            <a href="/docs/v3/migration" style={{ textDecoration: 'underline' }}>
+              Read the migration guide
+            </a>
+          </p>
 
           <h1>
             Validate the HTML

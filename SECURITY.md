@@ -26,7 +26,7 @@ Providing as much information as possible helps us investigate and resolve issue
 
 Security reports can be sent to:
 
-**Email:** [os@nforshifu234dev.com](mailto:os@nforshifu234dev.com)
+**Email:** [developers@nforshifu234dev.com](mailto:developers@nforshifu234dev.com)
 
 If you prefer, you may also use the contact information available on the official website:
 

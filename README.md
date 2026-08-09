@@ -109,7 +109,7 @@ Credits
 Clone the repository.
 
 ```bash
-git clone https://github.com/nfsfu234/nfsfu234-form-validation-website.git
+git clone https://github.com/nforshifu234dev/nfsfu234-form-validation-website.git
 ```
 
 Move into the project.

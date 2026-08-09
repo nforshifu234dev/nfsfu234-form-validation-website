@@ -25,15 +25,15 @@ Every public method and static function, grouped by category. Click through to a
 
 | Function | Type | Description |
 | --- | --- | --- |
-| [`autoInit()`](/docs/v3/autoInit) | Static | Scans the current page for whichever registered forms are present and wires each one up (novalida... |
-| [`configureForms(configs)`](/docs/v3/configureForms) | Static | Register form configs for the whole site in one place - typically a single shared config file inc... |
+| [`autoInit()`](/docs/v3/autoInit) | Static | Scans the current page for whichever registered forms are present and wires each one up (novalidate, submit handling, and AJAX submission if configured). Call this once per page, after configureForms() has been called with the site's full form config. |
+| [`configureForms(configs)`](/docs/v3/configureForms) | Static | Register form configs for the whole site in one place - typically a single shared config file included on every page. Only forms actually present in the current page's DOM get wired up when autoInit() runs, so it's safe to register every form on the site. |
 
 ### Core
 
 | Function | Type | Description |
 | --- | --- | --- |
-| [`submit(userOptions?, callback?)`](/docs/v3/submit) | Instance | Validates the whole form (every input, textarea, select, radio, checkbox, and file field), then—i... |
-| [`validate(userOptions?, callback?)`](/docs/v3/validate) | Instance | Validates the whole form (every input, textarea, select, radio, checkbox, and file field) without... |
+| [`submit(userOptions?, callback?)`](/docs/v3/submit) | Instance | Validates the whole form (every input, textarea, select, radio, checkbox, and file field), then—if validation succeeds and AJAX is enabled—submits the form using either the supplied AJAX options or the instance's default AJAX configuration.  The method first resolves the target form from the supplied `userOptions` (or falls back to the form attached to this instance), validates it, and finally submits it if appropriate.  Validation-only usage is also supported. When AJAX is not enabled, the method simply resolves with the validation result. |
+| [`validate(userOptions?, callback?)`](/docs/v3/validate) | Instance | Validates the whole form (every input, textarea, select, radio, checkbox, and file field) without submitting it. |
 
 ### Field Validation
 
@@ -46,7 +46,7 @@ Every public method and static function, grouped by category. Click through to a
 | [`validateAllSelect(form, options)`](/docs/v3/validateAllSelect) | Instance | Validates every ``<select>`` field in the form. |
 | [`validateAllTextarea(form, options)`](/docs/v3/validateAllTextarea) | Instance | Validates every ``<textarea>`` field in the form. |
 | [`validateCheckbox(checkboxInputField, options?)`](/docs/v3/validateCheckbox) | Instance | Validates a single checkbox field. |
-| [`validateFile(fileInputField, options?)`](/docs/v3/validateFile) | Instance | Validates a single ``<input type="file">`` field: required/min/max file count, accepted types (`a... |
+| [`validateFile(fileInputField, options?)`](/docs/v3/validateFile) | Instance | Validates a single ``<input type="file">`` field: required/min/max file count, accepted types (`accept`), max size (`maxSizeMB`), and - for images - dimension limits. Async, since checking image dimensions requires decoding the file. |
 | [`validateInput(inputField, options?, callback?)`](/docs/v3/validateInput) | Instance | Validates a single input field, via its HTML attributes or an explicit `options` override. |
 | [`validateRadio(radioInputField, customErrorMessage?)`](/docs/v3/validateRadio) | Instance | Validates a single radio group by its input name. |
 | [`validateSelect(selectField, options, callback)`](/docs/v3/validateSelect) | Instance | Validates a single ``<select>`` field. |
@@ -56,7 +56,7 @@ Every public method and static function, grouped by category. Click through to a
 
 | Function | Type | Description |
 | --- | --- | --- |
-| [`checkVariableType(variable)`](/docs/v3/checkVariableType) | Instance | Returns the runtime type of a variable as a lowercase string (e.g. `'string'`, `'number'`, `'obje... |
+| [`checkVariableType(variable)`](/docs/v3/checkVariableType) | Instance | Returns the runtime type of a variable as a lowercase string (e.g. `'string'`, `'number'`, `'object'`, `'function'`), more granular than a raw `typeof`. |
 | [`containsOnlyIntegers(str)`](/docs/v3/containsOnlyIntegers) | Instance | Checks whether a string consists only of integer digits. |
 | [`countString(string)`](/docs/v3/countString) | Instance | Counts the number of characters in a string. |
 | [`isEmail(email)`](/docs/v3/isEmail) | Instance | Checks whether a string is a syntactically valid email address. |
@@ -74,22 +74,22 @@ Every public method and static function, grouped by category. Click through to a
 | [`generatePassword(length?, shouldHash?)`](/docs/v3/generatePassword) | Instance | Generates a random password of the given length. |
 | [`generateRandomPassword(length, shouldHash)`](/docs/v3/generateRandomPassword) | Instance | Alias for generatePassword. |
 | [`getPasswordStrength(password)`](/docs/v3/getPasswordStrength) | Instance | Alias for passwordStrength. |
-| [`passwordStrength(password)`](/docs/v3/passwordStrength) | Instance | Scores a password's strength heuristically (length + character-class diversity), purely client-si... |
-| [`togglePasswordVisibility(input, showIcon?, hideIcon?)`](/docs/v3/togglePasswordVisibility) | Instance | Toggles a single password field between masked and visible, swapping an optional show/hide icon a... |
-| [`togglePasswordVisibilityAll(icons, uform?, toggleAll?)`](/docs/v3/togglePasswordVisibilityAll) | Instance | Toggles every password field in a form (or just one, unless `toggleAll` is set) between masked an... |
+| [`passwordStrength(password)`](/docs/v3/passwordStrength) | Instance | Scores a password's strength heuristically (length + character-class diversity), purely client-side - a UX strength meter, not a security guarantee. Returns a 0-100 score, a qualitative label, and suggestions. |
+| [`togglePasswordVisibility(input, showIcon?, hideIcon?)`](/docs/v3/togglePasswordVisibility) | Instance | Toggles a single password field between masked and visible, swapping an optional show/hide icon accordingly. |
+| [`togglePasswordVisibilityAll(icons, uform?, toggleAll?)`](/docs/v3/togglePasswordVisibilityAll) | Instance | Toggles every password field in a form (or just one, unless `toggleAll` is set) between masked and visible. |
 
 ### Form & Request Utilities
 
 | Function | Type | Description |
 | --- | --- | --- |
-| [`ajax(AJAXOptions)`](/docs/v3/ajax) | Static | Sends an AJAX request using the supplied request configuration. Sends an AJAX request using the s... |
-| [`ajax(AJAXOptions)`](/docs/v3/ajax) | Instance | Instance version of NFSFU234FormValidation.ajax. Sends an AJAX request using the supplied request... |
-| [`displayError(details)`](/docs/v3/displayError) | Instance | Manually displays an error message, either inline next to a field or as a modal, using the same r... |
-| [`getAJAXResponse()`](/docs/v3/getAJAXResponse) | Instance | Returns the Promise from the most recent AJAX request.  This is useful if you need to access the... |
-| [`getFormDetails(form)`](/docs/v3/getFormDetails) | Instance | Reads every field's current value from a form - inputs, textareas, selects, checkboxes, and radio... |
+| [`ajax(AJAXOptions)`](/docs/v3/ajax) | Static | Sends an AJAX request using the supplied request configuration. Sends an AJAX request using the supplied request configuration. Static - does not require a form or an instance. Use this when you only need the AJAX helper and don't want to construct the class just to call it (e.g. `NFSFU234FormValidation.ajax({...})` in a React component with no form to attach to). |
+| [`ajax(AJAXOptions)`](/docs/v3/ajax) | Instance | Instance version of NFSFU234FormValidation.ajax. Sends an AJAX request using the supplied request configuration.   The returned Promise is also stored internally so it can later be  retrieved with (). |
+| [`displayError(details)`](/docs/v3/displayError) | Instance | Manually displays an error message, either inline next to a field or as a modal, using the same rendering path validation errors use internally. |
+| [`getAJAXResponse()`](/docs/v3/getAJAXResponse) | Instance | Returns the Promise from the most recent AJAX request.  This is useful if you need to access the result of an earlier call to () or () without creating a new request. |
+| [`getFormDetails(form)`](/docs/v3/getFormDetails) | Instance | Reads every field's current value from a form - inputs, textareas, selects, checkboxes, and radios - keyed by field name (falling back to `data-attr-name` where `name` isn't set). |
 | [`getPageURL()`](/docs/v3/getPageUrl) | Instance | Gets the current page's URL. |
-| [`loading(message, submitBtn?, form?)`](/docs/v3/loading) | Instance | Shows a loading message/animation on a submit button (or the form itself) while an async operatio... |
+| [`loading(message, submitBtn?, form?)`](/docs/v3/loading) | Instance | Shows a loading message/animation on a submit button (or the form itself) while an async operation - typically `.submit()` - is in flight. Pair with your own logic to clear it once the operation settles. |
 | [`redirect(url?, delay?)`](/docs/v3/redirect) | Instance | Redirects the browser to a URL, optionally after a delay. |
 | [`reset(u_form)`](/docs/v3/reset) | Instance | Resets all fields in a form to their default/empty values. |
-| [`restrictInputWithCounter(inputElement, counterContainer, options?)`](/docs/v3/restrictInputWithCounter) | Instance | Wires a live character counter to an input/textarea, and (depending on `options`) restricts furth... |
+| [`restrictInputWithCounter(inputElement, counterContainer, options?)`](/docs/v3/restrictInputWithCounter) | Instance | Wires a live character counter to an input/textarea, and (depending on `options`) restricts further input once the limit is reached. |
 

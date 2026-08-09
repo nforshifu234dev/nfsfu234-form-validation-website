@@ -8,7 +8,7 @@ The format is based on **Keep a Changelog**, and this project follows **Semantic
 
 ---
 
-## [3.0.0] - 2026-08-01
+## [3.0.0] - 2026-08-25
 
 This release is a complete rebuild of the official **NFSFU234FormValidation Documentation Website**, released alongside **NFSFU234FormValidation v3.0.0**.
 

@@ -9,6 +9,8 @@
   --brand-border: #ece5de;
   --brand-surface: #ffffff;
   --brand-ui-dark: #0d0d0d;
+  --nextra-primary-hue: 14deg;
+  --nextra-primary-saturation: 100%;
 }
 
 .dark {
@@ -17,6 +19,8 @@
   --brand-accent-soft: #2a180f;
   --brand-border: #2a2a2a;
   --brand-surface: #17171a;
+  --nextra-primary-hue: 14deg;
+  --nextra-primary-saturation: 100%;
 }
 
 @media (max-width: 768px) {

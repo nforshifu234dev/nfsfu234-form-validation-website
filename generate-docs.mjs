@@ -297,6 +297,13 @@ const CATEGORY_ORDER = [
   'Form & Request Utilities'
 ];
 
+function truncateAtWord(str, maxLength) {
+  if (str.length <= maxLength) return str;
+  const sliced = str.slice(0, maxLength);
+  const lastSpace = sliced.lastIndexOf(' ');
+  return (lastSpace > 0 ? sliced.slice(0, lastSpace) : sliced).trimEnd() + '...';
+}
+
 function generateAvailableFunctionsTable(methods) {
   const byCategory = {};
   for (const method of methods) {
@@ -320,7 +327,7 @@ function generateAvailableFunctionsTable(methods) {
         .join(', ');
       const isStatic = method.flags?.isStatic ? 'Static' : 'Instance';
       const rawDesc = (commentToText(sig.comment) || '-').replace(/\n/g, ' ').trim();
-      const description = rawDesc.length > 100 ? rawDesc.slice(0, 97).trimEnd() + '...' : rawDesc;
+      const description = rawDesc;
       const folderName = resolveFolderName(method.name);
       const link = `[${cell(`${method.name}(${paramList})`)}](/docs/v3/${folderName})`;
       return `| ${link} | ${isStatic} | ${description} |`;

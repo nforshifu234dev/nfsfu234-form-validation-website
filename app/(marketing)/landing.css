@@ -103,6 +103,11 @@ html.dark .landing-body {
   opacity: 1;
 }
 
+.land-nav-links a.is-active {
+  color: var(--land-accent);
+  font-weight: 600;
+}
+
 .land-nav-cta {
   display: inline-flex;
   align-items: center;
@@ -866,6 +871,12 @@ html.dark .landing-body {
 .land-footer {
   border-top: 1px solid var(--land-border);
   padding: 3rem 0 2rem;
+}
+
+.land-button {
+  color: var(--land-orange) !important;
+  text-decoration: none !important;
+  margin-top: 0.5rem;
 }
 
 .land-footer-top {

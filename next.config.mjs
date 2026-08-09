@@ -2,7 +2,7 @@ import nextra from 'nextra'
 
 const withNextra = nextra({
   latex: false,
-  defaultShowCopyCode: true,   // ← add this
+  defaultShowCopyCode: true,
   search: {
     codeblocks: false
   }
