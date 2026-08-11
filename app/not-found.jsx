@@ -1,5 +1,6 @@
 // app/not-found.jsx
 import Image from 'next/image'
+import './landing.css'
 
 export const metadata = {
   title: '404: Page Not Found'

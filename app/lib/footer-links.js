@@ -8,7 +8,7 @@ export const socialIcons = {
 
 export const INSTAGRAM_HANDLE = 'nf_validator234'
 export const X_HANDLE = 'nf_validator234'
-export const CONTACT_EMAIL = 'info@nforshifu234dev.com'
+export const CONTACT_EMAIL = 'developers@nforshifu234dev.com'
 
 export const marketingPrimaryColumn = {
   title: 'Docs',

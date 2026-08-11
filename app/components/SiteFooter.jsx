@@ -52,7 +52,7 @@ export function SiteFooter() {
         ))}
       </div>
       <div className="site-footer-bottom">
-        <span>MIT {YEAR} &copy; nfsfu234/form-validation, part of the NFORSHIFU234 ecosystem.</span>
+        <span>MIT {YEAR} &copy; nfsfu234/form-validation, part of the NFSFU234 ecosystem.</span>
         <span>
           Built by{' '}
           <a href="https://www.nforshifu234dev.com" target="_blank" rel="noopener noreferrer">

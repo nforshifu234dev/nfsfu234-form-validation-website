@@ -192,7 +192,7 @@ npm run docs:generate
 
 ---
 
-## 🌍 Part of the NFORSHIFU234 Ecosystem
+## 🌍 part of the NFSFU234 ecosystem
 
 NFSFU234FormValidation is one of several projects created and maintained by **NFORSHIFU234 Dev**, a software engineering brand of **NFORSHIFU LOGICFORGE LTD.**
 

@@ -4,7 +4,7 @@ import { SiteNav } from './components/SiteNav'
 import { SiteFooterMarketing } from './components/SiteFooterMarketing'
 import { CookieBanner } from '../components/CookieBanner.jsx'
 import { Analytics } from '../components/Analytics.jsx'
-import './landing.css'
+import '../landing.css'
 
 export const metadata = {
   metadataBase: new URL('https://form-validation.nforshifu234dev.com'),

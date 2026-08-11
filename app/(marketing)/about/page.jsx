@@ -196,7 +196,7 @@ function OriginStory() {
       <p>It started while <a href="https://www.iamnotshifu.com" target="_blank" rel="noopener noreferrer">IAMNOTSHIFU</a> was still learning to code.</p>
 
       <p>
-        Every new project he picked up, He found myself writing the same thing
+        Every new project he picked up, He found himself writing the same thing
         again — form validation. Required fields, email checks, min/max
         lengths, error messages, the AJAX submit logic around it. Different
         project, same code, rebuilt from scratch every time.
@@ -537,23 +537,6 @@ function GetInTouch() {
   )
 }
 
-function AboutFooter() {
-  return (
-    <>
-      <hr style={{ margin: '4rem 0' }} />
-
-      <p style={{ fontSize: '.95rem', opacity: 0.75, textAlign: 'center' }}>
-        Built with ❤️ by <strong>IAMNOTSHIFU</strong> through{' '}
-        <strong>NFORSHIFU234 Dev</strong>, a developer brand of{' '}
-        <strong>NFORSHIFU LOGICFORGE LTD</strong>.
-        <br />
-        Proudly part of the growing{' '}
-        <strong>NFSFU234 Open Source Ecosystem.</strong>
-      </p>
-    </>
-  )
-}
-
 export default function AboutPage() {
   const ecosystemColumn = sharedFooterColumns.find(
     (c) => c.title === 'NFORSHIFU234 Ecosystem'
@@ -577,7 +560,6 @@ export default function AboutPage() {
           <LookingAhead />
           <CommunitySection ecosystemColumn={ecosystemColumn} />
           <GetInTouch />
-          <AboutFooter />
         </div>
       </div>
     </>

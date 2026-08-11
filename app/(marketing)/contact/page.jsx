@@ -26,7 +26,7 @@ export default function ContactPage() {
 
         <h2>Email</h2>
         <p>
-          <a href="mailto:info@nforshifu234dev.com">info@nforshifu234dev.com</a>
+          <a href="mailto:developers@nforshifu234dev.com">developers@nforshifu234dev.com</a>
         </p>
 
         <h2>Bug reports &amp; feature requests</h2>
