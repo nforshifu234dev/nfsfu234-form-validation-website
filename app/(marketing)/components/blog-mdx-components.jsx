@@ -88,12 +88,15 @@ function Table(props) {
 }
 
 export const blogComponents = {
-  pre: (props) => {
-    const codeText = getCodeText(props.children)
+  pre: ({ children, ...props }) => {
+    const codeText = getCodeText(children)
+
     return (
       <div className="blog-code-wrap">
         <CopyButton text={codeText} />
-        <pre {...props} className="blog-code" />
+        <pre {...props} className="blog-code">
+          {children}
+        </pre>
       </div>
     )
   },

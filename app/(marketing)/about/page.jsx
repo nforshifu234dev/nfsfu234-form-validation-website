@@ -130,36 +130,29 @@ function Breadcrumb() {
 
 function AboutHero() {
   return (
-    <section style={{ margin: '2rem 0 4rem' }}>
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: '1.15fr .85fr',
-          gap: '3rem',
-          alignItems: 'center'
-        }}
-      >
+    <section style={{ margin: "2rem 0 4rem" }}>
+      <div className="aboutHeroGrid">
         <div>
           <span className="land-eyebrow">About</span>
 
           <h1
             style={{
-              fontFamily: 'var(--land-display)',
-              fontSize: 'clamp(2.5rem,5vw,4.5rem)',
+              fontFamily: "var(--land-display)",
+              fontSize: "clamp(2.5rem,5vw,4.5rem)",
               lineHeight: 1.05,
-              margin: '.8rem 0 1.4rem'
+              margin: ".8rem 0 1.4rem",
             }}
           >
             Building developer tools that remove repetitive work.
           </h1>
 
-          <p style={{ fontSize: '1.1rem' }}>
-            NFSFU234FormValidation is the flagship open-source project of the{' '}
-            <strong>NFSFU234 ecosystem</strong>. Built under the{' '}
+          <p style={{ fontSize: "1.1rem" }}>
+            NFSFU234FormValidation is the flagship open-source project of the{" "}
+            <strong>NFSFU234 ecosystem</strong>. Built under the{" "}
             <strong>NFORSHIFU234 Dev</strong> developer brand and owned by
             <strong> NFORSHIFU LOGICFORGE LTD</strong>, the project exists to
-            help developers spend less time rewriting boilerplate and more
-            time building software.
+            help developers spend less time rewriting boilerplate and more time
+            building software.
           </p>
         </div>
 
@@ -168,11 +161,11 @@ function AboutHero() {
           alt="Workspace showing a developer building software with code editor, browser windows and notebooks representing the beginning of the NFSFU234 ecosystem."
           width={900}
           height={650}
-          style={{ width: '100%', height: 'auto', borderRadius: '20px' }}
+          style={{ width: "100%", height: "auto", borderRadius: "20px" }}
         />
       </div>
     </section>
-  )
+  );
 }
 
 function OriginStory() {
