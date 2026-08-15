@@ -1,0 +1,354 @@
+.hello-page {
+  --hello-bg: #09090b;
+  --hello-surface: #111113;
+  --hello-surface-soft: #18181b;
+  --hello-border: #27272a;
+  --hello-border-soft: rgba(255, 255, 255, 0.06);
+
+  --hello-text: #f4f4f5;
+  --hello-muted: #71717a;
+
+  --hello-purple: #a78bfa;
+  --hello-pink: #f472b6;
+  --hello-cyan: #67e8f9;
+
+  position: relative;
+
+  min-height: 100vh;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  padding: 4rem 1.5rem;
+
+  background: var(--hello-bg);
+  color: var(--hello-text);
+
+  text-align: center;
+}
+
+
+/* --------------------------------------------------
+   Background glows
+-------------------------------------------------- */
+
+.hello-glow {
+  position: absolute;
+
+  width: 420px;
+  height: 420px;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  filter: blur(90px);
+
+  opacity: 0.16;
+}
+
+.hello-glow-1 {
+  top: -180px;
+  left: -120px;
+
+  background: var(--hello-purple);
+}
+
+.hello-glow-2 {
+  right: -140px;
+  bottom: -180px;
+
+  background: var(--hello-cyan);
+}
+
+
+/* --------------------------------------------------
+   Main content
+-------------------------------------------------- */
+
+.hello-content {
+  position: relative;
+  z-index: 1;
+
+  width: min(100%, 720px);
+}
+
+
+/* --------------------------------------------------
+   Project identity
+-------------------------------------------------- */
+
+.hello-brand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 0.45rem;
+
+  margin-bottom: 2rem;
+
+  color: var(--hello-text);
+
+  font-size: 0.9rem;
+  font-weight: 600;
+
+  letter-spacing: -0.01em;
+
+  text-decoration: none;
+
+  transition:
+    opacity 160ms ease,
+    transform 160ms ease;
+}
+
+.hello-brand:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+.hello-brand img {
+  border-radius: 8px;
+}
+
+.hello-brand-scope {
+  color: var(--hello-purple);
+}
+
+
+/* --------------------------------------------------
+   Heading
+-------------------------------------------------- */
+
+.hello-page h1 {
+  margin: 0 0 2rem;
+
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  font-size: clamp(2rem, 5vw, 3rem);
+
+  font-weight: 700;
+
+  line-height: 1.1;
+
+  letter-spacing: -0.04em;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--hello-purple),
+      var(--hello-pink),
+      var(--hello-cyan)
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+}
+
+
+/* --------------------------------------------------
+   Terminal
+-------------------------------------------------- */
+
+.hello-terminal {
+  width: 100%;
+
+  margin: 0 auto;
+
+  overflow: hidden;
+
+  border: 1px solid var(--hello-border);
+
+  border-radius: 12px;
+
+  background: var(--hello-surface);
+
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(255, 255, 255, 0.02);
+}
+
+
+/* Terminal top bar */
+
+.hello-terminal-bar {
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+
+  height: 38px;
+
+  padding: 0 14px;
+
+  border-bottom: 1px solid var(--hello-border);
+
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.hello-terminal-bar span {
+  width: 9px;
+  height: 9px;
+
+  border-radius: 50%;
+
+  background: #3f3f46;
+}
+
+.hello-terminal-bar span:nth-child(1) {
+  background: #ff5f57;
+}
+
+.hello-terminal-bar span:nth-child(2) {
+  background: #febc2e;
+}
+
+.hello-terminal-bar span:nth-child(3) {
+  background: #28c840;
+}
+
+
+/* Terminal content */
+
+.hello-terminal pre {
+  margin: 0;
+
+  padding: 1.25rem 1.5rem;
+
+  overflow-x: auto;
+
+  color: #d4d4d8;
+
+  font-family:
+    ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Monaco,
+    Consolas,
+    "Liberation Mono",
+    "Courier New",
+    monospace;
+
+  font-size: 0.82rem;
+
+  line-height: 1.8;
+
+  text-align: left;
+
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.hello-prompt {
+  color: var(--hello-purple);
+
+  user-select: none;
+}
+
+
+/* --------------------------------------------------
+   Credit
+-------------------------------------------------- */
+
+.hello-credit {
+  margin: 1.5rem 0 0;
+
+  color: var(--hello-muted);
+
+  font-size: 0.78rem;
+
+  line-height: 1.6;
+}
+
+.hello-credit a {
+  color: var(--hello-text);
+
+  font-weight: 600;
+
+  text-decoration: none;
+
+  transition:
+    color 160ms ease,
+    opacity 160ms ease;
+}
+
+.hello-credit a:hover {
+  color: var(--hello-purple);
+}
+
+
+/* --------------------------------------------------
+   Tradition line
+-------------------------------------------------- */
+
+.hello-tradition {
+  margin: 0.5rem 0 0;
+
+  color: var(--hello-muted);
+
+  font-size: 0.82rem;
+
+  line-height: 1.6;
+}
+
+
+/* --------------------------------------------------
+   Mobile
+-------------------------------------------------- */
+
+@media (max-width: 600px) {
+  .hello-page {
+    padding: 3rem 1rem;
+  }
+
+  .hello-content {
+    width: 100%;
+  }
+
+  .hello-brand {
+    font-size: 0.8rem;
+  }
+
+  .hello-terminal {
+    border-radius: 10px;
+  }
+
+  .hello-terminal pre {
+    padding: 1rem;
+
+    font-size: 0.72rem;
+
+    line-height: 1.75;
+  }
+
+  .hello-credit {
+    font-size: 0.74rem;
+  }
+
+  .hello-tradition {
+    font-size: 0.78rem;
+  }
+}
+
+
+/* --------------------------------------------------
+   Reduced motion
+-------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .hello-brand,
+  .hello-credit a {
+    transition: none;
+  }
+}
