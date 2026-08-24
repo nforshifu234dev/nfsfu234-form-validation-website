@@ -11,7 +11,7 @@ import { VersionSwitcher } from '../components/VersionSwitcher.jsx'
 import { NavExtraLinks } from '@/components/NavExtraLinks.jsx'
 
 export const metadata = {
-  metadataBase: new URL('https://form-validation.nforshifu234dev.com'),
+  metadataBase: new URL('https://formvalidation.nforshifu234dev.com'),
   title: {
     default: 'NFSFU234FormValidation',
     template: '%s | NFSFU234FormValidation'
@@ -23,7 +23,7 @@ export const metadata = {
     siteName: 'NFSFU234FormValidation',
     type: 'website',
     images: [{
-      url: 'https://form-validation.nforshifu234dev.com/api/og?title=NFSFU234FormValidation&subtitle=Docs',
+      url: 'https://formvalidation.nforshifu234dev.com/api/og?title=NFSFU234FormValidation&subtitle=Docs',
       width: 1200,
       height: 630
     }]

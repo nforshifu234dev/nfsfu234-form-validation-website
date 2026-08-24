@@ -7,7 +7,7 @@ import { Analytics } from '../components/Analytics.jsx'
 import '../landing.css'
 
 export const metadata = {
-  metadataBase: new URL('https://form-validation.nforshifu234dev.com'),
+  metadataBase: new URL('https://formvalidation.nforshifu234dev.com'),
   title: {
     default: 'NFSFU234FormValidation — Validation your HTML already wrote',
     template: '%s | NFSFU234FormValidation'
@@ -21,7 +21,7 @@ export const metadata = {
     title: 'NFSFU234FormValidation — Validation your HTML already wrote',
     description: 'Point it at a form and it reads the attributes you already set. Zero dependencies.',
     images: [{
-      url: 'https://form-validation.nforshifu234dev.com/api/og?title=NFSFU234FormValidation&subtitle=Validation%20your%20HTML%20already%20wrote',
+      url: 'https://formvalidation.nforshifu234dev.com/api/og?title=NFSFU234FormValidation&subtitle=Validation%20your%20HTML%20already%20wrote',
       width: 1200,
       height: 630
     }]

@@ -6,7 +6,7 @@ import { ExamplesSidebar } from '@/(marketing)/components/ExamplesSidebar'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { blogComponents } from '@/(marketing)/components/blog-mdx-components'
 
-const SITE_URL = 'https://form-validation.nforshifu234dev.com'
+const SITE_URL = 'https://formvalidation.nforshifu234dev.com'
 
 export async function generateMetadata({ params }) {
   const { slug } = await params

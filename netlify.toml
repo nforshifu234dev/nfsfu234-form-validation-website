@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "https://form-validation.nforshifu234dev.com/*"
+  to = "https://formvalidation.nforshifu234dev.com/:splat"
+  status = 301
+  force = true

@@ -4,7 +4,7 @@ import examples from './examples.mjs';
 
 const API_JSON = process.argv[2] || './lib-api.json';
 const OUT_DIR = './app/docs/v3';
-const SITE_URL = 'https://form-validation.nforshifu234dev.com';
+const SITE_URL = 'https://formvalidation.nforshifu234dev.com';
 const DRY_RUN = process.argv.includes('--dry-run');
 
 // 'available-functions' is no longer hand-maintained — it's fully regenerated
@@ -198,7 +198,7 @@ function buildFrontmatter({ title, description, ogTitle, ogDescription, keywords
   const finalOgTitle = (ogTitle || `${title} — NFSFU234FormValidation`).replace(/"/g, '\\"');
   const finalOgDescription = (ogDescription || desc).replace(/"/g, '\\"');
   const kw = keywords && keywords.length ? keywords : buildKeywords(title);
-  const ogImageUrl = `https://form-validation.nforshifu234dev.com/api/og?title=${encodeURIComponent(finalOgTitle)}&subtitle=nfsfu234%2Fform-validation`;
+  const ogImageUrl = `https://formvalidation.nforshifu234dev.com/api/og?title=${encodeURIComponent(finalOgTitle)}&subtitle=nfsfu234%2Fform-validation`;
 
   return [
     '---',

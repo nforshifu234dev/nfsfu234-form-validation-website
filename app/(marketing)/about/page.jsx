@@ -5,7 +5,7 @@ import { sharedFooterColumns } from '@/lib/footer-links'
 import { buildOrganizationLd } from '@/lib/json-ld'
 import { JsonLdScript } from '../components/JsonLdScript'
 
-const SITE_URL = 'https://form-validation.nforshifu234dev.com'
+const SITE_URL = 'https://formvalidation.nforshifu234dev.com'
 
 export const metadata = {
   title: 'About',
@@ -27,7 +27,7 @@ const ECOSYSTEM_PROJECTS = [
     name: 'NFSFU234FormValidation',
     description:
       'HTML-first form validation for modern web applications with AJAX, asynchronous validation, configuration-driven rules and framework support.',
-    url: 'https://form-validation.nforshifu234dev.com/docs/v3/getting-started',
+    url: 'https://formvalidation.nforshifu234dev.com/docs/v3/getting-started',
     label: 'Get Started'
   },
   {

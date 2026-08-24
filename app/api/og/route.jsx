@@ -3,7 +3,7 @@ import { ImageResponse } from 'next/og'
 
 export const runtime = 'edge'
 
-const SITE_URL = 'https://form-validation.nforshifu234dev.com'
+const SITE_URL = 'https://formvalidation.nforshifu234dev.com'
 const LOGO_URL = `${SITE_URL}/logo.png`
 
 export async function GET(request) {
@@ -54,7 +54,7 @@ export async function GET(request) {
             color: 'rgba(255,255,255,0.45)'
           }}
         >
-          <span>form-validation.nforshifu234dev.com</span>
+          <span>formvalidation.nforshifu234dev.com</span>
           <span>v3 · zero dependencies</span>
         </div>
       </div>

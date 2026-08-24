@@ -8,7 +8,7 @@
 [![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)](https://react.dev/)
 [![Nextra](https://img.shields.io/badge/Nextra-4-blue)](https://nextra.site/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Documentation](https://img.shields.io/badge/Live-Documentation-orange)](https://form-validation.nforshifu234dev.com/)
+[![Documentation](https://img.shields.io/badge/Live-Documentation-orange)](https://formvalidation.nforshifu234dev.com/)
 [![Made by NFORSHIFU234 Dev](https://img.shields.io/badge/Made%20by-NFORSHIFU234%20Dev-ff7a00)](https://www.nforshifu234dev.com)
 
 ---
@@ -37,7 +37,7 @@ Built with **Next.js**, **Nextra**, **MDX**, and **TypeScript**, the website is 
 
 Visit the official documentation:
 
-**https://form-validation.nforshifu234dev.com**
+**https://formvalidation.nforshifu234dev.com**
 
 ---
 

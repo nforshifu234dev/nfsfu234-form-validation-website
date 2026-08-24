@@ -1,6 +1,6 @@
 'use client'
 
-// Cookie consent store for form-validation.nforshifu234dev.com.
+// Cookie consent store for formvalidation.nforshifu234dev.com.
 // Browser localStorage + a same-tab custom event, so any mounted component
 // (the banner, Analytics, anything future) reacts immediately without a
 // page reload.

@@ -1,4 +1,4 @@
-const SITE_URL = 'https://form-validation.nforshifu234dev.com'
+const SITE_URL = 'https://formvalidation.nforshifu234dev.com'
 
 export function buildSoftwareApplicationLd() {
   return {

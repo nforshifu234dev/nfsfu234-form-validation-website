@@ -1,7 +1,7 @@
 /** @type {import('next-sitemap').IConfig} */
 
 module.exports = {
-  siteUrl: 'https://form-validation.nforshifu234dev.com',
+  siteUrl: 'https://formvalidation.nforshifu234dev.com',
 
   generateRobotsTxt: true,
 

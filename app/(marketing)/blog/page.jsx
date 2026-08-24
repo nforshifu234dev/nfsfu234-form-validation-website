@@ -4,7 +4,7 @@ const PAGE_SIZE = 6
 
 import { JsonLdScript } from '@/(marketing)/components/JsonLdScript'
 
-const SITE_URL = 'https://form-validation.nforshifu234dev.com'
+const SITE_URL = 'https://formvalidation.nforshifu234dev.com'
 
 export const metadata = {
   title: 'Blog',

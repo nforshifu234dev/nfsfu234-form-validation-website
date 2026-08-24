@@ -6,7 +6,7 @@ import { getAllExamples, getAllFrameworkTags } from '@/lib/examples'
 //   description: 'Working examples of NFSFU234FormValidation across HTML, React, Vite, Next.js, and Expo.'
 // }
 
-const SITE_URL = 'https://form-validation.nforshifu234dev.com'
+const SITE_URL = 'https://formvalidation.nforshifu234dev.com'
 
 export const metadata = {
   title: 'Examples',

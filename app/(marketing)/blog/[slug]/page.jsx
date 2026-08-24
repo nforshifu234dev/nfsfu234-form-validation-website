@@ -6,7 +6,7 @@ import { ContentLayout } from '@/(marketing)/components/ContentLayout'
 import { JsonLdScript } from '@/(marketing)/components/JsonLdScript'
 import { buildBlogPostingLd } from '@/lib/json-ld'
 
-const SITE_URL = 'https://form-validation.nforshifu234dev.com'
+const SITE_URL = 'https://formvalidation.nforshifu234dev.com'
 
 export function generateStaticParams() {
   return getAllPosts().map((p) => ({ slug: p.slug }))
