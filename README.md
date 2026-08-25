@@ -37,7 +37,7 @@ Built with **Next.js**, **Nextra**, **MDX**, and **TypeScript**, the website is 
 
 Visit the official documentation:
 
-**https://formvalidation.nforshifu234dev.com**
+[formvalidation.nforshifu234dev.com](https://formvalidation.nforshifu234dev.com)
 
 ---
 
@@ -47,9 +47,9 @@ This repository contains **only the documentation website**.
 
 If you're looking for the validation library itself, visit:
 
-**Library Repository**
+## Library Repository
 
-https://github.com/nforshifu234dev/nfsfu234-form-validation
+[github.com/nforshifu234dev/nfsfu234-form-validation](https://github.com/nforshifu234dev/nfsfu234-form-validation)
 
 Install with npm:
 
@@ -196,11 +196,11 @@ npm run docs:generate
 
 NFSFU234FormValidation is one of several projects created and maintained by **NFORSHIFU234 Dev**, a software engineering brand of **NFORSHIFU LOGICFORGE LTD.**
 
-- 📜 NFSFU234FormValidation
-- 🧭 NFSFU234TourGuide
-- 💙 WishIT
-- 🩺 HealthHub AI
-- 👨🏾‍💻 IAMNOTSHIFU
+- [📜 NFSFU234FormValidation](https://formvalidation.nforshifu234dev.com)
+- [🧭 NFSFU234TourGuide](https://tour-guide.nforshifu234dev.com)
+- [💙 WishIT](https://www.wish-it.app)
+- [🩺 HealthHub AI](https://healthhub.nforshifu234dev.com)
+- [👨🏾‍💻 IAMNOTSHIFU](https://www.iamnotshifu.com)
 
 ---
 

@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@next/third-parties": "^16.2.12",
-    "@nfsfu234/form-validation": "file:../../../../Downloads/lol/nfsfu234-form-validation-main/nfsfu234-form-validation-3.0.0.tgz",
+    "@nfsfu234/form-validation": "^3.0.2",
     "gray-matter": "^4.0.3",
     "next": "^15.5.22",
     "next-mdx-remote": "^6.0.0",
@@ -32,5 +32,8 @@
   },
   "overrides": {
     "zod": "4.3.6"
+  },
+  "allowScripts": {
+    "sharp@0.34.5": true
   }
 }
