@@ -1,0 +1,39 @@
+---
+title: "configureForms"
+description: "Register form configs for the whole site in one place - typically a"
+keywords:
+  - "configureForms"
+  - "configs"
+  - "form validation"
+  - "javascript"
+  - "html forms"
+  - "client-side validation"
+openGraph:
+  title: "configureForms() — NFSFU234FormValidation"
+  description: "Register form configs for the whole site in one place - typically a"
+  images:
+    - url: "https://formvalidation.nforshifu234dev.com/api/og?title=configureForms()%20%E2%80%94%20NFSFU234FormValidation&subtitle=nfsfu234%2Fform-validation"
+      width: 1200
+      height: 630
+---
+#### configureForms
+Register form configs for the whole site in one place - typically a
+single shared config file included on every page. Only forms
+actually present in the current page's DOM get wired up when
+autoInit() runs, so it's safe to register every form on the site.
+**Returns:** `void`
+| Parameter | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `configs` | `FormConfigInterface[]` | `required` | `-` | One config per form, keyed by CSS selector, describing its field rules, AJAX options, error display type, and custom messages. |
+
+##### Usage
+
+```js
+const result = nfsfu234FormValidation.configureForms(configs);
+```
+
+
+import { JsonLd } from '@/components/JsonLd.jsx'
+
+<JsonLd data={{"@context":"https://schema.org","@type":"TechArticle","headline":"configureForms() — NFSFU234FormValidation","description":"Register form configs for the whole site in one place - typically a","url":"https://formvalidation.nforshifu234dev.com/docs/v3/configureForms","proficiencyLevel":"Beginner","dependencies":"None — zero runtime dependencies","about":{"@type":"SoftwareApplication","name":"NFSFU234FormValidation","applicationCategory":"DeveloperApplication"},"isPartOf":{"@type":"TechArticle","name":"NFSFU234FormValidation Docs","url":"https://formvalidation.nforshifu234dev.com/docs/v3/getting-started"},"author":{"@type":"Organization","name":"NFORSHIFU234 Dev","url":"https://nforshifu234dev.com"}}} />
+

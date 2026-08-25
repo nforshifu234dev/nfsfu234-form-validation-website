@@ -1,0 +1,68 @@
+---
+title: "FormConfigInterface"
+description: "Fields available on FormConfigInterface."
+keywords:
+  - "FormConfigInterface"
+  - "form"
+  - "fields"
+  - "ajaxOptions"
+  - "errorType"
+  - "customErrorMessages"
+  - "form validation"
+  - "javascript"
+  - "html forms"
+  - "client-side validation"
+openGraph:
+  title: "FormConfigInterface — NFSFU234FormValidation"
+  description: "Fields available on FormConfigInterface."
+  images:
+    - url: "https://formvalidation.nforshifu234dev.com/api/og?title=FormConfigInterface%20%E2%80%94%20NFSFU234FormValidation&subtitle=nfsfu234%2Fform-validation"
+      width: 1200
+      height: 630
+---
+#### FormConfigInterface
+Fields available on FormConfigInterface.
+| Property | Type | Required |
+| --- | --- | --- |
+| `form` | `string` | required |
+| `fields` | `object` | optional |
+| `ajaxOptions` | `any` | optional |
+| `errorType` | `"inline" \\| "modal"` | optional |
+| `customErrorMessages` | `object` | optional |
+
+##### Example
+
+```js
+NFSFU234FormValidation.configureForms([
+  {
+    form: '#loginForm',
+    fields: {
+      email: { required: true, type: 'email' },
+      password: { required: true, minLength: 8 }
+    },
+    ajaxOptions: { RequestMethod: 'POST', RequestType: 'json' }
+  },
+  {
+    form: '#profileForm',
+    fields: {
+      avatar: { accept: ['image'], maxSizeMB: 2, maxWidth: 1000, maxHeight: 1000 }
+    }
+  }
+]);
+
+// once per page - only wires up whichever registered form actually exists on this page
+NFSFU234FormValidation.autoInit();
+```
+
+See also: [`FieldRuleInterface`](/docs/v3/fieldRuleInterface).
+
+
+##### Used by
+
+- [`configureForms()`](/docs/v3/configureForms)
+
+
+import { JsonLd } from '@/components/JsonLd.jsx'
+
+<JsonLd data={{"@context":"https://schema.org","@type":"TechArticle","headline":"FormConfigInterface — NFSFU234FormValidation","description":"Fields available on FormConfigInterface.","url":"https://formvalidation.nforshifu234dev.com/docs/v3/formConfigInterface","proficiencyLevel":"Beginner","dependencies":"None — zero runtime dependencies","about":{"@type":"SoftwareApplication","name":"NFSFU234FormValidation","applicationCategory":"DeveloperApplication"},"isPartOf":{"@type":"TechArticle","name":"NFSFU234FormValidation Docs","url":"https://formvalidation.nforshifu234dev.com/docs/v3/getting-started"},"author":{"@type":"Organization","name":"NFORSHIFU234 Dev","url":"https://nforshifu234dev.com"}}} />
+

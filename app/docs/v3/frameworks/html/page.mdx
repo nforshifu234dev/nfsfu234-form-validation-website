@@ -1,0 +1,279 @@
+# 🌐 Using NFSFU234FormValidation with Plain HTML
+
+NFSFU234FormValidation works just as well without a framework.
+
+If you're building a website with plain HTML, CSS, and JavaScript, you can use the library directly from a CDN—no npm, bundler, or build tools required.
+
+> **Works with**
+>
+> - ✅ HTML5
+> - ✅ CSS
+> - ✅ Vanilla JavaScript
+> - ✅ Any web server
+> - ✅ No build step required
+
+---
+
+## 1. Include the library
+
+Add the stylesheet inside your `<head>`.
+
+```html
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@nfsfu234/form-validation/dist/css/nfsfu234FormValidation.min.css"
+/>
+```
+
+Then include the JavaScript before your closing `</body>` tag.
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/@nfsfu234/form-validation/dist/js/nfsfu234FormValidation.global.js"></script>
+```
+
+---
+
+## 2. Create a form
+
+The library automatically understands standard HTML validation attributes.
+
+```html
+<form id="signupForm">
+    <input
+        type="email"
+        name="email"
+        required
+    />
+
+    <input
+        type="password"
+        name="password"
+        required
+        minlength="8"
+    />
+
+    <button type="submit">
+        Sign Up
+    </button>
+</form>
+```
+
+---
+
+## 3. Initialize the library
+
+Create a validator instance and call `.submit()` whenever the form is submitted.
+
+```html
+<script>
+const validator = new NFSFU234FormValidation({
+    form: "signupForm"
+});
+
+const form = document.getElementById("signupForm");
+
+form.addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    const result = await validator.submit();
+
+    if (result.type === "success") {
+        console.log("Validation passed");
+    } else {
+        console.log(result);
+    }
+});
+</script>
+```
+
+That's it.
+
+The library automatically validates:
+
+- `required`
+- `type`
+- `pattern`
+- `minlength`
+- `maxlength`
+- `min`
+- `max`
+- and many more HTML validation attributes.
+
+---
+
+## 4. Enable AJAX form submission
+
+Configure AJAX during initialization.
+
+```html
+<script>
+const validator = new NFSFU234FormValidation({
+    form: "signupForm",
+
+    ajaxOptions: {
+        url: "/api/signup",
+
+        RequestMethod: "POST",
+
+        RequestHeader: {
+            "Content-Type": "application/json"
+        }
+    }
+});
+</script>
+```
+
+Now calling
+
+```js
+await validator.submit();
+```
+
+will:
+
+1. Validate the form.
+2. Submit it via AJAX.
+3. Return the server response.
+
+---
+
+## 5. Managing multiple forms
+
+If your page contains several forms, register them once and let the library initialize them automatically.
+
+```html
+<script>
+NFSFU234FormValidation.configureForms([
+    {
+        form: "#signupForm",
+
+        fields: {
+            email: {
+                required: true,
+                type: "email"
+            },
+
+            password: {
+                required: true,
+                minLength: 8
+            }
+        }
+    },
+
+    {
+        form: "#contactForm",
+
+        fields: {
+            fullname: {
+                required: true
+            },
+
+            email: {
+                required: true,
+                type: "email"
+            }
+        }
+    }
+]);
+
+NFSFU234FormValidation.autoInit();
+</script>
+```
+
+---
+
+## 6. Validating uploaded files
+
+The library can validate uploaded files before submission.
+
+```js
+fields: {
+    avatar: {
+        required: true,
+        accept: [
+            "image/png",
+            "image/jpeg"
+        ],
+
+        maxSizeMB: 5,
+
+        maxWidth: 2000,
+        maxHeight: 2000
+    }
+}
+```
+
+Supported validation includes:
+
+- Accepted file types
+- Maximum file size
+- Image dimensions
+- Minimum and maximum file count
+
+---
+
+## 7. Common pitfalls
+
+### Include the library first
+
+Your initialization script must run **after** the library has loaded.
+
+✅ Correct
+
+```html
+<script src="...nfsfu234FormValidation.global.js"></script>
+
+<script>
+const validator = new NFSFU234FormValidation();
+</script>
+```
+
+---
+
+### Run your script after the form exists
+
+If `document.getElementById()` returns `null`, move your script below the form or wait for the page to finish loading.
+
+```html
+<body>
+
+    <form id="signupForm">
+        ...
+    </form>
+
+    <script>
+        // Initialize here
+    </script>
+
+</body>
+```
+
+---
+
+### Don't forget to `await`
+
+Incorrect
+
+```js
+validator.submit();
+```
+
+Correct
+
+```js
+const result = await validator.submit();
+```
+
+---
+
+## Next steps
+
+Continue exploring the library:
+
+- [Initialization](/docs/v3/initialization)
+- [Configuration Reference](/docs/v3/formConfigInterface)
+- [configureForms()](/docs/v3/configureForms)
+- [autoInit()](/docs/v3/autoInit)
+- [validateFile()](/docs/v3/validateFile)
+- [AJAX](/docs/v3/ajax)
+- [Available Functions](/docs/v3/available-functions)

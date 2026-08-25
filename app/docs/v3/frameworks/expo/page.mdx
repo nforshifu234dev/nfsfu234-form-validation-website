@@ -1,0 +1,299 @@
+# 🌐 Using NFSFU234FormValidation with Expo Web
+
+NFSFU234FormValidation works with **Expo Web**, where your application runs in a real browser and has access to the DOM.
+
+Since the library validates native HTML forms, it **does not run on iOS or Android**. If your Expo application targets multiple platforms, simply execute your validation logic only when running on the **web**.
+
+> **Compatible with**
+>
+> - ✅ Expo Web
+> - ✅ React Native Web
+> - ✅ JavaScript
+> - ✅ TypeScript
+> - ❌ Android
+> - ❌ iOS
+
+---
+
+## 1. Create an Expo project
+
+If you already have an Expo application, skip to **Install**.
+
+```bash
+npx create-expo-app my-app
+
+cd my-app
+```
+
+Start the development server.
+
+```bash
+npx expo start
+```
+
+Press **W** to open your application in the browser.
+
+---
+
+## 2. Install NFSFU234FormValidation
+
+Install the package from npm.
+
+```bash
+npm install @nfsfu234/form-validation
+```
+
+Import the stylesheet once in your web entry point.
+
+```tsx
+import "@nfsfu234/form-validation/css";
+```
+
+No native modules, config plugins, or `expo install` commands are required.
+
+---
+
+## 3. Create your first validated form
+
+Because Expo can run on both native and web platforms, always check the current platform before using the library.
+
+```tsx
+import { Platform, Text, View } from "react-native";
+import { useEffect } from "react";
+import NFSFU234FormValidation from "@nfsfu234/form-validation";
+
+export default function SignupScreen() {
+    useEffect(() => {
+        if (Platform.OS !== "web") {
+            return;
+        }
+
+        const validator = new NFSFU234FormValidation({
+            form: "signupForm"
+        });
+
+        const form = document.getElementById("signupForm");
+
+        async function handleSubmit(event) {
+            event.preventDefault();
+
+            const result = await validator.submit();
+
+            console.log(result);
+        }
+
+        form?.addEventListener("submit", handleSubmit);
+
+        return () => {
+            form?.removeEventListener("submit", handleSubmit);
+        };
+    }, []);
+
+    if (Platform.OS !== "web") {
+        return (
+            <View>
+                <Text>
+                    This form is only available on the web version of the application.
+                </Text>
+            </View>
+        );
+    }
+
+    return (
+        <form id="signupForm">
+            <input
+                type="email"
+                name="email"
+                required
+            />
+
+            <input
+                type="password"
+                name="password"
+                required
+                minLength={8}
+            />
+
+            <button type="submit">
+                Create Account
+            </button>
+        </form>
+    );
+}
+```
+
+The library automatically validates your HTML attributes, including:
+
+- `required`
+- `type`
+- `pattern`
+- `minLength`
+- `maxLength`
+- `min`
+- `max`
+
+---
+
+## 4. Enable AJAX form submission
+
+Configure AJAX during initialization.
+
+```tsx
+const validator = new NFSFU234FormValidation({
+    form: "signupForm",
+
+    ajaxOptions: {
+        url: "/api/signup",
+
+        RequestMethod: "POST",
+
+        RequestHeader: {
+            "Content-Type": "application/json"
+        }
+    }
+});
+```
+
+Submitting the form remains exactly the same.
+
+```ts
+const result = await validator.submit();
+```
+
+The library validates the form before sending the AJAX request.
+
+---
+
+## 5. Managing multiple forms
+
+For larger Expo Web applications, register every form once and let the library initialize whichever forms exist on the current page.
+
+```tsx
+import { Platform } from "react-native";
+import { useEffect } from "react";
+import NFSFU234FormValidation from "@nfsfu234/form-validation";
+
+export default function FormsProvider() {
+    useEffect(() => {
+        if (Platform.OS !== "web") {
+            return;
+        }
+
+        NFSFU234FormValidation.configureForms([
+            {
+                form: "#signupForm",
+
+                fields: {
+                    email: {
+                        required: true,
+                        type: "email"
+                    },
+
+                    password: {
+                        required: true,
+                        minLength: 8
+                    }
+                }
+            }
+        ]);
+
+        NFSFU234FormValidation.autoInit();
+    }, []);
+
+    return null;
+}
+```
+
+Mount this component once near the root of your application.
+
+---
+
+## 6. Validating uploaded files
+
+NFSFU234FormValidation can validate uploaded files before submission.
+
+```ts
+fields: {
+    avatar: {
+        required: true,
+        accept: [
+            "image/png",
+            "image/jpeg"
+        ],
+
+        maxSizeMB: 5,
+
+        maxWidth: 2000,
+        maxHeight: 2000
+    }
+}
+```
+
+Supported validation includes:
+
+- Accepted file types
+- Maximum file size
+- Image dimensions
+- Minimum and maximum file count
+
+---
+
+## 7. Common pitfalls
+
+### Don't forget the platform check
+
+Always ensure you're running on the web before creating a validator or calling validation methods.
+
+```tsx
+if (Platform.OS !== "web") {
+    return;
+}
+```
+
+---
+
+### Remember to `await`
+
+Incorrect
+
+```ts
+validator.submit();
+```
+
+Correct
+
+```ts
+const result = await validator.submit();
+```
+
+---
+
+### Import the stylesheet
+
+Import the stylesheet once in your web entry point.
+
+```tsx
+import "@nfsfu234/form-validation/css";
+```
+
+---
+
+### Expo Go is different
+
+Expo Go running on Android or iOS does **not** provide browser DOM APIs like `window`, `document`, or HTML forms.
+
+NFSFU234FormValidation is designed for **Expo Web** only. If your application targets native platforms, conditionally render an alternative UI or skip validation entirely when `Platform.OS !== "web"`.
+
+---
+
+## Next steps
+
+Continue exploring the library:
+
+- [Initialization](/docs/v3/initialization)
+- [Configuration Reference](/docs/v3/formConfigInterface)
+- [configureForms()](/docs/v3/configureForms)
+- [autoInit()](/docs/v3/autoInit)
+- [validateFile()](/docs/v3/validateFile)
+- [AJAX](/docs/v3/ajax)
+- [Available Functions](/docs/v3/available-functions)

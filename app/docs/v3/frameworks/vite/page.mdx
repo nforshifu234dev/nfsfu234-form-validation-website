@@ -1,0 +1,335 @@
+# ⚡ Using NFSFU234FormValidation with Vite
+
+Build fast, modern, client-side form validation in **Vite** with **NFSFU234FormValidation**.
+
+Whether you're using **React**, **TypeScript**, or plain JavaScript, NFSFU234FormValidation integrates seamlessly into any Vite project.
+
+> **Compatible with**
+>
+> - ✅ React
+> - ✅ TypeScript
+> - ✅ JavaScript
+> - ✅ Vite 5+
+> - ✅ Vite 6+
+
+---
+
+## 1. Create a Vite project
+
+If you already have a Vite application, skip to **Install**.
+
+Create a new React project.
+
+```bash
+npm create vite@latest my-app -- --template react
+
+cd my-app
+
+npm install
+```
+
+Prefer TypeScript?
+
+Simply replace the template with:
+
+```bash
+npm create vite@latest my-app -- --template react-ts
+```
+
+---
+
+## 2. Install NFSFU234FormValidation
+
+Install the package from npm.
+
+```bash
+npm install @nfsfu234/form-validation
+```
+
+Import the stylesheet once in your application.
+
+```tsx
+import "@nfsfu234/form-validation/css";
+```
+
+---
+
+## 3. Create your first validated form
+
+Unlike Next.js, Vite applications run entirely in the browser, so there's no need for `"use client"` directives.
+
+```tsx
+import { useEffect } from "react";
+import NFSFU234FormValidation from "@nfsfu234/form-validation";
+
+export default function SignupForm() {
+    useEffect(() => {
+        const validator = new NFSFU234FormValidation({
+            form: "signupForm"
+        });
+
+        const form = document.getElementById("signupForm");
+
+        async function handleSubmit(event) {
+            event.preventDefault();
+
+            const result = await validator.submit();
+
+            if (result.type === "success") {
+                console.log("Validation passed");
+            } else {
+                console.log(result);
+            }
+        }
+
+        form?.addEventListener("submit", handleSubmit);
+
+        return () => {
+            form?.removeEventListener("submit", handleSubmit);
+        };
+    }, []);
+
+    return (
+        <form id="signupForm">
+            <input
+                type="email"
+                name="email"
+                required
+            />
+
+            <input
+                type="password"
+                name="password"
+                required
+                minLength={8}
+            />
+
+            <button type="submit">
+                Create Account
+            </button>
+        </form>
+    );
+}
+```
+
+That's all you need.
+
+The library automatically validates your HTML attributes, including:
+
+- `required`
+- `type`
+- `pattern`
+- `minLength`
+- `maxLength`
+- `min`
+- `max`
+- and many more.
+
+---
+
+## 4. Understanding the validation result
+
+Both `.validate()` and `.submit()` return a Promise.
+
+Successful validation:
+
+```ts
+{
+    message: "success",
+    type: "success",
+    data: null
+}
+```
+
+Validation failure:
+
+```ts
+{
+    message: "Email is required.",
+    type: "error",
+    code: 400,
+    data: {
+        ...
+    }
+}
+```
+
+---
+
+## 5. Enable AJAX form submission
+
+Configure AJAX during initialization.
+
+```tsx
+const validator = new NFSFU234FormValidation({
+    form: "signupForm",
+
+    ajaxOptions: {
+        url: "/api/signup",
+
+        RequestMethod: "POST",
+
+        RequestHeader: {
+            "Content-Type": "application/json"
+        }
+    }
+});
+```
+
+Submitting the form remains simple.
+
+```ts
+const response = await validator.submit();
+```
+
+Validation runs before the AJAX request is sent.
+
+---
+
+## 6. Managing multiple forms
+
+For larger applications, register all forms once and let the library initialize whichever forms are available.
+
+```tsx
+import { useEffect } from "react";
+import NFSFU234FormValidation from "@nfsfu234/form-validation";
+
+export default function FormsProvider() {
+    useEffect(() => {
+        NFSFU234FormValidation.configureForms([
+            {
+                form: "#signupForm",
+
+                fields: {
+                    email: {
+                        required: true,
+                        type: "email"
+                    },
+
+                    password: {
+                        required: true,
+                        minLength: 8
+                    }
+                }
+            },
+
+            {
+                form: "#contactForm",
+
+                fields: {
+                    fullname: {
+                        required: true
+                    },
+
+                    email: {
+                        required: true,
+                        type: "email"
+                    }
+                }
+            }
+        ]);
+
+        NFSFU234FormValidation.autoInit();
+    }, []);
+
+    return null;
+}
+```
+
+Render this component once near the root of your application.
+
+```tsx
+import FormsProvider from "./FormsProvider";
+
+export default function App() {
+    return (
+        <>
+            <FormsProvider />
+
+            {/* Rest of your application */}
+        </>
+    );
+}
+```
+
+---
+
+## 7. Validating uploaded files
+
+NFSFU234FormValidation can validate uploaded files before submission.
+
+```tsx
+fields: {
+    avatar: {
+        required: true,
+        accept: [
+            "image/png",
+            "image/jpeg"
+        ],
+        maxSizeMB: 5,
+        maxWidth: 2000,
+        maxHeight: 2000
+    }
+}
+```
+
+Supported validation includes:
+
+- Accepted file types
+- Maximum file size
+- Image dimensions
+- Minimum and maximum file count
+
+---
+
+## 8. Common pitfalls
+
+### Forgetting to `await`
+
+Incorrect:
+
+```ts
+validator.submit();
+```
+
+Correct:
+
+```ts
+const result = await validator.submit();
+```
+
+---
+
+### Forgetting the stylesheet
+
+Import the stylesheet once.
+
+```tsx
+import "@nfsfu234/form-validation/css";
+```
+
+---
+
+### React StrictMode
+
+Vite's React template enables **StrictMode** in development by default.
+
+This causes components to mount twice during development, meaning `useEffect()` also runs twice.
+
+The cleanup function in the examples removes the event listener before it's added again, so this is expected behavior and **not** a bug in the library.
+
+Production builds are unaffected.
+
+---
+
+## Next steps
+
+Continue exploring the library:
+
+- [Initialization](/docs/v3/initialization)
+- [Configuration Reference](/docs/v3/formConfigInterface)
+- [configureForms()](/docs/v3/configureForms)
+- [autoInit()](/docs/v3/autoInit)
+- [validateFile()](/docs/v3/validateFile)
+- [AJAX](/docs/v3/ajax)
+- [Available Functions](/docs/v3/available-functions)

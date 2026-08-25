@@ -1,0 +1,44 @@
+---
+title: "redirect"
+description: "Redirects the browser to a URL, optionally after a delay."
+keywords:
+  - "redirect"
+  - "url"
+  - "delay"
+  - "form validation"
+  - "javascript"
+  - "html forms"
+  - "client-side validation"
+openGraph:
+  title: "redirect() — NFSFU234FormValidation"
+  description: "Redirects the browser to a URL, optionally after a delay."
+  images:
+    - url: "https://formvalidation.nforshifu234dev.com/api/og?title=redirect()%20%E2%80%94%20NFSFU234FormValidation&subtitle=nfsfu234%2Fform-validation"
+      width: 1200
+      height: 630
+---
+#### redirect
+Redirects the browser to a URL, optionally after a delay.
+**Returns:** `void`
+| Parameter | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `url` | `undefined \\| null \\| string \\| false` | `optional` | `null` | The destination URL. Defaults to the current page's URL (effectively a reload) if omitted, `null`, or `false`. |
+| `delay` | `number` | `optional` | `0` | Delay in milliseconds before redirecting. Defaults to `0`. |
+
+##### Usage
+
+###### Example: Redirect to a URL
+
+```js
+const url = "https://www.example.com";
+nfsfu234FormValidation.redirect(url); // Redirects immediately to the specified URL
+
+const delayedUrl = "https://www.example.com";
+nfsfu234FormValidation.redirect(delayedUrl, 3000); // Redirects to the specified URL after 3 seconds
+```
+
+
+import { JsonLd } from '@/components/JsonLd.jsx'
+
+<JsonLd data={{"@context":"https://schema.org","@type":"TechArticle","headline":"redirect() — NFSFU234FormValidation","description":"Redirects the browser to a URL, optionally after a delay.","url":"https://formvalidation.nforshifu234dev.com/docs/v3/redirect","proficiencyLevel":"Beginner","dependencies":"None — zero runtime dependencies","about":{"@type":"SoftwareApplication","name":"NFSFU234FormValidation","applicationCategory":"DeveloperApplication"},"isPartOf":{"@type":"TechArticle","name":"NFSFU234FormValidation Docs","url":"https://formvalidation.nforshifu234dev.com/docs/v3/getting-started"},"author":{"@type":"Organization","name":"NFORSHIFU234 Dev","url":"https://nforshifu234dev.com"}}} />
+

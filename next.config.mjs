@@ -1,35 +1,17 @@
-import mdx from '@next/mdx';
+import nextra from 'nextra'
 
-const withMDX = mdx({
-  extension: /\.mdx?$/
-});
+const withNextra = nextra({
+  latex: false,
+  defaultShowCopyCode: true,
+  search: {
+    codeblocks: false
+  }
+})
 
-const nextConfig = withMDX({
-  pageExtensions: ['js', 'jsx', 'md', 'mdx'],
-  experimental: {
-    esmExternals: true,
-  },
+export default withNextra({
   images: {
     remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'www.google.com',
-        port: '',
-      },
-      {
-        protocol: 'https',
-        hostname: 'example.com',
-        port: '',
-      },
-      {
-        protocol: 'http',
-        hostname: 'images.nforshifu.com',
-        port: '',
-      },
-    ],
-  },
-});
-
-export default nextConfig;
-
-
+      { protocol: 'https', hostname: 'images.nforshifu.com' }
+    ]
+  }
+})

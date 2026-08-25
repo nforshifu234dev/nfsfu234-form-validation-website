@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://formvalidation.nforshifu234dev.com
+
+# Sitemaps
+Sitemap: https://formvalidation.nforshifu234dev.com/sitemap.xml

@@ -1,0 +1,47 @@
+---
+title: "togglePasswordVisibility"
+description: "Toggles a single password field between masked and visible, swapping"
+keywords:
+  - "togglePasswordVisibility"
+  - "input"
+  - "showIcon"
+  - "hideIcon"
+  - "form validation"
+  - "javascript"
+  - "html forms"
+  - "client-side validation"
+openGraph:
+  title: "togglePasswordVisibility() — NFSFU234FormValidation"
+  description: "Toggles a single password field between masked and visible, swapping"
+  images:
+    - url: "https://formvalidation.nforshifu234dev.com/api/og?title=togglePasswordVisibility()%20%E2%80%94%20NFSFU234FormValidation&subtitle=nfsfu234%2Fform-validation"
+      width: 1200
+      height: 630
+---
+#### togglePasswordVisibility
+Toggles a single password field between masked and visible, swapping
+an optional show/hide icon accordingly.
+**Returns:** `any`
+| Parameter | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `input` | `HTMLInputElement` | `required` | `-` | The password input to toggle. |
+| `showIcon` | `null \\| string \\| HTMLElement` | `optional` | `null` | The icon element (or its CSS id) to display when the password is hidden. |
+| `hideIcon` | `null \\| string \\| HTMLElement` | `optional` | `null` | The icon element (or its CSS id) to display when the password is visible. |
+
+##### Usage
+
+###### Example: Toggle Password Visibility
+
+```js
+const passwordInputField = document.querySelector("input[type=password]");
+const showIcon = '🙈';
+const hideIcon = '👀';
+
+nfsfu234FormValidation.togglePasswordVisibility(passwordInputField, showIcon, hideIcon);
+```
+
+
+import { JsonLd } from '@/components/JsonLd.jsx'
+
+<JsonLd data={{"@context":"https://schema.org","@type":"TechArticle","headline":"togglePasswordVisibility() — NFSFU234FormValidation","description":"Toggles a single password field between masked and visible, swapping","url":"https://formvalidation.nforshifu234dev.com/docs/v3/togglePasswordVisibility","proficiencyLevel":"Beginner","dependencies":"None — zero runtime dependencies","about":{"@type":"SoftwareApplication","name":"NFSFU234FormValidation","applicationCategory":"DeveloperApplication"},"isPartOf":{"@type":"TechArticle","name":"NFSFU234FormValidation Docs","url":"https://formvalidation.nforshifu234dev.com/docs/v3/getting-started"},"author":{"@type":"Organization","name":"NFORSHIFU234 Dev","url":"https://nforshifu234dev.com"}}} />
+

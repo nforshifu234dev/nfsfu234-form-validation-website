@@ -1,0 +1,276 @@
+# 🔀 Migrating from v2 to v3
+
+NFSFU234FormValidation v3 is the largest update since the library was first released. It introduces new features, improves TypeScript support, modernizes the build system, and simplifies the public API.
+
+For most projects, upgrading takes only a few minutes.
+
+> **Before upgrading**
+>
+> - Back up your project or commit your current changes.
+> - Update the package.
+> - Work through the migration steps below.
+> - Test your forms before deploying.
+
+---
+
+## 1. Update the package
+
+```bash
+npm install @nfsfu234/form-validation@latest
+```
+
+If you're using a CDN, update the script and stylesheet to the latest version.
+
+---
+
+## 2. `submit()` and `validate()` are now asynchronous
+
+### v2
+
+Both methods could return synchronously.
+
+```javascript
+const result = validator.submit();
+
+if (result === false) {
+    // Validation failed
+}
+```
+
+### v3
+
+Both methods now **always return a Promise**.
+
+```javascript
+const result = await validator.submit();
+```
+
+or
+
+```javascript
+validator.submit().then((result) => {
+    console.log(result);
+});
+```
+
+### Why?
+
+File validation is now built into the library.
+
+Reading uploaded files and image dimensions requires asynchronous browser APIs, so `submit()` and `validate()` had to become asynchronous.
+
+---
+
+## 3. Update your validation code
+
+If your application calls any of these methods, make sure they are awaited.
+
+Before
+
+```javascript
+validator.submit();
+
+validator.validate();
+```
+
+After
+
+```javascript
+await validator.submit();
+
+await validator.validate();
+```
+
+This is the most common migration issue.
+
+---
+
+## 4. Password hashing has been removed
+
+The following methods no longer exist.
+
+```javascript
+validator.hashPassword();
+
+validator.verifyPassword();
+
+validator.passwordMatch();
+```
+
+The `shouldHash` option on `generatePassword()` has also been removed.
+
+### Why?
+
+Password hashing belongs on the server.
+
+Hashing passwords in the browser does **not** improve security because the unhashed password still has to be sent to your server over HTTPS.
+
+Modern backends already provide secure password hashing:
+
+- Node.js (bcrypt / Argon2)
+- Laravel
+- Django
+- Rails
+- ASP.NET
+- Spring Boot
+
+The library now focuses entirely on **validation**, not authentication.
+
+---
+
+## 5. Radio buttons and checkboxes are now validated automatically
+
+In v2, form-wide validation ignored radio buttons and checkboxes unless you validated them manually.
+
+```javascript
+await validator.submit();
+```
+
+now validates
+
+- text inputs
+- textareas
+- selects
+- radio groups
+- checkboxes
+- file inputs
+
+If your application relied on radios or checkboxes being skipped, test those forms after upgrading.
+
+---
+
+## 6. File validation is now built in
+
+v3 introduces first-class validation for file uploads.
+
+```javascript
+fields: {
+    avatar: {
+        required: true,
+
+        accept: [
+            "image/png",
+            "image/jpeg"
+        ],
+
+        maxSizeMB: 5,
+
+        maxWidth: 2000,
+        maxHeight: 2000
+    }
+}
+```
+
+You can validate
+
+- File type
+- File size
+- Image dimensions
+- Minimum file count
+- Maximum file count
+
+No third-party plugin is required.
+
+---
+
+## 7. New site-wide configuration system
+
+Large websites no longer need to manually initialize every form.
+
+Instead of
+
+```javascript
+new NFSFU234FormValidation({
+    form: "loginForm"
+});
+
+new NFSFU234FormValidation({
+    form: "registerForm"
+});
+```
+
+you can register every form once.
+
+```javascript
+NFSFU234FormValidation.configureForms([
+    {
+        form: "#loginForm"
+    },
+    {
+        form: "#registerForm"
+    }
+]);
+
+NFSFU234FormValidation.autoInit();
+```
+
+This feature is completely optional.
+
+Your existing initialization code continues to work.
+
+---
+
+## 8. Utility-only instances
+
+You can now create an instance without attaching it to a form.
+
+```javascript
+const validator = new NFSFU234FormValidation(null);
+```
+
+Useful when you only need utilities such as
+
+- `ajax()`
+- `isEmail()`
+- `generatePassword()`
+- `passwordStrength()`
+
+without automatically attaching listeners to a form.
+
+---
+
+## 9. Static AJAX requests
+
+You no longer need an instance just to send an AJAX request.
+
+```javascript
+await NFSFU234FormValidation.ajax({
+    url: "/api/login",
+
+    RequestMethod: "POST"
+});
+```
+
+The existing instance method still works.
+
+---
+
+## Migration checklist
+
+Before shipping your upgrade, verify the following:
+
+- ✅ Updated to the latest package version
+- ✅ Added `await` (or `.then()`) to every `submit()` call
+- ✅ Added `await` (or `.then()`) to every `validate()` call
+- ✅ Removed `hashPassword()`
+- ✅ Removed `verifyPassword()`
+- ✅ Removed `passwordMatch()`
+- ✅ Removed `generatePassword({ shouldHash: true })`
+- ✅ Moved password hashing to your backend
+- ✅ Tested radio button validation
+- ✅ Tested checkbox validation
+- ✅ Tested file uploads (if applicable)
+
+---
+
+## Need help?
+
+If something stops working after upgrading, compare your code with the updated examples in the documentation.
+
+Helpful resources:
+
+- [Getting Started](/docs/v3/getting-started)
+- [Initialization](/docs/v3/initialization)
+- [Configuration Reference](/docs/v3/formConfigInterface)
+- [Available Functions](/docs/v3/available-functions)
+- [Changelog](/docs/v3/changelog)

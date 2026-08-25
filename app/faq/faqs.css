@@ -1,8 +1,0 @@
-.faq a {
-    color: blue;
-    text-decoration: underline dotted;
-}
-
-.faq a:hover {
-text-decoration: underline solid;
-}

@@ -1,0 +1,51 @@
+---
+title: "validateAllInput"
+description: "Validates every input in the form. Returns `true`, or an array of"
+keywords:
+  - "validateAllInput"
+  - "form"
+  - "customErrorMessages"
+  - "form validation"
+  - "javascript"
+  - "html forms"
+  - "client-side validation"
+openGraph:
+  title: "validateAllInput() — NFSFU234FormValidation"
+  description: "Validates every input in the form. Returns `true`, or an array of"
+  images:
+    - url: "https://formvalidation.nforshifu234dev.com/api/og?title=validateAllInput()%20%E2%80%94%20NFSFU234FormValidation&subtitle=nfsfu234%2Fform-validation"
+      width: 1200
+      height: 630
+---
+#### validateAllInput
+Validates every input in the form. Returns `true`, or an array of
+per-field error results.
+**Returns:** `boolean \| ErrorMessageInterface[]`
+| Parameter | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `form` | `string \\| HTMLFormElement \\| HTMLDivElement` | `required` | `-` | The form to validate, as an element or its CSS id. Defaults to this instance's `form` if omitted. |
+| `customErrorMessages` | `any` | `required` | `-` | Custom error messages keyed by field name or rule, overriding the defaults. |
+
+##### Usage
+
+###### Example: Validate All Input Fields in a Form
+
+```js
+const formElement = document.getElementById('myForm');
+
+nfsfu234FormValidation.validateAllInput(formElement, {
+  customErrorMessages: {
+    email: 'Please enter a valid email address.',
+    url: 'Please enter a valid URL.',
+    date: 'Please enter a valid date.',
+  }
+}).then(response => {
+  console.log(response);
+});
+```
+
+
+import { JsonLd } from '@/components/JsonLd.jsx'
+
+<JsonLd data={{"@context":"https://schema.org","@type":"TechArticle","headline":"validateAllInput() — NFSFU234FormValidation","description":"Validates every input in the form. Returns `true`, or an array of","url":"https://formvalidation.nforshifu234dev.com/docs/v3/validateAllInput","proficiencyLevel":"Beginner","dependencies":"None — zero runtime dependencies","about":{"@type":"SoftwareApplication","name":"NFSFU234FormValidation","applicationCategory":"DeveloperApplication"},"isPartOf":{"@type":"TechArticle","name":"NFSFU234FormValidation Docs","url":"https://formvalidation.nforshifu234dev.com/docs/v3/getting-started"},"author":{"@type":"Organization","name":"NFORSHIFU234 Dev","url":"https://nforshifu234dev.com"}}} />
+

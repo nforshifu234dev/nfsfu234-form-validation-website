@@ -1,0 +1,134 @@
+---
+title: "Waitlist Form That Resets After Submit (Expo Web)"
+excerpt: "Submit a waitlist signup via AJAX and clear the form automatically on success, gated to Expo's web target."
+frameworks: ["expo"]
+date: "2026-07-15"
+---
+
+# Expo Web Waitlist Form
+
+Expo applications run on iOS, Android, and the web—but NFSFU234FormValidation only works where a browser DOM exists.
+
+This example builds a waitlist form for an Expo project's **web** target. After successful validation, the form submits via AJAX and automatically resets so it's ready for the next visitor.
+
+---
+
+## Waitlist Screen
+
+```jsx
+import { useEffect } from "react";
+import { Platform, View, Text } from "react-native";
+import NFSFU234FormValidation from "@nfsfu234/form-validation";
+
+export default function WaitlistScreen() {
+  useEffect(() => {
+    if (Platform.OS !== "web") return;
+
+    const formElement =
+      document.getElementById("waitlist-form");
+
+    const validator =
+      new NFSFU234FormValidation({
+        form: formElement,
+      });
+
+    async function handleSubmit(event) {
+      event.preventDefault();
+
+      const result = await validator.submit({
+        isAjax: true,
+        ajaxOptions: {
+          url: "/api/waitlist",
+          RequestMethod: "POST",
+        },
+      });
+
+      const status =
+        document.getElementById("waitlist-status");
+
+      if (result.type === "success") {
+        status.textContent =
+          "You're on the waitlist! We'll be in touch soon.";
+
+        validator.reset(validator.form);
+
+        return;
+      }
+
+      status.textContent =
+        result.message ??
+        "Something went wrong. Please try again.";
+    }
+
+    formElement.addEventListener(
+      "submit",
+      handleSubmit
+    );
+
+    return () => {
+      formElement.removeEventListener(
+        "submit",
+        handleSubmit
+      );
+    };
+  }, []);
+
+  if (Platform.OS !== "web") {
+    return (
+      <View>
+        <Text>
+          This waitlist is only available on the web version
+          of the application.
+        </Text>
+      </View>
+    );
+  }
+
+  return (
+    <form id="waitlist-form">
+      <input
+        type="email"
+        name="email"
+        placeholder="you@example.com"
+        required
+      />
+
+      <button type="submit">
+        Join Waitlist
+      </button>
+
+      <p id="waitlist-status"></p>
+    </form>
+  );
+}
+```
+
+---
+
+## How it works
+
+1. The component only initializes on **Expo Web**.
+2. NFSFU234FormValidation validates the email field.
+3. If validation succeeds, the form is submitted via AJAX.
+4. When the request succeeds, the form is cleared with `.reset()`.
+5. The visitor immediately sees a confirmation message and an empty form ready for another submission.
+
+---
+
+## Notes
+
+- Always guard the library with `Platform.OS === "web"`. Expo's iOS and Android targets don't provide the browser APIs required for DOM validation.
+- `.submit()` automatically validates every configured field before sending the AJAX request.
+- Call `.reset()` **only after** a successful response. If the request fails, leaving the user's data intact makes it easy to correct and resubmit.
+- This example uses per-request `ajaxOptions`, but the same form could also submit using the form's own `action`, `method`, and `isAjax` attributes.
+
+---
+
+## Continue learning
+
+- [Expo Framework Guide](/docs/v3/frameworks/expo)
+- [AJAX Requests](/docs/v3/ajax)
+- [submit()](/docs/v3/submit)
+- [reset()](/docs/v3/reset)
+- [Initialization](/docs/v3/initialization)
+- [Available Functions](/docs/v3/available-functions)

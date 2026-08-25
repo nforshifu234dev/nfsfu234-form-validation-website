@@ -1,0 +1,175 @@
+---
+title: Getting Started
+description: Learn what NFSFU234FormValidation is, what Version 3 introduces, and where to go next.
+---
+
+# 🏎️ Getting Started
+
+Welcome to **NFSFU234FormValidation**.
+
+NFSFU234FormValidation is a lightweight, dependency-free client-side form validation library for modern JavaScript applications.
+
+Instead of replacing the browser's native validation, it builds on top of it. If your forms already use HTML validation attributes like `required`, `type`, `pattern`, `minlength`, or `maxlength`, you're already halfway there.
+
+Version 3 extends those familiar HTML capabilities with configuration-driven validation, framework-friendly APIs, automatic form initialization, file validation, AJAX utilities, and much more.
+
+---
+
+> **New to the library?**
+>
+> Start with the **[Quick Start](/docs/v3/quick-start)** guide.
+>
+> In less than five minutes you'll install the package, validate your first form, and understand the core workflow before exploring the rest of the documentation.
+
+---
+
+## What is NFSFU234FormValidation?
+
+NFSFU234FormValidation helps you build better forms without forcing you to rewrite how HTML forms already work.
+
+Instead of inventing a completely new validation syntax, the library understands the HTML validation attributes browsers already support while adding functionality modern applications commonly need.
+
+That means you can continue writing standard HTML like this:
+
+```html
+<input
+    type="email"
+    required
+    minlength="5"
+/>
+```
+
+…and Version 3 can extend that with features such as:
+
+- Configuration-driven validation rules
+- Site-wide form registration
+- Automatic multi-page initialization
+- File and image validation
+- Custom validation messages
+- Static AJAX requests
+- Password utilities
+- TypeScript support
+- Zero runtime dependencies
+
+---
+
+## What Gets Validated Automatically?
+
+Without writing any configuration, the library understands standard HTML validation rules.
+
+| HTML Attribute | Automatically Validated |
+| -------------- | ----------------------- |
+| `required` | ✅ |
+| `type="email"` | ✅ |
+| `type="url"` | ✅ |
+| `pattern` | ✅ |
+| `minlength` | ✅ |
+| `maxlength` | ✅ |
+| `min` | ✅ |
+| `max` | ✅ |
+| `step` | ✅ |
+| Required radio groups | ✅ |
+| Required checkboxes | ✅ |
+| Select elements | ✅ |
+| Textareas | ✅ |
+
+For many projects, that's enough to get started.
+
+When you need additional control, Version 3 allows you to override or extend HTML validation using JavaScript configuration instead of changing your markup.
+
+---
+
+## What's New in Version 3?
+
+Version 3 is the largest update since the project began.
+
+Highlights include:
+
+- 🚀 Configuration-driven validation
+- 🌍 Site-wide form registry with `configureForms()`
+- ⚡ Automatic page initialization using `autoInit()`
+- 📁 File and image validation
+- 🔄 Promise-based `.validate()` and `.submit()`
+- 🌐 Static AJAX helper
+- 📦 Scoped npm package: `@nfsfu234/form-validation`
+- 🧪 Complete automated test suite
+- 📚 API documentation generated with TypeDoc
+- ⚛️ Improved React, Next.js and SSR support
+- 📦 Zero runtime dependencies
+
+---
+
+## Documentation Roadmap
+
+Whether you're building a single contact form or managing dozens of forms across a large application, the documentation is organized to help you progressively learn the library.
+
+| Goal | Documentation |
+| ---- | ---- |
+| 🚀 Get running in under 5 minutes | [Quick Start](/docs/v3/quick-start) |
+| 📦 Install the library | [Installation](/docs/v3/installation) |
+| 🏗 Understand initialization | [Initialization](/docs/v3/initialization) |
+| ✅ Learn validation workflows | [Usage](/docs/v3/usage) |
+| 🌍 Configure multiple forms | [configureForms()](/docs/v3/configureForms) |
+| ⚡ Automatically initialize forms | [autoInit()](/docs/v3/autoInit) |
+| 📚 Browse every public method | [Available Functions](/docs/v3/available-functions) |
+| ⚛️ Framework integration | [Frameworks](/docs/v3/frameworks) |
+| 💻 Complete working examples | [/examples](/examples) |
+| 🔄 Upgrade from older versions | [Migration Guide](/docs/v3/migration) |
+
+---
+
+## Designed for Modern Applications
+
+Version 3 was built with modern development workflows in mind.
+
+Whether you're building with:
+
+- Plain HTML
+- Next.js
+- React
+- Vite
+- Astro
+- Expo Web
+
+…the same validation engine powers every environment.
+
+You can create a single validator, configure multiple forms across an entire website, or even use the library purely for utility functions like AJAX requests, email validation, password generation, and file validation.
+
+---
+
+## Open Source
+
+NFSFU234FormValidation is part of the growing **NFSFU234** open-source ecosystem.
+
+The project is maintained alongside other developer tools including:
+
+- NFSFU234 Form Validation
+- NFSFU234 Tour Guide
+- NFSFU234 ShotSweep
+
+All libraries share the same philosophy:
+
+- Lightweight
+- Dependency-free where possible
+- Framework-friendly
+- Well documented
+- Built for modern frontend development
+
+---
+
+## License
+
+NFSFU234FormValidation is released under the **MIT License**.
+
+You are free to use it in personal, commercial, and open-source projects.
+
+---
+
+## Need Help?
+
+- 📖 Continue with the **[Quick Start](/docs/v3/quick-start)** guide.
+- 🐞 Report bugs on GitHub.
+- 💡 Request features or improvements.
+- 🤝 Contribute to the project and help shape future releases.
+
+Happy building! 🚀

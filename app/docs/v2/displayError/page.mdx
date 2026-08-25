@@ -1,0 +1,69 @@
+---
+title: "displayError"
+description: "Display error messages in various formats using the NFSFU234FormValidation Library"
+---
+
+# displayError
+
+The `displayError` function is used to display error messages in either an `inline` or `modal` format. It allows specifying the duration for which the error message should be visible and associates the error message with a specific HTML element.
+
+**Works in:** HTML5, React JS
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `details` | `Object` | `undefined` | The details of the error message to be displayed. |
+| `details.type` | `string` | `undefined` | The type of error display (either "inline" or "modal"). |
+| `details.message` | `string` | `undefined` | The error message to be displayed. |
+| `details.duration` | `number` | `undefined` | The duration (in milliseconds) for which the error message should be visible. |
+| `details.element` | `HTMLInputElement \| HTMLSelectElement \| HTMLTextAreaElement` | `undefined` | The HTML element to which the error message is associated. |
+| `details.success` | `boolean` | `false` | A flag indicating whether the operation was successful. Default is false. |
+
+## Usage
+
+### Example: Display Error Message
+
+```js
+const errorDetails = {
+    type: 'modal', // or inline
+    message: 'Hello World👋',
+    duration: 5000,
+    element: document.getElementById('myFormId'), // could also be an HTML input element
+    success: false // or true
+};
+
+nfsfu234FormValidation.displayError(errorDetails);
+```
+
+### Example Form HTML
+
+```js
+<form id="myFormId">
+  <input type="text" name="fieldName1" value="value1" data-attr-name="fieldName1" />
+  <input type="text" name="fieldName2" value="value2" data-attr-name="fieldName2" />
+  <button type="submit">Submit</button>
+</form>
+```
+
+### JavaScript to Display Error Message
+
+```js
+const errorDetails = {
+    type: 'modal',
+    message: 'Hello World👋',
+    duration: 5000,
+    element: document.getElementById('myFormId'),
+    success: false
+};
+
+nfsfu234FormValidation.displayError(errorDetails);
+```
+
+### Expected Output
+
+An error message "Hello World👋" will be displayed as a modal for 5000 milliseconds (5 seconds) associated with the specified form element.
+
+#### See also
+
+- [Validate](/docs/v2/validate)
+- [Submit](/docs/v2/submit)
+- [AJAX](/docs/v2/ajax)

@@ -1,0 +1,180 @@
+---
+title: "Survey Form: Radio and Checkbox Groups"
+excerpt: "Validate a radio group and standalone checkboxes independently, and handle their array-of-errors return shape."
+frameworks: ["html", "vite"]
+date: "2026-07-10"
+---
+
+# Survey Form Validation
+
+Survey forms often rely on radio buttons and checkboxes instead of text inputs. This example validates both field types before the user can continue, providing custom error messages for each group.
+
+---
+
+## HTML
+
+```html
+<form id="surveyForm">
+  <fieldset>
+    <legend>How was your experience?</legend>
+
+    <label>
+      <input
+        type="radio"
+        name="experience"
+        value="great"
+        required
+      />
+      Great
+    </label>
+
+    <label>
+      <input
+        type="radio"
+        name="experience"
+        value="good"
+        required
+      />
+      Good
+    </label>
+
+    <label>
+      <input
+        type="radio"
+        name="experience"
+        value="poor"
+        required
+      />
+      Poor
+    </label>
+  </fieldset>
+
+  <label>
+    <input
+      type="checkbox"
+      name="terms"
+      required
+    />
+    I agree to the Terms and Conditions
+  </label>
+
+  <label>
+    <input
+      type="checkbox"
+      name="updates"
+    />
+    Send me product updates
+  </label>
+
+  <div id="surveyErrors"></div>
+
+  <button type="submit">
+    Submit Survey
+  </button>
+</form>
+```
+
+---
+
+## JavaScript
+
+```javascript
+import NFSFU234FormValidation from "@nfsfu234/form-validation";
+
+const validator = new NFSFU234FormValidation({
+  form: "surveyForm",
+});
+
+const form = document.getElementById("surveyForm");
+const errors = document.getElementById("surveyErrors");
+
+form.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  const radioResult =
+    validator.validateAllRadio(form, {
+      experience:
+        "Please tell us about your experience.",
+    });
+
+  const checkboxResult =
+    validator.validateAllCheckbox(form, {
+      terms:
+        "You must accept the Terms and Conditions.",
+    });
+
+  const validationErrors = [
+    ...(Array.isArray(radioResult)
+      ? radioResult
+      : [radioResult]),
+
+    ...(Array.isArray(checkboxResult)
+      ? checkboxResult
+      : [checkboxResult]),
+  ].filter((result) => result !== true);
+
+  if (validationErrors.length > 0) {
+    errors.textContent = validationErrors
+      .map((error) => error.message)
+      .join(" ");
+
+    return;
+  }
+
+  errors.textContent = "";
+
+  const result = await validator.submit();
+
+  if (result.type === "success") {
+    console.log("Survey submitted.");
+  }
+});
+```
+
+---
+
+## Why validate separately?
+
+Normally, calling `submit()` or `validate()` validates **every field** in the form—including inputs, textareas, selects, radio buttons, checkboxes, and file inputs.
+
+Methods like `validateAllRadio()` and `validateAllCheckbox()` are useful when you only want to validate a specific part of a form before allowing the user to continue.
+
+Examples include:
+
+- Multi-step forms
+- Surveys
+- Polls
+- Wizard-style interfaces
+- Conditional sections
+
+---
+
+## Return values
+
+Both methods return one of the following:
+
+- `true` — every field passed validation.
+- `ErrorMessageInterface` — one validation error.
+- `ErrorMessageInterface[]` — multiple validation errors.
+
+If you're processing the result programmatically, normalize it into an array before iterating, as shown above.
+
+---
+
+## Notes
+
+- Custom error messages are matched using each field's `name` attribute.
+- Required radio buttons are validated as a group rather than individually.
+- Optional checkboxes are ignored unless you've configured validation rules for them.
+- In most applications, `submit()` or `validate()` is all you need—these methods are intended for situations where radio buttons or checkboxes need to be validated independently.
+
+---
+
+## Continue learning
+
+- [validateAllRadio()](/docs/v3/validateAllRadio)
+- [validateAllCheckbox()](/docs/v3/validateAllCheckbox)
+- [validate()](/docs/v3/validate)
+- [submit()](/docs/v3/submit)
+- [Form Configuration](/docs/v3/formConfigInterface)
+- [Available Functions](/docs/v3/available-functions)

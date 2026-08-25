@@ -1,0 +1,45 @@
+---
+title: "validateCheckbox"
+description: "Validates a single checkbox field."
+keywords:
+  - "validateCheckbox"
+  - "checkboxInputField"
+  - "options"
+  - "form validation"
+  - "javascript"
+  - "html forms"
+  - "client-side validation"
+openGraph:
+  title: "validateCheckbox() — NFSFU234FormValidation"
+  description: "Validates a single checkbox field."
+  images:
+    - url: "https://formvalidation.nforshifu234dev.com/api/og?title=validateCheckbox()%20%E2%80%94%20NFSFU234FormValidation&subtitle=nfsfu234%2Fform-validation"
+      width: 1200
+      height: 630
+---
+#### validateCheckbox
+Validates a single checkbox field.
+**Returns:** `boolean \| ErrorMessageInterface`
+| Parameter | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `checkboxInputField` | `HTMLInputElement` | `required` | `-` | The checkbox to validate. |
+| `options` | `any` | `optional` | `-` | Overrides for the field's validation rule (e.g. `required`). |
+
+##### Usage
+
+###### Example: Validate a Checkbox Input
+
+```js
+// Using with a checkbox input element
+const checkboxElement = document.querySelector('input[type="checkbox"]');
+const result = nfsfu234FormValidation.validateCheckbox(checkboxElement, {
+  message: 'You must agree to the terms and conditions.'
+});
+console.log(result);
+```
+
+
+import { JsonLd } from '@/components/JsonLd.jsx'
+
+<JsonLd data={{"@context":"https://schema.org","@type":"TechArticle","headline":"validateCheckbox() — NFSFU234FormValidation","description":"Validates a single checkbox field.","url":"https://formvalidation.nforshifu234dev.com/docs/v3/validateCheckbox","proficiencyLevel":"Beginner","dependencies":"None — zero runtime dependencies","about":{"@type":"SoftwareApplication","name":"NFSFU234FormValidation","applicationCategory":"DeveloperApplication"},"isPartOf":{"@type":"TechArticle","name":"NFSFU234FormValidation Docs","url":"https://formvalidation.nforshifu234dev.com/docs/v3/getting-started"},"author":{"@type":"Organization","name":"NFORSHIFU234 Dev","url":"https://nforshifu234dev.com"}}} />
+

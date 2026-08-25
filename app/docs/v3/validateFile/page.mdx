@@ -1,0 +1,45 @@
+---
+title: "validateFile"
+description: "Validates a single ``<input type=\"file\">`` field: required/min/max file"
+keywords:
+  - "validateFile"
+  - "fileInputField"
+  - "options"
+  - "form validation"
+  - "javascript"
+  - "html forms"
+  - "client-side validation"
+openGraph:
+  title: "validateFile() — NFSFU234FormValidation"
+  description: "Validates a single ``<input type=\"file\">`` field: required/min/max file"
+  images:
+    - url: "https://formvalidation.nforshifu234dev.com/api/og?title=validateFile()%20%E2%80%94%20NFSFU234FormValidation&subtitle=nfsfu234%2Fform-validation"
+      width: 1200
+      height: 630
+---
+#### validateFile
+Validates a single ``<input type="file">`` field: required/min/max file
+count, accepted types (`accept`), max size (`maxSizeMB`), and - for
+images - dimension limits. Async, since checking image dimensions
+requires decoding the file.
+**Returns:** `Promise<boolean \| ErrorMessageInterface>`
+| Parameter | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `fileInputField` | `HTMLInputElement` | `required` | `-` | The file input to validate. |
+| `options` | `any` | `optional` | `-` | File rule overrides: `required`, `accept`, `maxSizeMB`, `minFiles`, `maxFiles`, `maxWidth`, `maxHeight`, `minWidth`, `minHeight`, and their `*Message` variants. |
+
+##### Usage
+
+###### Example: Validate a file input
+
+```js
+const fileElement = document.querySelector('input[type="file"]');
+const result = await nfsfu234FormValidation.validateFile(fileElement, { form: myForm });
+console.log(result);
+```
+
+
+import { JsonLd } from '@/components/JsonLd.jsx'
+
+<JsonLd data={{"@context":"https://schema.org","@type":"TechArticle","headline":"validateFile() — NFSFU234FormValidation","description":"Validates a single ``<input type=\"file\">`` field: required/min/max file","url":"https://formvalidation.nforshifu234dev.com/docs/v3/validateFile","proficiencyLevel":"Beginner","dependencies":"None — zero runtime dependencies","about":{"@type":"SoftwareApplication","name":"NFSFU234FormValidation","applicationCategory":"DeveloperApplication"},"isPartOf":{"@type":"TechArticle","name":"NFSFU234FormValidation Docs","url":"https://formvalidation.nforshifu234dev.com/docs/v3/getting-started"},"author":{"@type":"Organization","name":"NFORSHIFU234 Dev","url":"https://nforshifu234dev.com"}}} />
+

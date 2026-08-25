@@ -1,0 +1,348 @@
+# ▲ Using NFSFU234FormValidation with Next.js
+
+Build fast, accessible, client-side form validation in **Next.js** with **NFSFU234FormValidation**.
+
+Whether you're building a simple contact form or a large production application, NFSFU234FormValidation integrates seamlessly with **Next.js App Router** and **Pages Router** projects.
+
+> **Compatible with**
+>
+> - ✅ App Router
+> - ✅ Pages Router
+> - ✅ React 18+
+> - ✅ React 19+
+> - ✅ TypeScript
+> - ✅ JavaScript
+
+---
+
+## 1. Create a Next.js project
+
+If you already have a Next.js application, skip to **Install**.
+
+```bash
+npx create-next-app@latest my-app
+
+cd my-app
+```
+
+Choose whichever options you prefer during setup. This guide works with both the **App Router** and **Pages Router**.
+
+---
+
+## 2. Install NFSFU234FormValidation
+
+Install the library from npm.
+
+```bash
+npm install @nfsfu234/form-validation
+```
+
+Import the stylesheet once in your application.
+
+```tsx
+import "@nfsfu234/form-validation/css";
+```
+
+---
+
+## 3. Create your first validated form
+
+NFSFU234FormValidation interacts with the browser's DOM, so it should be initialized inside a **Client Component**.
+
+```tsx
+"use client";
+
+import { useEffect } from "react";
+import NFSFU234FormValidation from "@nfsfu234/form-validation";
+
+export default function LoginForm() {
+    useEffect(() => {
+        const validator = new NFSFU234FormValidation({
+            form: "loginForm"
+        });
+
+        const form = document.getElementById("loginForm");
+
+        async function handleSubmit(event) {
+            event.preventDefault();
+
+            const result = await validator.submit();
+
+            if (result.type === "success") {
+                console.log("Validation passed");
+            } else {
+                console.log(result);
+            }
+        }
+
+        form?.addEventListener("submit", handleSubmit);
+
+        return () => {
+            form?.removeEventListener("submit", handleSubmit);
+        };
+    }, []);
+
+    return (
+        <form id="loginForm">
+            <input
+                type="email"
+                name="email"
+                required
+            />
+
+            <input
+                type="password"
+                name="password"
+                required
+                minLength={8}
+            />
+
+            <button type="submit">
+                Sign In
+            </button>
+        </form>
+    );
+}
+```
+
+That's it.
+
+The library automatically validates your HTML attributes, including:
+
+- `required`
+- `type`
+- `pattern`
+- `minLength`
+- `maxLength`
+- `min`
+- `max`
+- and many more.
+
+---
+
+## 4. Understanding the validation result
+
+Both `.validate()` and `.submit()` are asynchronous and return a result object.
+
+Successful validation returns:
+
+```ts
+{
+    message: "success",
+    type: "success",
+    data: null
+}
+```
+
+Validation errors return:
+
+```ts
+{
+    message: "Email is required.",
+    type: "error",
+    code: 400,
+    data: {
+        ...
+    }
+}
+```
+
+This makes it easy to display notifications, redirect users, or perform any custom logic after validation.
+
+---
+
+## 5. Enable AJAX form submission
+
+If you'd like the library to validate and submit your form automatically, configure AJAX during initialization.
+
+```tsx
+const validator = new NFSFU234FormValidation({
+    form: "loginForm",
+
+    ajaxOptions: {
+        url: "/api/login",
+
+        RequestMethod: "POST",
+
+        RequestHeader: {
+            "Content-Type": "application/json"
+        }
+    }
+});
+```
+
+Submitting the form is still as simple as:
+
+```ts
+const response = await validator.submit();
+```
+
+The library validates the form first before sending the AJAX request.
+
+---
+
+## 6. Managing multiple forms
+
+For larger Next.js applications, manually initializing every form can become repetitive.
+
+Instead, register every form once and let the library automatically initialize whichever forms exist on the current page.
+
+```tsx
+"use client";
+
+import { useEffect } from "react";
+import NFSFU234FormValidation from "@nfsfu234/form-validation";
+
+export default function FormsProvider() {
+    useEffect(() => {
+        NFSFU234FormValidation.configureForms([
+            {
+                form: "#loginForm",
+
+                fields: {
+                    email: {
+                        required: true,
+                        type: "email"
+                    },
+
+                    password: {
+                        required: true,
+                        minLength: 8
+                    }
+                }
+            },
+
+            {
+                form: "#contactForm",
+
+                fields: {
+                    fullname: {
+                        required: true
+                    },
+
+                    email: {
+                        required: true,
+                        type: "email"
+                    }
+                }
+            }
+        ]);
+
+        NFSFU234FormValidation.autoInit();
+    }, []);
+
+    return null;
+}
+```
+
+Mount this component once inside your root layout.
+
+```tsx
+// app/layout.tsx
+
+import FormsProvider from "./FormsProvider";
+
+export default function RootLayout({
+    children
+}: {
+    children: React.ReactNode;
+}) {
+    return (
+        <html lang="en">
+            <body>
+                <FormsProvider />
+
+                {children}
+            </body>
+        </html>
+    );
+}
+```
+
+The library automatically initializes only the forms available on the current page.
+
+---
+
+## 7. Validating uploaded files
+
+NFSFU234FormValidation can validate uploaded files before submission.
+
+```tsx
+fields: {
+    avatar: {
+        required: true,
+        accept: [
+            "image/png",
+            "image/jpeg"
+        ],
+        maxSizeMB: 5,
+        maxWidth: 2000,
+        maxHeight: 2000
+    }
+}
+```
+
+You can validate:
+
+- Accepted file types
+- File size
+- Image dimensions
+- Minimum and maximum file count
+
+---
+
+## 8. Common pitfalls
+
+### Forgetting `"use client"`
+
+NFSFU234FormValidation uses browser APIs such as `window` and `document`.
+
+Always initialize it inside a **Client Component**.
+
+---
+
+### Forgetting to `await`
+
+Incorrect:
+
+```ts
+validator.submit();
+```
+
+Correct:
+
+```ts
+const result = await validator.submit();
+```
+
+---
+
+### Forgetting the stylesheet
+
+Inline validation messages rely on the library's stylesheet.
+
+```tsx
+import "@nfsfu234/form-validation/css";
+```
+
+---
+
+### Initializing during server rendering
+
+Don't initialize the library inside a **Server Component** or while rendering.
+
+Instead, create your validator inside `useEffect()` after the component mounts.
+
+---
+
+## Next steps
+
+Continue exploring the library:
+
+- [Initialization](/docs/v3/initialization)
+- [Configuration Reference](/docs/v3/formConfigInterface)
+- [configureForms()](/docs/v3/configureForms)
+- [autoInit()](/docs/v3/autoInit)
+- [validateFile()](/docs/v3/validateFile)
+- [AJAX](/docs/v3/ajax)
+- [Available Functions](/docs/v3/available-functions)

@@ -1,0 +1,73 @@
+---
+title: "ErrorMessageInterface"
+description: "Fields available on ErrorMessageInterface."
+keywords:
+  - "ErrorMessageInterface"
+  - "message"
+  - "type"
+  - "code"
+  - "data"
+  - "form validation"
+  - "javascript"
+  - "html forms"
+  - "client-side validation"
+openGraph:
+  title: "ErrorMessageInterface — NFSFU234FormValidation"
+  description: "Fields available on ErrorMessageInterface."
+  images:
+    - url: "https://formvalidation.nforshifu234dev.com/api/og?title=ErrorMessageInterface%20%E2%80%94%20NFSFU234FormValidation&subtitle=nfsfu234%2Fform-validation"
+      width: 1200
+      height: 630
+---
+#### ErrorMessageInterface
+Fields available on ErrorMessageInterface.
+| Property | Type | Required |
+| --- | --- | --- |
+| `message` | `string \\| number \\| boolean` | optional |
+| `type` | `string` | optional |
+| `code` | `number` | optional |
+| `data` | `null \\| string \\| number \\| boolean \\| object \\| any[] \\| JSON \\| HTMLElement` | optional |
+
+##### Usage
+
+###### Example: Handling an Error Message using the [`Validate API`](/docs/v3/validate) function 
+
+```js
+const myForm = document.getElementById("myForm");
+nfsfu234FormValidation.validate(myForm, (response) => {
+    /**
+     *  Example of using the ErrorMessageInterface
+     * 
+     * Here the response is in the ErrorMessageInterface formart so we destructure the ErrorMessageInterface 
+     * This enables us to to access its attributes and use them easily
+    */
+    
+    const { message, type, data, code } = response;
+    
+    console.log("Code: ", code);
+    console.log("Message: ", message);
+    console.log("Type: ", type);
+    console.log("Data: ", data);
+});
+```
+
+
+##### Used by
+
+- [`getFormDetails()`](/docs/v3/getFormDetails)
+- [`loading()`](/docs/v3/loading)
+- [`validateAllInput()`](/docs/v3/validateAllInput)
+- [`validateRadio()`](/docs/v3/validateRadio)
+- [`validateAllRadio()`](/docs/v3/validateAllRadio)
+- [`validateCheckbox()`](/docs/v3/validateCheckbox)
+- [`validateAllCheckbox()`](/docs/v3/validateAllCheckbox)
+- [`validateSelect()`](/docs/v3/validateSelect)
+- [`validateAllSelect()`](/docs/v3/validateAllSelect)
+- [`validateTextarea()`](/docs/v3/validateTextarea)
+- [`validateAllTextarea()`](/docs/v3/validateAllTextarea)
+
+
+import { JsonLd } from '@/components/JsonLd.jsx'
+
+<JsonLd data={{"@context":"https://schema.org","@type":"TechArticle","headline":"ErrorMessageInterface — NFSFU234FormValidation","description":"Fields available on ErrorMessageInterface.","url":"https://formvalidation.nforshifu234dev.com/docs/v3/errorMessageInterface","proficiencyLevel":"Beginner","dependencies":"None — zero runtime dependencies","about":{"@type":"SoftwareApplication","name":"NFSFU234FormValidation","applicationCategory":"DeveloperApplication"},"isPartOf":{"@type":"TechArticle","name":"NFSFU234FormValidation Docs","url":"https://formvalidation.nforshifu234dev.com/docs/v3/getting-started"},"author":{"@type":"Organization","name":"NFORSHIFU234 Dev","url":"https://nforshifu234dev.com"}}} />
+

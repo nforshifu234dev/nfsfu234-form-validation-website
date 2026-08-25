@@ -1,0 +1,92 @@
+---
+title: "getFormDetails"
+description: "Reads every field's current value from a form - inputs, textareas,"
+keywords:
+  - "getFormDetails"
+  - "form"
+  - "form validation"
+  - "javascript"
+  - "html forms"
+  - "client-side validation"
+openGraph:
+  title: "getFormDetails() — NFSFU234FormValidation"
+  description: "Reads every field's current value from a form - inputs, textareas,"
+  images:
+    - url: "https://formvalidation.nforshifu234dev.com/api/og?title=getFormDetails()%20%E2%80%94%20NFSFU234FormValidation&subtitle=nfsfu234%2Fform-validation"
+      width: 1200
+      height: 630
+---
+#### getFormDetails
+Reads every field's current value from a form - inputs, textareas,
+selects, checkboxes, and radios - keyed by field name (falling back to
+`data-attr-name` where `name` isn't set).
+**Returns:** `false \| ErrorMessageInterface \| Record<string, string \| boolean>`
+| Parameter | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `form` | `string \\| HTMLFormElement \\| HTMLDivElement` | `required` | `-` | The form to read, or its CSS id. Falls back to this instance's `form` if omitted. |
+
+##### Usage
+
+###### Example: Retrieve Form Details
+
+```js
+const formDetails = nfsfu234FormValidation.getFormDetails('myFormId');
+console.log("Form Details: ", formDetails);
+```
+
+###### Example Form HTML
+
+```html
+<form id="myFormId">
+  <input type="text" name="fieldName1" value="value1" data-attr-name="fieldName1" />
+  <input type="text" name="fieldName2" value="value2" data-attr-name="fieldName2" />
+  <input type="checkbox" name="checkboxName" checked data-attr-name="checkboxName" />
+  <input type="radio" name="radioName" data-attr-name="radioName" />
+  <textarea name="textareaName" data-attr-name="textareaName">Sample text</textarea>
+  <select name="selectName" data-attr-name="selectName">
+    <option value="option1" selected>Option 1</option>
+    <option value="option2">Option 2</option>
+  </select>
+</form>
+```
+
+###### JavaScript to Retrieve Form Details
+
+```js
+const formDetails = nfsfu234FormValidation.getFormDetails('myFormId');
+console.log("Form Details: ", formDetails);
+```
+
+###### Sample Output
+
+```json
+{
+  "fieldName1": "value1",
+  "fieldName2": "value2",
+  "checkboxName": true,
+  "radioName": false,
+  "textareaName": "Sample text",
+  "selectName": "option1"
+}
+```
+
+  <b class="text-lg">Note</b>: If you call the function without having either the <b>`'name'`</b> or the <b>`'data-attr-name'`</b> attribute, then the key values will be index number of arrays. Find the example below:
+
+###### Sample Output Without adding the <b>`'name'`</b> or the <b>`'data-attr-name'`</b> HTML Attribute
+
+```js
+{
+  0: "value1",
+  1: "value2",
+  2: true,
+  3: false,
+  4: "Sample text",
+  5: "option1"
+}
+```
+
+
+import { JsonLd } from '@/components/JsonLd.jsx'
+
+<JsonLd data={{"@context":"https://schema.org","@type":"TechArticle","headline":"getFormDetails() — NFSFU234FormValidation","description":"Reads every field's current value from a form - inputs, textareas,","url":"https://formvalidation.nforshifu234dev.com/docs/v3/getFormDetails","proficiencyLevel":"Beginner","dependencies":"None — zero runtime dependencies","about":{"@type":"SoftwareApplication","name":"NFSFU234FormValidation","applicationCategory":"DeveloperApplication"},"isPartOf":{"@type":"TechArticle","name":"NFSFU234FormValidation Docs","url":"https://formvalidation.nforshifu234dev.com/docs/v3/getting-started"},"author":{"@type":"Organization","name":"NFORSHIFU234 Dev","url":"https://nforshifu234dev.com"}}} />
+

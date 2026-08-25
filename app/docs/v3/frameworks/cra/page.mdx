@@ -1,0 +1,328 @@
+# ⚛️ Using NFSFU234FormValidation with Create React App
+
+> **Note**
+>
+> Create React App is no longer the recommended way to start new React projects. If you're starting a new application, we recommend using **Next.js** or **Vite** instead.
+>
+> This guide exists for developers maintaining existing CRA applications.
+
+---
+
+## 1. Create a Create React App project
+
+If you're working in an existing CRA project, skip this step.
+
+```bash
+npx create-react-app my-app
+
+cd my-app
+```
+
+Start the development server.
+
+```bash
+npm start
+```
+
+---
+
+## 2. Install NFSFU234FormValidation
+
+Install the library from npm.
+
+```bash
+npm install @nfsfu234/form-validation
+```
+
+Import the stylesheet once near the root of your application.
+
+```jsx
+import "@nfsfu234/form-validation/css";
+```
+
+---
+
+## 3. Create your first validated form
+
+Because Create React App runs entirely in the browser, you can initialize the validator inside `useEffect()`.
+
+```jsx
+import { useEffect } from "react";
+import NFSFU234FormValidation from "@nfsfu234/form-validation";
+
+export default function SignupForm() {
+    useEffect(() => {
+        const validator = new NFSFU234FormValidation({
+            form: "signupForm"
+        });
+
+        const form = document.getElementById("signupForm");
+
+        async function handleSubmit(event) {
+            event.preventDefault();
+
+            const result = await validator.submit();
+
+            console.log(result);
+        }
+
+        form?.addEventListener("submit", handleSubmit);
+
+        return () => {
+            form?.removeEventListener("submit", handleSubmit);
+        };
+    }, []);
+
+    return (
+        <form id="signupForm">
+            <input
+                type="email"
+                name="email"
+                required
+            />
+
+            <input
+                type="password"
+                name="password"
+                required
+                minLength={8}
+            />
+
+            <button type="submit">
+                Create Account
+            </button>
+        </form>
+    );
+}
+```
+
+The library automatically validates:
+
+- `required`
+- `type`
+- `pattern`
+- `minLength`
+- `maxLength`
+- `min`
+- `max`
+
+No additional configuration is required.
+
+---
+
+## 4. Enable AJAX form submission
+
+Configure AJAX during initialization.
+
+```jsx
+const validator = new NFSFU234FormValidation({
+    form: "signupForm",
+
+    ajaxOptions: {
+        url: "/api/signup",
+
+        RequestMethod: "POST",
+
+        RequestHeader: {
+            "Content-Type": "application/json"
+        }
+    }
+});
+```
+
+Submit as normal.
+
+```jsx
+const result = await validator.submit();
+```
+
+The form is validated before the request is sent.
+
+---
+
+## 5. Using class components
+
+Many Create React App applications still use React class components. NFSFU234FormValidation works there as well.
+
+```jsx
+import React, { Component } from "react";
+import NFSFU234FormValidation from "@nfsfu234/form-validation";
+
+class SignupForm extends Component {
+    componentDidMount() {
+        this.validator = new NFSFU234FormValidation({
+            form: "signupForm"
+        });
+
+        this.form = document.getElementById("signupForm");
+
+        this.handleSubmit = async (event) => {
+            event.preventDefault();
+
+            const result = await this.validator.submit();
+
+            console.log(result);
+        };
+
+        this.form?.addEventListener("submit", this.handleSubmit);
+    }
+
+    componentWillUnmount() {
+        this.form?.removeEventListener(
+            "submit",
+            this.handleSubmit
+        );
+    }
+
+    render() {
+        return (
+            <form id="signupForm">
+                <input
+                    type="email"
+                    name="email"
+                    required
+                />
+
+                <input
+                    type="password"
+                    name="password"
+                    required
+                    minLength={8}
+                />
+
+                <button type="submit">
+                    Create Account
+                </button>
+            </form>
+        );
+    }
+}
+
+export default SignupForm;
+```
+
+---
+
+## 6. Managing multiple forms
+
+For larger applications, register every form once and let the library initialize them automatically.
+
+```jsx
+import { useEffect } from "react";
+import NFSFU234FormValidation from "@nfsfu234/form-validation";
+
+export default function FormsProvider() {
+    useEffect(() => {
+        NFSFU234FormValidation.configureForms([
+            {
+                form: "#signupForm",
+
+                fields: {
+                    email: {
+                        required: true,
+                        type: "email"
+                    },
+
+                    password: {
+                        required: true,
+                        minLength: 8
+                    }
+                }
+            }
+        ]);
+
+        NFSFU234FormValidation.autoInit();
+    }, []);
+
+    return null;
+}
+```
+
+Mount this component once near the root of your application.
+
+---
+
+## 7. Validating uploaded files
+
+File validation is fully supported in Create React App.
+
+```jsx
+fields: {
+    avatar: {
+        required: true,
+
+        accept: [
+            "image/png",
+            "image/jpeg"
+        ],
+
+        maxSizeMB: 5,
+
+        maxWidth: 2000,
+        maxHeight: 2000
+    }
+}
+```
+
+Supported validation includes:
+
+- Accepted file types
+- Maximum file size
+- Minimum and maximum file count
+- Image dimensions
+
+---
+
+## 8. Common pitfalls
+
+### Initialize inside lifecycle methods
+
+Always create the validator inside `useEffect()` or `componentDidMount()`.
+
+```jsx
+useEffect(() => {
+    const validator = new NFSFU234FormValidation({
+        form: "signupForm"
+    });
+}, []);
+```
+
+---
+
+### Remember to await asynchronous methods
+
+Incorrect
+
+```jsx
+validator.submit();
+```
+
+Correct
+
+```jsx
+const result = await validator.submit();
+```
+
+---
+
+### Import the stylesheet
+
+Import the CSS once near the root of your application.
+
+```jsx
+import "@nfsfu234/form-validation/css";
+```
+
+---
+
+## Next steps
+
+Continue exploring the library:
+
+- [Initialization](/docs/v3/initialization)
+- [Configuration Reference](/docs/v3/formConfigInterface)
+- [configureForms()](/docs/v3/configureForms)
+- [autoInit()](/docs/v3/autoInit)
+- [validateFile()](/docs/v3/validateFile)
+- [AJAX](/docs/v3/ajax)
+- [Available Functions](/docs/v3/available-functions)

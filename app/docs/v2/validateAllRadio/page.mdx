@@ -1,0 +1,34 @@
+---
+title: "validateAllRadio"
+description: "Validates all radio button groups within a form and returns ErrorMessageInterface."
+---
+
+# validateAllRadio
+
+The `validateAllRadio` function validates all radio button groups within a specified form. It returns an array of error messages (a nested [ErrorMessageInterface](/docs/v2/errorMessageInterface)) if any group is invalid, or a single instance of [ErrorMessageInterface](/docs/v2/errorMessageInterface) if all fields are valid.
+
+**Works in:** HTML5, React JS
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `form` | `HTMLFormElement \| HTMLDivElement \| string` | `undefined` | The form element or its ID containing radio button groups. |
+| `customErrorMessage` | `object` | `{}` | Custom error message to return if validation fails. |
+
+## Usage
+
+### Example: Validate All Radio Button Groups in a Form
+
+```js
+const formElement = document.getElementById('myForm');
+const result = nfsfu234FormValidation.validateAllRadio(formElement, {
+  message: 'Please select an option for all required questions.'
+});
+console.log(result);
+```
+
+#### See also
+
+- [customErrorMessageInterface](/docs/v2/customErrorMessageInterface)
+- [ErrorMessageInterface](/docs/v2/errorMessageInterface)
+- [displayError](/docs/v2/displayError)
+- [validateRadio](/docs/v2/validateRadio)

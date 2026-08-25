@@ -1,0 +1,241 @@
+---
+title: NFSFU234FormValidation v3.0.0 is Here
+description: After a year of building, rewriting, and preparing the NFSFU234 ecosystem, NFSFU234FormValidation returns with its biggest release yet.
+date: 2026-08-25
+author: NFSFU234
+tags:
+  - Release
+  - v3
+  - Open Source Day
+frameworks:
+  - JavaScript
+  - TypeScript
+  - React
+  - Next.js
+featured: true
+---
+
+After almost two years since the last major milestone, **NFSFU234FormValidation is back.**
+
+The previous public milestone, **v3.0.0-beta**, was released on **August 25, 2024**. Rather than rushing a stable release, development slowed while work shifted toward building the wider ecosystem surrounding the project.
+
+During that time, the focus expanded beyond a single library.
+
+Projects such as **WishIT**, **HealthHub AI**, internal developer tooling, and the foundations of the **NFSFU234** open-source ecosystem all became priorities. Behind the scenes, the library itself continued to evolve alongside those projects, with many of the improvements in v3 coming directly from real-world production experience.
+
+Today, that work comes together in **NFSFU234FormValidation v3.0.0**.
+
+This release also marks another important milestone.
+
+The library is now published under its permanent scoped package:
+
+```bash
+npm install @nfsfu234/form-validation
+```
+
+This is part of the wider migration to the **NFSFU234** organization, where every maintained open-source package now lives under a single ecosystem.
+
+---
+
+## What's new in v3?
+
+Version 3 is the largest release in the project's history.
+
+### 📁 File & image validation
+
+The library can now validate file inputs with support for:
+
+- minimum and maximum file counts
+- accepted MIME types
+- file extensions
+- maximum upload sizes
+- minimum image dimensions
+- maximum image dimensions
+
+Unlike the browser's native `accept` attribute, validation now happens consistently before submission.
+
+---
+
+### 🌍 Site-wide configuration
+
+Applications with multiple forms can now configure validation in one place.
+
+```javascript
+NFSFU234FormValidation.configureForms([...])
+NFSFU234FormValidation.autoInit()
+```
+
+Pages automatically initialise whichever registered forms are present, making multi-page applications significantly easier to maintain.
+
+---
+
+### ⚙️ Declarative validation rules
+
+Validation rules can now be defined directly in configuration instead of relying entirely on HTML attributes.
+
+Rules such as:
+
+- required
+- type
+- pattern
+- minLength
+- maxLength
+- custom messages
+
+can now override or extend native browser validation.
+
+---
+
+### ☑️ Complete form coverage
+
+Radio buttons and checkboxes are now fully integrated into the validation pipeline.
+
+Earlier versions validated these inconsistently during full form validation. In v3 they're treated like every other form control.
+
+---
+
+### ⚛️ Built for React and Next.js
+
+Constructing an instance used to assume a form was already sitting in the DOM — awkward in React, and outright broken during server-side rendering.
+
+v3 fixes both. Pass `null` explicitly to skip form resolution entirely and get a bare instance safe to construct anywhere, including on the server:
+
+```tsx
+const validator = useMemo(
+  () => new NFSFU234FormValidation(null),
+  []
+);
+```
+
+And if you don't need an instance at all — just the AJAX helper — it's now available as a static method too:
+
+```tsx
+await NFSFU234FormValidation.ajax({
+  url: "/api/contact",
+  RequestMethod: "POST",
+  RequestBody: formData,
+});
+```
+
+No form, no constructor, no `document.createElement()` workaround. The [Next.js playground](https://formvalidation.nforshifu234dev.com) in this release is built entirely on this pattern.
+
+---
+
+### ⚡ Async validation
+
+Because file validation requires asynchronous processing, both:
+
+- `validate()`
+- `submit()`
+
+are now asynchronous APIs returning Promises.
+
+Although this introduces a small breaking change, it opens the door for richer validation capabilities going forward.
+
+---
+
+### 📚 Generated API documentation
+
+The documentation website now generates its API reference directly from the library using **TypeDoc**.
+
+This keeps documentation synchronized with every release and removes the need to manually maintain function reference pages.
+
+---
+
+### 🧪 Better testing & CI
+
+The project now includes:
+
+- Jest
+- jsdom
+- TypeScript testing
+- automated GitHub Actions
+- semantic-release
+- automated npm publishing
+- release validation workflows
+
+Every release is now fully verified before publication.
+
+---
+
+### Also in this release
+
+- CSS can now be imported directly from the package: `import "@nfsfu234/form-validation/css"`
+- Inline error messages now render immediately after the field they belong to, instead of always at the end of its parent container — fixes misplaced errors on forms with multiple fields sharing a wrapper
+- Full TypeScript types for the constructor and AJAX options — fewer `any`s, better autocomplete
+
+---
+
+## Breaking changes
+
+A few APIs have changed.
+
+### Password hashing has been removed
+
+The following methods have been removed:
+
+- `hashPassword()`
+- `verifyPassword()`
+- `passwordMatch()`
+
+Client-side password hashing provided little practical security while increasing bundle size and maintenance cost.
+
+Password hashing belongs on the server.
+
+---
+
+### `validate()` and `submit()` are async
+
+If you're upgrading from v2, remember to await these methods.
+
+```javascript
+await validator.submit()
+await validator.validate()
+```
+
+instead of checking synchronous return values.
+
+---
+
+## A new home
+
+This release also completes the move to the **@nfsfu234** npm scope.
+
+The previous unscoped package, `nfsfu234-form-validation`, is now marked as deprecated on npm. It will continue to resolve for existing installs, but new installs will show a deprecation notice pointing here, and it won't receive any further updates. If you're still on it, now's the time to switch:
+
+```bash
+npm uninstall nfsfu234-form-validation
+npm install @nfsfu234/form-validation
+```
+
+This creates a consistent ecosystem alongside upcoming projects including:
+
+- NFSFU234TourGuide
+- ShotSweep
+- future NFSFU234 developer tools
+
+---
+
+## Looking ahead
+
+Version 3 isn't the finish line.
+
+It's the foundation for the next chapter of the ecosystem.
+
+As part of **NFSFU234 Open Source Day**, several projects are launching together, representing years of work across libraries, documentation, tooling, and developer experience.
+
+NFSFU234FormValidation continues to be the flagship project of that ecosystem, and future releases will continue to focus on modern web development while remaining lightweight, dependency-free, and framework friendly.
+
+---
+
+## Upgrade today
+
+Install the latest version:
+
+```bash
+npm install @nfsfu234/form-validation
+```
+
+Read the migration guide if you're upgrading from v2, explore the updated documentation, and let us know what you build.
+
+Welcome to **NFSFU234FormValidation v3.0.0**.

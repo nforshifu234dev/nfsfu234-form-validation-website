@@ -1,0 +1,76 @@
+---
+title: "displayError"
+description: "Manually displays an error message, either inline next to a field or"
+keywords:
+  - "displayError"
+  - "details"
+  - "form validation"
+  - "javascript"
+  - "html forms"
+  - "client-side validation"
+openGraph:
+  title: "displayError() — NFSFU234FormValidation"
+  description: "Manually displays an error message, either inline next to a field or"
+  images:
+    - url: "https://formvalidation.nforshifu234dev.com/api/og?title=displayError()%20%E2%80%94%20NFSFU234FormValidation&subtitle=nfsfu234%2Fform-validation"
+      width: 1200
+      height: 630
+---
+#### displayError
+Manually displays an error message, either inline next to a field or
+as a modal, using the same rendering path validation errors use
+internally.
+**Returns:** `void`
+| Parameter | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `details` | `any` | `required` | `-` | Error display options: message, target element, display type (`'inline'` \| `'modal'`), and duration. |
+
+##### Usage
+
+###### Example: Display Error Message
+
+```js
+const errorDetails = {
+    type: 'modal', // or inline
+    message: 'Hello World👋',
+    duration: 5000,
+    element: document.getElementById('myFormId'), // could also be an HTML input element
+    success: false // or true
+};
+
+nfsfu234FormValidation.displayError(errorDetails);
+```
+
+###### Example Form HTML
+
+```html
+<form id="myFormId">
+  <input type="text" name="fieldName1" value="value1" data-attr-name="fieldName1" />
+  <input type="text" name="fieldName2" value="value2" data-attr-name="fieldName2" />
+  <button type="submit">Submit</button>
+</form>
+```
+
+###### JavaScript to Display Error Message
+
+```js
+const errorDetails = {
+    type: 'modal',
+    message: 'Hello World👋',
+    duration: 5000,
+    element: document.getElementById('myFormId'),
+    success: false
+};
+
+nfsfu234FormValidation.displayError(errorDetails);
+```
+
+###### Expected Output
+
+An error message "Hello World👋" will be displayed as a modal for 5000 milliseconds (5 seconds) associated with the specified form element.
+
+
+import { JsonLd } from '@/components/JsonLd.jsx'
+
+<JsonLd data={{"@context":"https://schema.org","@type":"TechArticle","headline":"displayError() — NFSFU234FormValidation","description":"Manually displays an error message, either inline next to a field or","url":"https://formvalidation.nforshifu234dev.com/docs/v3/displayError","proficiencyLevel":"Beginner","dependencies":"None — zero runtime dependencies","about":{"@type":"SoftwareApplication","name":"NFSFU234FormValidation","applicationCategory":"DeveloperApplication"},"isPartOf":{"@type":"TechArticle","name":"NFSFU234FormValidation Docs","url":"https://formvalidation.nforshifu234dev.com/docs/v3/getting-started"},"author":{"@type":"Organization","name":"NFORSHIFU234 Dev","url":"https://nforshifu234dev.com"}}} />
+

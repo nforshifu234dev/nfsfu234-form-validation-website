@@ -1,0 +1,195 @@
+---
+title: "AJAX Login Form"
+excerpt: "Validate a login form on the client, then submit it via AJAX without a page reload."
+frameworks: ["html", "vite"]
+date: "2026-07-01"
+---
+
+# AJAX Login Form
+
+A common login flow validates the form **before** sending any network request. If every field passes validation, the form is submitted using AJAX without refreshing the page.
+
+This example validates an email address and password, sends the login request to `/api/login`, then redirects the user after a successful response.
+
+---
+
+## HTML
+
+```html
+<form id="loginForm">
+    <input
+        type="email"
+        name="email"
+        required
+    />
+
+    <input
+        type="password"
+        name="password"
+        required
+        minlength="8"
+    />
+
+    <button type="submit">
+        Log in
+    </button>
+</form>
+```
+
+---
+
+## JavaScript
+
+```javascript
+import NFSFU234FormValidation from "@nfsfu234/form-validation";
+
+const validator = new NFSFU234FormValidation({
+    form: "loginForm"
+});
+
+const form = document.getElementById("loginForm");
+
+form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const result = await validator.submit({
+        isAjax: true,
+
+        ajaxOptions: {
+            url: "/api/login",
+
+            RequestMethod: "POST",
+
+            RequestHeader: {
+                "Content-Type": "application/json"
+            }
+        }
+    });
+
+    if (result.type === "success") {
+        window.location.href = "/dashboard";
+        return;
+    }
+
+    validator.displayError(result);
+});
+```
+
+---
+
+## What happens?
+
+When the user clicks **Log in**, NFSFU234FormValidation performs the following steps:
+
+1. Validates every field in the form.
+2. Stops immediately if any field fails validation.
+3. Displays validation errors.
+4. Builds the request body from the form values.
+5. Sends an AJAX request to `/api/login`.
+6. Returns the server response.
+7. Redirects the user after a successful login.
+
+No page refresh occurs during the process.
+
+---
+
+## Why no validation rules?
+
+This form already uses native HTML validation attributes.
+
+```html
+<input
+    type="email"
+    required
+/>
+
+<input
+    type="password"
+    required
+    minlength="8"
+/>
+```
+
+The library automatically reads attributes such as:
+
+- `required`
+- `type`
+- `minlength`
+- `maxlength`
+- `pattern`
+- `min`
+- `max`
+
+No additional configuration is needed for simple forms.
+
+---
+
+## AJAX configuration
+
+AJAX is enabled by passing `isAjax: true` to `submit()` together with an `ajaxOptions` object.
+
+```javascript
+await validator.submit({
+    isAjax: true,
+
+    ajaxOptions: {
+        url: "/api/login",
+
+        RequestMethod: "POST"
+    }
+});
+```
+
+Supported options include:
+
+```javascript
+ajaxOptions: {
+    url: "/api/login",
+
+    RequestMethod: "POST",
+
+    RequestHeader: {
+        "Content-Type": "application/json"
+    }
+}
+```
+
+The request body is generated automatically from the form fields.
+
+---
+
+## Returning JSON
+
+A typical successful response might look like this.
+
+```json
+{
+    "success": true,
+    "token": "...",
+    "user": {
+        "id": 1,
+        "name": "John Doe"
+    }
+}
+```
+
+An unsuccessful response could be:
+
+```json
+{
+    "success": false,
+    "message": "Invalid email or password."
+}
+```
+
+Use the object returned by `submit()` to determine what happens next in your application.
+
+---
+
+## Continue learning
+
+- 📡 **[AJAX Requests](/docs/v3/ajax)** — Learn how the library sends HTTP requests.
+- 🎨 **[Custom Error Messages](/docs/v3/custom-error-messages)** — Customize validation feedback.
+- 🔐 **[Password Utilities](/docs/v3/password)** — Generate and evaluate secure passwords.
+- ⚙️ **[Form Configuration](/docs/v3/formConfigInterface)** — Configure validation entirely in JavaScript.
+- 📚 **[Available Functions](/docs/v3/available-functions)** — Explore the complete API reference.

@@ -1,0 +1,65 @@
+---
+title: "submit"
+description: "Validates the whole form (every input, textarea, select, radio,"
+keywords:
+  - "submit"
+  - "userOptions"
+  - "callback"
+  - "form validation"
+  - "javascript"
+  - "html forms"
+  - "client-side validation"
+openGraph:
+  title: "submit() — NFSFU234FormValidation"
+  description: "Validates the whole form (every input, textarea, select, radio,"
+  images:
+    - url: "https://formvalidation.nforshifu234dev.com/api/og?title=submit()%20%E2%80%94%20NFSFU234FormValidation&subtitle=nfsfu234%2Fform-validation"
+      width: 1200
+      height: 630
+---
+#### submit
+Validates the whole form (every input, textarea, select, radio,
+checkbox, and file field), then—if validation succeeds and AJAX is
+enabled—submits the form using either the supplied AJAX options or
+the instance's default AJAX configuration.
+
+The method first resolves the target form from the supplied
+`userOptions` (or falls back to the form attached to this instance),
+validates it, and finally submits it if appropriate.
+
+Validation-only usage is also supported. When AJAX is not enabled,
+the method simply resolves with the validation result.
+**Returns:** `Promise<any>`
+| Parameter | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `userOptions` | `FormConstructorInterface` | `optional` | `-` | Overrides the form and custom error messages configured on this instance. |
+| `callback` | `object` | `optional` | `-` | Optional callback invoked with the validation result. |
+
+##### Usage
+
+###### Option 1.
+
+```js
+const myForm = document.getElementById("myForm");
+nfsfu234FormValidation.submit(myForm)
+.then((response) => {
+    const { message, type, data } = response
+    console.log(response);
+});
+```
+
+###### Option 2.
+
+```js
+const myForm = document.getElementById("myForm");
+nfsfu234FormValidation.submit(myForm,(response) => {
+    const { message, type, data } = response
+    console.log(response);
+});
+```
+
+
+import { JsonLd } from '@/components/JsonLd.jsx'
+
+<JsonLd data={{"@context":"https://schema.org","@type":"TechArticle","headline":"submit() — NFSFU234FormValidation","description":"Validates the whole form (every input, textarea, select, radio,","url":"https://formvalidation.nforshifu234dev.com/docs/v3/submit","proficiencyLevel":"Beginner","dependencies":"None — zero runtime dependencies","about":{"@type":"SoftwareApplication","name":"NFSFU234FormValidation","applicationCategory":"DeveloperApplication"},"isPartOf":{"@type":"TechArticle","name":"NFSFU234FormValidation Docs","url":"https://formvalidation.nforshifu234dev.com/docs/v3/getting-started"},"author":{"@type":"Organization","name":"NFORSHIFU234 Dev","url":"https://nforshifu234dev.com"}}} />
+

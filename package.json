@@ -1,47 +1,39 @@
 {
-  "name": "my-docs-site",
-  "version": "0.1.0",
+  "name": "nfsfu234-form-validation-docs",
+  "version": "3.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "reindexDocuments": "node scripts/indexDocuments.js",
-    "generate-og-images": "node lib/generate-og-images.js"
+    "docs:fetch-api:local": "node fetch-api-json.mjs --local ../nfsfu234-form-validation/docs-json/api.json",
+    "docs:fetch-api": "node fetch-api-json.mjs",
+    "docs:generate:local": "npm run docs:fetch-api:local && node generate-docs.mjs",
+    "docs:generate": "npm run docs:fetch-api && node generate-docs.mjs",
+    "postbuild": "pagefind --site .next/server/app --output-path public/_pagefind && next-sitemap --config next-sitemap.config.cjs"
   },
   "dependencies": {
-    "@docsearch/react": "^3.6.1",
-    "@fortawesome/free-brands-svg-icons": "^6.6.0",
-    "@fortawesome/free-regular-svg-icons": "^6.6.0",
-    "@fortawesome/free-solid-svg-icons": "^6.6.0",
-    "@fortawesome/react-fontawesome": "^0.2.2",
-    "@mdx-js/loader": "^3.0.1",
-    "@mdx-js/react": "^3.0.1",
-    "@next/mdx": "^14.2.5",
-    "algoliasearch": "^4.24.0",
-    "autoprefixer": "^10.4.19",
-    "clsx": "^2.1.1",
-    "crawler": "^2.0.2",
-    "dotenv": "^16.4.5",
+    "@next/third-parties": "^16.2.12",
+    "@nfsfu234/form-validation": "^3.0.2",
     "gray-matter": "^4.0.3",
-    "gsap": "^3.12.5",
-    "instantsearch.js": "^4.73.2",
-    "next": "14.2.5",
-    "next-mdx-remote": "^5.0.0",
+    "next": "^15.5.22",
+    "next-mdx-remote": "^6.0.0",
     "next-sitemap": "^4.2.3",
-    "puppeteer": "^22.13.1",
-    "react": "^18",
-    "react-copy-to-clipboard": "^5.1.0",
-    "react-dom": "^18",
-    "react-icons": "^5.2.1",
-    "react-instantsearch-core": "^7.12.2",
-    "react-instantsearch-dom": "^6.40.4"
+    "nextra": "^4.6.1",
+    "nextra-theme-docs": "^4.6.1",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
   },
   "devDependencies": {
-    "eslint": "^8",
-    "eslint-config-next": "14.2.5",
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1"
+    "@tailwindcss/postcss": "4.3.3",
+    "pagefind": "^1.5.2",
+    "tailwindcss": "4.3.3"
+  },
+  "overrides": {
+    "zod": "4.3.6"
+  },
+  "allowScripts": {
+    "sharp@0.34.5": true
   }
 }

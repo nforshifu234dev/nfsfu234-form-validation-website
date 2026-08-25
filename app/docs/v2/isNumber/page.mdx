@@ -1,0 +1,39 @@
+---
+title: "isNumber"
+description: "Check if a given value is a number using the NFSFU234FormValidation Library"
+---
+
+# isNumber
+
+The `isNumber` function checks if the given value is a number.
+
+**Works in:** HTML5, React JS, Node.js
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `number` | `string \| number` | `undefined` | The value to check. |
+
+## Usage
+
+### Example: Check if Value is a Number
+
+```js
+const value = 123;
+const isValidNumber = nfsfu234FormValidation.isNumber(value);
+console.log(isValidNumber); // true
+```
+
+### Example: Check if Value is a Number
+
+```js
+const value = "123";
+const isValidNumber = nfsfu234FormValidation.isNumber(value);
+console.log(isValidNumber); // true
+```
+
+#### See also
+
+- [containsOnlyIntegers](/docs/v2/containsOnlyIntegers)
+- [isURL](/docs/v2/isURL)
+- [isOnline](/docs/v2/isOnline)
+- [isZIP](/docs/v2/isZIP)

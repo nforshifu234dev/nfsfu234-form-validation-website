@@ -1,0 +1,142 @@
+---
+title: "Newsletter Signup with a Plan Select Dropdown - React (CRA) Select Validation"
+excerpt: "Validate a <select> field alongside regular inputs in a Create React App signup form."
+frameworks: ["cra"]
+date: "2026-07-14"
+---
+
+A newsletter signup form with a required plan selector. The example shows how to validate `<select>` elements before submitting the form in a React application.
+
+## React Component
+
+```jsx
+import { useEffect } from "react";
+import NFSFU234FormValidation from "@nfsfu234/form-validation";
+
+export default function SignupForm() {
+  useEffect(() => {
+    NFSFU234FormValidation.configureForms([
+      {
+        form: "#signupForm",
+        fields: {
+          name: {
+            required: true,
+            minLength: 2,
+          },
+          email: {
+            required: true,
+            type: "email",
+          },
+          plan: {
+            required: true,
+          },
+        },
+      },
+    ]);
+
+    NFSFU234FormValidation.autoInit();
+  }, []);
+
+  return (
+    <form id="signupForm">
+      <input
+        type="text"
+        name="name"
+        placeholder="Full name"
+        required
+      />
+
+      <input
+        type="email"
+        name="email"
+        placeholder="Email address"
+        required
+      />
+
+      <select name="plan" defaultValue="">
+        <option value="" disabled>
+          Choose a plan
+        </option>
+        <option value="free">Free</option>
+        <option value="pro">Pro</option>
+        <option value="team">Team</option>
+      </select>
+
+      <button type="submit">
+        Subscribe
+      </button>
+    </form>
+  );
+}
+```
+
+Once the page loads, `autoInit()` finds `#signupForm`, enables validation, and automatically validates the text fields, email field, and plan selector when the form is submitted.
+
+---
+
+## Validating a single select manually
+
+Sometimes you want to validate a dropdown before showing the next section of a form.
+
+```jsx
+const validator = new NFSFU234FormValidation({
+  form: "signupForm",
+});
+
+const planSelect =
+  document.querySelector('[name="plan"]');
+
+const result = validator.validateSelect(
+  planSelect,
+  {
+    message: "Please choose a subscription plan.",
+  }
+);
+
+if (result === true) {
+  console.log("Plan selected");
+}
+```
+
+---
+
+## Validating multiple select fields
+
+If your form contains several dropdowns, validate them all in one call.
+
+```jsx
+const validator = new NFSFU234FormValidation({
+  form: "signupForm",
+});
+
+const result = validator.validateAllSelect(
+  document.getElementById("signupForm"),
+  {
+    country: "Please select a country.",
+    plan: "Please choose a subscription plan.",
+    industry: "Select your industry.",
+  }
+);
+
+if (result === true) {
+  console.log("All dropdowns are valid.");
+}
+```
+
+---
+
+## Why use `validateSelect()`?
+
+Although browsers support the `required` attribute on `<select>` elements, custom placeholder options and browser differences can lead to inconsistent behaviour. `validateSelect()` provides a consistent validation experience and lets you define your own error messages.
+
+`validateAllSelect()` follows the same pattern, making it easy to validate every dropdown in a form with one call.
+
+---
+
+## Continue learning
+
+- [Form Configuration](/docs/v3/formConfigInterface)
+- [Initialization](/docs/v3/initialization)
+- [Validation Methods](/docs/v3/usage)
+- [Examples](/examples)
+- [Available Functions](/docs/v3/available-functions)

@@ -1,0 +1,34 @@
+---
+title: "checkVariableType"
+description: "Checks the type of a variable and returns a string representation of the type."
+---
+
+# checkVariableType
+
+The `checkVariableType` function checks the type of a given variable and returns a string that represents its type. If the type cannot be determined, it returns `'unknown'`.
+
+**Works in:** HTML5, React JS, Node.js
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `variable` | `any` | `undefined` | The variable whose type needs to be checked. |
+
+## Usage
+
+### Example: Check Variable Type
+
+```js
+const type1 = nfsfu234FormValidation.checkVariableType("Hello"); // "string"
+const type2 = nfsfu234FormValidation.checkVariableType(123);    // "number"
+const type3 = nfsfu234FormValidation.checkVariableType([]);     // "array"
+const type4 = nfsfu234FormValidation.checkVariableType({});     // "object"
+const type5 = nfsfu234FormValidation.checkVariableType(() => {}); // "function"
+const type6 = nfsfu234FormValidation.checkVariableType(null);   // "null"
+const type7 = nfsfu234FormValidation.checkVariableType(undefined); // "undefined"
+const type8 = nfsfu234FormValidation.checkVariableType(document.body); // "HTML Element"
+```
+
+#### See also
+
+- [isEmail](/docs/v2/isEmail)
+- [isURL](/docs/v2/isURL)

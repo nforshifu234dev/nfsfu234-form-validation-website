@@ -1,0 +1,68 @@
+---
+title: "loading"
+description: "Shows a loading message/animation on a submit button (or the form"
+keywords:
+  - "loading"
+  - "message"
+  - "submitBtn"
+  - "form"
+  - "form validation"
+  - "javascript"
+  - "html forms"
+  - "client-side validation"
+openGraph:
+  title: "loading() — NFSFU234FormValidation"
+  description: "Shows a loading message/animation on a submit button (or the form"
+  images:
+    - url: "https://formvalidation.nforshifu234dev.com/api/og?title=loading()%20%E2%80%94%20NFSFU234FormValidation&subtitle=nfsfu234%2Fform-validation"
+      width: 1200
+      height: 630
+---
+#### loading
+Shows a loading message/animation on a submit button (or the form
+itself) while an async operation - typically `.submit()` - is in
+flight. Pair with your own logic to clear it once the operation
+settles.
+**Returns:** `boolean \| ErrorMessageInterface`
+| Parameter | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `message` | `string` | `required` | `-` | The loading text to display. |
+| `submitBtn` | `null \\| string \\| HTMLElement` | `optional` | `null` | The submit button to update, as an element or its CSS id. Defaults to none. |
+| `form` | `undefined \\| null \\| string \\| HTMLElement` | `optional` | `null` | The form the loading state applies to, as an element or its CSS id. Defaults to this instance's `form` when omitted. |
+
+##### Usage
+
+###### Example: Update Button Content with Loading Message
+
+```js
+const formElement = document.getElementById('myFormId');
+nfsfu234FormValidation.loading('Loading...', formElement.querySelector("button[type=submit]"));
+```
+
+###### Example Form HTML
+
+```html
+<form id="myFormId">
+  <input type="text" name="fieldName1" value="value1" data-attr-name="fieldName1" />
+  <input type="text" name="fieldName2" value="value2" data-attr-name="fieldName2" />
+  <button type="submit">Submit</button>
+</form>
+```
+
+###### JavaScript to Update Button Content
+
+```js
+const formElement = document.getElementById('myFormId');
+const buttonElement = formElement.querySelector("button[type=submit]");
+nfsfu234FormValidation.loading('Loading...', buttonElement);
+```
+
+###### Expected Output
+
+The content of the submit button within the form will be updated to display the message "Loading...".
+
+
+import { JsonLd } from '@/components/JsonLd.jsx'
+
+<JsonLd data={{"@context":"https://schema.org","@type":"TechArticle","headline":"loading() — NFSFU234FormValidation","description":"Shows a loading message/animation on a submit button (or the form","url":"https://formvalidation.nforshifu234dev.com/docs/v3/loading","proficiencyLevel":"Beginner","dependencies":"None — zero runtime dependencies","about":{"@type":"SoftwareApplication","name":"NFSFU234FormValidation","applicationCategory":"DeveloperApplication"},"isPartOf":{"@type":"TechArticle","name":"NFSFU234FormValidation Docs","url":"https://formvalidation.nforshifu234dev.com/docs/v3/getting-started"},"author":{"@type":"Organization","name":"NFORSHIFU234 Dev","url":"https://nforshifu234dev.com"}}} />
+
