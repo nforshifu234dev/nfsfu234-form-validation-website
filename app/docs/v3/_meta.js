@@ -37,8 +37,6 @@ export default {
   "isNumber": "isNumber",
   "isOnline": "isOnline",
   "isURL": "isURL",
-  "isZip": "isZip",
-  "isZipCode": "isZipCode",
   "loading": "loading",
   "passwordStrength": "passwordStrength",
   "passwordStrengthResult": "passwordStrengthResult",
