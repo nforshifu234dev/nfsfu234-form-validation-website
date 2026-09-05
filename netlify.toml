@@ -1,4 +1,10 @@
 [[redirects]]
+  from = "https://nfsfu234-form-validation.netlify.app/*"
+  to = "https://formvalidation.nforshifu234dev.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "https://form-validation.nforshifu234dev.com/*"
   to = "https://formvalidation.nforshifu234dev.com/:splat"
   status = 301
